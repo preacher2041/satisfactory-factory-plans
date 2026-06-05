@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB 0b — Ore Split — Iron Megafactory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --iron:#378ADD;--iron-bg:#0d2240;--iron-bd:#1a4a80;
+  --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
+  --plate:#D85A30;--plate-bg:#2a1208;--plate-bd:#7a2e10;
+  --screw:#888780;--screw-bg:#1a1a18;--screw-bd:#44443f;
+  --rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
+  --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
+  --smart:#639922;--smart-bg:#0d1a04;--smart-bd:#254a08;
+  --mf:#7F77DD;--mf-bg:#181535;--mf-bd:#3d3880;
+  --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
+
+  /* ── Connection arc colours ── */
+  --arc-a1:#58C4E8;
+  --arc-a2:#F5A623;
+  --arc-a3:#9CCC65;
+  --arc-a4:#B57BEA;
+  --arc-a5:#4DD0E1;
+  --arc-a6:#FF8A65;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
+
+.cell-lbl{position:absolute;font-family:'Share Tech Mono',monospace;font-size:11px;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
+.belt-req strong{color:#e8a820;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}
+.nav-factory{margin-left:auto;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav"><a href="floor0_ground.html" class="nav-btn">← Ground</a>
+    <span class="nav-sep">//</span>
+    <a href="floor0_ground.html" class="nav-btn">Ground</a>
+    <span class="nav-current">LB 0b</span>
+    <a href="floor1_smelters.html" class="nav-btn">Floor 1</a>
+    <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b</a>
+    <a href="floor2_rods_plates.html" class="nav-btn">Floor 2</a>
+    <a href="lb2b_rod_manifold.html" class="nav-btn">LB 2b</a>
+    <a href="floor3_screws.html" class="nav-btn">Floor 3</a>
+    <a href="lb3b_plates_screws.html" class="nav-btn">LB 3b</a>
+    <a href="floor4_assembly.html" class="nav-btn">Floor 4</a>
+    <a href="lb4b_rip_rods.html" class="nav-btn">LB 4b</a>
+    <a href="floor5_mf.html" class="nav-btn">Floor 5</a>
+    <span class="nav-sep">//</span>
+    <a href="floor1_smelters.html" class="nav-btn">Floor 1 →</a>
+    <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a></div>
+<h1>LB 0b — Ore Split</h1>
+<div class="sub">// +8m · ore 240/min → 8 smelters · binary tree · 7 splitters</div>
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px"><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div></div>
+  <div class="floorplan">
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f fc"></div>
+    <div class="f fc"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f fc"></div>
+    <div class="f fc"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="ml">
+<div class="cell-lbl" style="left:616px;top:770px;width:154px;height:154px;color:#378ADD;">240/min
+ore in ↑</div><div class="blk" style="left:635px;top:635px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:673px;top:673px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S1</div><div style="position:absolute;left:673px;top:711px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">240/m</div><div style="position:absolute;left:635px;top:673px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#58C4E8;text-align:center;line-height:1.15;">S2<br>120/m</div><div style="position:absolute;left:711px;top:673px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#F5A623;text-align:center;line-height:1.15;">S3<br>120/m</div><div class="blk" style="left:327px;top:481px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:365px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S2</div><div style="position:absolute;left:365px;top:557px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#58C4E8;text-align:center;line-height:1.15;">S1<br>120/m</div><div style="position:absolute;left:327px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#9CCC65;text-align:center;line-height:1.15;">S4<br>60/m</div><div style="position:absolute;left:403px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#B57BEA;text-align:center;line-height:1.15;">S5<br>60/m</div><div class="blk" style="left:943px;top:481px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:981px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S3</div><div style="position:absolute;left:981px;top:557px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#F5A623;text-align:center;line-height:1.15;">S1<br>120/m</div><div style="position:absolute;left:943px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#4DD0E1;text-align:center;line-height:1.15;">S6<br>60/m</div><div style="position:absolute;left:1019px;top:519px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#FF8A65;text-align:center;line-height:1.15;">S7<br>60/m</div><div class="blk" style="left:173px;top:327px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:211px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S4</div><div style="position:absolute;left:211px;top:403px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#9CCC65;text-align:center;line-height:1.15;">S2<br>60/m</div><div style="position:absolute;left:173px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div style="position:absolute;left:249px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div class="blk" style="left:481px;top:327px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:519px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S5</div><div style="position:absolute;left:519px;top:403px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#B57BEA;text-align:center;line-height:1.15;">S2<br>60/m</div><div style="position:absolute;left:481px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div style="position:absolute;left:557px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div class="blk" style="left:789px;top:327px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:827px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S6</div><div style="position:absolute;left:827px;top:403px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#4DD0E1;text-align:center;line-height:1.15;">S3<br>60/m</div><div style="position:absolute;left:789px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div style="position:absolute;left:865px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div class="blk" style="left:1097px;top:327px;width:116px;height:116px;background:#0d2240;border:1px solid #1a4a80;"></div><div style="position:absolute;left:1135px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:17px;color:#378ADD;text-align:center;line-height:1.2;">S7</div><div style="position:absolute;left:1135px;top:403px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#FF8A65;text-align:center;line-height:1.15;">S3<br>60/m</div><div style="position:absolute;left:1097px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div style="position:absolute;left:1173px;top:365px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;text-align:center;line-height:1.2;">30/m</div><div style="position:absolute;left:173px;top:789px;width:1194px;height:116px;background:#0d2240;border:1px solid #1a4a80;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:#378ADD;font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:#378ADD;">Ore</span><span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:#378ADD;opacity:0.8;">240/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;opacity:0.6;">← Ground (miners)</span></div>
+<div style="position:absolute;left:173px;top:19px;width:1194px;height:116px;background:#0d2240;border:1px solid #1a4a80;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;font-weight:700;">↑ out</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#378ADD;">Ore</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;opacity:0.8;">240/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#378ADD;opacity:0.6;">8 belts × 30/m → Floor 1</span></div>
+    </div>
+  </div>
+</div>
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours — match output label on source to input label on destination</span><br>
+  <span style="color:#58C4E8;">■</span> A1 <span style="color:#888">S1 left → S2 bottom · 120/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:#F5A623;">■</span> A2 <span style="color:#888">S1 right → S3 bottom · 120/m</span><br>
+  <span style="color:#9CCC65;">■</span> A3 <span style="color:#888">S2 left → S4 bottom · 60/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:#B57BEA;">■</span> A4 <span style="color:#888">S2 right → S5 bottom · 60/m</span><br>
+  <span style="color:#4DD0E1;">■</span> A5 <span style="color:#888">S3 left → S6 bottom · 60/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:#FF8A65;">■</span> A6 <span style="color:#888">S3 right → S7 bottom · 60/m</span>
+</div>
+<div class="legend"><div class="l-item"><div class="l-sw" style="background:#0d2240;border:1px solid #1a4a80"></div>Splitter (iron ore)</div></div>
+<div class="note">// Row F: ore 240/min ← Ground</div><div class="note">// Row A: ore 240/min → Floor 1 (8 belts × 30/m, one per smelter)</div>
+<div class="belt-req"><strong>⚠ Mk.3 required — ore trunk 240/min</strong><br>Must be Mk.3 (270/min cap).</div>
+</body>
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel &amp; EIB Factory — Satisfactory</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c26;
+    --surface2:  #1f2435;
+    --border:    #2a3048;
+    --border2:   #3a4460;
+    --text:      #d4d8e8;
+    --text-muted:#7a839a;
+    --accent:    #4a90d9;
+
+    --iron:      #378ADD;
+    --iron-bg:   #0d2240;
+    --iron-bd:   #1a4a80;
+
+    --coal:      #888780;
+    --coal-bg:   #1a1a18;
+    --coal-bd:   #44443f;
+
+    --limestone: #1D9E75;
+    --limestone-bg: #061f16;
+    --limestone-bd: #0f5c3d;
+
+    --ingot:     #D85A30;
+    --ingot-bg:  #2a1208;
+    --ingot-bd:  #7a2e10;
+
+    --beam:      #c4880a;
+    --beam-bg:   #1f1500;
+    --beam-bd:   #5c3a00;
+
+    --pipe:      #6abf25;
+    --pipe-bg:   #0d1a04;
+    --pipe-bd:   #254a08;
+
+    --concrete:  #7F77DD;
+    --concrete-bg: #181535;
+    --concrete-bd: #3d3880;
+
+    --eib:       #BA7517;
+    --eib-bg:    #251500;
+    --eib-bd:    #6b4008;
+
+    --foundry:   #993556;
+    --foundry-bg:#200a16;
+    --foundry-bd:#5a1a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 32px 24px 64px;
+    min-height: 100vh;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  header .sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .header-back {
+    margin-left: auto;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 10px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .header-back:hover { color: var(--text); border-color: var(--border2); }
+
+  .summary-section-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px solid #1a1e2a;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-key { color: var(--text-muted); font-size: 12px; flex-shrink: 0; padding-right: 8px; }
+  .summary-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); text-align: right; }
+
+  .belt-chip {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+  .chip-iron     { background: var(--iron); }
+  .chip-coal     { background: var(--coal); }
+  .chip-limestone{ background: var(--limestone); }
+  .chip-ingot    { background: var(--ingot); }
+  .chip-beam     { background: var(--beam); }
+  .chip-pipe     { background: var(--pipe); }
+  .chip-concrete { background: var(--concrete); }
+  .chip-eib      { background: var(--eib); }
+
+  .chain-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .chain-header {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .chain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .chain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .chain-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .chain-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .chain-table th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 4px 6px 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .chain-table td {
+    padding: 6px 6px;
+    border-bottom: 1px solid #1a1e2a;
+    vertical-align: middle;
+    color: var(--text);
+    font-size: 12px;
+  }
+  .chain-table tr:last-child td { border-bottom: none; }
+  .totals-row td { color: var(--text-muted); font-style: italic; }
+
+  .chip-label {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .chip-iron-l      { background: var(--iron-bg);      border: 1px solid var(--iron-bd);      color: var(--iron); }
+  .chip-coal-l      { background: var(--coal-bg);      border: 1px solid var(--coal-bd);      color: var(--coal); }
+  .chip-limestone-l { background: var(--limestone-bg); border: 1px solid var(--limestone-bd); color: var(--limestone); }
+  .chip-ingot-l     { background: var(--ingot-bg);     border: 1px solid var(--ingot-bd);     color: var(--ingot); }
+  .chip-beam-l      { background: var(--beam-bg);      border: 1px solid var(--beam-bd);      color: var(--beam); }
+  .chip-pipe-l      { background: var(--pipe-bg);      border: 1px solid var(--pipe-bd);      color: var(--pipe); }
+  .chip-concrete-l  { background: var(--concrete-bg);  border: 1px solid var(--concrete-bd);  color: var(--concrete); }
+  .chip-eib-l       { background: var(--eib-bg);       border: 1px solid var(--eib-bd);       color: var(--eib); }
+  .chip-foundry-l   { background: var(--foundry-bg);   border: 1px solid var(--foundry-bd);   color: var(--foundry); }
+
+  .no-shard  { color: var(--text-muted); font-family: 'Share Tech Mono', monospace; font-size: 11px; }
+  .yes-shard { color: #c4880a;           font-family: 'Share Tech Mono', monospace; font-size: 11px; }
+
+  .chain-prose p {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .chain-prose p:last-child { margin-bottom: 0; }
+
+  .chain-note {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: var(--surface2);
+    border-left: 3px solid var(--border2);
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .lb-diagram {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 12px;
+    margin: 10px 0;
+    font-size: 12px;
+  }
+  .lb-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+  .lb-arrow { color: var(--text-muted); align-self: center; }
+  .lb-branches { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: var(--text); }
+  .lb-branch-a { color: var(--ingot);    font-family: 'Share Tech Mono', monospace; }
+  .lb-branch-b { color: var(--concrete); font-family: 'Share Tech Mono', monospace; }
+  .lb-branch-c { color: var(--beam);     font-family: 'Share Tech Mono', monospace; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Steel &amp; EIB Factory</h1>
+  <span class="sub">// Satisfactory 1.0 — Phase 3 — 18 machines + 5 miners · LB sub-floors</span>
+  <a href="index.html" class="header-back">← Index</a>
+</header>
+
+<!-- ══ BUILD SUMMARY BAR ══ -->
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden">
+
+  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="summary-section-title">// Factory</div>
+    <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
+    <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">92m</span></div>
+    <div class="summary-row"><span class="summary-key">Foundations</span><span class="summary-val">10 wide × 6 deep</span></div>
+    <div class="summary-row"><span class="summary-key">Machines</span><span class="summary-val">18 + 5 miners</span></div>
+    <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">7 total</span></div>
+  </div>
+
+  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="summary-section-title">// Floor heights</div>
+    <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m · Storage · 12m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m · Ore split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m · Foundries · 12m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m · Ingot split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m · Beams &amp; Pipes · 12m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m · Limestone split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+60m · Concrete · 12m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">+72m · Beam &amp; Concrete split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+80m · EIB Assembly · 12m</span></div>
+  </div>
+
+  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="summary-section-title">// Belt requirements</div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Iron ore trunk</span><span class="summary-val">Mk.3 · 300/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-coal"></span>Coal trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-limestone"></span>Limestone trunk</span><span class="summary-val">Mk.3 · 240/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-beam"></span>Beam trunk</span><span class="summary-val">Mk.2 · 60/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-concrete"></span>Concrete trunk</span><span class="summary-val">Mk.2 · 75/min</span></div>
+  </div>
+
+  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="summary-section-title">// Clock speeds</div>
+    <div class="summary-row"><span class="summary-key">Iron miners (×2)</span><span class="summary-val">250% · 150/min each</span></div>
+    <div class="summary-row"><span class="summary-key">Coal miner (×1)</span><span class="summary-val">112.5% · 270/min</span></div>
+    <div class="summary-row"><span class="summary-key">Limestone miners (×2)</span><span class="summary-val">200% · 120/min each</span></div>
+    <div class="summary-row"><span class="summary-key">All foundries (×6)</span><span class="summary-val">100% · 45/min each</span></div>
+    <div class="summary-row"><span class="summary-key">All constructors (×10)</span><span class="summary-val">100%</span></div>
+    <div class="summary-row"><span class="summary-key">EIB assemblers (×2)</span><span class="summary-val">100% · 6/min each</span></div>
+  </div>
+
+  <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+    <div class="summary-section-title">// Buildings required</div>
+    <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val">5 (2 iron · 1 coal · 2 limestone)</span></div>
+    <div class="summary-row"><span class="summary-key">Foundry</span><span class="summary-val">6</span></div>
+    <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">10 (4 beam · 1 pipe · 5 concrete)</span></div>
+    <div class="summary-row"><span class="summary-key">Assembler</span><span class="summary-val">2 (EIB)</span></div>
+    <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">5 (beams · pipes · concrete · EIB · ingots)</span></div>
+  </div>
+
+</div>
+
+<!-- ══ FLOOR PLANS GRID ══ -->
+<div style="margin-bottom:8px">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">// Floor plans</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px">
+
+    <a href="eib_ground.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid #5a3800;border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c49010;letter-spacing:0.08em;margin-bottom:3px">GROUND · +0m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Storage</div>
+      </div>
+    </a>
+
+    <a href="eib_lb0b.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--iron-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--iron);letter-spacing:0.08em;margin-bottom:3px">LB 0b · +12m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ore &amp; Coal Split</div>
+      </div>
+    </a>
+
+    <a href="eib_floor1.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--foundry-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--foundry);letter-spacing:0.08em;margin-bottom:3px">FLOOR 1 · +20m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Foundries</div>
+      </div>
+    </a>
+
+    <a href="eib_lb1b.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--ingot-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--ingot);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +32m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Split</div>
+      </div>
+    </a>
+
+    <a href="eib_floor2.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--beam-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);letter-spacing:0.08em;margin-bottom:3px">FLOOR 2 · +40m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Beams &amp; Pipes</div>
+      </div>
+    </a>
+
+    <a href="eib_lb2b.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--limestone-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--limestone);letter-spacing:0.08em;margin-bottom:3px">LB 2b · +52m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Limestone Split</div>
+      </div>
+    </a>
+
+    <a href="eib_floor3.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--concrete-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--concrete);letter-spacing:0.08em;margin-bottom:3px">FLOOR 3 · +60m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Concrete</div>
+      </div>
+    </a>
+
+    <a href="eib_lb3b.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--eib-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--eib);letter-spacing:0.08em;margin-bottom:3px">LB 3b · +72m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Beams &amp; Concrete Split</div>
+      </div>
+    </a>
+
+    <a href="eib_floor4.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--eib-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--eib);letter-spacing:0.08em;margin-bottom:3px">FLOOR 4 · +80m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">EIB Assembly</div>
+      </div>
+    </a>
+
+  </div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a4460;margin-top:8px">// Production floors in white · LB sub-floors in dark · colour-coded by primary material</div>
+</div>
+
+
+<!-- ══ PRODUCTION CHAIN BREAKDOWN ══ -->
+<div class="chain-section">
+  <div class="chain-header">// Production chain breakdown</div>
+  <div class="chain-grid">
+
+    <!-- RECIPES -->
+    <div class="chain-card">
+      <div class="chain-card-title">Recipes</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Output</th><th>Inputs (per cycle)</th><th>Rate @ 100%</th><th>Machine</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-ingot-l">Steel ingots</span></td>
+            <td><span class="chip-label chip-iron-l">3× iron ore @ 45/min</span> + <span class="chip-label chip-coal-l">3× coal @ 45/min</span></td>
+            <td>45/min</td>
+            <td>Foundry</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-beam-l">Steel beams</span></td>
+            <td><span class="chip-label chip-ingot-l">4× steel ingots @ 60/min</span></td>
+            <td>15/min</td>
+            <td>Constructor</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-pipe-l">Steel pipes</span></td>
+            <td><span class="chip-label chip-ingot-l">3× steel ingots @ 30/min</span></td>
+            <td>20/min</td>
+            <td>Constructor</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-concrete-l">Concrete</span></td>
+            <td><span class="chip-label chip-limestone-l">3× limestone @ 45/min</span></td>
+            <td>15/min</td>
+            <td>Constructor</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-eib-l">Encased ind. beams</span></td>
+            <td><span class="chip-label chip-beam-l">3× steel beams @ 18/min</span> + <span class="chip-label chip-concrete-l">6× concrete @ 36/min</span></td>
+            <td>6/min</td>
+            <td>Assembler</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- THROUGHPUT -->
+    <div class="chain-card">
+      <div class="chain-card-title">Throughput calculations</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Stage</th><th>Machines</th><th>In</th><th>Out</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Foundries</td><td>6× @ 100%</td>
+            <td><span class="chip-label chip-iron-l">270/min ore</span> + <span class="chip-label chip-coal-l">270/min coal</span></td>
+            <td><span class="chip-label chip-ingot-l">270/min ingots</span></td>
+          </tr>
+          <tr>
+            <td>Beam constructors</td><td>4× @ 100%</td>
+            <td><span class="chip-label chip-ingot-l">240/min ingots</span></td>
+            <td><span class="chip-label chip-beam-l">60/min beams</span></td>
+          </tr>
+          <tr>
+            <td>Pipe constructor</td><td>1× @ 100%</td>
+            <td><span class="chip-label chip-ingot-l">30/min ingots</span></td>
+            <td><span class="chip-label chip-pipe-l">20/min pipes</span></td>
+          </tr>
+          <tr>
+            <td>Concrete constructors</td><td>5× @ 100%</td>
+            <td><span class="chip-label chip-limestone-l">225/min limestone</span></td>
+            <td><span class="chip-label chip-concrete-l">75/min concrete</span></td>
+          </tr>
+          <tr>
+            <td>EIB assemblers</td><td>2× @ 100%</td>
+            <td><span class="chip-label chip-beam-l">36/min beams</span> + <span class="chip-label chip-concrete-l">72/min concrete</span></td>
+            <td><span class="chip-label chip-eib-l">12/min EIB</span></td>
+          </tr>
+          <tr class="totals-row"><td colspan="2">Ingot balance</td><td>270/min produced</td><td>240 + 30 = 270 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Beam balance</td><td>60/min produced</td><td>36 consumed + 24 → storage ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Concrete balance</td><td>75/min produced</td><td>72 consumed + 3 → storage ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LB SUB-FLOOR NOTES -->
+    <div class="chain-card">
+      <div class="chain-card-title">Load balancer sub-floor layout</div>
+      <div class="chain-prose">
+        <p>Each LB sub-floor is 8m tall (2 wall stacks) and sits directly below the production floor it feeds. Belt lifts on the exterior wall carry materials up into the machine floor above. This keeps every production floor clean — no splitter trees competing with machines.</p>
+      </div>
+      <div class="lb-diagram">
+        <div class="lb-row">
+          <span class="chip-label chip-iron-l">LB 0b · +12m</span>
+          <span class="lb-arrow">→</span>
+          <div class="lb-branches">
+            <div><span class="lb-branch-a">Iron ore 300/min → S1(150) + S2(150) → 3× 50/min each side → 6 foundries</span></div>
+            <div><span class="lb-branch-b">Coal 270/min → manifold → 6× 45/min to foundries</span></div>
+          </div>
+        </div>
+        <div class="lb-row" style="margin-top:6px">
+          <span class="chip-label chip-ingot-l">LB 1b · +32m</span>
+          <span class="lb-arrow">→</span>
+          <div class="lb-branches">
+            <div><span class="lb-branch-a">Ingots 270/min → S1(135) + S2(135) → beams (240) + pipe (30) via merger</span></div>
+          </div>
+        </div>
+        <div class="lb-row" style="margin-top:6px">
+          <span class="chip-label chip-limestone-l">LB 2b · +52m</span>
+          <span class="lb-arrow">→</span>
+          <div class="lb-branches">
+            <div><span class="lb-branch-b">Limestone 240/min → manifold → 5× 45/min to concrete constructors</span></div>
+          </div>
+        </div>
+        <div class="lb-row" style="margin-top:6px">
+          <span class="chip-label chip-eib-l">LB 3b · +72m</span>
+          <span class="lb-arrow">→</span>
+          <div class="lb-branches">
+            <div><span class="lb-branch-c">Beams 60/min → S1(30) + S2(30) → 2 assemblers @ 18/min each + 24/min → storage</span></div>
+            <div><span class="lb-branch-b">Concrete 75/min → S1(36) + S2(36) → 2 assemblers + 3/min → storage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINER CALCULATIONS -->
+    <div class="chain-card">
+      <div class="chain-card-title">Miner clock speed reasoning</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Resource</th><th>Node</th><th>Mk.2 base</th><th>Clock</th><th>Output</th><th>Shards</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-iron-l">Iron ore</span></td>
+            <td>2× impure</td>
+            <td>60/min</td>
+            <td>250%</td>
+            <td>300/min (30 surplus)</td>
+            <td class="yes-shard">2 each · 4 total</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-coal-l">Coal</span></td>
+            <td>1× pure</td>
+            <td>240/min</td>
+            <td>112.5%</td>
+            <td>270/min</td>
+            <td class="yes-shard">1 total</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-limestone-l">Limestone</span></td>
+            <td>2× impure</td>
+            <td>60/min</td>
+            <td>200%</td>
+            <td>240/min (15 surplus)</td>
+            <td class="yes-shard">1 each · 2 total</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chain-note">Total power shards: 7. Iron ore surplus of 30/min and limestone surplus of 15/min are simply not consumed — foundries and concrete constructors pull exactly what they need. Coal miner requires 1 shard to unlock overclocking above 100%.</div>
+    </div>
+
+    <!-- ORE BUDGET -->
+    <div class="chain-card">
+      <div class="chain-card-title">Material budget</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Material</th><th>Produced</th><th>Consumed</th><th>To storage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-iron-l">Iron ore</span></td>
+            <td>300/min</td>
+            <td>270/min (6 foundries)</td>
+            <td>30/min surplus</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-coal-l">Coal</span></td>
+            <td>270/min</td>
+            <td>270/min (6 foundries)</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-limestone-l">Limestone</span></td>
+            <td>240/min</td>
+            <td>225/min (5 constructors)</td>
+            <td>15/min surplus</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-ingot-l">Steel ingots</span></td>
+            <td>270/min</td>
+            <td>270/min (4 beam + 1 pipe)</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-beam-l">Steel beams</span></td>
+            <td>60/min</td>
+            <td>36/min (2 EIB assemblers)</td>
+            <td>24/min</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-pipe-l">Steel pipes</span></td>
+            <td>10/min</td>
+            <td>—</td>
+            <td>20/min</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-concrete-l">Concrete</span></td>
+            <td>75/min</td>
+            <td>72/min (2 EIB assemblers)</td>
+            <td>3/min</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-eib-l">Encased ind. beams</span></td>
+            <td>12/min</td>
+            <td>—</td>
+            <td>12/min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FACTORY OUTPUTS -->
+    <div class="chain-card">
+      <div class="chain-card-title">Factory outputs</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Product</th><th>Rate</th><th>Destination</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-eib-l">Encased ind. beams</span></td>
+            <td>12/min</td>
+            <td>Storage — Phase 3 requirement</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-beam-l">Steel beams</span></td>
+            <td>24/min</td>
+            <td>Storage — building materials</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-pipe-l">Steel pipes</span></td>
+            <td>10/min</td>
+            <td>Storage — building materials</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-concrete-l">Concrete</span></td>
+            <td>3/min</td>
+            <td>Storage — small surplus</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chain-note">EIB production satisfies Phase 3 requirements. Beam and pipe surpluses accumulate in storage for construction use. Concrete surplus is minimal (3/min) but non-zero.</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB 1b — Ingot Manifold — Steel &amp; EIB Factory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root{--bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;--ingot:#D85A30;--ingot-bg:#2a1208;--ingot-bd:#7a2e10;--beam:#c4880a;--beam-bg:#1f1500;--beam-bd:#5c3a00;--pipe:#6abf25;--pipe-bg:#0d1a04;--pipe-bd:#254a08;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+</style></head><body>
+<div class="floorplan-nav"><a href="eib_floor1.html" class="nav-btn">← Floor 1</a><span class="nav-sep">//</span><a href="eib_ground.html" class="nav-btn">Ground</a><a href="eib_lb0b.html" class="nav-btn">LB 0b</a><a href="eib_floor1.html" class="nav-btn">Floor 1</a><span class="nav-current">LB 1b</span><a href="eib_floor2.html" class="nav-btn">Floor 2</a><a href="eib_lb2b.html" class="nav-btn">LB 2b</a><a href="eib_floor3.html" class="nav-btn">Floor 3</a><a href="eib_lb3b.html" class="nav-btn">LB 3b</a><a href="eib_floor4.html" class="nav-btn">Floor 4</a><span class="nav-sep">//</span><a href="eib_floor2.html" class="nav-btn">Floor 2 →</a><a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a></div>
+<h1>LB 1b — Ingot Manifold</h1>
+<div class="sub">// +32m · 8m tall · 270/min ingot trunk → 4× beam tap 60/m + 1× pipe tap 30/m · fully consumed</div>
+<div style="display:flex;margin-left:0;margin-bottom:3px"><div style="width:52px"></div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div></div>
+<div style="display:flex;gap:0;align-items:flex-start">
+<div style="display:flex;flex-direction:column;width:52px"><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div></div>
+<div class="floorplan">
+<div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+<div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+<div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+<div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+<div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+<div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+<div class="ml">
+<!-- ROW A outputs: beams 240/min (cols 1-8) + pipe 30/min (col 9-10) -->
+<div style="position:absolute;left:19px;top:19px;width:1117px;height:116px;background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--beam);">↑ out</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Ingots → Beams</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--beam);opacity:0.85;">240/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--beam);opacity:0.6;">4 belts × 60/m → Floor 2 beam constructors</span></div>
+<div style="position:absolute;left:1193px;top:19px;width:328px;height:116px;background:var(--pipe-bg);border:1px solid var(--pipe-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--pipe);">↑ out</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--pipe);">Ingots → Pipe</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--pipe);opacity:0.85;">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--pipe);opacity:0.6;">1 belt × 30/m → Floor 2</span></div>
+<!-- MANIFOLD DIAGRAM in rows B-E -->
+<div style="position:absolute;left:19px;top:192px;width:1502px;height:540px;background:#0d1018;border:1px dashed var(--ingot-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot Manifold Trunk — 270/min</span>
+  <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#7a2e10;">Belt runs left → right through all 5 constructors on Floor 2</span>
+  <div style="display:flex;gap:24px;align-items:center;margin-top:8px;">
+    <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--beam);">Beam ×4</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#5c3a00;">tap 60/m each</span></div>
+    <span style="font-family:'Share Tech Mono',monospace;font-size:18px;color:#3a4460;">+</span>
+    <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--pipe);">Pipe ×1</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#254a08;">tap 30/m</span></div>
+    <span style="font-family:'Share Tech Mono',monospace;font-size:18px;color:#3a4460;">=</span>
+    <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--ingot);">270/m total</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#7a2e10;">fully consumed ✓</span></div>
+  </div>
+</div>
+<!-- ROW F: ingots 270/min in wide -->
+<div style="position:absolute;left:19px;top:789px;width:1502px;height:116px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--ingot);">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--ingot);opacity:0.85;">270/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--ingot);opacity:0.6;">← Floor 1 · 6 belts × 45/m merged to trunk</span></div>
+</div></div></div>
+<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd)"></div>Ingot manifold 270/min</div><div class="l-item"><div class="l-sw" style="background:var(--beam-bg);border:1px solid var(--beam-bd)"></div>To beam constructors 240/min</div><div class="l-item"><div class="l-sw" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd)"></div>To pipe constructor 30/min</div></div>
+<div class="note">// Manifold: trunk belt carries 270/min · 4 beam constructors each tap 60/m = 240 consumed · pipe constructor taps 30/m · total 270 = 270 ✓</div>
+<div class="note">// No splitter tree needed — manifold approach works perfectly as trunk is fully consumed by constructors in sequence</div>
+</body></html>

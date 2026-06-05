@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satisfactory — Factory Index</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c26;
+    --surface2:  #1f2435;
+    --border:    #2a3048;
+    --border2:   #3a4460;
+    --text:      #d4d8e8;
+    --text-muted:#7a839a;
+    --accent:    #4a90d9;
+    --green:     #1D9E75;
+    --amber:     #BA7517;
+    --coral:     #D85A30;
+    --purple:    #7F77DD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 32px 24px 64px;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+  header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  header .sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .phase-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #1a1f30;
+    border: 1px solid var(--border2);
+    color: var(--accent);
+    margin-left: 12px;
+    vertical-align: middle;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-section {
+    margin-bottom: 40px;
+  }
+  .progress-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .phase-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .phase-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .phase-item.complete { border-color: var(--green); }
+  .phase-item.active   { border-color: var(--amber); }
+  .phase-item.pending  { opacity: 0.5; }
+  .phase-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-complete { background: var(--green); }
+  .dot-active   { background: var(--amber); }
+  .dot-pending  { background: var(--border2); }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FACTORY GRID ── */
+  .factory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── FACTORY CARD ── */
+  .factory-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .factory-card:hover {
+    border-color: var(--border2);
+    background: var(--surface2);
+  }
+  .factory-card.complete { border-left: 3px solid var(--green); }
+  .factory-card.active   { border-left: 3px solid var(--amber); }
+  .factory-card.planned  { border-left: 3px solid var(--border2); opacity: 0.6; pointer-events: none; }
+
+  .card-status {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .status-complete { color: var(--green); }
+  .status-active   { color: var(--amber); }
+  .status-planned  { color: var(--text-muted); }
+
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .card-outputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 14px;
+  }
+  .output-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .stat-key {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .stat-val {
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .card-arrow {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    color: var(--border2);
+    font-size: 16px;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .factory-card:hover .card-arrow {
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  /* ── PLACEHOLDER CARD ── */
+  .placeholder-card {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    opacity: 0.5;
+  }
+  .placeholder-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .placeholder-sub {
+    font-size: 12px;
+    color: var(--border2);
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--border2);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Satisfactory <span class="phase-badge">Phase 3 — In Progress</span></h1>
+  <div class="sub">// Factory index — Tiers 0–6 unlocked</div>
+</header>
+
+<!-- PHASE PROGRESS -->
+<div class="progress-section">
+  <div class="progress-label">// Phase progress</div>
+  <div class="phase-list">
+    <div class="phase-item complete"><div class="phase-dot dot-complete"></div>Phase 1 — Complete</div>
+    <div class="phase-item complete"><div class="phase-dot dot-complete"></div>Phase 2 — Complete</div>
+    <div class="phase-item active"><div class="phase-dot dot-active"></div>Phase 3 — In Progress</div>
+    <div class="phase-item pending"><div class="phase-dot dot-pending"></div>Phase 4 — Locked</div>
+    <div class="phase-item pending"><div class="phase-dot dot-pending"></div>Phase 5 — Locked</div>
+  </div>
+</div>
+
+<!-- PHASE 3 REQUIREMENTS -->
+<div class="section-header">// Phase 3 requirements</div>
+<div class="factory-grid">
+
+  <!-- EIB + Steel — IN PROGRESS -->
+  <a href="steel_eib_factory.html" class="factory-card in-progress">
+    <div class="card-arrow">→</div>
+    <div class="card-status status-progress">⧖ In Progress</div>
+    <div class="card-title">Steel &amp; EIB Factory</div>
+    <div class="card-subtitle">Encased Industrial Beams + Steel production</div>
+    <div class="card-outputs">
+      <span class="output-tag" style="background:#251500;border:1px solid #6b4008;color:#BA7517">EIB 12/min</span>
+      <span class="output-tag" style="background:#1f1500;border:1px solid #5c3a00;color:#c4880a">Steel beams 24/min</span>
+      <span class="output-tag" style="background:#0d1a04;border:1px solid #254a08;color:#6abf25">Steel pipes 10/min</span>
+      <span class="output-tag" style="background:#181535;border:1px solid #3d3880;color:#9f97f0">Concrete 3/min</span>
+    </div>
+    <div class="card-stats">
+      <div class="stat"><span class="stat-key">Footprint</span><span class="stat-val">80m × 48m</span></div>
+      <div class="stat"><span class="stat-key">Height</span><span class="stat-val">92m (4F + 4 LB)</span></div>
+      <div class="stat"><span class="stat-key">Machines</span><span class="stat-val">18 + 5 miners</span></div>
+      <div class="stat"><span class="stat-key">Power shards</span><span class="stat-val">7</span></div>
+    </div>
+  </a>
+
+  <!-- Iron Megafactory — COMPLETE -->
+  <a href="iron_megafactory.html" class="factory-card complete">
+    <div class="card-arrow">→</div>
+    <div class="card-status status-complete">✓ Complete</div>
+    <div class="card-title">Iron Megafactory</div>
+    <div class="card-subtitle">Modular Frames + full iron production chain</div>
+    <div class="card-outputs">
+      <span class="output-tag" style="background:#181535;border:1px solid #3d3880;color:#7F77DD">Mod. frames 5/min</span>
+      <span class="output-tag" style="background:#251500;border:1px solid #6b4008;color:#BA7517">RIP 0.5/min surplus</span>
+      <span class="output-tag" style="background:#200a12;border:1px solid #6b2040;color:#D4537E">Rotors 2/min surplus</span>
+      <span class="output-tag" style="background:#0d1a04;border:1px solid #254a08;color:#639922">Smart plating 2/min</span>
+    </div>
+    <div class="card-stats">
+      <div class="stat"><span class="stat-key">Footprint</span><span class="stat-val">80m × 48m</span></div>
+      <div class="stat"><span class="stat-key">Height</span><span class="stat-val">104m (5F + 5 LB)</span></div>
+      <div class="stat"><span class="stat-key">Machines</span><span class="stat-val">29 + 3 miners</span></div>
+      <div class="stat"><span class="stat-key">Power shards</span><span class="stat-val">3</span></div>
+    </div>
+  </a>
+
+  <!-- Rubber — PLANNED -->
+  <div class="placeholder-card">
+    <div class="placeholder-title">Rubber factory</div>
+    <div class="placeholder-sub">// Not started — oil processing not yet set up</div>
+  </div>
+
+</div>
+
+<!-- SUPPORTING PRODUCTION -->
+<div class="section-header">// Supporting production (already running)</div>
+<div class="factory-grid">
+
+  <div class="placeholder-card" style="opacity:0.8">
+    <div class="placeholder-title">Copper</div>
+    <div class="placeholder-sub">// Copper sheets · wire · cables</div>
+  </div>
+
+  <div class="placeholder-card" style="opacity:0.5">
+    <div class="placeholder-title">Iron (legacy)</div>
+    <div class="placeholder-sub">// Superseded by Iron Megafactory — decommission when convenient</div>
+  </div>
+
+</div>
+
+<footer>// Satisfactory 1.0 — factory index — update as new factories come online</footer>
+
+</body>
+</html>

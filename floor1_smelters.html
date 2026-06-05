@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floor 1 — Smelters — Iron Megafactory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --iron:#378ADD;--iron-bg:#0d2240;--iron-bd:#1a4a80;
+  --ingot:#A8B8C8;--ingot-bg:#141c24;--ingot-bd:#3a5068;
+  --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
+  --plate:#D85A30;--plate-bg:#2a1208;--plate-bd:#7a2e10;
+  --screw:#888780;--screw-bg:#1a1a18;--screw-bd:#44443f;
+  --rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
+  --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
+  --smart:#639922;--smart-bg:#0d1a04;--smart-bd:#254a08;
+  --mf:#7F77DD;--mf-bg:#181535;--mf-bd:#3d3880;
+  --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.blk{position:absolute;border-radius:5px;}
+.cell-lbl{position:absolute;font-family:'Share Tech Mono',monospace;font-size:11px;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
+.belt-req strong{color:#e8a820;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}
+.nav-factory{margin-left:auto;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav"><a href="lb0b_ore_split.html" class="nav-btn">← LB 0b</a>
+    <span class="nav-sep">//</span>
+    <a href="floor0_ground.html" class="nav-btn">Ground</a>
+    <a href="lb0b_ore_split.html" class="nav-btn">LB 0b</a>
+    <span class="nav-current">Floor 1</span>
+    <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b</a>
+    <a href="floor2_rods_plates.html" class="nav-btn">Floor 2</a>
+    <a href="lb2b_rod_manifold.html" class="nav-btn">LB 2b</a>
+    <a href="floor3_screws.html" class="nav-btn">Floor 3</a>
+    <a href="lb3b_plates_screws.html" class="nav-btn">LB 3b</a>
+    <a href="floor4_assembly.html" class="nav-btn">Floor 4</a>
+    <a href="lb4b_rip_rods.html" class="nav-btn">LB 4b</a>
+    <a href="floor5_mf.html" class="nav-btn">Floor 5</a>
+    <span class="nav-sep">//</span>
+    <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b →</a>
+    <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a></div>
+<h1>Floor 1 — Smelters</h1>
+<div class="sub">// +16m · 8× smelter @ 100% · 240 ingots/min</div>
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px"><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div></div>
+  <div class="floorplan">
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f fc"></div>
+    <div class="f fc"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f fc"></div>
+    <div class="f fc"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fa"></div>
+    <div class="f"></div>
+    <div class="f fca"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="f fca"></div>
+    <div class="f fc"></div>
+    <div class="ml">
+<div class="m" style="left:173px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 1</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:327px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 2</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:481px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 3</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:635px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 4</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:789px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 5</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:943px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 6</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:1097px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 7</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div class="m" style="left:1251px;top:192px;width:116px;height:232px;background:#0d2240;border:1px solid #1a4a80;color:#378ADD;"><span class="m-lbl">Sm 8</span><span class="m-sub">30/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 30/m</span></div></div><div style="position:absolute;left:173px;top:19px;width:1194px;height:116px;background:#141c24;border:1px solid #3a5068;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:#A8B8C8;font-weight:700;">↑ out</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:#A8B8C8;">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:#A8B8C8;opacity:0.8;">240/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#A8B8C8;opacity:0.6;">→ LB 1b</span></div>
+<div style="position:absolute;left:173px;top:789px;width:1194px;height:116px;background:#0d2240;border:1px solid #1a4a80;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#378ADD;">Ore</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#378ADD;opacity:0.8;">240/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#378ADD;opacity:0.6;">8 belts × 30/m ← LB 0b</span></div>
+    </div>
+  </div>
+</div>
+<div class="legend"><div class="l-item"><div class="l-sw" style="background:#0d2240;border:1px solid #1a4a80"></div>Smelter ×8</div></div>
+<div class="note">// Row F: ore 240/min ← LB 0b (8 belts × 30/m, one per smelter)</div><div class="note">// Row A: ingots 240/min → LB 1b</div>
+<div class="belt-req"><strong>⚠ Mk.3 required — ingot trunk 240/min</strong><br>Trunk to LB 1b must be Mk.3 (270/min cap).</div>
+</body>
+</html>

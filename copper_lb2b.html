@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB 2b — Wire Manifold Tap — Copper Factory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
+  --cable:#6abf25;--cable-bg:#0d1a04;--cable-bd:#254a08;
+  --arc-1:#58C4E8;--arc-2:#F5A623;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
+.belt-req strong{color:#e8a820;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="copper_floor2.html" class="nav-btn">← Floor 2</a>
+  <span class="nav-sep">//</span>
+  <a href="copper_ground.html" class="nav-btn">Ground</a>
+  <a href="copper_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="copper_floor1.html" class="nav-btn">Floor 1</a>
+  <a href="copper_lb1b.html" class="nav-btn">LB 1b</a>
+  <a href="copper_floor2.html" class="nav-btn">Floor 2</a>
+  <span class="nav-current">LB 2b</span>
+  <a href="copper_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="copper_lb3b.html" class="nav-btn">LB 3b</a>
+  <span class="nav-sep">//</span>
+  <a href="copper_floor3.html" class="nav-btn">Floor 3 →</a>
+  <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>LB 2b — Wire Manifold Tap</h1>
+<div class="sub">// +52m · 135 wire/min → manifold tap → C1 60/min + C2 60/min + 15/min → storage</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+  </div>
+  <div class="floorplan">
+    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+    <div class="ml">
+      <!-- ROW F: 135/min wire ↓ in from Floor 2, cols 1–6 -->
+      <div style="position:absolute;left:19px;top:789px;width:886px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--wire);">Copper Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--wire);opacity:0.8;">135/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--wire);opacity:0.6;">← Floor 2</span>
+      </div>
+      <!-- ROW A outputs -->
+      <!-- C1 feed: col2, 60/min wire → Floor 3 C1 -->
+      <div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--cable);font-weight:700;">↓ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--wire);text-align:center;line-height:1.1;">Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);opacity:0.85;">60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cable);opacity:0.8;">→ Fl.3 C1</span>
+      </div>
+      <!-- C2 feed: col4, 60/min wire → Floor 3 C2 -->
+      <div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--cable);font-weight:700;">↓ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--wire);text-align:center;line-height:1.1;">Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);opacity:0.85;">60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cable);opacity:0.8;">→ Fl.3 C2</span>
+      </div>
+      <!-- Wire to storage: col6, 15/min → Ground storage -->
+      <div style="position:absolute;left:789px;top:19px;width:116px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);font-weight:700;">↓ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--wire);text-align:center;line-height:1.1;">Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);opacity:0.85;">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--wire);opacity:0.6;">→ Ground storage</span>
+      </div>
+      <!-- MANIFOLD TAP: S1 taps 60/min for C1, trunk continues at 75/min -->
+      <!-- S1 col2 row C -->
+      <div class="blk" style="left:173px;top:327px;width:116px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--wire);">S1</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--wire);">135/m<br>in</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--cable);">60/m<br>→C1</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-1);">S2<br>75/m</div>
+      </div>
+      <!-- S2 col4 row C — taps 60/min for C2, 15/min continues to storage -->
+      <div class="blk" style="left:481px;top:327px;width:116px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--wire);">S2</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-1);">S1<br>75/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--cable);">60/m<br>→C2</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--wire);">15/m<br>→store</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--wire-bg);border:1px solid var(--wire-bd)"></div>Splitter · wire (manifold tap)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--cable-bg);border:1px solid var(--cable-bd)"></div>Output · wire → cable constructor</div>
+</div>
+<div class="note">// Manifold tap topology — 135/min cannot be split equally into 60+60+15 with binary splitters</div>
+<div class="note">// S1 taps 60/min upward to C1; remaining 75/min trunk continues to S2</div>
+<div class="note">// S2 taps 60/min upward to C2; remaining 15/min exits to ground storage</div>
+<div class="note">// Each cable constructor receives 60/min wire · consumes 60/min (2 wire/cycle × 30 cycles/min) ✓</div>
+<div class="note">// Wire balance: 135 in = 60 (C1) + 60 (C2) + 15 (storage) = 135 ✓</div>
+<div class="belt-req"><strong>⚠ Mk.3 required — wire trunk 135/min</strong><br>
+The incoming 135/min wire trunk exceeds the Mk.2 cap (120/min). Must use Mk.3 from Floor 2 to S1. After S1 the trunk drops to 75/min — Mk.2 sufficient for the remaining segments.</div>
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours</span><br>
+  <span style="color:var(--arc-1)">■</span> 1 <span style="color:#888">S1 right → S2 bottom · 75/m (trunk after first tap)</span>
+</div>
+</body>
+</html>

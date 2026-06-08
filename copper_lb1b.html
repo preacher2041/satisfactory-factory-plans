@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB 1b — Wire Ingot Manifold — Copper Factory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --copper-ore:#C0622A;--copper-ore-bg:#2a1408;--copper-ore-bd:#7a3510;
+  --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
+  --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
+  --arc-1:#58C4E8;--arc-2:#F5A623;--arc-3:#B57BEA;--arc-4:#5DD67A;--arc-5:#4FC3F7;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
+.belt-req strong{color:#e8a820;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="copper_floor1.html" class="nav-btn">← Floor 1</a>
+  <span class="nav-sep">//</span>
+  <a href="copper_ground.html" class="nav-btn">Ground</a>
+  <a href="copper_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="copper_floor1.html" class="nav-btn">Floor 1</a>
+  <span class="nav-current">LB 1b</span>
+  <a href="copper_floor2.html" class="nav-btn">Floor 2</a>
+  <a href="copper_lb2b.html" class="nav-btn">LB 2b</a>
+  <a href="copper_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="copper_lb3b.html" class="nav-btn">LB 3b</a>
+  <span class="nav-sep">//</span>
+  <a href="copper_floor2.html" class="nav-btn">Floor 2 →</a>
+  <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>LB 1b — Wire Ingot Manifold</h1>
+<div class="sub">// +32m · 180 ingots/min → manifold → 6× wire constructors @ 30/min each</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+  </div>
+  <div class="floorplan">
+    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+    <div class="ml">
+      <!-- ROW F: 180/min ingots in, wide block cols 1–6 -->
+      <div style="position:absolute;left:19px;top:789px;width:886px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--copper);">Copper Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--copper);opacity:0.8;">180/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper);opacity:0.6;">← Floor 1 (wire track lift)</span>
+      </div>
+      <!-- ROW A: 6 outputs × 30/min → Floor 2 wire constructors W1–W6 -->
+      <div style="position:absolute;left:19px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W1</span>
+      </div>
+      <div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W2</span>
+      </div>
+      <div style="position:absolute;left:327px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W3</span>
+      </div>
+      <div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W4</span>
+      </div>
+      <div style="position:absolute;left:635px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W5</span>
+      </div>
+      <div style="position:absolute;left:789px;top:19px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.85;">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">→ Fl.2 W6</span>
+      </div>
+      <!-- MANIFOLD SPLITTERS S1–S5 in row C, cols 1–5 -->
+      <!-- trunk: 180→150→120→90→60→30 each tapping 30 upward -->
+      <!-- S1 col1 row C: top=2*154+19=327 -->
+      <div class="blk" style="left:19px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S1</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--copper);">180/m<br>in</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-1);">S2<br>150/m</div>
+      </div>
+      <div class="blk" style="left:173px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S2</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-1);">S1<br>150/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-2);">S3<br>120/m</div>
+      </div>
+      <div class="blk" style="left:327px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S3</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-2);">S2<br>120/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-3);">S4<br>90/m</div>
+      </div>
+      <div class="blk" style="left:481px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S4</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-3);">S3<br>90/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-4);">S5<br>60/m</div>
+      </div>
+      <div class="blk" style="left:635px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S5</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-4);">S4<br>60/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--arc-5);">S6<br>30/m</div>
+      </div>
+      <!-- S6 terminal — col6 row C -->
+      <div class="blk" style="left:789px;top:327px;width:116px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">S6</div>
+        <div class="pz" style="left:38px;top:76px;font-size:11px;color:var(--arc-5);">S5<br>30/m</div>
+        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">30/m<br>↑out</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--copper-bg);border:1px solid var(--copper-bd)"></div>Splitter · copper ingots</div>
+</div>
+<div class="note">// Row F: 180/min ingots from Floor 1 wire track lift · Mk.3 belt required</div>
+<div class="note">// Manifold trunk S1–S6 decays 180→150→120→90→60→30→0 · each splitter taps 30/min upward to one wire constructor</div>
+<div class="note">// Row A: 6 × 30/min → Floor 2 wire constructors W1–W6</div>
+<div class="note">// Supply to each constructor = 30/min · consumption = 30/min (1 ingot/cycle × 30 cycles/min) ✓</div>
+<div class="belt-req"><strong>⚠ Mk.3 required — ingot trunk 180/min</strong><br>
+Entry trunk at 180/min exceeds Mk.2 cap (120/min). Trunk decays to 150/min after S1 — still above Mk.2 cap. Must use Mk.3 for segments S1→S2 and S2→S3 (150/min and 120/min). Mk.2 sufficient from S3 onward (90/min and below).</div>
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours</span><br>
+  <span style="color:var(--arc-1)">■</span> 1 <span style="color:#888">S1 right → S2 bottom · 150/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:var(--arc-2)">■</span> 2 <span style="color:#888">S2 right → S3 bottom · 120/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:var(--arc-3)">■</span> 3 <span style="color:#888">S3 right → S4 bottom · 90/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:var(--arc-4)">■</span> 4 <span style="color:#888">S4 right → S5 bottom · 60/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:var(--arc-5)">■</span> 5 <span style="color:#888">S5 right → S6 bottom · 30/m</span>
+</div>
+</body>
+</html>

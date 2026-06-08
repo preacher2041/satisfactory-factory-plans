@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Floor — Storage — Copper Factory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --copper-ore:#C0622A;--copper-ore-bg:#2a1408;--copper-ore-bd:#7a3510;
+  --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
+  --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
+  --cable:#6abf25;--cable-bg:#0d1a04;--cable-bd:#254a08;
+  --sheet:#7F77DD;--sheet-bg:#181535;--sheet-bd:#3d3880;
+  --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}
+.nav-factory{margin-left:auto;}
+</style>
+</head>
+<body>
+
+<div class="floorplan-nav">
+  <span class="nav-btn" style="opacity:0.3">← —</span>
+  <span class="nav-sep">//</span>
+  <span class="nav-current">Ground</span>
+  <a href="copper_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="copper_floor1.html" class="nav-btn">Floor 1</a>
+  <a href="copper_lb1b.html" class="nav-btn">LB 1b</a>
+  <a href="copper_floor2.html" class="nav-btn">Floor 2</a>
+  <a href="copper_lb2b.html" class="nav-btn">LB 2b</a>
+  <a href="copper_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="copper_lb3b.html" class="nav-btn">LB 3b</a>
+  <span class="nav-sep">//</span>
+  <a href="copper_lb0b.html" class="nav-btn">LB 0b →</a>
+  <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+
+<h1>Ground Floor — Storage</h1>
+<div class="sub">// +0m · 4× storage · cable · copper sheet · wire · ore buffer</div>
+
+<!-- Column axis labels -->
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <!-- Row axis labels -->
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+  </div>
+
+  <div class="floorplan">
+    <!-- 60 cells, 10 cols × 6 rows, alternating background pattern -->
+    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+
+    <div class="ml">
+
+      <!-- ── ROW A: inputs arriving from above ── -->
+
+      <!-- Col 2: Cable 60/min ← Floor 3 -->
+      <div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--cable);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--cable);text-align:center;line-height:1.1;">Cable</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--cable);opacity:0.85;">60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cable);opacity:0.6;text-align:center;">← Floor 3</span>
+      </div>
+
+      <!-- Col 3: Copper sheet 60/min ← Floor 3 -->
+      <div style="position:absolute;left:327px;top:19px;width:116px;height:116px;background:var(--sheet-bg);border:1px solid var(--sheet-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--sheet);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--sheet);text-align:center;line-height:1.1;">Sheet</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--sheet);opacity:0.85;">60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--sheet);opacity:0.6;text-align:center;">← Floor 3</span>
+      </div>
+
+      <!-- Col 4: Wire 15/min ← LB 2b -->
+      <div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--wire);text-align:center;line-height:1.1;">Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);opacity:0.85;">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--wire);opacity:0.6;text-align:center;">← LB 2b</span>
+      </div>
+
+      <!-- Col 8: Copper ore buffer ← Miner (passes through on exterior lift) -->
+      <div style="position:absolute;left:1097px;top:19px;width:116px;height:116px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper-ore);font-weight:700;">↓ in</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);text-align:center;line-height:1.1;">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper-ore);opacity:0.85;">buffer</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper-ore);opacity:0.6;text-align:center;">← Miner</span>
+      </div>
+
+      <!-- ── STORAGE CONTAINERS rows B–E (96×232px, 1W×2D) ── -->
+
+      <!-- Col 2: Cable storage -->
+      <div class="m" style="left:183px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--cable-bd);color:var(--cable);">
+        <span class="m-lbl">Cable</span>
+        <span class="m-sub">60/m</span>
+      </div>
+
+      <!-- Col 3: Sheet storage -->
+      <div class="m" style="left:337px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--sheet-bd);color:var(--sheet);">
+        <span class="m-lbl">Sheet</span>
+        <span class="m-sub">60/m</span>
+      </div>
+
+      <!-- Col 4: Wire storage -->
+      <div class="m" style="left:491px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--wire-bd);color:var(--wire);">
+        <span class="m-lbl">Wire</span>
+        <span class="m-sub">15/m</span>
+      </div>
+
+      <!-- Col 8: Ore buffer -->
+      <div class="m" style="left:1107px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--copper-ore-bd);color:var(--copper-ore);">
+        <span class="m-lbl">Ore</span>
+        <span class="m-sub">buffer</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--cable-bd)"></div>Storage · cable</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--sheet-bd)"></div>Storage · copper sheet</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--wire-bd)"></div>Storage · wire</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--copper-ore-bd)"></div>Storage · ore buffer</div>
+</div>
+<div class="note">// Row A: all outputs arrive from above · no row F inputs on ground floor</div>
+<div class="note">// Cols 2–4: finished goods · Col 8: ore buffer (miner feeds LB 0b directly via exterior lift)</div>
+
+</body>
+</html>

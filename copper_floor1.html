@@ -10,12 +10,10 @@
   --text:#d4d8e8;--text-muted:#7a839a;
   --copper-ore:#C0622A;--copper-ore-bg:#2a1408;--copper-ore-bd:#7a3510;
   --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
-  --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
-  --cable:#6abf25;--cable-bg:#0d1a04;--cable-bd:#254a08;
-  --sheet:#7F77DD;--sheet-bg:#181535;--sheet-bd:#3d3880;
-  /* merger arc colours — 180/min chain */
+  /* LB 0b node colours — used to colour-match source labels on input strip */
+  --spl4:#FF8A65;--spl5:#4FC3F7;--spl6:#FFB74D;--spl7:#F48FB1;
+  /* merger arc colours for ingot merger chain */
   --arc-m1:#58C4E8;--arc-m2:#F5A623;--arc-m3:#B57BEA;--arc-m4:#5DD67A;
-  /* merger arc colours — 120/min chain */
   --arc-m5:#4FC3F7;--arc-m6:#FFB74D;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -23,17 +21,16 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
 h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
 .sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
-.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
 .blk{position:absolute;border-radius:5px;}
-.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
-.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
-.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.2;text-align:center;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
 .belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
 .belt-req strong{color:#e8a820;}
@@ -41,8 +38,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
-.nav-sep{color:#2a3048;}
-.nav-factory{margin-left:auto;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
 </style>
 </head>
 <body>
@@ -57,17 +53,16 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="copper_floor2.html" class="nav-btn">Floor 2</a>
   <a href="copper_lb2b.html" class="nav-btn">LB 2b</a>
   <a href="copper_floor3.html" class="nav-btn">Floor 3</a>
-  <a href="copper_lb3b.html" class="nav-btn">LB 3b</a>
   <span class="nav-sep">//</span>
   <a href="copper_lb1b.html" class="nav-btn">LB 1b →</a>
   <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
 
 <h1>Floor 1 — Smelters</h1>
-<div class="sub">// +20m · 10× smelter @ 100% · 300 ore/min → 300 ingots/min · two output lifts: 180/min → LB 1b · 120/min → LB 3b</div>
+<div class="sub">// +20m · 10× smelter @ 100% · 300 ore/min → 300 ingots/min · Sm1–Sm6 → LB 1b · Sm7–Sm10 → LB 2b direct</div>
 
 <!-- Column labels -->
-<div style="display:flex;margin-left:0;margin-bottom:3px">
+<div style="display:flex;margin-bottom:3px">
   <div style="width:52px"></div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
@@ -81,6 +76,66 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
+<!-- ══ OUTPUT STRIP (above grid) — 10 individual ingot outputs ══ -->
+<div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <!-- Sm1–Sm6 → LB 1b -->
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W1</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W2</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W3</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W4</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W5</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W6</span>
+    </div>
+    <!-- Sm7–Sm10 → LB 2b direct (sheet ingot network) -->
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh1</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh2</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh3</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh4</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GRID ══ -->
 <div style="display:flex;gap:0;align-items:flex-start">
   <div style="display:flex;flex-direction:column;width:52px">
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
@@ -90,7 +145,6 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
   </div>
-
   <div class="floorplan">
     <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
     <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
@@ -100,208 +154,155 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
 
     <div class="ml">
-
-      <!-- ══ ROW A — OUTPUTS ══ -->
-      <!-- Wide block cols 1–6: 180/min ingots → LB 1b (wire track) -->
-      <div style="position:absolute;left:19px;top:19px;width:886px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--copper);">Copper Ingots</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--copper);opacity:0.8;">180/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper);opacity:0.6;">→ LB 1b (wire track)</span>
-      </div>
-
-      <!-- Wide block cols 7–10: 120/min ingots → LB 3b (sheet track) -->
-      <div style="position:absolute;left:943px;top:19px;width:578px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--copper);">Copper Ingots</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--copper);opacity:0.8;">120/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper);opacity:0.6;">→ LB 3b (sheet track)</span>
-      </div>
-
-      <!-- ══ SMELTERS — Rows B–C, cols 1–10 (116×232px each) ══ -->
-      <!-- Smelter left = col*154+19+10 = col*154+29 for slight inset; use col*154+19 exactly -->
-      <!-- Sm1–Sm10, top=173 (row B start), height=232px spans rows B+C -->
-
-      <!-- Sm1 col1 -->
+      <!-- SMELTERS Sm1–Sm10, rows B–C (top=173, height=232px, width=96px) -->
+      <!-- left = col*154 + (154-96)/2 = col*154 + 29 -->
       <div class="m" style="left:29px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm1</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm1</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm2 col2 -->
       <div class="m" style="left:183px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm2</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm2</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm3 col3 -->
       <div class="m" style="left:337px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm3</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm3</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm4 col4 -->
       <div class="m" style="left:491px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm4</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm4</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm5 col5 -->
       <div class="m" style="left:645px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm5</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm5</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm6 col6 -->
       <div class="m" style="left:799px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm6</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm6</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm7 col7 -->
       <div class="m" style="left:953px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm7</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm7</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm8 col8 -->
       <div class="m" style="left:1107px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm8</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm8</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm9 col9 -->
       <div class="m" style="left:1261px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm9</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm9</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <!-- Sm10 col10 -->
       <div class="m" style="left:1415px;top:183px;width:96px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl" style="color:var(--copper);">Sm10</span>
-        <span class="m-sub">30/m · 100%</span>
+        <span class="m-lbl">Sm10</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-
-      <!-- ══ MERGERS ROW D — 180/min chain (Sm1–Sm6) ══ -->
-      <!-- Row D top = 3*154+19 = 481 -->
-      <!-- M1: merges Sm1(30)+Sm2(30)=60. Col1 -->
-      <div class="blk" style="left:19px;top:481px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M1</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--copper);">Sm1<br>30/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm2<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m1);">M2<br>60/m</div>
-      </div>
-      <!-- M2: merges M1(60)+Sm3(30)=90. Col2 -->
-      <div class="blk" style="left:173px;top:481px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M2</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m1);">M1<br>60/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm3<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m2);">M3<br>90/m</div>
-      </div>
-      <!-- M3: merges M2(90)+Sm4(30)=120. Col3 -->
-      <div class="blk" style="left:327px;top:481px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M3</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m2);">M2<br>90/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm4<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m3);">M4<br>120/m</div>
-      </div>
-      <!-- M4: merges M3(120)+Sm5(30)=150. Col4 -->
-      <div class="blk" style="left:481px;top:481px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M4</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m3);">M3<br>120/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm5<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m4);">M5<br>150/m</div>
-      </div>
-      <!-- M5: merges M4(150)+Sm6(30)=180. Col5 — output goes up to row A -->
-      <div class="blk" style="left:635px;top:481px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M5</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m4);">M4<br>150/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm6<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">180/m<br>↑out</div>
-      </div>
-
-      <!-- ══ MERGERS ROW E — 120/min chain (Sm7–Sm10) ══ -->
-      <!-- Row E top = 4*154+19 = 635 -->
-      <!-- M6: merges Sm7(30)+Sm8(30)=60. Col7 -->
-      <div class="blk" style="left:943px;top:635px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M6</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--copper);">Sm7<br>30/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm8<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m5);">M7<br>60/m</div>
-      </div>
-      <!-- M7: merges M6(60)+Sm9(30)=90. Col8 -->
-      <div class="blk" style="left:1097px;top:635px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M7</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m5);">M6<br>60/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm9<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--arc-m6);">M8<br>90/m</div>
-      </div>
-      <!-- M8: merges M7(90)+Sm10(30)=120. Col9 — output goes up to row A -->
-      <div class="blk" style="left:1251px;top:635px;width:116px;height:116px;background:var(--copper-bg);border:1px dashed var(--copper-bd);">
-        <div class="pz" style="left:38px;top:38px;font-size:13px;color:var(--copper);">M8</div>
-        <div class="pz" style="left:0px;top:38px;font-size:11px;color:var(--arc-m6);">M7<br>90/m</div>
-        <div class="pz" style="left:76px;top:38px;font-size:11px;color:var(--copper);">Sm10<br>30/m</div>
-        <div class="pz" style="left:38px;top:0px;font-size:11px;color:var(--copper);">120/m<br>↑out</div>
-      </div>
-
-      <!-- ══ ROW F — INPUTS ══ -->
-      <!-- Wide block cols 1–10: 300 ore/min ↓ from LB 0b (10 individual feeds) -->
-      <div style="position:absolute;left:19px;top:789px;width:1502px;height:116px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper-ore);font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Copper Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--copper-ore);opacity:0.8;">300/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper-ore);opacity:0.6;">10 belts × 30/m ← LB 0b</span>
-      </div>
-
     </div>
   </div>
 </div>
 
-<div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd)"></div>Smelter</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--copper-bg);border:1px dashed var(--copper-bd)"></div>Merger · ingots</div>
+<!-- ══ INPUT STRIP (below grid) — 10 individual ore inputs ══ -->
+<div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <!-- Sm1–Sm2: from SPL4 -->
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl4);">← SPL4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm1</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl4);">← SPL4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm2</span>
+    </div>
+    <!-- Sm3–Sm5: from SPL5 -->
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm3</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm4</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm5</span>
+    </div>
+    <!-- Sm6–Sm7: from SPL6 -->
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm6</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm7</span>
+    </div>
+    <!-- Sm8–Sm10: from SPL7 -->
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm8</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm9</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm10</span>
+    </div>
+  </div>
 </div>
-<div class="note">// Row F: 10 individual ore feeds × 30/min from LB 0b — one per smelter</div>
-<div class="note">// Sm1–Sm6 output merges via M1–M5 → 180/min lift to LB 1b (wire track)</div>
-<div class="note">// Sm7–Sm10 output merges via M6–M8 → 120/min lift to LB 3b (sheet track)</div>
-<div class="note">// Merger chain M1–M5 in row D · M6–M8 in row E · both outputs exit via row A wide blocks</div>
 
-<div class="belt-req"><strong>⚠ Mk.3 required — 180/min ingot lift to LB 1b</strong><br>
-The merged 180/min ingot belt exceeds the Mk.2 cap (120/min). Must use Mk.3 for the lift from row A cols 1–6 up to LB 1b.<br>
-<strong>⚠ Mk.2 at cap — 120/min ingot lift to LB 3b</strong><br>
-The 120/min sheet ingot belt exactly hits the Mk.2 cap. Do not substitute a Mk.1 belt on this lift.</div>
-
-<!-- Arc colour key -->
-<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
-  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours — merger chain outputs</span><br>
-  <span style="color:var(--arc-m1)">■</span> m1 <span style="color:#888">M1 top → M2 left · 60/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-m2)">■</span> m2 <span style="color:#888">M2 top → M3 left · 90/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-m3)">■</span> m3 <span style="color:#888">M3 top → M4 left · 120/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-m4)">■</span> m4 <span style="color:#888">M4 top → M5 left · 150/m</span><br>
-  <span style="color:var(--arc-m5)">■</span> m5 <span style="color:#888">M6 top → M7 left · 60/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-m6)">■</span> m6 <span style="color:#888">M7 top → M8 left · 90/m</span>
+<div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:6px;color:var(--text);">
+    <div style="width:13px;height:13px;border-radius:2px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);flex-shrink:0;"></div>Smelter
+  </div>
 </div>
+
+<div class="note">// Input strip source colours match LB 0b output strip — SPL4 (orange-red) · SPL5 (light blue) · SPL6 (amber) · SPL7 (pink)</div>
+<div class="note">// Sm1–Sm6 output → LB 1b (wire track) · Sm7–Sm10 output → LB 2b direct (sheet track)</div>
+<div class="note">// No mergers needed — smelters output individual 30/min belts directly to exterior wall lifts</div>
+
+<div class="belt-req"><strong>⚠ Mk.2 at cap — sheet ingot lifts to LB 2b</strong><br>
+Sm7–Sm10 each output 30/min — well within Mk.2 cap individually. However note the sheet track bypasses LB 1b entirely and rises directly to LB 2b.</div>
 
 </body>
 </html>

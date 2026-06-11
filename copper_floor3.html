@@ -12,23 +12,24 @@
   --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
   --cable:#6abf25;--cable-bg:#0d1a04;--cable-bd:#254a08;
   --sheet:#7F77DD;--sheet-bg:#181535;--sheet-bd:#3d3880;
+  /* LB 2b node colours for source labelling */
+  --wmrg1:#58C4E8;--wmrg2:#B57BEA;--wmrg3:#5DD67A;
+  --imrg1:#FFB74D;--imrg2:#80CBC4;--imrg3:#AED581;
+  --imrg4:#FFF176;--imrg5:#7986CB;--imrg6:#4DD0E1;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
 h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
 .sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
-.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
-.blk{position:absolute;border-radius:5px;}
-.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
-.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
-.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
 .floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
@@ -38,6 +39,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </style>
 </head>
 <body>
+
 <div class="floorplan-nav">
   <a href="copper_lb2b.html" class="nav-btn">← LB 2b</a>
   <span class="nav-sep">//</span>
@@ -48,15 +50,16 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="copper_floor2.html" class="nav-btn">Floor 2</a>
   <a href="copper_lb2b.html" class="nav-btn">LB 2b</a>
   <span class="nav-current">Floor 3</span>
-  <a href="copper_lb3b.html" class="nav-btn">LB 3b</a>
   <span class="nav-sep">//</span>
-  <a href="copper_lb3b.html" class="nav-btn">LB 3b →</a>
+  <span style="color:#3a4460;font-size:11px;padding:4px 10px;">— top floor —</span>
   <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
-<h1>Floor 3 — Cables &amp; Sheets</h1>
-<div class="sub">// +60m · 2× cable constructor + 6× sheet constructor · 60 cables/min + 60 sheets/min</div>
 
-<div style="display:flex;margin-left:0;margin-bottom:3px">
+<h1>Floor 3 — Cables &amp; Sheets</h1>
+<div class="sub">// +60m · 2× cable constructor + 6× sheet constructor · 60 cables/min + 60 sheets/min · all IO via external wall lifts</div>
+
+<!-- Column labels -->
+<div style="display:flex;margin-bottom:3px">
   <div style="width:52px"></div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
@@ -70,6 +73,67 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
+<!-- ══ OUTPUT STRIP (above grid) ══ -->
+<div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <!-- Cols 1–2: cable outputs C1, C2 → Ground storage -->
+    <div class="io-block" style="background:var(--cable-bg);border:1px solid var(--cable-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--cable);">Cable 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);opacity:0.6;">← C1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--cable-bg);border:1px solid var(--cable-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--cable);">Cable 30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);opacity:0.6;">← C2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <!-- Cols 3–4 empty -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <!-- Cols 5–10: sheet outputs Sh1–Sh6 → Ground storage -->
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+    <div class="io-block" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Sheet 10/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">← Sh6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--sheet);opacity:0.6;">→ Ground storage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GRID ══ -->
 <div style="display:flex;gap:0;align-items:flex-start">
   <div style="display:flex;flex-direction:column;width:52px">
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
@@ -87,21 +151,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
     <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
     <div class="ml">
-      <!-- ROW A: cable output cols 1–2 wide, sheet output cols 5–10 wide -->
-      <div style="position:absolute;left:19px;top:19px;width:270px;height:116px;background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--cable);font-weight:700;">↓ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--cable);">Cable</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--cable);opacity:0.8;">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--cable);opacity:0.6;">2 belts × 30/m → Ground</span>
-      </div>
-      <div style="position:absolute;left:635px;top:19px;width:886px;height:116px;background:var(--sheet-bg);border:1px solid var(--sheet-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--sheet);font-weight:700;">↓ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--sheet);">Copper Sheet</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--sheet);opacity:0.8;">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--sheet);opacity:0.6;">6 belts × 10/m → Ground</span>
-      </div>
-
-      <!-- CABLE CONSTRUCTORS C1–C2, rows B–C, cols 1–2 -->
+      <!-- CABLE CONSTRUCTORS C1–C2, rows B–C, cols 1–2 (128×232px) -->
       <div class="m" style="left:13px;top:183px;width:128px;height:232px;background:var(--cable-bg);border:1px solid var(--cable-bd);color:var(--cable);">
         <span class="m-lbl">C1</span>
         <span class="m-sub">30/m · 100%</span>
@@ -116,8 +166,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:3px;padding:1px 5px;">← Wire 60/m</span>
         </div>
       </div>
-
-      <!-- SHEET CONSTRUCTORS Sh1–Sh6, rows B–C, cols 5–10 -->
+      <!-- SHEET CONSTRUCTORS Sh1–Sh6, rows B–C, cols 5–10 (128×232px) -->
       <div class="m" style="left:629px;top:183px;width:128px;height:232px;background:var(--sheet-bg);border:1px solid var(--sheet-bd);color:var(--sheet);">
         <span class="m-lbl">Sh1</span>
         <span class="m-sub">10/m · 100%</span>
@@ -160,31 +209,83 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:3px;padding:1px 5px;">← Ingot 20/m</span>
         </div>
       </div>
-
-      <!-- ROW F: wire feeds cols 1–2, sheet ingot feeds cols 5–10 -->
-      <div style="position:absolute;left:19px;top:789px;width:270px;height:116px;background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--wire);opacity:0.8;">120/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--wire);opacity:0.6;">2 belts × 60/m ← LB 2b</span>
-      </div>
-      <div style="position:absolute;left:635px;top:789px;width:886px;height:116px;background:var(--copper-bg);border:1px solid var(--copper-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--copper);">Copper Ingots</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--copper);opacity:0.8;">120/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--copper);opacity:0.6;">6 belts × 20/m ← LB 3b</span>
-      </div>
     </div>
   </div>
 </div>
 
-<div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--cable-bg);border:1px solid var(--cable-bd)"></div>Constructor · cable</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--sheet-bg);border:1px solid var(--sheet-bd)"></div>Constructor · copper sheet</div>
+<!-- ══ INPUT STRIP (below grid) ══ -->
+<div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <!-- Cols 1–2: wire inputs → C1, C2 (source: WMRG1, WMRG3) -->
+    <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 60/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">← WMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ C1</span>
+    </div>
+    <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 60/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg3);">← WMRG3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ C2</span>
+    </div>
+    <!-- Cols 3–4 empty -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <!-- Cols 5–10: ingot inputs → Sh1–Sh6 (source: IMRG1–IMRG6) -->
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg1);">← IMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh1</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg2);">← IMRG2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh2</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg3);">← IMRG3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh3</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg4);">← IMRG4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh4</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg5);">← IMRG5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh5</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg6);">← IMRG6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Sh6</span>
+    </div>
+  </div>
 </div>
-<div class="note">// Cable constructors C1–C2 cols 1–2: each consumes 60 wire/min (2 wire/cycle × 30/min) → 30 cables/min each · total 60/min ✓</div>
-<div class="note">// Sheet constructors Sh1–Sh6 cols 5–10: each consumes 20 ingots/min (2 ingots/cycle × 10/min) → 10 sheets/min each · total 60/min ✓</div>
-<div class="note">// Row F left: 2 × 60/min wire from LB 2b · Row F right: 6 × 20/min ingots from LB 3b</div>
-<div class="note">// Row A: all outputs descend to ground floor storage</div>
+
+<div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:6px;color:var(--text);">
+    <div style="width:13px;height:13px;border-radius:2px;background:var(--cable-bg);border:1px solid var(--cable-bd);flex-shrink:0;"></div>Constructor · cable
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;color:var(--text);">
+    <div style="width:13px;height:13px;border-radius:2px;background:var(--sheet-bg);border:1px solid var(--sheet-bd);flex-shrink:0;"></div>Constructor · copper sheet
+  </div>
+</div>
+
+<div class="note">// C1–C2 (cols 1–2): each consumes 60 wire/min (2 wire/cycle × 30/min) → 30 cables/min · total 60/min ✓</div>
+<div class="note">// Sh1–Sh6 (cols 5–10): each consumes 20 ingots/min (2 ingots/cycle × 10/min) → 10 sheets/min · total 60/min ✓</div>
+<div class="note">// Input strip source colours match LB 2b output strip — WMRG1/3 (wire) · IMRG1–6 (ingots)</div>
+<div class="note">// All outputs descend to ground floor storage via individual external wall lifts</div>
+
 </body>
 </html>

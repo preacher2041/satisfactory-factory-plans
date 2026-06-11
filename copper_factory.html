@@ -16,228 +16,70 @@
     --text:      #d4d8e8;
     --text-muted:#7a839a;
     --accent:    #4a90d9;
-
-    /* Copper ore */
     --copper-ore:    #C0622A;
     --copper-ore-bg: #2a1408;
     --copper-ore-bd: #7a3510;
-
-    /* Copper ingots */
     --copper:    #E8924A;
     --copper-bg: #2e1a08;
     --copper-bd: #8a4a18;
-
-    /* Copper wire */
     --wire:      #D4B84A;
     --wire-bg:   #2a2208;
     --wire-bd:   #7a6010;
-
-    /* Cable */
     --cable:     #6abf25;
     --cable-bg:  #0d1a04;
     --cable-bd:  #254a08;
-
-    /* Copper sheet */
     --sheet:     #7F77DD;
     --sheet-bg:  #181535;
     --sheet-bd:  #3d3880;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; line-height: 1.5; padding: 32px 24px 64px; min-height: 100vh; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 32px 24px 64px;
-    min-height: 100vh;
-  }
-
-  header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-  }
-  header h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  header .sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
-  .header-back {
-    margin-left: auto;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 3px 10px;
-    transition: color 0.15s, border-color 0.15s;
-  }
+  header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+  header .sub { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; }
+  .header-back { margin-left: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; transition: color 0.15s, border-color 0.15s; }
   .header-back:hover { color: var(--text); border-color: var(--border2); }
 
-  .summary-section-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 4px 0;
-    border-bottom: 1px solid #1a1e2a;
-  }
+  .summary-section-title { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #1a1e2a; }
   .summary-row:last-child { border-bottom: none; }
   .summary-key { color: var(--text-muted); font-size: 12px; flex-shrink: 0; padding-right: 8px; }
   .summary-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); text-align: right; }
-
-  .belt-chip {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 2px;
-    margin-right: 3px;
-    vertical-align: middle;
-  }
+  .belt-chip { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
   .chip-copper-ore { background: var(--copper-ore); }
   .chip-copper     { background: var(--copper); }
   .chip-wire       { background: var(--wire); }
   .chip-cable      { background: var(--cable); }
   .chip-sheet      { background: var(--sheet); }
 
-  .chain-section {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-  .chain-header {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
-  .chain-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .chain-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px 18px;
-  }
-  .chain-card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #fff;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .chain-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .chain-table th {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-    padding: 4px 6px 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .chain-table td {
-    padding: 6px 6px;
-    border-bottom: 1px solid #1a1e2a;
-    vertical-align: middle;
-    color: var(--text);
-    font-size: 12px;
-  }
+  .chain-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .chain-header { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .chain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+  .chain-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .chain-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chain-table th { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 4px 6px 6px; border-bottom: 1px solid var(--border); }
+  .chain-table td { padding: 6px 6px; border-bottom: 1px solid #1a1e2a; vertical-align: middle; color: var(--text); font-size: 12px; }
   .chain-table tr:last-child td { border-bottom: none; }
   .totals-row td { color: var(--text-muted); font-style: italic; }
-
-  .chip-label {
-    display: inline-block;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    padding: 2px 5px;
-    border-radius: 3px;
-    white-space: nowrap;
-  }
+  .chip-label { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
   .chip-copper-ore-l { background: var(--copper-ore-bg); border: 1px solid var(--copper-ore-bd); color: var(--copper-ore); }
   .chip-copper-l     { background: var(--copper-bg);     border: 1px solid var(--copper-bd);     color: var(--copper); }
   .chip-wire-l       { background: var(--wire-bg);       border: 1px solid var(--wire-bd);       color: var(--wire); }
   .chip-cable-l      { background: var(--cable-bg);      border: 1px solid var(--cable-bd);      color: var(--cable); }
   .chip-sheet-l      { background: var(--sheet-bg);      border: 1px solid var(--sheet-bd);      color: var(--sheet); }
-
-  .chain-prose p {
-    color: var(--text);
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 10px;
-  }
+  .chain-prose p { color: var(--text); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
   .chain-prose p:last-child { margin-bottom: 0; }
-  .chain-note {
-    margin-top: 10px;
-    padding: 8px 10px;
-    background: var(--surface2);
-    border-left: 3px solid var(--border2);
-    border-radius: 0 4px 4px 0;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .lb-diagram {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 10px 12px;
-    margin: 10px 0;
-    font-size: 12px;
-  }
-  .lb-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-  .lb-arrow { color: var(--text-muted); align-self: center; }
-  .lb-branches { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: var(--text); }
-  .lb-branch-a { color: var(--copper);     font-family: 'Share Tech Mono', monospace; }
-  .lb-branch-b { color: var(--wire);       font-family: 'Share Tech Mono', monospace; }
-  .lb-branch-c { color: var(--sheet);      font-family: 'Share Tech Mono', monospace; }
-  .lb-branch-d { color: var(--cable);      font-family: 'Share Tech Mono', monospace; }
-  .lb-branch-e { color: var(--copper-ore); font-family: 'Share Tech Mono', monospace; }
+  .chain-note { margin-top: 10px; padding: 8px 10px; background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 4px 4px 0; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>Copper Factory</h1>
-  <span class="sub">// Wire · Cables · Copper Sheets — 300 ore/min · 8 floors · 72m</span>
+  <span class="sub">// Wire · Cables · Copper Sheets — 300 ore/min · 7 floors · 60m</span>
   <a href="index.html" class="header-back">← Index</a>
 </header>
 
@@ -249,8 +91,8 @@
     <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Factory</div>
       <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">TBD</span></div>
-      <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">72m (3F + 4 LB)</span></div>
-      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">26 total</span></div>
+      <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">60m (3F + 3 LB)</span></div>
+      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">24 total</span></div>
       <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">1 (miner)</span></div>
     </div>
 
@@ -260,18 +102,17 @@
       <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
       <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m — Ore split</span></div>
       <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m — Smelters</span></div>
-      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m — Ingot split</span></div>
+      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m — Ingot pass-through</span></div>
       <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m — Wire</span></div>
-      <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m — Wire split</span></div>
+      <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m — Wire merge &amp; sheet ingot split</span></div>
       <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+60m — Cables &amp; Sheets</span></div>
-      <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">+72m — Sheet ingot split</span></div>
     </div>
 
     <!-- Belt requirements -->
     <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Belt requirements</div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-copper-ore"></span>Ore trunk (miner→S1)</span>
+        <span class="summary-key"><span class="belt-chip chip-copper-ore"></span>Ore trunk (miner→SPL1)</span>
         <span class="summary-val">Mk.3 · 300/min</span>
       </div>
       <div class="summary-row">
@@ -279,16 +120,12 @@
         <span class="summary-val">Mk.3 · 180/min</span>
       </div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-copper"></span>Ingot lift → LB 3b</span>
+        <span class="summary-key"><span class="belt-chip chip-copper"></span>Ingot lift → LB 2b</span>
         <span class="summary-val">Mk.2 · 120/min ⚠ cap</span>
       </div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-wire"></span>Wire manifold trunk</span>
-        <span class="summary-val">Mk.3 · 135/min</span>
-      </div>
-      <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-copper"></span>Sheet ingot trunk</span>
-        <span class="summary-val">Mk.2 · 120/min ⚠ cap</span>
+        <span class="summary-key"><span class="belt-chip chip-wire"></span>Wire merged trunk → LB 2b</span>
+        <span class="summary-val">Mk.3 · 180/min</span>
       </div>
     </div>
 
@@ -297,7 +134,7 @@
       <div class="summary-section-title">// Clock speeds</div>
       <div class="summary-row"><span class="summary-key">Miner Mk.2 (×1)</span><span class="summary-val">150% · 300/min</span></div>
       <div class="summary-row"><span class="summary-key">All smelters (×10)</span><span class="summary-val">100% · 30/min each</span></div>
-      <div class="summary-row"><span class="summary-key">Wire constructors (×6)</span><span class="summary-val">100% · 22.5/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Wire constructors (×6)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Cable constructors (×2)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Sheet constructors (×6)</span><span class="summary-val">100% · 10/min each</span></div>
     </div>
@@ -343,7 +180,7 @@
     <a href="copper_lb1b.html" style="text-decoration:none">
       <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--copper-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--copper);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +32m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Split</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Pass-Through</div>
       </div>
     </a>
 
@@ -357,7 +194,7 @@
     <a href="copper_lb2b.html" style="text-decoration:none">
       <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--wire-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--wire);letter-spacing:0.08em;margin-bottom:3px">LB 2b · +52m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Wire Split</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Wire &amp; Sheet Split</div>
       </div>
     </a>
 
@@ -365,13 +202,6 @@
       <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cable-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cable);letter-spacing:0.08em;margin-bottom:3px">FLOOR 3 · +60m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Cables &amp; Sheets</div>
-      </div>
-    </a>
-
-    <a href="copper_lb3b.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--sheet-bd);border-radius:6px;padding:10px 12px">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--sheet);letter-spacing:0.08em;margin-bottom:3px">LB 3b · +72m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Sheet Ingot Split</div>
       </div>
     </a>
 
@@ -402,7 +232,7 @@
           <tr>
             <td><span class="chip-label chip-wire-l">Copper wire</span></td>
             <td><span class="chip-label chip-copper-l">1× copper ingot</span></td>
-            <td>22.5/min</td>
+            <td>30/min</td>
             <td>Constructor</td>
           </tr>
           <tr>
@@ -437,7 +267,7 @@
           <tr>
             <td>Wire constructors</td><td>6× @ 100%</td>
             <td><span class="chip-label chip-copper-l">180/min ingots</span></td>
-            <td><span class="chip-label chip-wire-l">135/min wire</span></td>
+            <td><span class="chip-label chip-wire-l">180/min wire</span></td>
           </tr>
           <tr>
             <td>Cable constructors</td><td>2× @ 100%</td>
@@ -450,7 +280,7 @@
             <td><span class="chip-label chip-sheet-l">60/min sheet</span></td>
           </tr>
           <tr class="totals-row"><td colspan="2">Ingot balance</td><td>300/min produced</td><td>180 (wire) + 120 (sheet) = 300 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">Wire balance</td><td>135/min produced</td><td>120 consumed + 15 → storage ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Wire balance</td><td>180/min produced</td><td>120 consumed + 60 → storage ✓</td></tr>
         </tbody>
       </table>
     </div>
@@ -460,29 +290,39 @@
       <div class="chain-card-title">Miner &amp; ore routing</div>
       <div class="chain-prose">
         <p>A single Miner Mk.2 on a normal copper node overclocked to 150% produces 300 ore/min, consuming one power shard. This is the only clock speed deviation in the factory — all smelters and constructors run at 100%.</p>
-        <p>The 300/min ore trunk requires a Mk.3 belt. At LB 0b it is split 150+150 at a single splitter, then each 150/min half feeds an independent manifold of 5 smelters. Each smelter taps 30/min; the trunk decays 150→120→90→60→30→0 across the 5 machines. Mk.2 belts are sufficient for each manifold trunk (150/min &lt; 270 cap).</p>
+        <p>The 300/min ore trunk requires a Mk.3 belt. At LB 0b a recirculating splitter tree distributes 300/min equally across 10 smelters: SPL1 splits 150+150, each half feeds a merger which combines the trunk with a 30/min return loop to produce a clean 180/min that then splits into three 3-way splitters feeding 5 smelters each side.</p>
       </div>
-      <div class="chain-note">// Two separate manifold chains avoids the impossible 10-way binary split. Each chain of 5 is independent — a single machine stalling affects only its half.</div>
+      <div class="chain-note">// The recirculating tree avoids the impossible 10-way binary split and produces perfectly balanced 30/min feeds to every smelter.</div>
     </div>
 
     <!-- INGOT ROUTING -->
     <div class="chain-card">
       <div class="chain-card-title">Ingot split &amp; routing</div>
       <div class="chain-prose">
-        <p>Floor 1 outputs 300 ingots/min via two separate belt lifts on the exterior wall. The 180/min wire feed rises to LB 1b on a Mk.3 belt; the 120/min sheet feed bypasses LB 1b entirely and rises directly to LB 3b on a Mk.2 belt (at cap — do not downgrade).</p>
-        <p>LB 1b distributes 180/min to 6 wire constructors via manifold. The trunk decays 180→150→120→90→60→30→0 and requires a Mk.3 belt for the first three segments. LB 3b distributes 120/min to 6 sheet constructors via manifold. The trunk decays 120→100→80→60→40→20→0 — Mk.2 belt throughout but at cap on entry.</p>
+        <p>Floor 1 outputs 300 ingots/min via two separate belt lifts on the exterior wall. The 180/min wire feed (Sm1–Sm6) rises to LB 1b on a Mk.3 belt; the 120/min sheet feed (Sm7–Sm10) bypasses LB 1b entirely and rises directly to LB 2b on a Mk.2 belt (at cap — do not downgrade).</p>
+        <p>LB 1b is a pure pass-through — the 6 ingot belts enter one side and exit the other, routing from the output side of Floor 1 to the input side of Floor 2. No splitting or merging occurs on this floor.</p>
       </div>
-      <div class="chain-note">// The 300/min ingot split (180+120) is a 3:2 ratio — not achievable with a single splitter. Two independent belt lifts from Floor 1 is the cleanest solution; no splitter+merger network required.</div>
+      <div class="chain-note">// The 300/min ingot split (180+120) is a 3:2 ratio not achievable with a single splitter. Two independent belt lifts from Floor 1 is the cleanest solution.</div>
     </div>
 
     <!-- WIRE ROUTING -->
     <div class="chain-card">
       <div class="chain-card-title">Wire routing &amp; split</div>
       <div class="chain-prose">
-        <p>Floor 2 produces 135 wire/min (6 constructors × 22.5/min). This belt descends to LB 2b where it is split: 120/min feeds the two cable constructors on Floor 3 (60/min each), and the remaining 15/min is routed to ground floor storage.</p>
-        <p>The wire trunk at 135/min exceeds the Mk.2 cap and requires a Mk.3 belt. The 120/min cable feed and 15/min storage run can use Mk.2 and Mk.1 belts respectively.</p>
+        <p>Floor 2 produces 180 wire/min (6 constructors × 30/min each). The 6 individual 30/min belts descend to LB 2b where they are paired into 3 mergers: WMRG1 (W1+W2=60/min → C1), WMRG2 (W3+W4=60/min → storage), WMRG3 (W5+W6=60/min → C2).</p>
+        <p>Each cable constructor on Floor 3 receives exactly 60/min wire, consuming all of it (2 wire/cycle × 30/min = 60/min). The 60/min wire to storage exits directly from WMRG2 to ground floor storage.</p>
       </div>
-      <div class="chain-note">// 135/min cannot be split equally, so LB 2b uses a manifold tap approach: the two cable constructors tap 60/min each from the trunk, leaving 15/min to continue to storage. No splitter tree required.</div>
+      <div class="chain-note">// 180/min splits cleanly into 3× 60/min — a simple equal 3-way that requires only mergers on LB 2b, no splitters needed on the wire side.</div>
+    </div>
+
+    <!-- SHEET INGOT ROUTING -->
+    <div class="chain-card">
+      <div class="chain-card-title">Sheet ingot routing</div>
+      <div class="chain-prose">
+        <p>The 120/min sheet ingot track (Sm7–Sm10, 4× 30/min) rises directly from Floor 1 to LB 2b, sharing the floor with the wire network. Four splitters (SPL1–SPL4) each split 30/min into 3× 10/min, which are then recombined by 6 mergers (IMRG1–IMRG6) into 20/min feeds for each of the 6 sheet constructors on Floor 3.</p>
+        <p>Each sheet constructor consumes exactly 20/min (2 ingots/cycle × 10/min), producing 10 sheets/min for a total of 60 sheets/min.</p>
+      </div>
+      <div class="chain-note">// The 4-splitter 6-merger network on LB 2b converts 4× 30/min into 6× 20/min — an unequal distribution solved by cross-feeding adjacent splitter outputs into shared mergers.</div>
     </div>
 
     <!-- OUTPUTS -->
@@ -505,7 +345,7 @@
           </tr>
           <tr>
             <td><span class="chip-label chip-wire-l">Copper wire</span></td>
-            <td>15/min</td>
+            <td>60/min</td>
             <td>Ground floor storage</td>
           </tr>
         </tbody>

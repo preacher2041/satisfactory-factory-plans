@@ -18,6 +18,7 @@
   --eib:#BA7517;--eib-bg:#251500;--eib-bd:#6b4008;
   --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
   --foundry:#993556;--foundry-bg:#200a16;--foundry-bd:#5a1a30;
+  /* Node colours */
   --arc-oa1:#58C4E8;--arc-oa2:#F5A623;
   --arc-ob1:#9CCC65;--arc-ob2:#B57BEA;
   --arc-c1:#FFB74D;--arc-c2:#80CBC4;--arc-c3:#AED581;--arc-c4:#4FC3F7;--arc-c5:#F48FB1;
@@ -30,12 +31,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
-.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
-.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
-.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
 .blk{position:absolute;border-radius:5px;}
-.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
-.cell-lbl{position:absolute;font-family:'Share Tech Mono',monospace;font-size:11px;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.2;text-align:center;}
 .legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
@@ -48,6 +45,9 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
 .nav-sep{color:#2a3048;}
 .nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -70,7 +70,6 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 <h1>LB 0b — Ore &amp; Coal Split</h1>
 <div class="sub">// +12m · iron ore 2 × 150/min manifolds → 3 foundries each · coal 270/min manifold → 6 foundries</div>
 
-<!-- Column headers -->
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px"></div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
@@ -86,211 +85,173 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 </div>
 
 <div style="display:flex;gap:0;align-items:flex-start">
-  <!-- Row labels -->
   <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
   </div>
 
-  <div class="floorplan">
-    <!-- Background cells: alternating pattern -->
-    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-
-    <div class="ml">
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- ROW A: 6 ore outputs, cols 1–6, 45/min each            -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-
-      <!-- Col 1: Ore 45/min → F1 -->
-      <div style="position:absolute;left:19px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F1</span>
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Output strip: 6 ore outputs (cols 1–6) + no coal outputs (fully consumed) -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 1</span>
       </div>
-
-      <!-- Col 2: Ore 45/min → F2 -->
-      <div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F2</span>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 2</span>
       </div>
-
-      <!-- Col 3: Ore 45/min → F3 -->
-      <div style="position:absolute;left:327px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F3</span>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 3</span>
       </div>
-
-      <!-- Col 4: Ore 45/min → F4 -->
-      <div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F4</span>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 4</span>
       </div>
-
-      <!-- Col 5: Ore 45/min → F5 -->
-      <div style="position:absolute;left:635px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F5</span>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 5</span>
       </div>
-
-      <!-- Col 6: Ore 45/min → F6 -->
-      <div style="position:absolute;left:789px;top:19px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);text-align:center;line-height:1.1;">Ore</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);opacity:0.6;text-align:center;">→ Floor 1 F6</span>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">→ Fl.1 Foundry 6</span>
       </div>
+      <!-- Cols 7–10: coal fully consumed, no outputs -->
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
 
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- ROW C: Ore chain A splitters (cols 1–3)                -->
-      <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- Floor plan grid — splitters only -->
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
 
-      <!-- Ore S1A — col 1, row C (top:308px) -->
-      <div class="blk" style="left:19px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <!-- centre: name -->
-      <div class="pz" style="left:57px;top:365px;font-size:17px;color:var(--iron);">S1A</div>
-      <!-- bottom: trunk in 150/min -->
-      <div class="pz" style="left:57px;top:403px;font-size:11px;color:var(--iron);">150/m<br>in</div>
-      <!-- right: → S2A, arc OA1 -->
-      <div class="pz" style="left:95px;top:365px;font-size:11px;color:var(--arc-oa1);">S2A<br>105/m</div>
-      <!-- left: ↑ out to F1 -->
-      <div class="pz" style="left:19px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+      <div class="ml">
+        <!-- ═══════════════════════════════════════ -->
+        <!-- ROW C: Ore chain A splitters (cols 1–3) -->
+        <!-- Block positions: col1=7, col2=161, col3=315 · row C top=315px -->
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SPL1A col 1 row C -->
+        <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:54px;top:362px;font-size:13px;color:var(--iron);">SPL1A</div>
+        <div class="pz" style="left:54px;top:408px;font-size:11px;color:var(--iron);">150/m↓</div>
+        <div class="pz" style="left:100px;top:362px;font-size:11px;color:var(--arc-oa1);">SPL2A<br>105/m</div>
+        <div class="pz" style="left:7px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+        <!-- SPL2A col 2 row C -->
+        <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:208px;top:362px;font-size:13px;color:var(--iron);">SPL2A</div>
+        <div class="pz" style="left:208px;top:408px;font-size:11px;color:var(--arc-oa1);">SPL1A<br>105/m</div>
+        <div class="pz" style="left:254px;top:362px;font-size:11px;color:var(--arc-oa2);">SPL3A<br>60/m</div>
+        <div class="pz" style="left:161px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+        <!-- SPL3A col 3 row C -->
+        <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:362px;top:362px;font-size:13px;color:var(--iron);">SPL3A</div>
+        <div class="pz" style="left:362px;top:408px;font-size:11px;color:var(--arc-oa2);">SPL2A<br>60/m</div>
+        <div class="pz" style="left:408px;top:362px;font-size:11px;color:var(--iron);">15/m<br>rem</div>
+        <div class="pz" style="left:315px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
 
-      <!-- Ore S2A — col 2, row C -->
-      <div class="blk" style="left:173px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <div class="pz" style="left:211px;top:365px;font-size:17px;color:var(--iron);">S2A</div>
-      <div class="pz" style="left:211px;top:403px;font-size:11px;color:var(--arc-oa1);">S1A<br>105/m</div>
-      <div class="pz" style="left:249px;top:365px;font-size:11px;color:var(--arc-oa2);">S3A<br>60/m</div>
-      <div class="pz" style="left:173px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+        <!-- ═══════════════════════════════════════ -->
+        <!-- ROW C: Ore chain B splitters (cols 4–6) -->
+        <!-- col4=469, col5=623, col6=777 -->
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SPL1B col 4 row C -->
+        <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:516px;top:362px;font-size:13px;color:var(--iron);">SPL1B</div>
+        <div class="pz" style="left:516px;top:408px;font-size:11px;color:var(--iron);">150/m↓</div>
+        <div class="pz" style="left:562px;top:362px;font-size:11px;color:var(--arc-ob1);">SPL2B<br>105/m</div>
+        <div class="pz" style="left:469px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+        <!-- SPL2B col 5 row C -->
+        <div class="blk" style="left:623px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:670px;top:362px;font-size:13px;color:var(--iron);">SPL2B</div>
+        <div class="pz" style="left:670px;top:408px;font-size:11px;color:var(--arc-ob1);">SPL1B<br>105/m</div>
+        <div class="pz" style="left:716px;top:362px;font-size:11px;color:var(--arc-ob2);">SPL3B<br>60/m</div>
+        <div class="pz" style="left:623px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
+        <!-- SPL3B col 6 row C -->
+        <div class="blk" style="left:777px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
+        <div class="pz" style="left:824px;top:362px;font-size:13px;color:var(--iron);">SPL3B</div>
+        <div class="pz" style="left:824px;top:408px;font-size:11px;color:var(--arc-ob2);">SPL2B<br>60/m</div>
+        <div class="pz" style="left:870px;top:362px;font-size:11px;color:var(--iron);">15/m<br>rem</div>
+        <div class="pz" style="left:777px;top:362px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
 
-      <!-- Ore S3A — col 3, row C -->
-      <div class="blk" style="left:327px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <div class="pz" style="left:365px;top:365px;font-size:17px;color:var(--iron);">S3A</div>
-      <div class="pz" style="left:365px;top:403px;font-size:11px;color:var(--arc-oa2);">S2A<br>60/m</div>
-      <!-- right: remainder 15/min stays on belt — terminal, use iron colour -->
-      <div class="pz" style="left:403px;top:365px;font-size:11px;color:var(--iron);">15/m<br>rem</div>
-      <div class="pz" style="left:327px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- ROW C: Ore chain B splitters (cols 4–6)                -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-
-      <!-- Ore S1B — col 4, row C -->
-      <div class="blk" style="left:481px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <div class="pz" style="left:519px;top:365px;font-size:17px;color:var(--iron);">S1B</div>
-      <div class="pz" style="left:519px;top:403px;font-size:11px;color:var(--iron);">150/m<br>in</div>
-      <div class="pz" style="left:557px;top:365px;font-size:11px;color:var(--arc-ob1);">S2B<br>105/m</div>
-      <div class="pz" style="left:481px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
-
-      <!-- Ore S2B — col 5, row C -->
-      <div class="blk" style="left:635px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <div class="pz" style="left:673px;top:365px;font-size:17px;color:var(--iron);">S2B</div>
-      <div class="pz" style="left:673px;top:403px;font-size:11px;color:var(--arc-ob1);">S1B<br>105/m</div>
-      <div class="pz" style="left:711px;top:365px;font-size:11px;color:var(--arc-ob2);">S3B<br>60/m</div>
-      <div class="pz" style="left:635px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
-
-      <!-- Ore S3B — col 6, row C -->
-      <div class="blk" style="left:789px;top:327px;width:116px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);"></div>
-      <div class="pz" style="left:827px;top:365px;font-size:17px;color:var(--iron);">S3B</div>
-      <div class="pz" style="left:827px;top:403px;font-size:11px;color:var(--arc-ob2);">S2B<br>60/m</div>
-      <div class="pz" style="left:865px;top:365px;font-size:11px;color:var(--iron);">15/m<br>rem</div>
-      <div class="pz" style="left:789px;top:365px;font-size:11px;color:var(--iron);">45/m<br>↑out</div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- ROW E: Coal splitters (cols 1–6)                       -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-
-      <!-- Coal S1 — col 1, row E (top:635px) -->
-      <div class="blk" style="left:19px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:57px;top:673px;font-size:17px;color:var(--coal);">S1</div>
-      <div class="pz" style="left:57px;top:711px;font-size:11px;color:var(--coal);">270/m<br>in</div>
-      <div class="pz" style="left:95px;top:673px;font-size:11px;color:var(--arc-c1);">S2<br>225/m</div>
-      <div class="pz" style="left:19px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- Coal S2 — col 2, row E -->
-      <div class="blk" style="left:173px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:211px;top:673px;font-size:17px;color:var(--coal);">S2</div>
-      <div class="pz" style="left:211px;top:711px;font-size:11px;color:var(--arc-c1);">S1<br>225/m</div>
-      <div class="pz" style="left:249px;top:673px;font-size:11px;color:var(--arc-c2);">S3<br>180/m</div>
-      <div class="pz" style="left:173px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- Coal S3 — col 3, row E -->
-      <div class="blk" style="left:327px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:365px;top:673px;font-size:17px;color:var(--coal);">S3</div>
-      <div class="pz" style="left:365px;top:711px;font-size:11px;color:var(--arc-c2);">S2<br>180/m</div>
-      <div class="pz" style="left:403px;top:673px;font-size:11px;color:var(--arc-c3);">S4<br>135/m</div>
-      <div class="pz" style="left:327px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- Coal S4 — col 4, row E -->
-      <div class="blk" style="left:481px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:519px;top:673px;font-size:17px;color:var(--coal);">S4</div>
-      <div class="pz" style="left:519px;top:711px;font-size:11px;color:var(--arc-c3);">S3<br>135/m</div>
-      <div class="pz" style="left:557px;top:673px;font-size:11px;color:var(--arc-c4);">S5<br>90/m</div>
-      <div class="pz" style="left:481px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- Coal S5 — col 5, row E -->
-      <div class="blk" style="left:635px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:673px;top:673px;font-size:17px;color:var(--coal);">S5</div>
-      <div class="pz" style="left:673px;top:711px;font-size:11px;color:var(--arc-c4);">S4<br>90/m</div>
-      <div class="pz" style="left:711px;top:673px;font-size:11px;color:var(--arc-c5);">S6<br>45/m</div>
-      <div class="pz" style="left:635px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- Coal S6 — col 6, row E -->
-      <div class="blk" style="left:789px;top:635px;width:116px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
-      <div class="pz" style="left:827px;top:673px;font-size:17px;color:var(--coal);">S6</div>
-      <div class="pz" style="left:827px;top:711px;font-size:11px;color:var(--arc-c5);">S5<br>45/m</div>
-      <!-- right: nothing — terminal, fully consumed -->
-      <div class="pz" style="left:789px;top:673px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- ROW F: Inputs                                           -->
-      <!-- Ore chain A: cols 1–3 (456px wide), 150/min            -->
-      <!-- Ore chain B: cols 4–6 (456px wide), 150/min            -->
-      <!-- Coal: cols 7–10 (616px wide), 270/min                  -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-
-      <!-- Ore chain A input -->
-      <div style="position:absolute;left:19px;top:789px;width:456px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — Chain A</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">150/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--iron);opacity:0.6;">← iron miner A → foundries F1–F3</span>
+        <!-- ═══════════════════════════════════════ -->
+        <!-- ROW E: Coal splitters (cols 1–6)        -->
+        <!-- row E top=616px; block at 623px          -->
+        <!-- col1=7,col2=161,col3=315,col4=469,col5=623,col6=777 -->
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SPL1 col 1 row E -->
+        <div class="blk" style="left:7px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:54px;top:670px;font-size:13px;color:var(--coal);">SPL1</div>
+        <div class="pz" style="left:54px;top:716px;font-size:11px;color:var(--coal);">270/m↓</div>
+        <div class="pz" style="left:100px;top:670px;font-size:11px;color:var(--arc-c1);">SPL2<br>225/m</div>
+        <div class="pz" style="left:7px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
+        <!-- SPL2 col 2 row E -->
+        <div class="blk" style="left:161px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:208px;top:670px;font-size:13px;color:var(--coal);">SPL2</div>
+        <div class="pz" style="left:208px;top:716px;font-size:11px;color:var(--arc-c1);">SPL1<br>225/m</div>
+        <div class="pz" style="left:254px;top:670px;font-size:11px;color:var(--arc-c2);">SPL3<br>180/m</div>
+        <div class="pz" style="left:161px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
+        <!-- SPL3 col 3 row E -->
+        <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:362px;top:670px;font-size:13px;color:var(--coal);">SPL3</div>
+        <div class="pz" style="left:362px;top:716px;font-size:11px;color:var(--arc-c2);">SPL2<br>180/m</div>
+        <div class="pz" style="left:408px;top:670px;font-size:11px;color:var(--arc-c3);">SPL4<br>135/m</div>
+        <div class="pz" style="left:315px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
+        <!-- SPL4 col 4 row E -->
+        <div class="blk" style="left:469px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:516px;top:670px;font-size:13px;color:var(--coal);">SPL4</div>
+        <div class="pz" style="left:516px;top:716px;font-size:11px;color:var(--arc-c3);">SPL3<br>135/m</div>
+        <div class="pz" style="left:562px;top:670px;font-size:11px;color:var(--arc-c4);">SPL5<br>90/m</div>
+        <div class="pz" style="left:469px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
+        <!-- SPL5 col 5 row E -->
+        <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:670px;top:670px;font-size:13px;color:var(--coal);">SPL5</div>
+        <div class="pz" style="left:670px;top:716px;font-size:11px;color:var(--arc-c4);">SPL4<br>90/m</div>
+        <div class="pz" style="left:716px;top:670px;font-size:11px;color:var(--arc-c5);">SPL6<br>45/m</div>
+        <div class="pz" style="left:623px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
+        <!-- SPL6 col 6 row E — terminal -->
+        <div class="blk" style="left:777px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);"></div>
+        <div class="pz" style="left:824px;top:670px;font-size:13px;color:var(--coal);">SPL6</div>
+        <div class="pz" style="left:824px;top:716px;font-size:11px;color:var(--arc-c5);">SPL5<br>45/m</div>
+        <div class="pz" style="left:777px;top:670px;font-size:11px;color:var(--coal);">45/m<br>↑out</div>
       </div>
+    </div>
 
-      <!-- Ore chain B input -->
-      <div style="position:absolute;left:481px;top:789px;width:456px;height:116px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--iron);">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — Chain B</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--iron);opacity:0.85;">150/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--iron);opacity:0.6;">← iron miner B → foundries F4–F6</span>
+    <!-- Input strip: ore chain A, ore chain B, coal -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore A 150/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← iron miner A</span>
       </div>
-
-      <!-- Coal input: cols 7–10 = left:943px, width = 4×154 - 2×19 = 578px -->
-      <div style="position:absolute;left:943px;top:789px;width:578px;height:116px;background:var(--coal-bg);border:1px solid var(--coal-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--coal);">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--coal);opacity:0.85;">270/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--coal);opacity:0.6;">← coal miner</span>
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore B 150/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← iron miner B</span>
       </div>
-
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 270/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.7;">← coal miner</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
   </div>
 </div>
@@ -299,25 +260,23 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div class="l-item"><div class="l-sw" style="background:var(--iron-bg);border:1px solid var(--iron-bd)"></div>Splitter · iron ore</div>
   <div class="l-item"><div class="l-sw" style="background:var(--coal-bg);border:1px solid var(--coal-bd)"></div>Splitter · coal</div>
 </div>
-<div class="note">// Row F: ore chain A 150/min (cols 1–3) + ore chain B 150/min (cols 4–6) + coal 270/min (cols 7–10)</div>
-<div class="note">// Row A: ore 45/min × 6 → Floor 1 foundries F1–F6 · no coal outputs (fully consumed)</div>
-<div class="note">// Ore chain A: trunk 150 → 105 → 60 → 15/min remainder sits on belt (no surplus storage needed)</div>
-<div class="note">// Ore chain B: same topology — trunk 150 → 105 → 60 → 15/min remainder</div>
-<div class="note">// Coal: fully consumed — 270 → 225 → 180 → 135 → 90 → 45 → 0/min</div>
+<div class="note">// Input strip: ore chain A 150/min (col 1) + ore chain B 150/min (col 4) + coal 270/min (col 7)</div>
+<div class="note">// Output strip: ore 45/min × 6 → Floor 1 foundries · no coal outputs (fully consumed)</div>
+<div class="note">// Ore chain A: SPL1A–SPL3A · trunk 150 → 105 → 60 → 15/min remainder stays on belt</div>
+<div class="note">// Ore chain B: same topology (cols 4–6) · Coal: SPL1–SPL6 · fully consumed 270 → 0/min</div>
 <div class="belt-req"><strong>⚠ Mk.3 required — ore trunk entry 150/min and coal trunk 270/min</strong><br>Ore chain trunks enter at 150/min — exceeds Mk.2 cap (120/min), Mk.3 required on first trunk segment only; subsequent segments drop below 120/min after first tap. Coal trunk 270/min is exactly at Mk.3 cap throughout.</div>
 
-<!-- Arc colour key -->
 <div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
-  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours — match output label on source to input label on destination</span><br>
-  <span style="color:var(--arc-oa1)">■</span> OA1 <span style="color:#888">Ore S1A right → S2A bottom · 105/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-oa2)">■</span> OA2 <span style="color:#888">Ore S2A right → S3A bottom · 60/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-ob1)">■</span> OB1 <span style="color:#888">Ore S1B right → S2B bottom · 105/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-ob2)">■</span> OB2 <span style="color:#888">Ore S2B right → S3B bottom · 60/m</span>&nbsp;&nbsp;&nbsp;<br>
-  <span style="color:var(--arc-c1)">■</span> C1 <span style="color:#888">Coal S1 right → S2 bottom · 225/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-c2)">■</span> C2 <span style="color:#888">Coal S2 right → S3 bottom · 180/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-c3)">■</span> C3 <span style="color:#888">Coal S3 right → S4 bottom · 135/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-c4)">■</span> C4 <span style="color:#888">Coal S4 right → S5 bottom · 90/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-c5)">■</span> C5 <span style="color:#888">Coal S5 right → S6 bottom · 45/m</span>&nbsp;&nbsp;&nbsp;
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours — port labels coloured by connected node</span><br>
+  <span style="color:var(--arc-oa1)">■ OA1</span> <span style="color:#888">SPL1A right → SPL2A bottom · 105/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-oa2)">■ OA2</span> <span style="color:#888">SPL2A right → SPL3A bottom · 60/m</span>&nbsp;&nbsp;<br>
+  <span style="color:var(--arc-ob1)">■ OB1</span> <span style="color:#888">SPL1B right → SPL2B bottom · 105/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-ob2)">■ OB2</span> <span style="color:#888">SPL2B right → SPL3B bottom · 60/m</span>&nbsp;&nbsp;<br>
+  <span style="color:var(--arc-c1)">■ C1</span> <span style="color:#888">SPL1 right → SPL2 bottom · 225/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-c2)">■ C2</span> <span style="color:#888">SPL2 right → SPL3 bottom · 180/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-c3)">■ C3</span> <span style="color:#888">SPL3 right → SPL4 bottom · 135/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-c4)">■ C4</span> <span style="color:#888">SPL4 right → SPL5 bottom · 90/m</span>&nbsp;&nbsp;
+  <span style="color:var(--arc-c5)">■ C5</span> <span style="color:#888">SPL5 right → SPL6 bottom · 45/m</span>&nbsp;&nbsp;
 </div>
 </body>
 </html>

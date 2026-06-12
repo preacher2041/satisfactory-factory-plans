@@ -30,50 +30,132 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
-.blk{position:absolute;border-radius:5px;}
-.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
-.cell-lbl{position:absolute;font-family:'Share Tech Mono',monospace;font-size:11px;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center;}
 .legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
-.belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
-.belt-req strong{color:#e8a820;}
 .floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
 .nav-sep{color:#2a3048;}
-.nav-factory{margin-left:auto;}</style>
+.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
+</style>
 </head>
 <body>
-<div class="floorplan-nav"><span class="nav-btn" style="opacity:0.3">← —</span>
-    <span class="nav-sep">//</span>
-    <span class="nav-current">Ground</span>
-    <a href="eib_lb0b.html" class="nav-btn">LB 0b</a>
-    <a href="eib_floor1.html" class="nav-btn">Floor 1</a>
-    <a href="eib_lb1b.html" class="nav-btn">LB 1b</a>
-    <a href="eib_floor2.html" class="nav-btn">Floor 2</a>
-    <a href="eib_lb2b.html" class="nav-btn">LB 2b</a>
-    <a href="eib_floor3.html" class="nav-btn">Floor 3</a>
-    <a href="eib_lb3b.html" class="nav-btn">LB 3b</a>
-    <a href="eib_floor4.html" class="nav-btn">Floor 4</a>
-    <span class="nav-sep">//</span>
-    <a href="eib_lb0b.html" class="nav-btn">LB 0b →</a>
-    <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a></div>
+<div class="floorplan-nav">
+  <span class="nav-btn" style="opacity:0.3">— ←</span>
+  <span class="nav-sep">//</span>
+  <span class="nav-current">Ground</span>
+  <a href="eib_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="eib_floor1.html" class="nav-btn">Floor 1</a>
+  <a href="eib_lb1b.html" class="nav-btn">LB 1b</a>
+  <a href="eib_floor2.html" class="nav-btn">Floor 2</a>
+  <a href="eib_lb2b.html" class="nav-btn">LB 2b</a>
+  <a href="eib_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="eib_lb3b.html" class="nav-btn">LB 3b</a>
+  <a href="eib_floor4.html" class="nav-btn">Floor 4</a>
+  <span class="nav-sep">//</span>
+  <a href="eib_lb0b.html" class="nav-btn">LB 0b →</a>
+  <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
 <h1>Ground Floor — Storage</h1>
 <div class="sub">// ±0m · 5× storage · beams · pipes · concrete · EIB · ingot buffer</div>
-<div style="display:flex;margin-left:0;margin-bottom:3px"><div style="width:52px"></div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div></div>
+
+<!-- Column headers -->
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
 <div style="display:flex;gap:0;align-items:flex-start">
-  <div style="display:flex;flex-direction:column;width:52px"><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div><div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div></div>
-  <div class="floorplan">
-    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div><div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div><div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div><div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-    <div class="ml">
-<div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--beam);font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--beam);text-align:center;line-height:1.1;">Beams</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--beam);opacity:0.85;">24/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--beam);opacity:0.6;text-align:center;">← Floor 2</span></div><div style="position:absolute;left:327px;top:19px;width:116px;height:116px;background:var(--pipe-bg);border:1px solid var(--pipe-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--pipe);font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--pipe);text-align:center;line-height:1.1;">Pipes</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--pipe);opacity:0.85;">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--pipe);opacity:0.6;text-align:center;">← Floor 2</span></div><div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--concrete);font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--concrete);text-align:center;line-height:1.1;">Concrete</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--concrete);opacity:0.85;">3/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--concrete);opacity:0.6;text-align:center;">← Floor 3</span></div><div style="position:absolute;left:635px;top:19px;width:116px;height:116px;background:var(--eib-bg);border:1px solid var(--eib-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--eib);font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--eib);text-align:center;line-height:1.1;">EIB</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--eib);opacity:0.85;">12/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--eib);opacity:0.6;text-align:center;">← Floor 4</span></div><div style="position:absolute;left:943px;top:19px;width:116px;height:116px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;"><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--ingot);font-weight:700;">↓ in</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--ingot);text-align:center;line-height:1.1;">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--ingot);opacity:0.85;">buffer</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--ingot);opacity:0.6;text-align:center;">← Floor 1</span></div><div class="m" style="left:183px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--beam-bd);color:var(--beam);"><span class="m-lbl">Beams</span><span class="m-sub">24/m</span></div><div class="m" style="left:337px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--pipe-bd);color:var(--pipe);"><span class="m-lbl">Pipes</span><span class="m-sub">10/m</span></div><div class="m" style="left:491px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--concrete-bd);color:var(--concrete);"><span class="m-lbl">Concrete</span><span class="m-sub">3/m</span></div><div class="m" style="left:645px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB</span><span class="m-sub">12/m</span></div><div class="m" style="left:953px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--ingot-bd);color:var(--ingot);"><span class="m-lbl">Ingots</span><span class="m-sub">buffer</span></div>
+  <!-- Row labels -->
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div><!-- IO strip spacer -->
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Output strip — materials arriving from above into ground storage -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Beams 24/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">← Floor 2</span>
+      </div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--pipe);">Steel Pipes 10/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);opacity:0.7;">← Floor 2</span>
+      </div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 3/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← LB 3b surplus</span>
+      </div>
+      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB 12/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">← Floor 4</span>
+      </div>
+      <div class="io-ph"></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots buffer</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← Floor 1</span>
+      </div>
+      <div class="io-ph"></div>
     </div>
+
+    <!-- Floor plan grid -->
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <div class="m" style="left:183px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--beam-bd);color:var(--beam);"><span class="m-lbl">Beams</span><span class="m-sub">24/m</span></div>
+        <div class="m" style="left:337px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--pipe-bd);color:var(--pipe);"><span class="m-lbl">Pipes</span><span class="m-sub">10/m</span></div>
+        <div class="m" style="left:491px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--concrete-bd);color:var(--concrete);"><span class="m-lbl">Concrete</span><span class="m-sub">3/m</span></div>
+        <div class="m" style="left:645px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB</span><span class="m-sub">12/m</span></div>
+        <div class="m" style="left:953px;top:192px;width:96px;height:232px;background:var(--store-bg);border:1px solid var(--ingot-bd);color:var(--ingot);"><span class="m-lbl">Ingots</span><span class="m-sub">buffer</span></div>
+      </div>
+    </div>
+    <!-- No input strip — ground floor has no inputs from below -->
   </div>
 </div>
-<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--beam-bd)"></div>Storage · beams</div><div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--pipe-bd)"></div>Storage · pipes</div><div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--concrete-bd)"></div>Storage · concrete</div><div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--eib-bd)"></div>Storage · EIB</div><div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--ingot-bd)"></div>Storage · ingot buffer</div></div>
-<div class="note">// Row A: all outputs arrive from above · no row F inputs (miners feed LB 0b directly)</div><div class="note">// Cols 2–5: main outputs · Col 7: ingot overflow buffer</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--beam-bd)"></div>Storage · beams</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--pipe-bd)"></div>Storage · pipes</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--concrete-bd)"></div>Storage · concrete</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--eib-bd)"></div>Storage · EIB</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--store-bg);border:1px solid var(--ingot-bd)"></div>Storage · ingot buffer</div>
+</div>
+<div class="note">// Input strip: all materials arrive by external belt lift from above</div>
+<div class="note">// No output strip — ground floor is the bottom of the building; nothing exits downward</div>
+<div class="note">// Cols 2–5: main product storage · Col 7: ingot overflow buffer · miners feed LB 0b directly, bypass ground</div>
 </body>
 </html>

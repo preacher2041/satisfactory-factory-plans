@@ -3,38 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LB 3b — Plates · Screws · Rods — Iron Megafactory</title>
+<title>LB 3b — Plates &amp; Screws — Iron Megafactory</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 :root {
-  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
-  --text:#d4d8e8;--text-muted:#7a839a;
-  --iron:#378ADD;--iron-bg:#0d2240;--iron-bd:#1a4a80;
+  --bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;
   --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
   --plate:#D85A30;--plate-bg:#2a1208;--plate-bd:#7a2e10;
   --screw:#888780;--screw-bg:#1a1a18;--screw-bd:#44443f;
-  --rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
   --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
-  --smart:#639922;--smart-bg:#0d1a04;--smart-bd:#254a08;
-  --mf:#7F77DD;--mf-bg:#181535;--mf-bd:#3d3880;
-  --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
-
-  /* ── Connection arc colours ── applied to port label text only ──────── */
-  /* Plate network */
-  --arc-p1:#58C4E8;   /* S1→M1 (top of S1, bottom of M1) */
-  --arc-p2:#F5A623;   /* S1→S2 (right of S1, bottom of S2) */
-  --arc-p3:#B57BEA;   /* S2→M1 (left of S2, right of M1) */
-  --arc-p4:#5DD67A;   /* M1→S3 (top of M1, bottom of S3) */
-  /* Screw network */
-  --arc-sA:#4FC3F7;   /* S1→S3  belt A */
-  --arc-sB:#FFB74D;   /* S1→S2  belt B */
-  --arc-sC:#CE93D8;   /* S3→output-RIP-A  belt C  (terminal — uses screw colour) */
-  --arc-sD:#80CBC4;   /* S2→M2  belt D */
-  --arc-sE:#F48FB1;   /* S1→output-RIP-B  belt E  (terminal) */
-  --arc-sF:#AED581;   /* S3→S4  belt F */
-  --arc-sG:#FFF176;   /* S2→storage  belt G  (terminal) */
-  --arc-sH:#4DD0E1;   /* S4→M1  belt H */
-  --arc-sI:#FF8A65;   /* S4→M1  belt I */
-  --arc-sJ:#90CAF9;   /* M1→M2  belt J */
+  /* Plate arcs */
+  --arc-p1:#58C4E8;--arc-p2:#F5A623;--arc-p3:#B57BEA;--arc-p4:#5DD67A;
+  /* Screw arcs */
+  --arc-sA:#4FC3F7;--arc-sB:#FFB74D;--arc-sD:#80CBC4;--arc-sF:#AED581;
+  --arc-sH:#4DD0E1;--arc-sI:#FF8A65;--arc-sJ:#90CAF9;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -45,6 +26,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
 .blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;line-height:1.15;text-align:center;}
 .legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
@@ -55,405 +37,181 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
-.nav-sep{color:#2a3048;}
-.nav-factory{margin-left:auto;}
-
-/* ── Port label helper — inline zone div ─────────────────────────────── */
-/* Usage: position:absolute per-zone; font/color set inline for arc colour */
-.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
-
-/* ── Connection colour legend pill ──────────────────────────────────── */
-.arc-pill{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;flex-shrink:0;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
 </style>
 </head>
 <body>
-<div class="floorplan-nav"><a href="floor3_screws.html" class="nav-btn">← Floor 3</a>
-    <span class="nav-sep">//</span>
-    <a href="floor0_ground.html" class="nav-btn">Ground</a>
-    <a href="lb0b_ore_split.html" class="nav-btn">LB 0b</a>
-    <a href="floor1_smelters.html" class="nav-btn">Floor 1</a>
-    <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b</a>
-    <a href="floor2_rods_plates.html" class="nav-btn">Floor 2</a>
-    <a href="lb2b_rod_manifold.html" class="nav-btn">LB 2b</a>
-    <a href="floor3_screws.html" class="nav-btn">Floor 3</a>
-    <span class="nav-current">LB 3b</span>
-    <a href="floor4_assembly.html" class="nav-btn">Floor 4</a>
-    <a href="lb4b_rip_rods.html" class="nav-btn">LB 4b</a>
-    <a href="floor5_mf.html" class="nav-btn">Floor 5</a>
-    <span class="nav-sep">//</span>
-    <a href="floor4_assembly.html" class="nav-btn">Floor 4 →</a>
-    <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a></div>
-<h1>LB 3b — Plates · Screws · Rods</h1>
-<div class="sub">// +68m · plates 80/min · screws 240/min · rods 50/min</div>
+<div class="floorplan-nav">
+  <a href="floor3_screws.html" class="nav-btn">← Floor 3</a>
+  <span class="nav-sep">//</span>
+  <a href="floor0_ground.html" class="nav-btn">Ground</a>
+  <a href="lb0b_ore_split.html" class="nav-btn">LB 0b</a>
+  <a href="floor1_smelters.html" class="nav-btn">Floor 1</a>
+  <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b</a>
+  <a href="floor2_rods_plates.html" class="nav-btn">Floor 2</a>
+  <a href="lb2b_rod_manifold.html" class="nav-btn">LB 2b</a>
+  <a href="floor3_screws.html" class="nav-btn">Floor 3</a>
+  <span class="nav-current">LB 3b</span>
+  <a href="floor4_assembly.html" class="nav-btn">Floor 4</a>
+  <a href="lb4b_rip_rods.html" class="nav-btn">LB 4b</a>
+  <a href="floor5_mf.html" class="nav-btn">Floor 5</a>
+  <span class="nav-sep">//</span>
+  <a href="floor4_assembly.html" class="nav-btn">Floor 4 →</a>
+  <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>LB 3b — Plates &amp; Screws</h1>
+<div class="sub">// +72m · plates 80/min → RIP-A 30 + RIP-B 30 + store 20 · screws 240/min → RIP-A 60 + RIP-B 60 + Rotors 100 + store 20 · rods pass-through</div>
 
-<!-- ── Column axis labels ─────────────────────────────────────────── -->
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px"></div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
-  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
 <div style="display:flex;gap:0;align-items:flex-start">
-  <!-- Row labels -->
   <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
   </div>
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Output strip -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">→ Fl.4 RIP-A</span></div>
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">→ Fl.4 RIP-B</span></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 RIP-B</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Ground store</span></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 RIP-A</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 100/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 Rotors</span></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">→ Fl.4 Rotors</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">→ LB 4b (MF)</span></div>
+    </div>
 
-  <div class="floorplan">
-    <!-- Row A -->
-    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-    <!-- Row B -->
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <!-- Row C -->
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <!-- Row D -->
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <!-- Row E -->
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <!-- Row F -->
-    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <!-- ═══ PLATE NETWORK cols 1–2 ═══ -->
+        <!-- PS1 col 1, row E (7, 623) -->
+        <div class="blk" style="left:7px;top:623px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
+        <div style="position:absolute;left:7px;top:623px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS1</div>
+        <div class="pz" style="left:53px;top:716px;color:var(--plate);font-size:12px;">80/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
+        <div class="pz" style="left:53px;top:623px;color:var(--arc-p1);">PM1<br>40/m</div>
+        <div class="pz" style="left:100px;top:669px;color:var(--arc-p2);">PS2<br>40/m</div>
 
-    <div class="ml">
+        <!-- PS2 col 2, row D (161, 469) -->
+        <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
+        <div style="position:absolute;left:161px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS2</div>
+        <div class="pz" style="left:207px;top:562px;color:var(--arc-p2);">PS1<br>40/m</div>
+        <div class="pz" style="left:207px;top:469px;color:var(--plate);font-size:11px;">Store<br>20/m</div>
+        <div class="pz" style="left:161px;top:516px;color:var(--arc-p3);">PM1<br>20/m</div>
 
-      <!-- ════════════════════════════════════════════════════════════════
-           PORT LABEL COLOUR KEY
-           ─────────────────────────────────────────────────────────────
-           Splitter/merger ports use colour-coded labels so each connection
-           arc can be traced from source output → destination input.
+        <!-- PM1 merger col 1, row C (7, 315) — dashed -->
+        <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:var(--plate-bg);border:1px dashed var(--plate-bd);"></div>
+        <div style="position:absolute;left:7px;top:315px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PM1</div>
+        <div class="pz" style="left:53px;top:315px;color:var(--arc-p4);">PS3<br>60/m</div>
+        <div class="pz" style="left:53px;top:408px;color:var(--arc-p1);">PS1<br>40/m</div>
+        <div class="pz" style="left:100px;top:362px;color:var(--arc-p3);">PS2<br>20/m</div>
 
-           Label format:  [dest-node] · [rate]/m   on outputs
-                          [src-node]  · [rate]/m   on inputs
+        <!-- PS3 col 1, row B (7, 161) -->
+        <div class="blk" style="left:7px;top:161px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
+        <div style="position:absolute;left:7px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS3</div>
+        <div class="pz" style="left:53px;top:254px;color:var(--arc-p4);">PM1<br>60/m</div>
+        <div class="pz" style="left:53px;top:161px;color:var(--plate);font-size:11px;">↑RIP-A<br>30/m</div>
+        <div class="pz" style="left:100px;top:208px;color:var(--plate);font-size:11px;">↑RIP-B<br>30/m</div>
 
-           Connections:
-             P1  #58C4E8  cyan     S1 top  ↔  M1 bottom   (plates 40/m)
-             P2  #F5A623  amber    S1 right ↔  S2 bottom   (plates 40/m)
-             P3  #B57BEA  lilac    S2 left  ↔  M1 right    (plates 20/m)
-             P4  #5DD67A  green    M1 top   ↔  S3 bottom   (plates 60/m)
-             sA  #4FC3F7  sky      S2 left  ↔  S1 bottom   (screws 120/m)
-             sB  #FFB74D  orange   S2 right ↔  S3 bottom   (screws 120/m)
-             sD  #80CBC4  teal     S3 left  ↔  M1 right    (screws 60/m)
-             sF  #AED581  lime     S1 right ↔  S2 bottom   (screws 60/m)
-             sH  #4DD0E1  aqua     S2 left  ↔  M1 left     (screws 20/m)
-             sI  #FF8A65  salmon   S2 right ↔  M1 right    (screws 20/m)
-             sJ  #90CAF9  blue     M1 top   ↔  M1 left     (screws 40/m)
+        <!-- ═══ SCREW NETWORK cols 4–8 ═══ -->
+        <!-- SS1 trunk col 5, row E (623, 623) -->
+        <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
+        <div style="position:absolute;left:623px;top:623px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS1</div>
+        <div class="pz" style="left:669px;top:716px;color:var(--screw);font-size:12px;">240/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
+        <div class="pz" style="left:623px;top:669px;color:var(--arc-sA);">SS3<br>120/m</div>
+        <div class="pz" style="left:716px;top:669px;color:var(--arc-sB);">SS2<br>120/m</div>
 
-           Terminal outputs (leave the S/M network) use material colour.
-           Row F inputs (enter the network) use material colour.
-           ════════════════════════════════════════════════════════════════ -->
+        <!-- SS2 col 7, row D (931, 469) -->
+        <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
+        <div style="position:absolute;left:931px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS2</div>
+        <div class="pz" style="left:977px;top:562px;color:var(--arc-sB);">SS1<br>120/m</div>
+        <div class="pz" style="left:977px;top:469px;color:var(--screw);font-size:11px;">↑RIP-A<br>60/m</div>
+        <div class="pz" style="left:931px;top:516px;color:var(--arc-sD);">SM2<br>60/m</div>
 
+        <!-- SS3 col 4, row D (469, 469) -->
+        <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
+        <div style="position:absolute;left:469px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS3</div>
+        <div class="pz" style="left:515px;top:562px;color:var(--arc-sA);">SS1<br>120/m</div>
+        <div class="pz" style="left:515px;top:469px;color:var(--screw);font-size:11px;">↑RIP-B<br>60/m</div>
+        <div class="pz" style="left:562px;top:516px;color:var(--arc-sF);">SS4<br>60/m</div>
 
-      <!-- ════════════════════════════════════════════════════════════════
-           PLATE NETWORK — cols 1–2
-           S1 col 1 row E  →  40 ↑ M1 (P1)  +  40 → S2 (P2)
-           S2 col 2 row D  →  20 ↑ store    +  20 ← M1 (P3)
-           M1 col 1 row C  →  60 ↑ S3 (P4)   inputs: 40↓ S1 (P1) + 20← S2 (P3)
-           S2 col 1 row B  →  30 ↑ RIP-A   +  30 → RIP-B
-           ════════════════════════════════════════════════════════════════ -->
+        <!-- SS4 col 5, row C (623, 315) -->
+        <div class="blk" style="left:623px;top:315px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
+        <div style="position:absolute;left:623px;top:315px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS4</div>
+        <div class="pz" style="left:669px;top:408px;color:var(--arc-sF);">SS3<br>60/m</div>
+        <div class="pz" style="left:669px;top:315px;color:var(--screw);font-size:11px;">Store<br>20/m</div>
+        <div class="pz" style="left:623px;top:362px;color:var(--arc-sH);">SM1<br>20/m</div>
+        <div class="pz" style="left:716px;top:362px;color:var(--arc-sI);">SM1<br>20/m</div>
 
-      <!-- S1  col 1, row E  (left:19 top:635) -->
-      <div class="blk" style="left:19px;top:635px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:57px;top:673px;font-size:17px;color:#D85A30;font-weight:700;">S1</div>
-      <!-- bottom  — trunk in from Row F — material colour -->
-      <div class="pz" style="left:57px;top:711px;font-size:13px;color:#D85A30;">80/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-      <!-- top  → M1  arc P1 -->
-      <div class="pz" style="left:57px;top:635px;font-size:11px;color:var(--arc-p1);">M1<br>40/m</div>
-      <!-- right  → S1  arc P2 -->
-      <div class="pz" style="left:95px;top:673px;font-size:11px;color:var(--arc-p2);">S2<br>40/m</div>
+        <!-- SM1 merger col 5, row B (623, 161) — dashed -->
+        <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div style="position:absolute;left:623px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SM1</div>
+        <div class="pz" style="left:669px;top:161px;color:var(--arc-sJ);">SM2<br>40/m</div>
+        <div class="pz" style="left:623px;top:208px;color:var(--arc-sH);">SS4<br>20/m</div>
+        <div class="pz" style="left:716px;top:208px;color:var(--arc-sI);">SS4<br>20/m</div>
 
-      <!-- S1  col 2, row D  (left:173 top:481) -->
-      <div class="blk" style="left:173px;top:481px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:211px;top:519px;font-size:17px;color:#D85A30;font-weight:700;">S2</div>
-      <!-- bottom  ← S1  arc P2 -->
-      <div class="pz" style="left:211px;top:557px;font-size:11px;color:var(--arc-p2);">S2<br>40/m</div>
-      <!-- top  → storage  terminal — material colour -->
-      <div class="pz" style="left:211px;top:481px;font-size:11px;color:#D85A30;">Store<br>20/m</div>
-      <!-- left  → M1  arc P3 -->
-      <div class="pz" style="left:173px;top:519px;font-size:11px;color:var(--arc-p3);">M1<br>20/m</div>
-
-      <!-- M1  col 1, row C  (left:19 top:327) — merger, dashed -->
-      <div class="blk" style="left:19px;top:327px;width:116px;height:116px;background:#2a1208;border:1px dashed #7a2e10;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:57px;top:365px;font-size:17px;color:#D85A30;font-weight:700;">M1</div>
-      <!-- top  → S2  arc P4 -->
-      <div class="pz" style="left:57px;top:327px;font-size:11px;color:var(--arc-p4);">S4<br>60/m</div>
-      <!-- bottom  ← S1  arc P1 -->
-      <div class="pz" style="left:57px;top:403px;font-size:11px;color:var(--arc-p1);">S2<br>40/m</div>
-      <!-- right  ← S1  arc P3 -->
-      <div class="pz" style="left:95px;top:365px;font-size:11px;color:var(--arc-p3);">S2<br>20/m</div>
-
-      <!-- S2  col 1, row B  (left:19 top:173) -->
-      <div class="blk" style="left:19px;top:173px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:57px;top:211px;font-size:17px;color:#D85A30;font-weight:700;">S3</div>
-      <!-- bottom  ← M1  arc P4 -->
-      <div class="pz" style="left:57px;top:249px;font-size:11px;color:var(--arc-p4);">M1<br>60/m</div>
-      <!-- top  → RIP-A  terminal — material colour -->
-      <div class="pz" style="left:57px;top:173px;font-size:11px;color:#D85A30;">RIP-A<br>30/m</div>
-      <!-- right  → RIP-B  terminal — material colour -->
-      <div class="pz" style="left:95px;top:211px;font-size:11px;color:#D85A30;">RIP-B<br>30/m</div>
-
-
-      <!-- ════════════════════════════════════════════════════════════════
-           SCREW NETWORK — cols 4–7
-           S1 col 5, row E  →  120 ← S3 (sA)  +  120 → S2 (sB)
-           S2 col 7, row D  →  60 ↑ RIP-A (terminal)  +  60 → M2 (sD)
-           S3 col 4, row D  →  60 ↑ RIP-B (terminal)  +  60 → S4 (sF)
-           S4 col 4, row B  →  20 ↑ store (terminal)   +  20 → M1 (sH)  +  20 → M1 (sI)
-           M1 col 5, row B  →  40 → M2 (sJ)   inputs: 20 S4 (sH) + 20 S4 (sI)
-           M2 col 7, row B  →  100 ↑ Rotors   inputs: 40 M1 (sJ) + 60 S2 (sD)
-           ════════════════════════════════════════════════════════════════ -->
-
-      <!-- S1  col 5, row E  (left:635 top:635) -->
-      <div class="blk" style="left:635px;top:635px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:673px;top:673px;font-size:17px;color:#888780;font-weight:700;">S1</div>
-      <!-- bottom  — trunk in from Row F — material colour -->
-      <div class="pz" style="left:673px;top:711px;font-size:13px;color:#888780;">240/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-      <!-- left  → S1  arc sA -->
-      <div class="pz" style="left:635px;top:673px;font-size:11px;color:var(--arc-sA);">S3<br>120/m</div>
-      <!-- right  → S3  arc sB -->
-      <div class="pz" style="left:711px;top:673px;font-size:11px;color:var(--arc-sB);">S2<br>120/m</div>
-
-      <!-- S2  col 7, row D  (left:943 top:481) -->
-      <div class="blk" style="left:943px;top:481px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:981px;top:519px;font-size:17px;color:#888780;font-weight:700;">S2</div>
-      <!-- bottom  ← S2  arc sB -->
-      <div class="pz" style="left:981px;top:557px;font-size:11px;color:var(--arc-sB);">S1<br>120/m</div>
-      <!-- top  → RIP-A  terminal — material colour -->
-      <div class="pz" style="left:981px;top:481px;font-size:11px;color:#888780;">RIP-A<br>60/m</div>
-      <!-- left  → M1  arc sD -->
-      <div class="pz" style="left:943px;top:519px;font-size:11px;color:var(--arc-sD);">M2<br>60/m</div>
-
-      <!-- S3  col 4, row D  (left:481 top:481) -->
-      <div class="blk" style="left:481px;top:481px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:519px;top:519px;font-size:17px;color:#888780;font-weight:700;">S3</div>
-      <!-- bottom  ← S2  arc sA -->
-      <div class="pz" style="left:519px;top:557px;font-size:11px;color:var(--arc-sA);">S1<br>120/m</div>
-      <!-- top  → RIP-B  terminal — material colour -->
-      <div class="pz" style="left:519px;top:481px;font-size:11px;color:#888780;">RIP-B<br>60/m</div>
-      <!-- right  → S2  arc sF -->
-      <div class="pz" style="left:557px;top:519px;font-size:11px;color:var(--arc-sF);">S4<br>60/m</div>
-
-      <!-- S4  col 5, row C  (left:635 top:327) -->
-      <div class="blk" style="left:635px;top:327px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:673px;top:365px;font-size:17px;color:#888780;font-weight:700;">S4</div>
-      <!-- bottom  ← S1  arc sF -->
-      <div class="pz" style="left:673px;top:403px;font-size:11px;color:var(--arc-sF);">S3<br>60/m</div>
-      <!-- top  → storage  terminal — material colour -->
-      <div class="pz" style="left:673px;top:327px;font-size:11px;color:#888780;">Store<br>20/m</div>
-      <!-- left  → M1  arc sH -->
-      <div class="pz" style="left:635px;top:365px;font-size:11px;color:var(--arc-sH);">M1<br>20/m</div>
-      <!-- right  → M1  arc sI -->
-      <div class="pz" style="left:711px;top:365px;font-size:11px;color:var(--arc-sI);">M1<br>20/m</div>
-
-      <!-- M1  col 5, row B  (left:635 top:173) — merger, dashed -->
-      <div class="blk" style="left:635px;top:173px;width:116px;height:116px;background:#1a1a18;border:1px dashed #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:673px;top:211px;font-size:17px;color:#888780;font-weight:700;">M1</div>
-      <!-- top  → M1  arc sJ -->
-      <div class="pz" style="left:673px;top:173px;font-size:11px;color:var(--arc-sJ);">M2<br>40/m</div>
-      <!-- left  ← S2  arc sH -->
-      <div class="pz" style="left:635px;top:211px;font-size:11px;color:var(--arc-sH);">S4<br>20/m</div>
-      <!-- right  ← S2  arc sI -->
-      <div class="pz" style="left:711px;top:211px;font-size:11px;color:var(--arc-sI);">S4<br>20/m</div>
-
-      <!-- M2  col 7, row B  (left:943 top:173) — merger, dashed -->
-      <div class="blk" style="left:943px;top:173px;width:116px;height:116px;background:#1a1a18;border:1px dashed #44443f;"></div>
-      <!-- centre -->
-      <div class="pz" style="left:981px;top:211px;font-size:17px;color:#888780;font-weight:700;">M2</div>
-      <!-- top  → Rotors  terminal — material colour -->
-      <div class="pz" style="left:981px;top:173px;font-size:11px;color:#888780;">Rot<br>100/m</div>
-      <!-- left  ← M1  arc sJ -->
-      <div class="pz" style="left:943px;top:211px;font-size:11px;color:var(--arc-sJ);">M1<br>40/m</div>
-      <!-- right  ← S3  arc sD -->
-      <div class="pz" style="left:1019px;top:211px;font-size:11px;color:var(--arc-sD);">S4<br>60/m</div>
-
-
-      <!-- ════════════════════════════════════════════════════════════════
-           ROW A OUTPUTS
-           ════════════════════════════════════════════════════════════════ -->
-
-      <!-- Plates 30/min → Floor 4 RIP-A — col 1 -->
-      <div style="position:absolute;left:19px;top:19px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D85A30;text-align:center;line-height:1.1;">Plates</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;opacity:0.85;">30/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#D85A30;opacity:0.6;text-align:center;">→ Floor 4 RIP-A</span>
+        <!-- SM2 merger col 7, row B (931, 161) — dashed -->
+        <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div style="position:absolute;left:931px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SM2</div>
+        <div class="pz" style="left:977px;top:161px;color:var(--screw);font-size:11px;">↑Rot<br>100/m</div>
+        <div class="pz" style="left:931px;top:208px;color:var(--arc-sJ);">SM1<br>40/m</div>
+        <div class="pz" style="left:1024px;top:208px;color:var(--arc-sD);">SS2<br>60/m</div>
       </div>
+    </div>
 
-      <!-- Plates 30/min → Floor 4 RIP-B — col 2 -->
-      <div style="position:absolute;left:173px;top:19px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D85A30;text-align:center;line-height:1.1;">Plates</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;opacity:0.85;">30/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#D85A30;opacity:0.6;text-align:center;">→ Floor 4 RIP-B</span>
-      </div>
-
-      <!-- Screws 60/min → Floor 4 RIP-B (belt E from S1) — col 4 -->
-      <div style="position:absolute;left:481px;top:19px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;text-align:center;line-height:1.1;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.85;">60/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#888780;opacity:0.6;text-align:center;">→ Floor 4 RIP-B</span>
-      </div>
-
-      <!-- Screws 20/min → storage (belt G from S2) — col 5 -->
-      <div style="position:absolute;left:635px;top:19px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">→ store</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;text-align:center;line-height:1.1;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.85;">20/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#888780;opacity:0.6;text-align:center;">→ Storage (GF)</span>
-      </div>
-
-      <!-- Screws 60/min → Floor 4 RIP-A (belt C from S3) — col 7 -->
-      <div style="position:absolute;left:943px;top:19px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;text-align:center;line-height:1.1;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.85;">60/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#888780;opacity:0.6;text-align:center;">→ Floor 4 RIP-A</span>
-      </div>
-
-      <!-- Screws 100/min → Floor 4 Rotors (M1 output) — col 8 -->
-      <div style="position:absolute;left:1097px;top:19px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;text-align:center;line-height:1.1;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.85;">100/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#888780;opacity:0.6;text-align:center;">→ Floor 4 Rotors</span>
-      </div>
-
-      <!-- Rods 20/min → Floor 4 Rotors — col 9 -->
-      <div style="position:absolute;left:1251px;top:19px;width:116px;height:116px;background:#200a12;border:1px solid #6b2040;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D4537E;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D4537E;text-align:center;line-height:1.1;">Rods</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D4537E;opacity:0.85;">20/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#D4537E;opacity:0.6;text-align:center;">→ Floor 4 Rotors</span>
-      </div>
-
-      <!-- Rods 30/min → LB 4b (MF) — col 10 -->
-      <div style="position:absolute;left:1405px;top:19px;width:116px;height:116px;background:#061f16;border:1px solid #0f5c3d;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#1D9E75;font-weight:700;">↑ out</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#1D9E75;text-align:center;line-height:1.1;">Rods</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#1D9E75;opacity:0.85;">30/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#1D9E75;opacity:0.6;text-align:center;">→ LB 4b (MF)</span>
-      </div>
-
-
-      <!-- ════════════════════════════════════════════════════════════════
-           STORAGE SIDE OUTPUTS (right of col 10)
-           ════════════════════════════════════════════════════════════════ -->
-
-      <!-- Screws 20/min → storage (col 11 zone / right of col 10, row E) -->
-      <div style="position:absolute;left:1405px;top:635px;width:116px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">→ store</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;text-align:center;line-height:1.1;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.85;">20/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#888780;opacity:0.6;text-align:center;">→ Storage (GF)</span>
-      </div>
-
-      <!-- Plates 20/min → storage (right of col 10, row D) -->
-      <div style="position:absolute;left:1405px;top:481px;width:116px;height:116px;background:#2a1208;border:1px solid #7a2e10;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;font-weight:700;">→ store</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D85A30;text-align:center;line-height:1.1;">Plates</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;opacity:0.85;">20/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#D85A30;opacity:0.6;text-align:center;">→ Storage (GF)</span>
-      </div>
-
-
-      <!-- ════════════════════════════════════════════════════════════════
-           ROW F INPUTS
-           ════════════════════════════════════════════════════════════════ -->
-
-      <!-- Plates 80/min ← Floor 2 (4 belts × 20/min) — cols 1–2 wide -->
-      <div style="position:absolute;left:19px;top:789px;width:270px;height:116px;background:#2a1208;border:1px solid #7a2e10;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D85A30;">Plates</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D85A30;opacity:0.8;">80/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#D85A30;opacity:0.6;">4 belts × 20/m ← Floor 2</span>
-      </div>
-
-      <!-- Screws 240/min ← Floor 3 (4 belts × 60/min) — cols 4–7 wide -->
-      <div style="position:absolute;left:481px;top:789px;width:616px;height:116px;background:#1a1a18;border:1px solid #44443f;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#888780;">Screws</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#888780;opacity:0.8;">240/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#888780;opacity:0.6;">4 belts × 60/m ← Floor 3</span>
-      </div>
-
-      <!-- Rods 20/min ← LB 2b → Rotors — col 9 -->
-      <div style="position:absolute;left:1251px;top:789px;width:116px;height:116px;background:#200a12;border:1px solid #6b2040;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D4537E;font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#D4537E;text-align:center;line-height:1.1;">Rods</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#D4537E;opacity:0.85;">20/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#D4537E;opacity:0.6;text-align:center;">← LB 2b → Rotors</span>
-      </div>
-
-      <!-- Rods 30/min ← LB 2b → MF — col 10 -->
-      <div style="position:absolute;left:1405px;top:789px;width:116px;height:116px;background:#061f16;border:1px solid #0f5c3d;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#1D9E75;font-weight:700;">↓ in</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#1D9E75;text-align:center;line-height:1.1;">Rods</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#1D9E75;opacity:0.85;">30/m</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#1D9E75;opacity:0.6;text-align:center;">← LB 2b → MF</span>
-      </div>
-
+    <!-- Input strip -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 80/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">← Floor 2</span></div>
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×1</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×2</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×3</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×4</span></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">← LB 2b → Rotors</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">← LB 2b → MF</span></div>
     </div>
   </div>
 </div>
 
-<!-- ── Legend ──────────────────────────────────────────────────────────── -->
-<div class="legend" style="margin-top:14px;">
-  <div class="l-item"><div class="l-sw" style="background:#2a1208;border:1px solid #7a2e10"></div>Plate network S1–S3 + M1</div>
-  <div class="l-item"><div class="l-sw" style="background:#1a1a18;border:1px solid #44443f"></div>Screw network S1–S4 + M1–M2</div>
-  <div class="l-item"><div class="l-sw" style="background:#200a12;border:1px solid #6b2040"></div>Rods → Rotors</div>
-  <div class="l-item"><div class="l-sw" style="background:#061f16;border:1px solid #0f5c3d"></div>Rods → MF (via LB 4b)</div>
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--plate-bg);border:1px solid var(--plate-bd)"></div>Plate network PS1–PS3 + PM1</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--screw-bg);border:1px solid var(--screw-bd)"></div>Screw network SS1–SS4 + SM1–SM2</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Merger (dark teal)</div>
 </div>
-
-<!-- ── Connection arc colour key ─────────────────────────────────────── -->
-<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--text-muted);line-height:2;">
-  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours — match output label on source to input label on destination</span><br>
-  <span style="color:var(--arc-p1);">■</span> P1 <span style="color:#888">S1 top → M1 bottom · plates 40/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-p2);">■</span> P2 <span style="color:#888">S1 right → S2 bottom · plates 40/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-p3);">■</span> P3 <span style="color:#888">S2 left → M1 right · plates 20/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-p4);">■</span> P4 <span style="color:#888">M1 top → S3 bottom · plates 60/m</span><br>
-  <span style="color:var(--arc-sA);">■</span> sA <span style="color:#888">S1 left → S3 bottom · screws 120/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-sB);">■</span> sB <span style="color:#888">S1 right → S2 bottom · screws 120/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-sD);">■</span> sD <span style="color:#888">S2 left → M2 right · screws 60/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-sF);">■</span> sF <span style="color:#888">S3 right → S4 bottom · screws 60/m</span><br>
-  <span style="color:var(--arc-sH);">■</span> sH <span style="color:#888">S4 left → M1 left · screws 20/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-sI);">■</span> sI <span style="color:#888">S4 right → M1 right · screws 20/m</span>&nbsp;&nbsp;&nbsp;
-  <span style="color:var(--arc-sJ);">■</span> sJ <span style="color:#888">M1 top → M2 left · screws 40/m</span>
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours</span><br>
+  Plate: <span style="color:var(--arc-p1)">■</span> P1 PS1↑→PM1&nbsp; <span style="color:var(--arc-p2)">■</span> P2 PS1→PS2&nbsp; <span style="color:var(--arc-p3)">■</span> P3 PS2←→PM1&nbsp; <span style="color:var(--arc-p4)">■</span> P4 PM1↑→PS3<br>
+  Screw: <span style="color:var(--arc-sA)">■</span> sA SS1→SS3&nbsp; <span style="color:var(--arc-sB)">■</span> sB SS1→SS2&nbsp; <span style="color:var(--arc-sD)">■</span> sD SS2→SM2&nbsp; <span style="color:var(--arc-sF)">■</span> sF SS3→SS4<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--arc-sH)">■</span> sH SS4→SM1&nbsp; <span style="color:var(--arc-sI)">■</span> sI SS4→SM1&nbsp; <span style="color:var(--arc-sJ)">■</span> sJ SM1→SM2
 </div>
-
-<div class="note" style="margin-top:8px;">// PLATES: S1(80→40+40) · P1:40↑→M1 · P2:40→S2 · S2(40→20+20) · 20↑→storage · P3:20←→M1 · M1(P1:40+P3:20→60) · P4:60↑→S3 · S3(60→30+30) · 30↑→RIP-A · 30→RIP-B · all even splits ✓</div>
-<div class="note">// SCREWS: S1(240→sA:120+sB:120) · sA→S3(→60↑RIP-B+sF:60→S4) · sB→S2(→60↑RIP-A+sD:60→M2) · sF→S4(→20↑store+sH:20+sI:20) · sH+sI→M1(→sJ:40→M2) · M2(sJ:40+sD:60→100↑Rotors) · all even splits ✓</div>
-<div class="note">// Row F: plates 80/m (4×20 ← Floor 2) · screws 240/m (4×60 ← Floor 3) · rods 20/m + 30/m ← LB 2b</div>
-<div class="note">// Row A: plates 30/m → RIP-A · plates 30/m → RIP-B · plates 20/m store · screws 60/m → RIP-A · screws 60/m → RIP-B · screws 100/m → Rotors · screws 20/m store · rods 20/m → Rotors · rods 30/m → LB 4b</div>
-<div class="note">// Conservation: plates 80 = 30+30+20 ✓ · screws 240 = 60+60+100+20 ✓ · rods 50 = 20+30 ✓</div>
-
-<div class="belt-req"><strong>⚠ Belt requirements — LB 3b</strong><br>
-Screw trunk 240/min → <strong>Mk.3 required</strong> (270/min cap)<br>
-Screw sub-trunks sA + sB at 120/min → <strong>Mk.3 recommended</strong> (Mk.2 is at exact cap, unreliable)<br>
-Screw belt to Rotors 100/min → <strong>Mk.3 required</strong> (lifter included)<br>
-Screw lifters to RIP-A + RIP-B at 60/min → <strong>Mk.2 required</strong> (Mk.1 is at exact cap)<br>
-Plate and rod belts 20–40/min → Mk.1 sufficient
+<div class="note">// PLATES: PS1(80→P1:40↑PM1 + P2:40→PS2) · PS2(40→store:20 + P3:20→PM1) · PM1(P1:40+P3:20→60) · P4:60↑PS3 · PS3(60→30↑RIP-A + 30→RIP-B) ✓</div>
+<div class="note">// SCREWS: SS1(240→sA:120 SS3 + sB:120 SS2) · SS3(→60↑RIP-B + sF:60 SS4) · SS2(→60↑RIP-A + sD:60 SM2) · SS4(→store:20 + sH:20 + sI:20) · SM1(sH+sI→sJ:40 SM2) · SM2(sJ:40+sD:60→100↑Rotors) ✓</div>
+<div class="note">// Conservation: plates 80 = 30+30+20 ✓ · screws 240 = 60+60+100+20 ✓</div>
+<div class="belt-req"><strong>⚠ Belt requirements</strong><br>
+Screw trunk 240/min → <strong>Mk.3 required</strong><br>
+Screw sub-trunks sA + sB at 120/min → <strong>Mk.3 recommended</strong><br>
+Screw belt to Rotors 100/min → <strong>Mk.3 required</strong>
 </div>
-
 </body>
 </html>

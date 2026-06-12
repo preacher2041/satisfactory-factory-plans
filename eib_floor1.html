@@ -18,6 +18,8 @@
   --eib:#BA7517;--eib-bg:#251500;--eib-bd:#6b4008;
   --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
   --foundry:#993556;--foundry-bg:#200a16;--foundry-bd:#5a1a30;
+  --ispl1:#58C4E8;--ispl2:#F5A623;--ispl3:#B57BEA;
+  --cspl1:#5DD67A;--cspl2:#4FC3F7;--cspl3:#FFB74D;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -30,6 +32,9 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:38px;height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.15;text-align:center;}
+.cell-lbl{position:absolute;font-family:'Share Tech Mono',monospace;font-size:11px;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center;}
 .legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
@@ -43,11 +48,13 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .nav-sep{color:#2a3048;}
 .nav-factory{margin-left:auto;}
 .io-strip{display:flex;gap:0;width:1540px;}
+.io-col{width:154px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;}
 .io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
-.io-ph{width:154px;height:90px;flex-shrink:0;}
+.io-empty{width:154px;height:90px;flex-shrink:0;}
 </style>
 </head>
 <body>
+
 <div class="floorplan-nav">
   <a href="eib_lb0b.html" class="nav-btn">← LB 0b</a>
   <span class="nav-sep">//</span>
@@ -64,10 +71,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <a href="eib_lb1b.html" class="nav-btn">LB 1b →</a>
   <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
+
 <h1>Floor 1 — Foundries</h1>
 <div class="sub">// +20m · 6× foundry @ 100% · 270 steel ingots/min</div>
 
-<!-- Column headers -->
+<!-- Column labels -->
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px"></div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
@@ -82,136 +90,238 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
+<!-- ══ OUTPUT STRIP ══
+     Foundries at cols 3-8, so outputs at cols 3-8. Cols 1-2 and 9-10 empty.
+-->
+<div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <div class="io-empty"></div>
+    <div class="io-empty"></div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F1</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F2</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F3</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F4</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F5</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F6</span>
+      </div>
+    </div>
+    <div class="io-empty"></div>
+    <div class="io-empty"></div>
+  </div>
+</div>
+
+<!-- ══ GRID + ROW LABELS ══ -->
 <div style="display:flex;gap:0;align-items:flex-start">
-  <!-- Row labels -->
   <div style="display:flex;flex-direction:column;width:52px">
-    <div style="height:90px;"></div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
-    <div style="height:90px;"></div>
   </div>
-
-  <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Output strip: ingots out to LB 1b, cols 1–6 -->
-    <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 1</span>
+  <div class="floorplan">
+    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+    <div class="ml">
+      <!-- Foundries at cols 3-8, rows C-E (top=315, height=232px)
+           Col 3 left = 2×154+19 = 327px
+           Each foundry steps +154px
+           F1=327 F2=481 F3=635 F4=789 F5=943 F6=1097 -->
+      <div class="m" style="left:327px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 1</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 2</span>
+      <div class="m" style="left:481px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 2</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 3</span>
+      <div class="m" style="left:635px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 3</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 4</span>
+      <div class="m" style="left:789px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 4</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 5</span>
+      <div class="m" style="left:943px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 5</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Steel Ingots 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">→ LB 1b · Foundry 6</span>
-      </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-    </div>
-
-    <!-- Floor plan grid — machines only -->
-    <div class="floorplan">
-      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-      <div class="ml">
-        <div class="m" style="left:19px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 1</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-        <div class="m" style="left:173px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 2</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-        <div class="m" style="left:327px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 3</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-        <div class="m" style="left:481px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 4</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-        <div class="m" style="left:635px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 5</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-        <div class="m" style="left:789px;top:346px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);"><span class="m-lbl">Foundry 6</span><span class="m-sub">45/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span></div></div>
-      </div>
-    </div>
-
-    <!-- Input strip: ore + coal from LB 0b, cols 1–6 each -->
-    <div class="io-strip" style="margin-top:2px;">
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F1</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F2</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F3</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F4</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F5</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.7;">← LB 0b · F6</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.7;">← LB 0b · F1</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.7;">← LB 0b · F2–3</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.7;">← LB 0b · F4–5</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.7;">← LB 0b · F6</span>
+      <div class="m" style="left:1097px;top:315px;width:116px;height:232px;background:var(--foundry-bg);border:1px solid var(--foundry-bd);color:var(--foundry);">
+        <span class="m-lbl">Foundry 6</span><span class="m-sub">45/min · 100%</span>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#378ADD;background:#0d2240;border:1px solid #1a4a80;border-radius:3px;padding:1px 5px;">← Ore 45/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#888780;background:#1a1a18;border:1px solid #44443f;border-radius:3px;padding:1px 5px;">← Coal 45/m</span>
+        </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ══ INPUT STRIP ══
+     Mirrors LB 0b output strip exactly.
+     Cols 1, 5, 6, 10: empty
+     Cols 2-4: ore pairs (ISPL2 top + ISPL3 bottom)
+     Cols 7-9: coal pairs (CSPL2 top + CSPL3 bottom)
+-->
+<div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
+  <div style="width:52px;"></div>
+  <div class="io-strip">
+    <div class="io-empty"></div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F1</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F4</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F2</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F5</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F3</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F6</span>
+      </div>
+    </div>
+    <div class="io-empty"></div>
+    <div class="io-empty"></div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F1</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F4</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F2</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F5</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F3</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F6</span>
+      </div>
+    </div>
+    <div class="io-empty"></div>
   </div>
 </div>
 
 <div class="legend">
   <div class="l-item"><div class="l-sw" style="background:var(--foundry-bg);border:1px solid var(--foundry-bd)"></div>Foundry × 6</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd)"></div>Steel ingot output</div>
   <div class="l-item"><div class="l-sw" style="background:var(--iron-bg);border:1px solid var(--iron-bd)"></div>Iron ore input</div>
   <div class="l-item"><div class="l-sw" style="background:var(--coal-bg);border:1px solid var(--coal-bd)"></div>Coal input</div>
 </div>
-<div class="note">// Input strip: ore 45/min × 6 + coal 45/min × 6 from LB 0b (separate belts per foundry)</div>
-<div class="note">// Output strip: steel ingots 45/min × 6 = 270/min total → LB 1b</div>
-<div class="note">// Each foundry: 3 ore + 3 coal → 1 ingot per cycle at 45/min · fully consumed ✓</div>
+<div class="note">// Foundries cols 3–8 · inputs from LB 0b · outputs to LB 1b</div>
+<div class="note">// Input strip mirrors LB 0b output strip: ore cols 2–4 (ISPL2+ISPL3) · coal cols 7–9 (CSPL2+CSPL3)</div>
+<div class="note">// Each foundry: 3 ore + 3 coal → 1 ingot per cycle at 45/min · 6 × 45 = 270/min total</div>
+
 </body>
 </html>

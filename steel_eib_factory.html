@@ -276,7 +276,7 @@
   <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="summary-section-title">// Floor heights</div>
     <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m · Storage · 12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m · Ore split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m · Ore &amp; Coal split · 8m</span></div>
     <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m · Foundries · 12m</span></div>
     <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m · Ingot split · 8m</span></div>
     <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m · Beams &amp; Pipes · 12m</span></div>
@@ -288,7 +288,7 @@
 
   <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="summary-section-title">// Belt requirements</div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Iron ore trunk</span><span class="summary-val">Mk.3 · 300/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Iron ore trunk</span><span class="summary-val">Mk.4 · 270/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-coal"></span>Coal trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-limestone"></span>Limestone trunk</span><span class="summary-val">Mk.3 · 240/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
@@ -298,7 +298,7 @@
 
   <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="summary-section-title">// Clock speeds</div>
-    <div class="summary-row"><span class="summary-key">Iron miners (×2)</span><span class="summary-val">250% · 150/min each</span></div>
+    <div class="summary-row"><span class="summary-key">Iron miners (×2, merged)</span><span class="summary-val">250% · 270/min combined</span></div>
     <div class="summary-row"><span class="summary-key">Coal miner (×1)</span><span class="summary-val">112.5% · 270/min</span></div>
     <div class="summary-row"><span class="summary-key">Limestone miners (×2)</span><span class="summary-val">200% · 120/min each</span></div>
     <div class="summary-row"><span class="summary-key">All foundries (×6)</span><span class="summary-val">100% · 45/min each</span></div>
@@ -488,8 +488,8 @@
           <span class="chip-label chip-iron-l">LB 0b · +12m</span>
           <span class="lb-arrow">→</span>
           <div class="lb-branches">
-            <div><span class="lb-branch-a">Iron ore 300/min → S1(150) + S2(150) → 3× 50/min each side → 6 foundries</span></div>
-            <div><span class="lb-branch-b">Coal 270/min → manifold → 6× 45/min to foundries</span></div>
+            <div><span class="lb-branch-a">Iron ore 270/min → ISPL1 → ISPL2(135) + ISPL3(135) → 3×45/min each → 6 foundries</span></div>
+            <div><span class="lb-branch-b">Coal 270/min → CSPL1 → CSPL2(135) + CSPL3(135) → 3×45/min each → 6 foundries</span></div>
           </div>
         </div>
         <div class="lb-row" style="margin-top:6px">

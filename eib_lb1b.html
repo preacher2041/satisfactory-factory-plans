@@ -3,35 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LB 1b — Ingot Manifold — Steel &amp; EIB Factory</title>
+<title>LB 1b — Ingot Load Balancer — Steel &amp; EIB Factory</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
-:root{--bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;--ingot:#D85A30;--ingot-bg:#2a1208;--ingot-bd:#7a2e10;--beam:#c4880a;--beam-bg:#1f1500;--beam-bd:#5c3a00;--pipe:#6abf25;--pipe-bg:#0d1a04;--pipe-bd:#254a08;}
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --ingot:#D85A30;--ingot-bg:#2a1208;--ingot-bd:#7a2e10;
+  --beam:#c4880a;--beam-bg:#1f1500;--beam-bd:#5c3a00;
+  --pipe:#6abf25;--pipe-bg:#0d1a04;--pipe-bd:#254a08;
+  --merger-bg:#0a1a1a;--merger-bd:#1a5a5a;
+  /* Node colours */
+  --spl1:#58C4E8;
+  --spl2:#F5A623;
+  --spl3:#B57BEA;
+  --mrg1:#5DD67A;
+  --mrg2:#4FC3F7;
+  --mrg3:#FFB74D;
+  --mrg4:#80CBC4;
+  --mrg5:#AED581;
+  --mrg6:#4DD0E1;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
-h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
-.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
-.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.2;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
-.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
-.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.nav-sep{color:#2a3048;}
+.nav-factory{margin-left:auto;}
 .io-strip{display:flex;gap:0;width:1540px;}
 .io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .io-ph{width:154px;height:90px;flex-shrink:0;}
-</style></head><body>
-<div class="floorplan-nav"><a href="eib_floor1.html" class="nav-btn">← Floor 1</a><span class="nav-sep">//</span><a href="eib_ground.html" class="nav-btn">Ground</a><a href="eib_lb0b.html" class="nav-btn">LB 0b</a><a href="eib_floor1.html" class="nav-btn">Floor 1</a><span class="nav-current">LB 1b</span><a href="eib_floor2.html" class="nav-btn">Floor 2</a><a href="eib_lb2b.html" class="nav-btn">LB 2b</a><a href="eib_floor3.html" class="nav-btn">Floor 3</a><a href="eib_lb3b.html" class="nav-btn">LB 3b</a><a href="eib_floor4.html" class="nav-btn">Floor 4</a><span class="nav-sep">//</span><a href="eib_floor2.html" class="nav-btn">Floor 2 →</a><a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a></div>
-<h1>LB 1b — Ingot Manifold</h1>
-<div class="sub">// +32m · 8m tall · 270/min ingot trunk → 4× beam tap 60/m + 1× pipe tap 30/m · fully consumed</div>
+</style>
+</head>
+<body>
 
-<div style="display:flex;margin-left:0;margin-bottom:3px">
+<div class="floorplan-nav">
+  <a href="eib_floor1.html" class="nav-btn">← Floor 1</a>
+  <span class="nav-sep">//</span>
+  <a href="eib_ground.html" class="nav-btn">Ground</a>
+  <a href="eib_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="eib_floor1.html" class="nav-btn">Floor 1</a>
+  <span class="nav-current">LB 1b</span>
+  <a href="eib_floor2.html" class="nav-btn">Floor 2</a>
+  <a href="eib_lb2b.html" class="nav-btn">LB 2b</a>
+  <a href="eib_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="eib_lb3b.html" class="nav-btn">LB 3b</a>
+  <a href="eib_floor4.html" class="nav-btn">Floor 4</a>
+  <span class="nav-sep">//</span>
+  <a href="eib_floor2.html" class="nav-btn">Floor 2 →</a>
+  <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+
+<h1>LB 1b — Ingot Load Balancer</h1>
+<div class="sub">// +32m · 8m tall · 6×45/min ingot inputs → 3 splitters + 6 mergers → 4×60/min (beams) + 1×30/min (pipe) · 270/min total ✓</div>
+
+<!-- Column labels -->
+<div style="display:flex;margin-bottom:3px">
   <div style="width:52px"></div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
@@ -46,6 +86,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <div style="display:flex;gap:0;align-items:flex-start">
+  <!-- Row labels -->
   <div style="display:flex;flex-direction:column;width:52px">
     <div style="height:90px;"></div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
@@ -58,80 +99,267 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Output strip: 4 belt outputs to beam constructors + 1 to pipe constructor -->
+
+    <!-- ══ OUTPUT STRIP (above grid) ══ -->
     <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.2 Beam 1</span>
-      </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.2 Beam 2</span>
-      </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.2 Beam 3</span>
-      </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.2 Beam 4</span>
-      </div>
       <div class="io-ph"></div>
       <div class="io-ph"></div>
+      <!-- Col 3: MRG1 → 60 → Fl.2 Beam 1 -->
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg1);">← MRG1</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">→ Fl.2 Beam 1</span>
+      </div>
+      <!-- Col 4: MRG6 → 60 → Fl.2 Beam 2 -->
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg6);">← MRG6</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">→ Fl.2 Beam 2</span>
+      </div>
+      <!-- Col 5: MRG3 → 60 → Fl.2 Beam 3 -->
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg3);">← MRG3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">→ Fl.2 Beam 3</span>
+      </div>
+      <!-- Col 6: MRG4 → 60 → Fl.2 Beam 4 -->
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Ingots 60/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg4);">← MRG4</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">→ Fl.2 Beam 4</span>
+      </div>
+      <div class="io-ph"></div>
+      <!-- Col 8: MRG5 → 30 → Fl.2 Pipe 1 -->
       <div class="io-block" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--pipe);">Ingots 30/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);opacity:0.7;">→ Fl.2 Pipe 1</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg5);">← MRG5</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);opacity:0.6;">→ Fl.2 Pipe 1</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div>
+      <div class="io-ph"></div>
     </div>
 
-    <!-- Floor plan grid — pass-through manifold, no splitter nodes -->
+    <!-- ══ FLOOR PLAN GRID ══ -->
     <div class="floorplan">
+      <!-- Row A -->
       <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <!-- Row B -->
       <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <!-- Row C -->
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <!-- Row D -->
       <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <!-- Row E -->
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <!-- Row F -->
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-      <div class="ml">
-        <!-- Manifold diagram — no splitter nodes, just a descriptive block -->
-        <div style="position:absolute;left:7px;top:154px;width:1526px;height:616px;background:#0d1018;border:1px dashed var(--ingot-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot Manifold Trunk — 270/min</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#7a2e10;">Belt runs left → right through all 5 constructors on Floor 2</span>
-          <div style="display:flex;gap:24px;align-items:center;margin-top:8px;">
-            <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--beam);">Beam ×4</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#5c3a00;">tap 60/m each</span></div>
-            <span style="font-family:'Share Tech Mono',monospace;font-size:18px;color:#3a4460;">+</span>
-            <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--pipe);">Pipe ×1</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#254a08;">tap 30/m</span></div>
-            <span style="font-family:'Share Tech Mono',monospace;font-size:18px;color:#3a4460;">=</span>
-            <div style="text-align:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--ingot);">270/m total</span><br><span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#7a2e10;">fully consumed ✓</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Input strip: ingots 270/min from Floor 1 -->
+      <div class="ml">
+
+        <!-- ══ ROW B: OUTPUT MERGERS ══ -->
+
+        <!-- MRG1 @ B3: SPL1-arm1(15) + direct-input(45) = 60
+             Top = output (to strip)
+             Bottom = SPL1 arm1 (source: spl1 colour)
+             Left = direct input 45 (terminal: ingot colour) -->
+        <div class="blk" style="left:315px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg1);">MRG1<br><span style="font-size:10px;color:var(--ingot);">60/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ingot);">60/m<br>↑out</div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl1);">SPL1<br>15/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+        </div>
+
+        <!-- MRG6 @ B4: SPL1-arm2(15) + MRG2(45) = 60
+             Top = output (to strip)
+             Bottom = MRG2 (source: mrg2 colour)
+             Left = SPL1 arm2 (source: spl1 colour) -->
+        <div class="blk" style="left:469px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg6);">MRG6<br><span style="font-size:10px;color:var(--ingot);">60/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ingot);">60/m<br>↑out</div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--mrg2);">MRG2<br>45/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);">SPL1<br>15/m</div>
+        </div>
+
+        <!-- MRG3 @ B5: SPL2-arm1(15) + direct-input(45) = 60
+             Top = output (to strip)
+             Bottom = SPL2 arm1 (source: spl2 colour)
+             Right = direct input 45 (terminal: ingot colour) -->
+        <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg3);">MRG3<br><span style="font-size:10px;color:var(--ingot);">60/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ingot);">60/m<br>↑out</div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl2);">SPL2<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+        </div>
+
+        <!-- MRG4 @ B6: SPL3-arm1(15) + direct-input(45) = 60
+             Top = output (to strip)
+             Bottom = SPL3 arm1 (source: spl3 colour)
+             Right = direct input 45 (terminal: ingot colour) -->
+        <div class="blk" style="left:777px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg4);">MRG4<br><span style="font-size:10px;color:var(--ingot);">60/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ingot);">60/m<br>↑out</div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl3);">SPL3<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+        </div>
+
+        <!-- MRG5 @ B8: SPL3-arm2(15) + SPL3-arm3(15) = 30
+             Top = output (to strip)
+             Left = SPL3 arm2 (source: spl3 colour)
+             Right = SPL3 arm3 (source: spl3 colour) -->
+        <div class="blk" style="left:1085px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg5);">MRG5<br><span style="font-size:10px;color:var(--ingot);">30/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ingot);">30/m<br>↑out</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl3);">SPL3<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl3);">SPL3<br>15/m</div>
+        </div>
+
+        <!-- ══ ROW C: INTERMEDIATE MERGER ══ -->
+
+        <!-- MRG2 @ C4: SPL1-arm3(15) + SPL2-arm2(15) + SPL2-arm3(15) = 45
+             Top = output → MRG6 (destination: mrg6 colour)
+             Left = SPL1 arm3 (source: spl1 colour)
+             Right = SPL2 arm2 (source: spl2 colour)
+             Bottom = SPL2 arm3 (source: spl2 colour) -->
+        <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--mrg2);">MRG2<br><span style="font-size:10px;color:var(--ingot);">45/m</span></div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg6);">MRG6<br>45/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);">SPL1<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);">SPL2<br>15/m</div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl2);">SPL2<br>15/m</div>
+        </div>
+
+        <!-- ══ ROW D: SPLITTERS ══ -->
+
+        <!-- SPL1 @ D3: 45 in → arm1(15)→MRG1 · arm2(15)→MRG6 · arm3(15)→MRG2
+             Bottom = input (terminal: ingot colour)
+             Top = arm1 → MRG1 (destination: mrg1 colour)
+             Left = arm2 → MRG6 (destination: mrg6 colour)
+             Right = arm3 → MRG2 (destination: mrg2 colour) -->
+        <div class="blk" style="left:315px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--spl1);">SPL1<br><span style="font-size:10px;color:var(--ingot);">45→3×15</span></div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg1);">MRG1<br>15/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg6);">MRG6<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--mrg2);">MRG2<br>15/m</div>
+        </div>
+
+        <!-- SPL2 @ D5: 45 in → arm1(15)→MRG3 · arm2(15)→MRG2 · arm3(15)→MRG2
+             Bottom = input (terminal: ingot colour)
+             Top = arm1 → MRG3 (destination: mrg3 colour)
+             Left = arm2 → MRG2 (destination: mrg2 colour)
+             Right = arm3 → MRG2 (destination: mrg2 colour) -->
+        <div class="blk" style="left:623px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--spl2);">SPL2<br><span style="font-size:10px;color:var(--ingot);">45→3×15</span></div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg3);">MRG3<br>15/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg2);">MRG2<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--mrg2);">MRG2<br>15/m</div>
+        </div>
+
+        <!-- SPL3 @ D7: 45 in → arm1(15)→MRG4 · arm2(15)→MRG5 · arm3(15)→MRG5
+             Bottom = input (terminal: ingot colour)
+             Top = arm1 → MRG4 (destination: mrg4 colour)
+             Left = arm2 → MRG5 (destination: mrg5 colour)
+             Right = arm3 → MRG5 (destination: mrg5 colour) -->
+        <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+          <div class="pz" style="left:47px;top:47px;font-size:13px;font-weight:700;color:var(--spl3);">SPL3<br><span style="font-size:10px;color:var(--ingot);">45→3×15</span></div>
+          <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ingot);">45/m<br>in</div>
+          <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg4);">MRG4<br>15/m</div>
+          <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg5);">MRG5<br>15/m</div>
+          <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--mrg5);">MRG5<br>15/m</div>
+        </div>
+
+      </div><!-- end .ml -->
+    </div><!-- end .floorplan -->
+
+    <!-- ══ INPUT STRIP (below grid) ══ -->
     <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
+      <div class="io-ph"></div>
+      <!-- Col 3: 45 → SPL1 -->
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 270/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← Fl.1 · 6 belts merged</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--spl1);">→ SPL1</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 1+2</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <!-- Col 4: 45 → MRG1 direct -->
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg1);">→ MRG1</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 1+2</span>
+      </div>
+      <!-- Col 5: 45 → SPL2 -->
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--spl2);">→ SPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 3+4</span>
+      </div>
+      <!-- Col 6: 45 → MRG3 direct -->
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg3);">→ MRG3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 3+4</span>
+      </div>
+      <!-- Col 7: 45 → SPL3 -->
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--spl3);">→ SPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 5+6</span>
+      </div>
+      <!-- Col 8: 45 → MRG4 direct -->
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--mrg4);">→ MRG4</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 Fdy 5+6</span>
+      </div>
+      <div class="io-ph"></div>
+      <div class="io-ph"></div>
     </div>
+
   </div>
 </div>
 
+<!-- LEGEND -->
 <div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd)"></div>Ingot manifold 270/min</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--beam-bg);border:1px solid var(--beam-bd)"></div>To beam constructors 240/min</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd)"></div>To pipe constructor 30/min</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>Splitter · 45/min → 3×15/min</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--merger-bg);border:2px dashed var(--merger-bd);"></div>Merger</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--beam-bg);border:1px solid var(--beam-bd);"></div>Output → beam constructors 60/min</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd);"></div>Output → pipe constructor 30/min</div>
 </div>
-<div class="note">// Pass-through manifold — no splitter nodes on this floor; trunk belt routes from Floor 1 up to Floor 2</div>
-<div class="note">// Manifold: trunk belt carries 270/min · 4 beam constructors each tap 60/m = 240 · pipe constructor taps 30/m · total 270 = 270 ✓</div>
-</body></html>
+
+<!-- Node colour key -->
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2.2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
+  <span style="color:var(--spl1)">■ SPL1</span> &nbsp;
+  <span style="color:var(--spl2)">■ SPL2</span> &nbsp;
+  <span style="color:var(--spl3)">■ SPL3</span> &nbsp;
+  <span style="color:var(--mrg1)">■ MRG1</span> &nbsp;
+  <span style="color:var(--mrg2)">■ MRG2</span> &nbsp;
+  <span style="color:var(--mrg3)">■ MRG3</span> &nbsp;
+  <span style="color:var(--mrg4)">■ MRG4</span> &nbsp;
+  <span style="color:var(--mrg5)">■ MRG5</span> &nbsp;
+  <span style="color:var(--mrg6)">■ MRG6</span>
+</div>
+
+<div class="note">// SPL1 (E3): 45/min → arm1(15)→MRG1 · arm2(15)→MRG6 · arm3(15)→MRG2</div>
+<div class="note">// SPL2 (E5): 45/min → arm1(15)→MRG3 · arm2(15)→MRG2 · arm3(15)→MRG2</div>
+<div class="note">// SPL3 (E7): 45/min → arm1(15)→MRG4 · arm2(15)→MRG5 · arm3(15)→MRG5</div>
+<div class="note">// MRG2 (C4): SPL1-arm3(15) + SPL2-arm2(15) + SPL2-arm3(15) = 45 → MRG6</div>
+<div class="note">// MRG6 (A4): SPL1-arm2(15) + MRG2(45) = 60 · MRG1(A3): SPL1-arm1(15) + direct(45) = 60</div>
+<div class="note">// MRG3 (A5): SPL2-arm1(15) + direct(45) = 60 · MRG4(A6): SPL3-arm1(15) + direct(45) = 60</div>
+<div class="note">// MRG5 (A8): SPL3-arm2(15) + SPL3-arm3(15) = 30</div>
+<div class="note">// Total in: 6×45 = 270/min · Total out: 4×60 + 1×30 = 270/min ✓</div>
+
+</body>
+</html>

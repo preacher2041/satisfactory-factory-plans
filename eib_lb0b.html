@@ -82,7 +82,22 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 
 <!-- ══ INPUT STRIP (above grid) ══ -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
-  <div style="width:52px;"></div><div class="floorplan">
+  <div style="width:52px;"></div>
+  <div style="display:flex;gap:2px;width:1540px;">
+    <div style="width:769px;height:90px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift — merged ore lines</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — 270/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl1);">→ ISPL1</span>
+    </div>
+    <div style="width:769px;height:90px;background:var(--coal-bg);border:1px solid var(--coal-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift — coal miner</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal — 270/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl1);">→ CSPL1</span>
+    </div>
+  </div>
+</div>
+
+  <div class="floorplan">
     <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
     <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
     <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
@@ -339,21 +354,6 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
   </div>
-
-  
-  <div style="display:flex;gap:2px;width:1540px;">
-    <div style="width:769px;height:90px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift — merged ore lines</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — 270/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl1);">→ ISPL1</span>
-    </div>
-    <div style="width:769px;height:90px;background:var(--coal-bg);border:1px solid var(--coal-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift — coal miner</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal — 270/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl1);">→ CSPL1</span>
-    </div>
-  </div>
-</div>
 
 <!-- LEGEND -->
 <div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">

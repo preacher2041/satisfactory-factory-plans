@@ -86,39 +86,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Output strip: EIB → Ground storage -->
+    <!-- Input strip (above grid): beams + concrete from LB 3b, per assembler -->
     <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB 6/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-A</span>
-      </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB 6/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-B</span>
-      </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-    </div>
-
-    <!-- Floor plan grid -->
-    <div class="floorplan">
-      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-      <div class="ml">
-        <div class="m" style="left:180px;top:334px;width:256px;height:256px;background:var(--eib-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB-A</span><span class="m-sub">6/min · 100%</span><div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:3px;padding:1px 5px;">← Beam 18/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:3px;padding:1px 5px;">← Concrete 36/m</span></div></div>
-        <div class="m" style="left:796px;top:334px;width:256px;height:256px;background:var(--eib-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB-B</span><span class="m-sub">6/min · 100%</span><div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:3px;padding:1px 5px;">← Beam 18/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:3px;padding:1px 5px;">← Concrete 36/m</span></div></div>
-      </div>
-    </div>
-
-    <!-- Input strip: beams + concrete from LB 3b, per assembler -->
-    <div class="io-strip" style="margin-top:2px;">
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
@@ -148,7 +117,38 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   </div>
 </div>
 
-<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--eib-bg);border:1px solid var(--eib-bd)"></div>EIB assembler × 2 @ 100% · 6/m each</div></div>
+<div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <div class="m" style="left:180px;top:334px;width:256px;height:256px;background:var(--eib-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB-A</span><span class="m-sub">6/min · 100%</span><div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:3px;padding:1px 5px;">← Beam 18/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:3px;padding:1px 5px;">← Concrete 36/m</span></div></div>
+        <div class="m" style="left:796px;top:334px;width:256px;height:256px;background:var(--eib-bg);border:1px solid var(--eib-bd);color:var(--eib);"><span class="m-lbl">EIB-B</span><span class="m-sub">6/min · 100%</span><div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);background:var(--beam-bg);border:1px solid var(--beam-bd);border-radius:3px;padding:1px 5px;">← Beam 18/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:3px;padding:1px 5px;">← Concrete 36/m</span></div></div>
+      </div>
+    </div>
+
+    <!-- Output strip (below grid): EIB → Ground storage -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB 6/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-A</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB 6/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-B</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+
+    <!-- Floor plan grid -->
+    <div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--eib-bg);border:1px solid var(--eib-bd)"></div>EIB assembler × 2 @ 100% · 6/m each</div></div>
 <div class="note">// Input strip: beams 18/min + concrete 36/min per assembler from LB 3b</div>
 <div class="note">// Output strip: EIB 6/min each → Ground storage by external belt lift</div>
 <div class="note">// Recipe: 3 beams + 6 concrete → 1 EIB per cycle · 6/min @ 100% · consumption: 6×3=18 beams, 6×6=36 concrete ✓</div>

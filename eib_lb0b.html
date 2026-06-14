@@ -80,7 +80,145 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
-<!-- ══ OUTPUT STRIP ══
+<!-- ══ INPUT STRIP (above grid) ══ -->
+<div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
+  <div style="width:52px;"></div>
+  <div style="display:flex;gap:2px;width:1540px;">
+    <div style="width:769px;height:90px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift — merged ore lines</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — 270/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl1);">→ ISPL1</span>
+    </div>
+    <div style="width:769px;height:90px;background:var(--coal-bg);border:1px solid var(--coal-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift — coal miner</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal — 270/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl1);">→ CSPL1</span>
+    </div>
+  </div>
+</div>
+<div class="floorplan">
+    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+
+    <div class="ml">
+      <!-- Divider between ore (cols 1–5) and coal (cols 6–10) -->
+      <div class="divider"></div>
+
+      <!-- ══════════════════════════════════════════
+           NODE POSITIONS
+           Row C top = 2×154+7 = 315px
+           Row E top = 4×154+7 = 623px
+           Col 2 left = 1×154+7 = 161px
+           Col 3 left = 2×154+7 = 315px
+           Col 4 left = 3×154+7 = 469px
+           Col 7 left = 6×154+7 = 931px
+           Col 8 left = 7×154+7 = 1085px
+           Col 9 left = 8×154+7 = 1239px
+
+           All splitters: input = bottom · outputs = left / top / right
+           ══════════════════════════════════════════ -->
+
+      <!-- ═══════════════════════
+           IRON ORE NETWORK
+           ISPL1: E3 → left=315, top=623
+           ISPL2: C2 → left=161, top=315
+           ISPL3: C4 → left=469, top=315
+           ═══════════════════════ -->
+
+      <!-- ISPL1 — E3
+           Bottom: 270/m in (material colour)
+           Left:   135/m → ISPL2 (ispl2 colour)
+           Top:    unused
+           Right:  135/m → ISPL3 (ispl3 colour) -->
+      <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl1);font-weight:700;">ISPL1</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--iron);">270/m<br>↓ in</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--ispl2);">ISPL2<br>135/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--ispl3);">ISPL3<br>135/m</div>
+      </div>
+
+      <!-- ISPL2 — C2
+           Bottom: 135/m from ISPL1 (ispl1 colour)
+           Left:   45/m → F1, col 2 (material colour)
+           Top:    45/m → F2, col 3 (material colour)
+           Right:  45/m → F3, col 4 (material colour) -->
+      <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl2);font-weight:700;">ISPL2</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F1</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F2</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F3</div>
+      </div>
+
+      <!-- ISPL3 — C4
+           Bottom: 135/m from ISPL1 (ispl1 colour)
+           Left:   45/m → F4, col 2 (material colour)
+           Top:    45/m → F5, col 3 (material colour)
+           Right:  45/m → F6, col 4 (material colour) -->
+      <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl3);font-weight:700;">ISPL3</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F4</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F5</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F6</div>
+      </div>
+
+      <!-- ═══════════════════════
+           COAL NETWORK
+           CSPL1: E8 → left=1085, top=623
+           CSPL2: C7 → left=931,  top=315
+           CSPL3: C9 → left=1239, top=315
+           ═══════════════════════ -->
+
+      <!-- CSPL1 — E8
+           Bottom: 270/m in (material colour)
+           Left:   135/m → CSPL2 (cspl2 colour)
+           Top:    unused
+           Right:  135/m → CSPL3 (cspl3 colour) -->
+      <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl1);font-weight:700;">CSPL1</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--coal);">270/m<br>↓ in</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--cspl2);">CSPL2<br>135/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--cspl3);">CSPL3<br>135/m</div>
+      </div>
+
+      <!-- CSPL2 — C7
+           Bottom: 135/m from CSPL1 (cspl1 colour)
+           Left:   45/m → F1, col 7 (material colour)
+           Top:    45/m → F2, col 8 (material colour)
+           Right:  45/m → F3, col 9 (material colour) -->
+      <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl2);font-weight:700;">CSPL2</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F1</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F2</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F3</div>
+      </div>
+
+      <!-- CSPL3 — C9
+           Bottom: 135/m from CSPL1 (cspl1 colour)
+           Left:   45/m → F4, col 7 (material colour)
+           Top:    45/m → F5, col 8 (material colour)
+           Right:  45/m → F6, col 9 (material colour) -->
+      <div class="blk" style="left:1239px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl3);font-weight:700;">CSPL3</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F4</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F5</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F6</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ OUTPUT STRIP (below grid) ══
      Col 1:   empty
      Col 2:   ISPL2 left (→F1) stacked on ISPL3 left (→F4)   — ore × 2
      Col 3:   ISPL2 top  (→F2) stacked on ISPL3 top  (→F5)   — ore × 2
@@ -92,7 +230,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
      Col 9:   CSPL2 right(→F3) stacked on CSPL3 right(→F6)   — coal × 2
      Col 10:  empty
 -->
-<div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
+<div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
   <div style="width:52px;"></div>
   <div class="io-strip">
 
@@ -216,144 +354,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
   </div>
 
-  <div class="floorplan">
-    <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-    <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-    <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-
-    <div class="ml">
-      <!-- Divider between ore (cols 1–5) and coal (cols 6–10) -->
-      <div class="divider"></div>
-
-      <!-- ══════════════════════════════════════════
-           NODE POSITIONS
-           Row C top = 2×154+7 = 315px
-           Row E top = 4×154+7 = 623px
-           Col 2 left = 1×154+7 = 161px
-           Col 3 left = 2×154+7 = 315px
-           Col 4 left = 3×154+7 = 469px
-           Col 7 left = 6×154+7 = 931px
-           Col 8 left = 7×154+7 = 1085px
-           Col 9 left = 8×154+7 = 1239px
-
-           All splitters: input = bottom · outputs = left / top / right
-           ══════════════════════════════════════════ -->
-
-      <!-- ═══════════════════════
-           IRON ORE NETWORK
-           ISPL1: E3 → left=315, top=623
-           ISPL2: C2 → left=161, top=315
-           ISPL3: C4 → left=469, top=315
-           ═══════════════════════ -->
-
-      <!-- ISPL1 — E3
-           Bottom: 270/m in (material colour)
-           Left:   135/m → ISPL2 (ispl2 colour)
-           Top:    unused
-           Right:  135/m → ISPL3 (ispl3 colour) -->
-      <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl1);font-weight:700;">ISPL1</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--iron);">270/m<br>↓ in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--ispl2);">ISPL2<br>135/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--ispl3);">ISPL3<br>135/m</div>
-      </div>
-
-      <!-- ISPL2 — C2
-           Bottom: 135/m from ISPL1 (ispl1 colour)
-           Left:   45/m → F1, col 2 (material colour)
-           Top:    45/m → F2, col 3 (material colour)
-           Right:  45/m → F3, col 4 (material colour) -->
-      <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl2);font-weight:700;">ISPL2</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F1</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F2</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F3</div>
-      </div>
-
-      <!-- ISPL3 — C4
-           Bottom: 135/m from ISPL1 (ispl1 colour)
-           Left:   45/m → F4, col 2 (material colour)
-           Top:    45/m → F5, col 3 (material colour)
-           Right:  45/m → F6, col 4 (material colour) -->
-      <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl3);font-weight:700;">ISPL3</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F4</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F5</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F6</div>
-      </div>
-
-      <!-- ═══════════════════════
-           COAL NETWORK
-           CSPL1: E8 → left=1085, top=623
-           CSPL2: C7 → left=931,  top=315
-           CSPL3: C9 → left=1239, top=315
-           ═══════════════════════ -->
-
-      <!-- CSPL1 — E8
-           Bottom: 270/m in (material colour)
-           Left:   135/m → CSPL2 (cspl2 colour)
-           Top:    unused
-           Right:  135/m → CSPL3 (cspl3 colour) -->
-      <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl1);font-weight:700;">CSPL1</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--coal);">270/m<br>↓ in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--cspl2);">CSPL2<br>135/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--cspl3);">CSPL3<br>135/m</div>
-      </div>
-
-      <!-- CSPL2 — C7
-           Bottom: 135/m from CSPL1 (cspl1 colour)
-           Left:   45/m → F1, col 7 (material colour)
-           Top:    45/m → F2, col 8 (material colour)
-           Right:  45/m → F3, col 9 (material colour) -->
-      <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl2);font-weight:700;">CSPL2</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F1</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F2</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F3</div>
-      </div>
-
-      <!-- CSPL3 — C9
-           Bottom: 135/m from CSPL1 (cspl1 colour)
-           Left:   45/m → F4, col 7 (material colour)
-           Top:    45/m → F5, col 8 (material colour)
-           Right:  45/m → F6, col 9 (material colour) -->
-      <div class="blk" style="left:1239px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl3);font-weight:700;">CSPL3</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F4</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F5</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F6</div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ══ INPUT STRIP ══ -->
-<div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
-  <div style="width:52px;"></div>
-  <div style="display:flex;gap:2px;width:1540px;">
-    <div style="width:769px;height:90px;background:var(--iron-bg);border:1px solid var(--iron-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift — merged ore lines</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--iron);">Iron Ore — 270/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl1);">→ ISPL1</span>
-    </div>
-    <div style="width:769px;height:90px;background:var(--coal-bg);border:1px solid var(--coal-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift — coal miner</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal — 270/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl1);">→ CSPL1</span>
-    </div>
-  </div>
-</div>
+  
 
 <!-- LEGEND -->
 <div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">

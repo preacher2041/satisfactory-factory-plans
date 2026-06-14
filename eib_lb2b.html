@@ -86,43 +86,20 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Output strip: 5 limestone outputs (cols 1–5) + 1 surplus/uncollected (col 6) -->
+    <!-- Input strip (above grid): limestone 240/min from miners -->
     <div class="io-strip" style="margin-bottom:2px;">
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 1</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 2</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 3</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 4</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 5</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);opacity:0.5;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">— surplus</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ not consumed</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 240/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">← limestone miners</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
+  </div>
+</div>
 
-    <!-- Floor plan grid -->
-    <div class="floorplan">
+<div class="floorplan">
       <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
       <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
@@ -164,20 +141,43 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       </div>
     </div>
 
-    <!-- Input strip: limestone 240/min from miners -->
+    <!-- Output strip (below grid): 5 limestone outputs (cols 1–5) + 1 surplus/uncollected (col 6) -->
     <div class="io-strip" style="margin-top:2px;">
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 240/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">← limestone miners</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 1</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 2</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 3</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 4</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 5</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);opacity:0.5;">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">— surplus</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ not consumed</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
-  </div>
-</div>
 
-<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd)"></div>Splitter · limestone</div></div>
+    <!-- Floor plan grid -->
+    <div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd)"></div>Splitter · limestone</div></div>
 <div class="note">// Input: 240/min limestone · SPL1–SPL5 each tap 45/m · 240 − 5×45 = 15/min surplus on belt (uncollected)</div>
 <div class="note">// Output: 5 belts × 45/min → Floor 3 concrete constructors</div>
 <div class="belt-req"><strong>⚠ Mk.3 required — limestone trunk 240/min</strong><br>Trunk enters at 240/min. Exceeds Mk.2 cap (120/min). Must use Mk.3 (270/min cap).</div>

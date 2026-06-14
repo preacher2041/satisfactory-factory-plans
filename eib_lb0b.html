@@ -111,8 +111,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 
       <!-- ══════════════════════════════════════════
            NODE POSITIONS
-           Row C top = 2×154+7 = 315px
-           Row E top = 4×154+7 = 623px
+           Row C top = 2×154+7 = 315px   (ISPL1, CSPL1 — trunk receivers)
+           Row E top = 4×154+7 = 623px   (ISPL2, ISPL3, CSPL2, CSPL3 — outputs)
            Col 2 left = 1×154+7 = 161px
            Col 3 left = 2×154+7 = 315px
            Col 4 left = 3×154+7 = 469px
@@ -120,7 +120,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Col 8 left = 7×154+7 = 1085px
            Col 9 left = 8×154+7 = 1239px
 
-           All splitters: input = bottom · outputs = left / top / right
+           All splitters: input = top · outputs = bottom / left / right
            ══════════════════════════════════════════ -->
 
       <!-- ═══════════════════════
@@ -135,11 +135,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   135/m → ISPL2 (ispl2 colour)
            Top:    unused
            Right:  135/m → ISPL3 (ispl3 colour) -->
-      <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+      <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl1);font-weight:700;">ISPL1</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--iron);">270/m<br>↓ in</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">270/m</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--ispl2);">ISPL2<br>135/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:#2a3048;">—</div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--ispl3);">ISPL3<br>135/m</div>
       </div>
 
@@ -148,12 +148,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   45/m → F1, col 2 (material colour)
            Top:    45/m → F2, col 3 (material colour)
            Right:  45/m → F3, col 4 (material colour) -->
-      <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+      <div class="blk" style="left:161px;top:623px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl2);font-weight:700;">ISPL2</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F1</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F2</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F3</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--iron);">45/m</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m</div>
       </div>
 
       <!-- ISPL3 — C4
@@ -161,12 +161,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   45/m → F4, col 2 (material colour)
            Top:    45/m → F5, col 3 (material colour)
            Right:  45/m → F6, col 4 (material colour) -->
-      <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
+      <div class="blk" style="left:469px;top:623px;width:140px;height:140px;background:var(--iron-bg);border:1px solid var(--iron-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--ispl3);font-weight:700;">ISPL3</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F4</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--iron);">45/m<br>↑F5</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m<br>↑F6</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--ispl1);">ISPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--iron);">45/m</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--iron);">45/m</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--iron);">45/m</div>
       </div>
 
       <!-- ═══════════════════════
@@ -181,11 +181,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   135/m → CSPL2 (cspl2 colour)
            Top:    unused
            Right:  135/m → CSPL3 (cspl3 colour) -->
-      <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+      <div class="blk" style="left:1085px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl1);font-weight:700;">CSPL1</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--coal);">270/m<br>↓ in</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">270/m</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--cspl2);">CSPL2<br>135/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:#2a3048;">—</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:#2a3048;">—</div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--cspl3);">CSPL3<br>135/m</div>
       </div>
 
@@ -194,12 +194,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   45/m → F1, col 7 (material colour)
            Top:    45/m → F2, col 8 (material colour)
            Right:  45/m → F3, col 9 (material colour) -->
-      <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+      <div class="blk" style="left:931px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl2);font-weight:700;">CSPL2</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F1</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F2</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F3</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--coal);">45/m</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m</div>
       </div>
 
       <!-- CSPL3 — C9
@@ -207,12 +207,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Left:   45/m → F4, col 7 (material colour)
            Top:    45/m → F5, col 8 (material colour)
            Right:  45/m → F6, col 9 (material colour) -->
-      <div class="blk" style="left:1239px;top:315px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
+      <div class="blk" style="left:1239px;top:623px;width:140px;height:140px;background:var(--coal-bg);border:1px solid var(--coal-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--cspl3);font-weight:700;">CSPL3</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F4</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--coal);">45/m<br>↑F5</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m<br>↑F6</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--cspl1);">CSPL1<br>135/m</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--coal);">45/m</div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--coal);">45/m</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--coal);">45/m</div>
       </div>
 
     </div>
@@ -364,7 +364,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="width:13px;height:13px;border-radius:2px;background:var(--coal-bg);border:1px solid var(--coal-bd);flex-shrink:0;"></div>Splitter · coal
   </div>
   <div style="display:flex;align-items:center;gap:6px;color:var(--text-muted);">
-    All splitters: input = bottom · outputs = left / top / right
+    All splitters: input = top · outputs = bottom / left / right
   </div>
 </div>
 

@@ -280,7 +280,7 @@
     <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m · Foundries · 12m</span></div>
     <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m · Ingot split · 8m</span></div>
     <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m · Beams &amp; Pipes · 12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m · Limestone split · 8m</span></div>
+    <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m · Limestone balancer · 8m</span></div>
     <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+60m · Concrete · 12m</span></div>
     <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">+72m · Beam &amp; Concrete split · 8m</span></div>
     <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+80m · EIB Assembly · 12m</span></div>
@@ -290,7 +290,7 @@
     <div class="summary-section-title">// Belt requirements</div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Iron ore trunk</span><span class="summary-val">Mk.4 · 270/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-coal"></span>Coal trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-limestone"></span>Limestone trunk</span><span class="summary-val">Mk.3 · 240/min</span></div>
+    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-limestone"></span>Limestone trunk</span><span class="summary-val">Mk.3 · 270/min (post-merger)</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot trunk</span><span class="summary-val">Mk.3 · 270/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-beam"></span>Beam trunk</span><span class="summary-val">Mk.2 · 60/min</span></div>
     <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-concrete"></span>Concrete trunk</span><span class="summary-val">Mk.2 · 75/min</span></div>
@@ -360,7 +360,7 @@
     <a href="eib_lb2b.html" style="text-decoration:none">
       <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--limestone-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--limestone);letter-spacing:0.08em;margin-bottom:3px">LB 2b · +52m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Limestone Split</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Limestone Balancer</div>
       </div>
     </a>
 
@@ -503,7 +503,7 @@
           <span class="chip-label chip-limestone-l">LB 2b · +52m</span>
           <span class="lb-arrow">→</span>
           <div class="lb-branches">
-            <div><span class="lb-branch-b">Limestone 240/min → manifold → 5× 45/min to concrete constructors</span></div>
+            <div><span class="lb-branch-b">Limestone 225/min → MRG1 (+45 recirc = 270) → SPL1 (135/135) → SPL2 &amp; SPL3 → 5× 45/min to concrete constructors · zero surplus</span></div>
           </div>
         </div>
         <div class="lb-row" style="margin-top:6px">

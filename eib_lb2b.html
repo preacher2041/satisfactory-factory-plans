@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LB 2b — Limestone Split — Steel &amp; EIB Factory</title>
+<title>LB 2b — Limestone Balancer — Steel &amp; EIB Factory</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 :root {
   --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
   --text:#d4d8e8;--text-muted:#7a839a;
   --limestone:#1D9E75;--limestone-bg:#061f16;--limestone-bd:#0f5c3d;
   /* Node colours */
-  --l1:#58C4E8;--l2:#F5A623;--l3:#9CCC65;--l4:#B57BEA;
+  --mrg1:#4ecfcf;--s1:#58C4E8;--s2:#F5A623;--s3:#B57BEA;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -56,8 +56,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <a href="eib_floor3.html" class="nav-btn">Floor 3 →</a>
   <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
-<h1>LB 2b — Limestone Split</h1>
-<div class="sub">// +52m · 8m tall · 240/min limestone → SPL1–SPL5 tap 45/m each → 5 concrete constructors · 15/min surplus</div>
+<h1>LB 2b — Limestone Balancer</h1>
+<div class="sub">// +52m · 8m tall · 225/min limestone → recirculating load balancer → 5 × 45/m to concrete constructors · zero surplus</div>
 
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px"></div>
@@ -86,16 +86,43 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Input strip (above grid): limestone 240/min from miners -->
+    <!-- Output strip: 5 limestone outputs (cols 1-5) -->
     <div class="io-strip" style="margin-bottom:2px;">
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 240/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">← limestone miners</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s2);opacity:0.85;">← SPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 1</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s2);opacity:0.85;">← SPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 2</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s2);opacity:0.85;">← SPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 3</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s3);opacity:0.85;">← SPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 4</span>
+      </div>
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s3);opacity:0.85;">← SPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 5</span>
+      </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
-    </div><div class="floorplan">
+    </div>
+
+    <!-- Floor plan grid -->
+    <div class="floorplan">
       <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
       <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
@@ -104,89 +131,84 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
 
       <div class="ml">
-        <!-- SPL1 col 1 row C — row C top=308px, block at 315px -->
-        <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:54px;top:362px;font-size:13px;color:var(--limestone);">SPL1</div>
-        <div class="pz" style="left:54px;top:408px;font-size:11px;color:var(--limestone);">240/m</div>
-        <div class="pz" style="left:7px;top:362px;font-size:11px;color:var(--limestone);">45/m</div>
-        <div class="pz" style="left:100px;top:362px;font-size:11px;color:var(--l1);">SPL2<br>195/m</div>
-        <!-- SPL2 col 2 row C -->
+        <!-- ===== MRG1  col 2 row B : merges 225 (input) + 45 (recirc SPL3) = 270 out top to SPL1 ===== -->
+        <!-- row B top = 154px, block at 161px -->
+        <div class="blk" style="left:161px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:208px;top:208px;font-size:13px;color:var(--mrg1);">MRG1</div>
+        <!-- top port: output 270 to SPL1 (below) -->
+        <div class="pz" style="left:208px;top:161px;font-size:11px;color:var(--s1);">SPL1<br>270/m</div>
+        <!-- bottom port: input 225 from input strip -->
+        <div class="pz" style="left:208px;top:254px;font-size:11px;color:var(--limestone);">225/m</div>
+        <!-- right port: recirc 45 in from SPL3 -->
+        <div class="pz" style="left:254px;top:208px;font-size:11px;color:var(--s3);">SPL3<br>45/m</div>
+
+        <!-- ===== SPL1  col 2 row C : 270 in (top from MRG1) -> 135 left (SPL2) + 135 right (SPL3) ===== -->
+        <!-- row C top = 308px, block at 315px -->
         <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:208px;top:362px;font-size:13px;color:var(--limestone);">SPL2</div>
-        <div class="pz" style="left:208px;top:408px;font-size:11px;color:var(--l1);">SPL1<br>195/m</div>
-        <div class="pz" style="left:161px;top:362px;font-size:11px;color:var(--limestone);">45/m</div>
-        <div class="pz" style="left:254px;top:362px;font-size:11px;color:var(--l2);">SPL3<br>150/m</div>
-        <!-- SPL3 col 3 row C -->
-        <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:362px;top:362px;font-size:13px;color:var(--limestone);">SPL3</div>
-        <div class="pz" style="left:362px;top:408px;font-size:11px;color:var(--l2);">SPL2<br>150/m</div>
-        <div class="pz" style="left:315px;top:362px;font-size:11px;color:var(--limestone);">45/m</div>
-        <div class="pz" style="left:408px;top:362px;font-size:11px;color:var(--l3);">SPL4<br>105/m</div>
-        <!-- SPL4 col 4 row C -->
-        <div class="blk" style="left:469px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:516px;top:362px;font-size:13px;color:var(--limestone);">SPL4</div>
-        <div class="pz" style="left:516px;top:408px;font-size:11px;color:var(--l3);">SPL3<br>105/m</div>
-        <div class="pz" style="left:469px;top:362px;font-size:11px;color:var(--limestone);">45/m</div>
-        <div class="pz" style="left:562px;top:362px;font-size:11px;color:var(--l4);">SPL5<br>60/m</div>
-        <!-- SPL5 col 5 row C — terminal: 45 out, 15 remains on belt -->
-        <div class="blk" style="left:623px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:670px;top:362px;font-size:13px;color:var(--limestone);">SPL5</div>
-        <div class="pz" style="left:670px;top:408px;font-size:11px;color:var(--l4);">SPL4<br>60/m</div>
-        <div class="pz" style="left:623px;top:362px;font-size:11px;color:var(--limestone);">45/m</div>
-        <div class="pz" style="left:716px;top:362px;font-size:11px;color:var(--limestone);">15/m<br>→surp</div>
+        <div class="pz" style="left:208px;top:362px;font-size:13px;color:var(--s1);">SPL1</div>
+        <!-- input on bottom port (per rule) : 270 from MRG1 (above). Belt routes around; in 3D crossings free -->
+        <div class="pz" style="left:208px;top:408px;font-size:11px;color:var(--mrg1);">MRG1<br>270/m</div>
+        <!-- left port: 135 to SPL2 -->
+        <div class="pz" style="left:161px;top:362px;font-size:11px;color:var(--s2);">SPL2<br>135/m</div>
+        <!-- right port: 135 to SPL3 -->
+        <div class="pz" style="left:254px;top:362px;font-size:11px;color:var(--s3);">SPL3<br>135/m</div>
+
+        <!-- ===== SPL2  col 1 row D : 135 in (top from SPL1) -> 45/45/45 three terminal outputs ===== -->
+        <!-- row D top = 462px, block at 469px ; col 1 left = 7px -->
+        <div class="blk" style="left:7px;top:469px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
+        <div class="pz" style="left:54px;top:516px;font-size:13px;color:var(--s2);">SPL2</div>
+        <!-- input bottom: 135 from SPL1 -->
+        <div class="pz" style="left:54px;top:562px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
+        <!-- left terminal out 45 (Conc 1) -->
+        <div class="pz" style="left:7px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↑out</div>
+        <!-- top terminal out 45 (Conc 2) -->
+        <div class="pz" style="left:54px;top:469px;font-size:11px;color:var(--limestone);">45/m<br>↑out</div>
+        <!-- right terminal out 45 (Conc 3) -->
+        <div class="pz" style="left:100px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↑out</div>
+
+        <!-- ===== SPL3  col 3 row D : 135 in (top from SPL1) -> 45 left + 45 right terminal + 45 bottom recirc to MRG1 ===== -->
+        <!-- row D top = 462px, block at 469px ; col 3 left = 315px -->
+        <div class="blk" style="left:315px;top:469px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
+        <div class="pz" style="left:362px;top:516px;font-size:13px;color:var(--s3);">SPL3</div>
+        <!-- input top: 135 from SPL1 -->
+        <div class="pz" style="left:362px;top:469px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
+        <!-- left terminal out 45 (Conc 4) -->
+        <div class="pz" style="left:315px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↑out</div>
+        <!-- right terminal out 45 (Conc 5) -->
+        <div class="pz" style="left:408px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↑out</div>
+        <!-- bottom recirc 45 to MRG1 -->
+        <div class="pz" style="left:362px;top:562px;font-size:11px;color:var(--mrg1);">MRG1<br>45/m</div>
       </div>
     </div>
 
-    <!-- Output strip (below grid): 5 limestone outputs (cols 1–5) + 1 surplus/uncollected (col 6) -->
+    <!-- Input strip: limestone 225/min from miners (col 2, under MRG1) -->
     <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 1</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 2</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 3</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 4</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ Fl.3 Conc 5</span>
-      </div>
-      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);opacity:0.5;">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">— surplus</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">→ not consumed</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 225/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg1);opacity:0.85;">→ MRG1</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">← limestone miners</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
-
-    <!-- Floor plan grid -->
-    
   </div>
 </div>
 
-<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd)"></div>Splitter · limestone</div></div>
-<div class="note">// Input: 240/min limestone · SPL1–SPL5 each tap 45/m · 240 − 5×45 = 15/min surplus on belt (uncollected)</div>
-<div class="note">// Output: 5 belts × 45/min → Floor 3 concrete constructors</div>
-<div class="belt-req"><strong>⚠ Mk.3 required — limestone trunk 240/min</strong><br>Trunk enters at 240/min. Exceeds Mk.2 cap (120/min). Must use Mk.3 (270/min cap).</div>
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd)"></div>Splitter · limestone</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Merger</div>
+</div>
+<div class="note">// Input: 225/min limestone · MRG1 adds 45/m recirc → 270/m · SPL1 halves → 135/135 · SPL2 &amp; SPL3 each 3-way → 45/45/45</div>
+<div class="note">// Output: 5 belts × 45/min → Floor 3 concrete constructors · SPL3's third leg (45/m) recirculates to MRG1 · zero surplus</div>
+<div class="belt-req"><strong>⚠ Mk.3 required — post-merger trunk 270/min</strong><br>MRG1 output (225 input + 45 recirc) = 270/min. Exactly the Mk.3 cap (270/min). Input belt 225/min and recirc 45/min are within Mk.2 (120/min) and Mk.1 (60/min) respectively; only the MRG1→SPL1 trunk and SPL1 input need Mk.3.</div>
 <div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
   <span style="color:#d4d8e8;font-size:13px;">// Node colours — port labels coloured by connected node</span><br>
-  <span style="color:var(--l1)">■ L1</span> <span style="color:#888">SPL1 right → SPL2 top · 195/m</span>&nbsp;&nbsp;
-  <span style="color:var(--l2)">■ L2</span> <span style="color:#888">SPL2 right → SPL3 top · 150/m</span>&nbsp;&nbsp;
-  <span style="color:var(--l3)">■ L3</span> <span style="color:#888">SPL3 right → SPL4 top · 105/m</span>&nbsp;&nbsp;
-  <span style="color:var(--l4)">■ L4</span> <span style="color:#888">SPL4 right → SPL5 top · 60/m</span>&nbsp;&nbsp;
+  <span style="color:var(--mrg1)">■ MRG1</span> <span style="color:#888">merger · 225 + 45 → 270/m</span>&nbsp;&nbsp;
+  <span style="color:var(--s1)">■ SPL1</span> <span style="color:#888">270 → 135 / 135</span>&nbsp;&nbsp;
+  <span style="color:var(--s2)">■ SPL2</span> <span style="color:#888">135 → 45 / 45 / 45 (Conc 1–3)</span>&nbsp;&nbsp;
+  <span style="color:var(--s3)">■ SPL3</span> <span style="color:#888">135 → 45 / 45 (Conc 4–5) + 45 recirc</span>
 </div>
 </body>
 </html>

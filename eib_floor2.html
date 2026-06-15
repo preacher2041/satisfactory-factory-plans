@@ -30,7 +30,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 .io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .io-ph{width:154px;height:90px;flex-shrink:0;}
 </style></head><body>
-<div class="floorplan-nav"><a href="eib_lb1b.html" class="nav-btn">← LB 1b</a><span class="nav-sep">//</span><a href="eib_ground.html" class="nav-btn">Ground</a><a href="eib_lb0b.html" class="nav-btn">LB 0b</a><a href="eib_floor1.html" class="nav-btn">Floor 1</a><a href="eib_lb1b.html" class="nav-btn">LB 1b</a><span class="nav-current">Floor 2</span><a href="eib_lb2b.html" class="nav-btn">LB 2b</a><a href="eib_floor3.html" class="nav-btn">Floor 3</a><a href="eib_lb3b.html" class="nav-btn">LB 3b</a><a href="eib_floor4.html" class="nav-btn">Floor 4</a><span class="nav-sep">//</span><a href="eib_lb2b.html" class="nav-btn">LB 2b →</a><a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a></div>
+<div class="floorplan-nav"><a href="eib_lb1b.html" class="nav-btn">← LB 1b</a><span class="nav-sep">//</span><a href="eib_ground.html" class="nav-btn">Ground</a><a href="eib_lb0b.html" class="nav-btn">LB 0b</a><a href="eib_floor1.html" class="nav-btn">Floor 1</a><a href="eib_lb1b.html" class="nav-btn">LB 1b</a><span class="nav-current">Floor 2</span><a href="eib_lb2b.html" class="nav-btn">LB 2b</a><a href="eib_floor3.html" class="nav-btn">Floor 3</a><a href="eib_lb3b.html" class="nav-btn">LB 3b</a><a href="eib_lb3c.html" class="nav-btn">LB 3c</a><a href="eib_floor4.html" class="nav-btn">Floor 4</a><span class="nav-sep">//</span><a href="eib_lb2b.html" class="nav-btn">LB 2b →</a><a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a></div>
 <h1>Floor 2 — Beams &amp; Pipes</h1>
 <div class="sub">// +40m · 12m tall · 4× beam constructor + 1× pipe constructor @ 100%/50%</div>
 
@@ -107,30 +107,30 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
     </div>
 
-    <!-- Output strip (below grid): beams cols 3–6, pipes col 8 -->
+    <!-- Output strip (below grid): beams stacked cols 3 & 4 → LB 3b · pipes col 8 → storage -->
     <div class="io-strip" style="margin-top:2px;">
       <div class="io-ph"></div><div class="io-ph"></div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Beams 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ LB 3b</span>
+      <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
+        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG1</span>
+        </div>
+        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG2</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Beams 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ LB 3b</span>
+      <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
+        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG4</span>
+        </div>
+        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG6</span>
+        </div>
       </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Beams 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ LB 3b</span>
-      </div>
-      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Steel Beams 15/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ LB 3b</span>
-      </div>
-      <div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--pipe);">Steel Pipes 10/min</span>
@@ -146,6 +146,6 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div class="l-item"><div class="l-sw" style="background:var(--pipe-bg);border:1px solid var(--pipe-bd)"></div>Pipe constructor ×1 @ 50% · 10/m</div>
 </div>
 <div class="note">// Input strip: cols 3–6 × 60/m ingots (beam constructors) · col 8 × 30/m ingots (pipe constructor)</div>
-<div class="note">// Output strip: cols 3–6 × 15/m steel beams → LB 3b · col 8 × 10/m steel pipes → Ground storage</div>
+<div class="note">// Output strip: cols 3 & 4 × 2 stacked 15/m steel beams → LB 3b (MRG1/2/4/6) · col 8 × 10/m steel pipes → Ground storage</div>
 <div class="note">// Ingot balance: 4×60 + 1×30 = 270/min consumed = 270/min supplied ✓</div>
 </body></html>

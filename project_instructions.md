@@ -163,8 +163,8 @@ External IO strips — the standard IO system
 
 All inputs and outputs on every floor (both production floors and LB sub-floors) use external IO strips — horizontal rows of individual blocks that sit outside the grid, above and below it. The grid itself contains only machines, splitters, and mergers. No IO blocks appear inside the grid.
 
-Output strip — positioned above the grid, between the column labels and the grid border.
-Input strip — positioned below the grid, immediately after the grid border.
+Input strip — positioned above the grid, between the column labels and the grid border.
+Output strip — positioned below the grid, immediately after the grid border.
 
 Each strip is a flex row 1540px wide, with one 154px block per column (10 blocks total). Empty columns use transparent placeholder blocks to maintain alignment.
 
@@ -231,7 +231,7 @@ Right zone: left: 93px; top: 47px
 
 Grid placement
 
-Nodes should be placed in the central rows of the grid where possible, leaving the top and bottom rows as breathing room for belt runs to the IO strips. Before placing any nodes, check the existing LB floors to understand the conventions. Only use the outer rows if the topology is genuinely too complex to fit within the central rows.
+Nodes should be placed so that splitters sit in the upper rows of the grid (closer to the input strip) and mergers in the lower rows (closer to the output strip), reflecting the top-to-bottom flow direction. Leave row A and row F as breathing room where topology permits.
 
 Port placement rules
 
@@ -332,9 +332,9 @@ Every LB sub-floor follows this structure:
 Nav bar at top
 Page heading (h1) and sub-title
 Column labels
-Output strip (above grid) — individual blocks per output belt, coloured by source node
+Input strip (above grid) — individual blocks per input belt, coloured by destination node
 Grid — splitter/merger nodes only, no IO blocks inside
-Input strip (below grid) — individual blocks per input belt, coloured by destination node
+Output strip (below grid) — individual blocks per output belt, coloured by source node
 Legend — splitter and merger swatches
 Node colour key panel
 Notes — explaining any non-obvious routing

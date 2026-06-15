@@ -88,13 +88,13 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div style="display:flex;flex-direction:column;gap:0;">
     <!-- Input strip: limestone 225/min into MRG1 (col 3) -->
     <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↓ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 225/min</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.7;">← limestone miners</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
 
@@ -108,55 +108,56 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
 
       <div class="ml">
-        <!-- ===== MRG1 : col 3 row B (merger, dark teal) ===== -->
-        <!-- row B top=154px → block at 161px ; col 3 left=308px → block 315px -->
-        <div class="blk" style="left:315px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:362px;top:208px;font-size:13px;color:var(--mrg1);">MRG1</div>
-        <!-- top output → SPL1 -->
-        <div class="pz" style="left:362px;top:161px;font-size:11px;color:var(--s1);">SPL1<br>270/m</div>
-        <!-- bottom-left input : 225 from input strip (terminal, material colour) -->
-        <div class="pz" style="left:315px;top:255px;font-size:11px;color:var(--limestone);">225/m<br>lift</div>
+        <!-- ===== MRG1 : col 2 row B (merger, dark teal) ===== -->
+        <!-- row B top=154px → block at 161px ; col 2 left=154px → block 161px -->
+        <div class="blk" style="left:161px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:208px;top:208px;font-size:13px;color:var(--mrg1);">MRG1</div>
+        <!-- top input : 225 supply from input strip (terminal, material colour) -->
+        <div class="pz" style="left:208px;top:161px;font-size:11px;color:var(--limestone);">225/m<br>lift</div>
         <!-- right input : 45 return from SPL3 -->
-        <div class="pz" style="left:408px;top:208px;font-size:11px;color:var(--s3);">SPL3<br>45/m</div>
+        <div class="pz" style="left:254px;top:208px;font-size:11px;color:var(--s3);">SPL3<br>45/m</div>
+        <!-- bottom output → SPL1 -->
+        <div class="pz" style="left:208px;top:255px;font-size:11px;color:var(--s1);">SPL1<br>270/m</div>
 
-        <!-- ===== SPL1 : col 3 row C (splitter) 270 → 135 + 135 ===== -->
-        <!-- row C top=308px → 315px ; col 3 left=308px → 315px -->
-        <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:362px;top:362px;font-size:13px;color:var(--s1);">SPL1</div>
-        <!-- bottom input : from MRG1 -->
-        <div class="pz" style="left:362px;top:409px;font-size:11px;color:var(--mrg1);">MRG1<br>270/m</div>
+        <!-- ===== SPL1 : col 2 row C (splitter) 270 → 135 + 135 ===== -->
+        <!-- row C top=308px → 315px ; col 2 left=154px → 161px -->
+        <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
+        <div class="pz" style="left:208px;top:362px;font-size:13px;color:var(--s1);">SPL1</div>
+        <!-- top input : from MRG1 above -->
+        <div class="pz" style="left:208px;top:315px;font-size:11px;color:var(--mrg1);">MRG1<br>270/m</div>
         <!-- left output → SPL2 -->
-        <div class="pz" style="left:315px;top:362px;font-size:11px;color:var(--s2);">SPL2<br>135/m</div>
+        <div class="pz" style="left:161px;top:362px;font-size:11px;color:var(--s2);">SPL2<br>135/m</div>
         <!-- right output → SPL3 -->
-        <div class="pz" style="left:408px;top:362px;font-size:11px;color:var(--s3);">SPL3<br>135/m</div>
+        <div class="pz" style="left:254px;top:362px;font-size:11px;color:var(--s3);">SPL3<br>135/m</div>
 
-        <!-- ===== SPL2 : col 2 row D (splitter) 135 → 45+45+45 (all outputs) ===== -->
-        <!-- row D top=462px → 469px ; col 2 left=154px → 161px -->
-        <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:208px;top:516px;font-size:13px;color:var(--s2);">SPL2</div>
-        <!-- bottom input : from SPL1 -->
-        <div class="pz" style="left:208px;top:562px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
-        <!-- three terminal outputs : left / top / right -->
-        <div class="pz" style="left:161px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↓out1</div>
-        <div class="pz" style="left:208px;top:469px;font-size:11px;color:var(--limestone);">45/m<br>↓out2</div>
-        <div class="pz" style="left:254px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↓out3</div>
+        <!-- ===== SPL2 : col 3 row E (splitter) 135 → 45+45+45 (all outputs) ===== -->
+        <!-- row E top=616px → 623px ; col 3 left=308px → 315px -->
+        <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
+        <div class="pz" style="left:362px;top:670px;font-size:13px;color:var(--s2);">SPL2</div>
+        <!-- top input : from SPL1 above -->
+        <div class="pz" style="left:362px;top:623px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
+        <!-- three terminal outputs : left / bottom / right → output strip -->
+        <div class="pz" style="left:315px;top:670px;font-size:11px;color:var(--limestone);">45/m<br>↓out1</div>
+        <div class="pz" style="left:362px;top:716px;font-size:11px;color:var(--limestone);">45/m<br>↓out2</div>
+        <div class="pz" style="left:408px;top:670px;font-size:11px;color:var(--limestone);">45/m<br>↓out3</div>
 
-        <!-- ===== SPL3 : col 4 row D (splitter) 135 → 45+45 out + 45 return ===== -->
-        <!-- row D top=462px → 469px ; col 4 left=462px → 469px -->
-        <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
-        <div class="pz" style="left:516px;top:516px;font-size:13px;color:var(--s3);">SPL3</div>
-        <!-- bottom input : from SPL1 -->
-        <div class="pz" style="left:516px;top:562px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
-        <!-- left + right terminal outputs -->
-        <div class="pz" style="left:469px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↓out4</div>
-        <div class="pz" style="left:562px;top:516px;font-size:11px;color:var(--limestone);">45/m<br>↓out5</div>
-        <!-- top output : 45 return → MRG1 -->
-        <div class="pz" style="left:516px;top:469px;font-size:11px;color:var(--mrg1);">MRG1<br>45/m</div>
+        <!-- ===== SPL3 : col 5 row E (splitter) 135 → 45+45 out + 45 return ===== -->
+        <!-- row E top=616px → 623px ; col 5 left=616px → 623px -->
+        <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:var(--limestone-bg);border:1px solid var(--limestone-bd);"></div>
+        <div class="pz" style="left:670px;top:670px;font-size:13px;color:var(--s3);">SPL3</div>
+        <!-- top input : from SPL1 above -->
+        <div class="pz" style="left:670px;top:623px;font-size:11px;color:var(--s1);">SPL1<br>135/m</div>
+        <!-- left + bottom terminal outputs → output strip -->
+        <div class="pz" style="left:623px;top:670px;font-size:11px;color:var(--limestone);">45/m<br>↓out4</div>
+        <div class="pz" style="left:670px;top:716px;font-size:11px;color:var(--limestone);">45/m<br>↓out5</div>
+        <!-- right output : 45 return → MRG1 -->
+        <div class="pz" style="left:716px;top:670px;font-size:11px;color:var(--mrg1);">MRG1<br>45/m</div>
       </div>
     </div>
 
-    <!-- Output strip: 5 limestone outputs (cols 1–5) -->
+    <!-- Output strip: 5 limestone outputs (cols 2–6) -->
     <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone 45/min</span>
@@ -187,7 +188,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--s3);opacity:0.9;">← SPL3</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">→ Fl.3 Conc 5</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
   </div>
 </div>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB 3c — Concrete Balancer — Steel &amp; EIB Factory</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --concrete:#7F77DD;--concrete-bg:#181535;--concrete-bd:#3d3880;
+  --store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
+  --spl1:#58C4E8;
+  --spl2:#F5A623;
+  --spl3:#B57BEA;
+  --spl4:#5DD67A;
+  --spl5:#4FC3F7;
+  --mrg1:#FFB74D;
+  --mrg2:#80CBC4;
+  --mrg3:#AED581;
+  --mrg4:#4DD0E1;
+  --mrg5:#FF8A65;
+  --mrg6:#90CAF9;
+  --mrg7:#F48FB1;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;line-height:1.15;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="eib_lb3b.html" class="nav-btn">← LB 3b</a>
+  <span class="nav-sep">//</span>
+  <a href="eib_ground.html" class="nav-btn">Ground</a>
+  <a href="eib_lb0b.html" class="nav-btn">LB 0b</a>
+  <a href="eib_floor1.html" class="nav-btn">Floor 1</a>
+  <a href="eib_lb1b.html" class="nav-btn">LB 1b</a>
+  <a href="eib_floor2.html" class="nav-btn">Floor 2</a>
+  <a href="eib_lb2b.html" class="nav-btn">LB 2b</a>
+  <a href="eib_floor3.html" class="nav-btn">Floor 3</a>
+  <a href="eib_lb3b.html" class="nav-btn">LB 3b</a>
+  <span class="nav-current">LB 3c</span>
+  <a href="eib_floor4.html" class="nav-btn">Floor 4</a>
+  <span class="nav-sep">//</span>
+  <a href="eib_floor4.html" class="nav-btn">Floor 4 →</a>
+  <a href="steel_eib_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>LB 3c — Concrete Balancer</h1>
+<div class="sub">// +80m · 8m tall · 75/min concrete → recirculating load balancer → EIB-A 36 + EIB-B 36 + storage 3 · all belts ≤27/m (Mk.1)</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Input strip (above grid): 5×15/min concrete from Floor 3 → MRG1-5 · columns provisional -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← Floor 3 · MRG1</span>
+      </div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← Floor 3 · MRG5</span>
+      </div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← Floor 3 · MRG2</span>
+      </div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← Floor 3 · MRG4</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← Floor 3 · MRG3</span>
+      </div>
+      <div class="io-ph"></div>
+    </div>
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <!-- SPL1 col2 rowB -->
+        <div class="blk" style="left:161px;top:161px;width:140px;height:140px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);"></div>
+        <div class="pz" style="left:208px;top:208px;font-size:13px;color:#58C4E8;">SPL1</div>
+        <div class="pz" style="left:208px;top:254px;color:#B57BEA;"><span>SPL3</span><span>9/m</span></div>
+        <div class="pz" style="left:161px;top:208px;color:#FFB74D;"><span>MRG1</span><span>3/m</span></div>
+        <div class="pz" style="left:254px;top:208px;color:#FFB74D;"><span>MRG1</span><span>3/m</span></div>
+        <div class="pz" style="left:208px;top:161px;color:#80CBC4;"><span>MRG2</span><span>3/m</span></div>
+        <!-- SPL2 col8 rowB -->
+        <div class="blk" style="left:1085px;top:161px;width:140px;height:140px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);"></div>
+        <div class="pz" style="left:1132px;top:208px;font-size:13px;color:#F5A623;">SPL2</div>
+        <div class="pz" style="left:1132px;top:254px;color:#5DD67A;"><span>SPL4</span><span>9/m</span></div>
+        <div class="pz" style="left:1085px;top:208px;color:#AED581;"><span>MRG3</span><span>3/m</span></div>
+        <div class="pz" style="left:1178px;top:208px;color:#90CAF9;"><span>MRG6</span><span>3/m</span></div>
+        <div class="pz" style="left:1132px;top:161px;color:#90CAF9;"><span>MRG6</span><span>3/m</span></div>
+        <!-- SPL3 col3 rowC -->
+        <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);"></div>
+        <div class="pz" style="left:362px;top:362px;font-size:13px;color:#B57BEA;">SPL3</div>
+        <div class="pz" style="left:362px;top:408px;color:#80CBC4;"><span>MRG2</span><span>18/m</span></div>
+        <div class="pz" style="left:362px;top:315px;color:#58C4E8;"><span>SPL1</span><span>9/m</span></div>
+        <div class="pz" style="left:408px;top:362px;color:#4DD0E1;"><span>MRG4</span><span>9/m</span></div>
+        <!-- SPL4 col7 rowC -->
+        <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);"></div>
+        <div class="pz" style="left:978px;top:362px;font-size:13px;color:#5DD67A;">SPL4</div>
+        <div class="pz" style="left:978px;top:408px;color:#AED581;"><span>MRG3</span><span>18/m</span></div>
+        <div class="pz" style="left:978px;top:315px;color:#F5A623;"><span>SPL2</span><span>9/m</span></div>
+        <div class="pz" style="left:931px;top:362px;color:#4FC3F7;"><span>SPL5</span><span>9/m</span></div>
+        <!-- SPL5 col6 rowD -->
+        <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);"></div>
+        <div class="pz" style="left:824px;top:516px;font-size:13px;color:#4FC3F7;">SPL5</div>
+        <div class="pz" style="left:824px;top:562px;color:#5DD67A;"><span>SPL4</span><span>9/m</span></div>
+        <div class="pz" style="left:777px;top:516px;color:#4DD0E1;"><span>MRG4</span><span>3/m</span></div>
+        <div class="pz" style="left:824px;top:469px;color:var(--concrete);"><span>3/m</span><span>store</span></div>
+        <div class="pz" style="left:870px;top:516px;color:#90CAF9;"><span>MRG6</span><span>3/m</span></div>
+        <!-- MRG1 col2 rowC -->
+        <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:208px;top:362px;font-size:13px;color:#FFB74D;">MRG1</div>
+        <div class="pz" style="left:208px;top:315px;color:#FF8A65;"><span>21/m</span><span>MRG5</span></div>
+        <div class="pz" style="left:208px;top:408px;color:var(--concrete);"><span>15/m</span><span>lift</span></div>
+        <div class="pz" style="left:254px;top:362px;color:#58C4E8;"><span>SPL1</span><span>3/m</span></div>
+        <!-- MRG2 col4 rowB -->
+        <div class="blk" style="left:469px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:516px;top:208px;font-size:13px;color:#80CBC4;">MRG2</div>
+        <div class="pz" style="left:516px;top:254px;color:#B57BEA;"><span>18/m</span><span>SPL3</span></div>
+        <div class="pz" style="left:516px;top:161px;color:var(--concrete);"><span>15/m</span><span>lift</span></div>
+        <div class="pz" style="left:469px;top:208px;color:#58C4E8;"><span>SPL1</span><span>3/m</span></div>
+        <!-- MRG3 col9 rowC -->
+        <div class="blk" style="left:1239px;top:315px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1286px;top:362px;font-size:13px;color:#AED581;">MRG3</div>
+        <div class="pz" style="left:1286px;top:408px;color:#5DD67A;"><span>18/m</span><span>SPL4</span></div>
+        <div class="pz" style="left:1286px;top:315px;color:var(--concrete);"><span>15/m</span><span>lift</span></div>
+        <div class="pz" style="left:1239px;top:362px;color:#F5A623;"><span>SPL2</span><span>3/m</span></div>
+        <!-- MRG4 col5 rowE -->
+        <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:670px;top:670px;font-size:13px;color:#4DD0E1;">MRG4</div>
+        <div class="pz" style="left:670px;top:716px;color:#F48FB1;"><span>27/m</span><span>MRG7</span></div>
+        <div class="pz" style="left:670px;top:623px;color:var(--concrete);"><span>15/m</span><span>lift</span></div>
+        <div class="pz" style="left:623px;top:670px;color:#B57BEA;"><span>SPL3</span><span>9/m</span></div>
+        <div class="pz" style="left:716px;top:670px;color:#4FC3F7;"><span>SPL5</span><span>3/m</span></div>
+        <!-- MRG5 col2 rowE -->
+        <div class="blk" style="left:161px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:208px;top:670px;font-size:13px;color:#FF8A65;">MRG5</div>
+        <div class="pz" style="left:208px;top:623px;color:var(--concrete);"><span>36/m</span><span>EIB-A</span></div>
+        <div class="pz" style="left:208px;top:716px;color:var(--concrete);"><span>15/m</span><span>lift</span></div>
+        <div class="pz" style="left:254px;top:670px;color:#FFB74D;"><span>MRG1</span><span>21/m</span></div>
+        <!-- MRG6 col8 rowD -->
+        <div class="blk" style="left:1085px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1132px;top:516px;font-size:13px;color:#90CAF9;">MRG6</div>
+        <div class="pz" style="left:1132px;top:562px;color:#F48FB1;"><span>9/m</span><span>MRG7</span></div>
+        <div class="pz" style="left:1132px;top:469px;color:#F5A623;"><span>SPL2</span><span>6/m</span></div>
+        <div class="pz" style="left:1085px;top:516px;color:#4FC3F7;"><span>SPL5</span><span>3/m</span></div>
+        <!-- MRG7 col6 rowF -->
+        <div class="blk" style="left:777px;top:777px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:824px;top:824px;font-size:13px;color:#F48FB1;">MRG7</div>
+        <div class="pz" style="left:824px;top:777px;color:var(--concrete);"><span>36/m</span><span>EIB-B</span></div>
+        <div class="pz" style="left:777px;top:824px;color:#4DD0E1;"><span>MRG4</span><span>27/m</span></div>
+        <div class="pz" style="left:870px;top:824px;color:#90CAF9;"><span>MRG6</span><span>9/m</span></div>
+      </div>
+    </div>
+    <!-- Output strip (below grid): EIB-A col2, EIB-B col6 (up to Floor 4); storage col8 (down) · cols provisional -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 36/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">→ Fl.4 EIB-A</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 36/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">→ Fl.4 EIB-B</span>
+      </div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--store-bg);border:1px solid var(--concrete-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete 3/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">→ Ground storage</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd)"></div>Splitter · concrete</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Merger</div>
+</div>
+
+<div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
+  <span style="color:var(--spl1)">■ SPL1</span> &nbsp; <span style="color:var(--spl2)">■ SPL2</span> &nbsp; <span style="color:var(--spl3)">■ SPL3</span> &nbsp; <span style="color:var(--spl4)">■ SPL4</span> &nbsp; <span style="color:var(--spl5)">■ SPL5</span> &nbsp; <span style="color:var(--mrg1)">■ MRG1</span> &nbsp; <span style="color:var(--mrg2)">■ MRG2</span> &nbsp; <span style="color:var(--mrg3)">■ MRG3</span> &nbsp; <span style="color:var(--mrg4)">■ MRG4</span> &nbsp; <span style="color:var(--mrg5)">■ MRG5</span> &nbsp; <span style="color:var(--mrg6)">■ MRG6</span> &nbsp; <span style="color:var(--mrg7)">■ MRG7</span>
+</div>
+
+<div class="note">// Inputs: 5×15/m concrete from Floor 3 → MRG1, MRG2, MRG3, MRG4, MRG5 · input columns provisional pending Floor 3 output placement</div>
+<div class="note">// Recirc loops: SPL3→SPL1 (9/m) and SPL4→SPL2 (9/m) · all splits equal (9→3+3+3, 18→9+9)</div>
+<div class="note">// MRG6 takes two 3/m legs from SPL2 + one 3/m from SPL5 = 9/m → built as separate belts in-game</div>
+<div class="note">// Conservation: 75/m in = 36 (EIB-A·MRG5) + 36 (EIB-B·MRG7) + 3 (storage) = 75/m out ✓</div>
+</body>
+</html>

@@ -235,9 +235,9 @@ Nodes should be placed so that splitters sit in the upper rows of the grid (clos
 
 Port placement rules
 
-Splitter input always on the bottom port
-Merger output always on the top port
-Remaining ports (left, right, top for splitters / left, right, bottom for mergers) are assigned based on the physical direction of the connected node relative to the current node
+Splitter input always on the top port
+Merger output always on the bottom port
+Remaining ports (left, right, bottom for splitters / left, right, top for mergers) are assigned based on the physical direction of the connected node relative to the current node
 
 Port label format
 

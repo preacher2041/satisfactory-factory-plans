@@ -77,7 +77,7 @@ Every direction arrow on a given floor points the same way — input and output 
 - Port zone positions (140×140 block): centre `47,47`; top `47,0`; bottom `47,93`; left `0,47`; right `93,47`.
 - **Port placement rule**: splitter input always top port; merger output always bottom port. Remaining ports assigned by the physical direction of the connected node. This is the *post-flip* convention — supersedes any older file that predates it.
 - Port label format: node name + rate stacked, e.g. `MRG1 / 15/m`. No arrows, no "in"/"out" text.
-- Every LB floor gets a node colour key panel below the diagram (dark bg `#0d1018`, swatch + name per node).
+- Every LB floor gets a node colour key panel below the diagram (dark bg `#0d1018`, swatch + name per node) — **except** a pure pass-through LB floor with zero splitter/merger nodes (e.g. `lb1b_ingot_split.html`'s direct-feed columns), which is formally exempt: the colour key exists to let a reader trace connections between nodes, and a floor with no nodes has nothing to trace. Do not add a placeholder "no nodes on this floor" panel — that's clutter with no functional value. This exemption applies only when the floor genuinely has zero nodes; a floor with even one splitter or merger still needs the full key.
 
 ## Machine input tags
 

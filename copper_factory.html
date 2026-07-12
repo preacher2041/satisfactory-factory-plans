@@ -74,6 +74,7 @@
   .chain-prose p { color: var(--text); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
   .chain-prose p:last-child { margin-bottom: 0; }
   .chain-note { margin-top: 10px; padding: 8px 10px; background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 4px 4px 0; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .chain-note.flag { background: #1a1500; border-left-color: #c4880a; color: #c4880a; }
 </style>
 </head>
 <body>
@@ -267,7 +268,7 @@
           </tr>
           <tr>
             <td>Wire constructors</td><td>6× @ 100%</td>
-            <td><span class="chip-label chip-copper-l">180/min ingots</span></td>
+            <td><span class="chip-label chip-copper-l">90/min ingots</span> (180/min supplied, 90/min surplus)</td>
             <td><span class="chip-label chip-wire-l">180/min wire</span></td>
           </tr>
           <tr>
@@ -280,7 +281,7 @@
             <td><span class="chip-label chip-copper-l">120/min ingots</span></td>
             <td><span class="chip-label chip-sheet-l">60/min sheet</span></td>
           </tr>
-          <tr class="totals-row"><td colspan="2">Ingot balance</td><td>300/min produced</td><td>180 (wire) + 120 (sheet) = 300 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Ingot balance</td><td>300/min produced</td><td>90 (wire, consumed) + 120 (sheet) + 90 (wire, unconsumed surplus) = 300 ⚠</td></tr>
           <tr class="totals-row"><td colspan="2">Wire balance</td><td>180/min produced</td><td>120 consumed + 60 → storage ✓</td></tr>
         </tbody>
       </table>
@@ -304,6 +305,7 @@
         <p>LB 1b is a pure pass-through — the 6 ingot belts enter one side and exit the other, routing from the output side of Floor 1 to the input side of Floor 2. No splitting or merging occurs on this floor.</p>
       </div>
       <div class="chain-note">// The 300/min ingot split (180+120) is a 3:2 ratio not achievable with a single splitter. Two independent belt lifts from Floor 1 is the cleanest solution.</div>
+      <div class="chain-note flag">// ⚠ Wire's 180/min feed oversupplies Floor 2 — each wire constructor only consumes 15/min (90/min total across all 6), leaving a 90/min surplus with no storage/overflow branch on LB 1b. Confirmed as-built; backs up the belt and will eventually stall 3 of the 6 wire-track smelters via backpressure. Not yet resolved.</div>
     </div>
 
     <!-- WIRE ROUTING -->

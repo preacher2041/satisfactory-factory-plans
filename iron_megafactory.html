@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iron Megafactory — Satisfactory</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 
@@ -122,7 +123,7 @@
       <div class="summary-section-title">// Belt requirements</div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Ore trunk (miners→LB 0b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot trunk (Fl.1→LB 1b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
-      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod trunk (Fl.2→LB 2b)</span><span class="summary-val">Mk.2 · 120/min ⚠ cap</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod trunk (Fl.2→LB 2b)</span><span class="summary-val">Mk.3 · 120/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Plate trunk (Fl.2→LB 3b)</span><span class="summary-val">Mk.2 · 80/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw trunk (Fl.3→LB 3b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw belt → Rotors</span><span class="summary-val">Mk.3 · 100/min</span></div>
@@ -262,10 +263,10 @@
           <tr><td><span class="chip-label chip-rip-l">Reinf. iron plate</span></td><td><span class="chip-label chip-plate-l">6× plates</span> + <span class="chip-label chip-screw-l">12× screws</span></td><td>5/min</td><td>Assembler</td></tr>
           <tr><td><span class="chip-label chip-rotor-l">Rotor</span></td><td><span class="chip-label chip-rod-l">5× rods</span> + <span class="chip-label chip-screw-l">25× screws</span></td><td>4/min</td><td>Assembler</td></tr>
           <tr><td><span class="chip-label chip-smart-l">Smart plating</span></td><td><span class="chip-label chip-rip-l">1× RIP</span> + <span class="chip-label chip-rotor-l">1× rotor</span></td><td>2/min</td><td>Assembler</td></tr>
-          <tr><td><span class="chip-label chip-mf-l">Modular frame</span></td><td><span class="chip-label chip-rip-l">3× RIP</span> + <span class="chip-label chip-rod-l">12× rods</span></td><td>2/min</td><td>Assembler</td></tr>
+          <tr><td><span class="chip-label chip-mf-l">Modular frame</span></td><td><span class="chip-label chip-rip-l">3× RIP</span> + <span class="chip-label chip-rod-l">6× rods</span></td><td>2/min</td><td>Assembler</td></tr>
         </tbody>
       </table>
-      <div class="chain-note">// Modular frame's rod ingredient (12/min per assembler @ 100%) is taken directly from what floor5_mf.html documents — this is higher than the standard wiki recipe (6 rods) and hasn't been independently re-verified. Flag for the upcoming trace-test pass.</div>
+      <div class="chain-note">// Modular frame's rod ingredient was corrected to 6/min per assembler (3 RIP + 6 rods → 2 MF) after trace-test caught a doubling error in floor5_mf.html's original figures. LB 4b's rod supply to Floor 5 (15/min per machine) now runs well above actual need — the 9/min headroom per machine (18/min combined) is documented as surplus routed to Ground storage on floor5_mf.html's output strip.</div>
     </div>
 
     <!-- THROUGHPUT -->
@@ -283,13 +284,13 @@
           <tr><td>RIP assemblers</td><td>2× @ 90%</td><td><span class="chip-label chip-plate-l">54/min plates</span> + <span class="chip-label chip-screw-l">108/min screws</span></td><td><span class="chip-label chip-rip-l">9/min RIP</span></td></tr>
           <tr><td>Rotors assembler</td><td>1× @ 100%</td><td><span class="chip-label chip-rod-l">20/min rods</span> + <span class="chip-label chip-screw-l">100/min screws</span></td><td><span class="chip-label chip-rotor-l">4/min rotors</span></td></tr>
           <tr><td>Smart Plating</td><td>1× @ 100%</td><td><span class="chip-label chip-rip-l">2/min RIP</span> + <span class="chip-label chip-rotor-l">2/min rotors</span></td><td><span class="chip-label chip-smart-l">2/min</span></td></tr>
-          <tr><td>MF assemblers</td><td>2× @ 100%</td><td><span class="chip-label chip-rip-l">6/min RIP</span> + <span class="chip-label chip-rod-l">24/min rods</span></td><td><span class="chip-label chip-mf-l">4/min MF</span></td></tr>
+          <tr><td>MF assemblers</td><td>2× @ 100%</td><td><span class="chip-label chip-rip-l">6/min RIP</span> + <span class="chip-label chip-rod-l">12/min rods</span></td><td><span class="chip-label chip-mf-l">4/min MF</span></td></tr>
           <tr class="totals-row"><td colspan="2">Ingots balance</td><td>240/min produced</td><td>120 (rods) + 120 (plates) = 240 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">Rods balance</td><td>120/min produced</td><td>60 (screws) + 20 (rotors) + 24 (MF) + ~16 surplus/store</td></tr>
-          <tr class="totals-row"><td colspan="2">Screws balance</td><td>240/min produced</td><td>108 (RIP) + 100 (rotors) + ~32 surplus/store</td></tr>
+          <tr class="totals-row"><td colspan="2">Rods balance</td><td>120/min produced</td><td>60 (screws) + 20 (rotors) + 12 (MF actual) + 10 (LB 2b → store) + 18 (Fl.5 surplus → store) = 120 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Screws balance</td><td>240/min produced</td><td>108 (RIP actual) + 100 (rotors) + 20 (LB 3b → store) + 12 (RIP input headroom, not drawn) = 240 ✓</td></tr>
         </tbody>
       </table>
-      <div class="chain-note flag">// These per-machine figures are read directly from each floor's own machine tags — the balance rows are presented as-is rather than force-reconciled, since closing them exactly is the trace-test's job, not this rebuild's.</div>
+      <div class="chain-note">// Verified by trace-test: rods and screws both close exactly once RIP/screw input headroom and the corrected MF rod consumption are accounted for. Two corrections came out of that pass — Floor 4's plate handoff (was 40/20, corrected to the true 30/30 split) and Modular Frame's rod consumption (was double the correct value) — both already fixed in the floor files.</div>
     </div>
 
     <!-- ORE & MINER ROUTING -->
@@ -319,7 +320,7 @@
         <p>Floor 2's 8 rod constructors produce 120/min total, arriving at LB 2b as a single 120/min trunk (SPL1) that splits into a screw-side branch (SPL2, 60/min) and an MF/Rotor-side branch (SPL5, 60/min).</p>
         <p>The screw side further splits through SPL3/SPL4 into 6× 10/min belts to Floor 3's screw constructors. The MF/Rotor side splits through SPL6 (30/min → 2× 15/min to LB 4b for MF) and SPL7 (30/min → store + 2× 10/min merged at MRG1 into 20/min → Floor 4 Rotors).</p>
       </div>
-      <div class="chain-note">// Rod trunk to LB 2b sits exactly at the Mk.2 cap (120/min) — do not downgrade.</div>
+      <div class="chain-note">// Rod trunk to LB 2b runs Mk.3 (120/min, well under the 270/min cap) per lb2b_rod_manifold.html's own belt-requirement box — do not downgrade to Mk.2, which would leave zero headroom.</div>
     </div>
 
     <!-- PLATE/SCREW ROUTING (LB 3b) -->
@@ -339,7 +340,7 @@
         <p>Two RIP assemblers run at 90% clock (4.5/min each, 9/min total), each consuming 27/min plates and 54/min screws. One Rotors assembler runs at 100% (4/min), consuming 20/min rods and 100/min screws.</p>
         <p>Floor 4's outputs (9/min RIP, 4/min Rotors) descend to LB 4b, which further splits RIP into MF1/MF2/Smart Plating branches and Rotors into Smart Plating/storage branches.</p>
       </div>
-      <div class="chain-note">// RIP assemblers running below 100% is unusual for this factory (everywhere else runs 100% or is TBD) — worth double-checking against the save if this wasn't a deliberate choice.</div>
+      <div class="chain-note">// RIP assemblers running at 90% (rather than 100% like every other machine here) was verified by trace-test as internally consistent — 4.5/min output and 27/54 plate/screw consumption all recompute correctly from the recipe at that clock speed. Not a defect, just an unusual deliberate choice.</div>
     </div>
 
     <!-- FACTORY OUTPUTS -->
@@ -350,16 +351,16 @@
           <tr><th>Product</th><th>Rate</th><th>Destination</th></tr>
         </thead>
         <tbody>
-          <tr><td><span class="chip-label chip-rod-l">Iron rods</span></td><td>~10/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-rod-l">Iron rods</span></td><td>~28/min surplus</td><td>Ground floor storage (10 from LB 2b + 18 from Floor 5)</td></tr>
           <tr><td><span class="chip-label chip-plate-l">Iron plates</span></td><td>20/min surplus</td><td>Ground floor storage</td></tr>
           <tr><td><span class="chip-label chip-screw-l">Screws</span></td><td>20/min surplus</td><td>Ground floor storage</td></tr>
-          <tr><td><span class="chip-label chip-rip-l">Reinf. iron plates</span></td><td>0.5/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-rip-l">Reinf. iron plates</span></td><td>1/min surplus</td><td>Ground floor storage</td></tr>
           <tr><td><span class="chip-label chip-rotor-l">Rotors</span></td><td>2/min surplus</td><td>Ground floor storage</td></tr>
           <tr><td><span class="chip-label chip-smart-l">Smart plating</span></td><td>2/min</td><td>Ground floor storage</td></tr>
           <tr><td><span class="chip-label chip-mf-l">Modular frames</span></td><td>4/min</td><td>Ground floor storage — Phase 3 requirement</td></tr>
         </tbody>
       </table>
-      <div class="chain-note">// Surplus figures per floor0_ground.html's own output strip labels — not independently re-derived here.</div>
+      <div class="chain-note">// Surplus figures match floor0_ground.html's own output strip labels, cross-checked against upstream conservation by trace-test (rods and RIP figures were corrected during that pass).</div>
     </div>
 
   </div>

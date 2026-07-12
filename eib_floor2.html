@@ -6,7 +6,11 @@
 <title>Floor 2 — Beams &amp; Pipes — Steel &amp; EIB Factory</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
-:root{--bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;--ingot:#D85A30;--ingot-bg:#2a1208;--ingot-bd:#7a2e10;--beam:#c4880a;--beam-bg:#1f1500;--beam-bd:#5c3a00;--pipe:#6abf25;--pipe-bg:#0d1a04;--pipe-bd:#254a08;--store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;}
+:root{--bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;--ingot:#D85A30;--ingot-bg:#2a1208;--ingot-bd:#7a2e10;--beam:#c4880a;--beam-bg:#1f1500;--beam-bd:#5c3a00;--pipe:#6abf25;--pipe-bg:#0d1a04;--pipe-bd:#254a08;--store:#c49010;--store-bg:#1a1200;--store-bd:#5a3800;
+  /* Imported node colours — mirror source-floor :root values, prefixed by floor to avoid MRGn name collisions across LB1b/LB3b */
+  --lb3b-mrg1:#4FC3F7;--lb3b-mrg2:#FFB74D;--lb3b-mrg4:#AED581;--lb3b-mrg6:#FF8A65;
+  --lb1b-mrg1:#5DD67A;--lb1b-mrg3:#FFB74D;--lb1b-mrg4:#80CBC4;--lb1b-mrg6:#4DD0E1;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
 h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
@@ -68,21 +72,21 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
         <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG1</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--lb3b-mrg1);opacity:0.6;">↑ LB 3b · MRG1</span>
         </div>
         <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG2</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--lb3b-mrg2);opacity:0.6;">↑ LB 3b · MRG2</span>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
         <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG4</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--lb3b-mrg4);opacity:0.6;">↑ LB 3b · MRG4</span>
         </div>
         <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ LB 3b · MRG6</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--lb3b-mrg6);opacity:0.6;">↑ LB 3b · MRG6</span>
         </div>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
@@ -90,7 +94,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--pipe);">Steel Pipes</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--pipe);">10/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);opacity:0.7;">→ Ground storage</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--pipe);opacity:0.6;">→ Ground storage</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
     </div><div class="floorplan">
@@ -116,32 +120,32 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← LB 1b manifold</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--lb1b-mrg1);">← MRG1</span>
       </div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← LB 1b manifold</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--lb1b-mrg6);">← MRG6</span>
       </div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← LB 1b manifold</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--lb1b-mrg3);">← MRG3</span>
       </div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← LB 1b manifold</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--lb1b-mrg4);">← MRG4</span>
       </div>
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.7;">← LB 1b · pipe tap</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← LB 1b · pipe tap</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
     </div>

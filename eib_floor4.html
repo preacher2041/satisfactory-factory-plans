@@ -16,8 +16,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
-h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
-.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
@@ -25,11 +25,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
-.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
@@ -95,14 +95,14 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--eib);">6/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-A</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.6;">→ Ground · EIB-A</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--eib);">6/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.7;">→ Ground · EIB-B</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.6;">→ Ground · EIB-B</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div><div class="floorplan">
@@ -118,35 +118,35 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       </div>
     </div>
 
-    <!-- Input strip (below grid): beams + concrete from LB 3b, per assembler -->
+    <!-- Input strip (below grid): beams from LB 3b, concrete from LB 3c, per assembler -->
     <div class="io-strip" style="margin-top:2px;">
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">18/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">← LB 3b · EIB-A</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">← LB 3b · EIB-A</span>
       </div>
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--concrete);">36/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← LB 3b · EIB-A</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.6;">← LB 3c · EIB-A</span>
       </div>
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">18/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">← LB 3b · EIB-B</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.6;">← LB 3b · EIB-B</span>
       </div>
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);font-weight:700;">↑ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--concrete);">Concrete</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--concrete);">36/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.7;">← LB 3b · EIB-B</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);opacity:0.6;">← LB 3c · EIB-B</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
     </div>
@@ -154,7 +154,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
 </div>
 
 <div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--eib-bg);border:1px solid var(--eib-bd)"></div>EIB assembler × 2 @ 100% · 6/m each</div></div>
-<div class="note">// Input strip: beams 18/min + concrete 36/min per assembler from LB 3b</div>
+<div class="note">// Input strip: beams 18/min per assembler from LB 3b + concrete 36/min per assembler from LB 3c</div>
 <div class="note">// Output strip: EIB 6/min each → Ground storage by external belt lift</div>
 <div class="note">// Recipe: 3 beams + 6 concrete → 1 EIB per cycle · 6/min @ 100% · consumption: 6×3=18 beams, 6×6=36 concrete ✓</div>
 </body>

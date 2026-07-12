@@ -101,6 +101,8 @@ Ore/ingot pairs (iron, copper) are intentionally different shades — never reus
 
 Every factory must pass the full floor-by-floor trace test (see `skills/trace-test/SKILL.md`) before being marked complete in `index.html`. Do not guess through ambiguous topology diagrams — flag and resolve collaboratively (node positions in a topology diagram carry no floor-plan layout meaning).
 
+Separately, use `skills/style-audit/SKILL.md` to check existing floors for legacy-style content (pre-flip port orientation, internal IO blocks, old merger styling, etc.) that needs migrating to the current conventions above. Trace-test checks maths; style-audit checks presentation — a floor can fail either independently.
+
 ## Workflow
 
 New factory → see `skills/new-floor-plan/SKILL.md` for the build sequence (production chain design → main factory page → floor plan files → trace test).

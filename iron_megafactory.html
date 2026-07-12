@@ -16,359 +16,35 @@
     --text:      #d4d8e8;
     --text-muted:#7a839a;
     --accent:    #4a90d9;
-
-    --iron:      #378ADD;
-    --iron-bg:   #0d2240;
-    --iron-bd:   #1a4a80;
-
-    --rod:       #1D9E75;
-    --rod-bg:    #061f16;
-    --rod-bd:    #0f5c3d;
-
-    --plate:     #D85A30;
-    --plate-bg:  #2a1208;
-    --plate-bd:  #7a2e10;
-
-    --screw:     #888780;
-    --screw-bg:  #1a1a18;
-    --screw-bd:  #44443f;
-
-    --rip:       #BA7517;
-    --rip-bg:    #251500;
-    --rip-bd:    #6b4008;
-
-    --rotor:     #D4537E;
-    --rotor-bg:  #200a12;
-    --rotor-bd:  #6b2040;
-
-    --smart:     #639922;
-    --smart-bg:  #0d1a04;
-    --smart-bd:  #254a08;
-
-    --mf:        #7F77DD;
-    --mf-bg:     #181535;
-    --mf-bd:     #3d3880;
+    --iron:      #378ADD; --iron-bg:  #0d2240; --iron-bd:  #1a4a80;
+    --ingot:     #A8B8C8; --ingot-bg: #141c24; --ingot-bd: #3a5068;
+    --rod:       #1D9E75; --rod-bg:   #061f16; --rod-bd:   #0f5c3d;
+    --plate:     #D85A30; --plate-bg: #2a1208; --plate-bd: #7a2e10;
+    --screw:     #888780; --screw-bg: #1a1a18; --screw-bd: #44443f;
+    --rip:       #BA7517; --rip-bg:   #251500; --rip-bd:   #6b4008;
+    --rotor:     #D4537E; --rotor-bg: #200a12; --rotor-bd: #6b2040;
+    --smart:     #639922; --smart-bg: #0d1a04; --smart-bd: #254a08;
+    --mf:        #7F77DD; --mf-bg:    #181535; --mf-bd:    #3d3880;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; line-height: 1.5; padding: 32px 24px 64px; min-height: 100vh; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 32px 24px 48px;
-    min-height: 100vh;
-  }
+  header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+  header .sub { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; }
+  .header-back { margin-left: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; transition: color 0.15s, border-color 0.15s; }
+  .header-back:hover { color: var(--text); border-color: var(--border2); }
 
-  header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-  }
-  header h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  header .sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
-  .header-back {
-    margin-left: auto;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 3px 10px;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .header-back:hover {
-    color: var(--text);
-    border-color: var(--border2);
-  }
-
-  .diagram-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px 16px;
-  }
-  .card-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
-
-  /* ── FLOOR BANDS ── */
-  .floor {
-    border: 1px dashed var(--border2);
-    border-radius: 4px;
-    padding: 10px 8px 8px;
-    margin-bottom: 6px;
-    position: relative;
-  }
-  .floor-lb {
-    border: 1px dashed #1e2838;
-    border-radius: 4px;
-    padding: 8px 8px 6px;
-    margin-bottom: 6px;
-    position: relative;
-    background: #111520;
-  }
-  .floor-label {
-    position: absolute;
-    left: -88px;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: right;
-    width: 80px;
-  }
-  .floor-label .name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-  }
-  .floor-label .name-lb {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #3a4460;
-    display: block;
-  }
-  .floor-label .height {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    color: #4a5268;
-    display: block;
-  }
-  .floor-right {
-    position: absolute;
-    right: -52px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    color: #4a5268;
-  }
-
-  .machines {
-    display: flex;
-    gap: 5px;
-    flex-wrap: nowrap;
-  }
-  .machine-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    flex: 1;
-    min-width: 0;
-  }
-
-  /* ── TAGS ── */
-  .tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    padding: 2px 4px;
-    border-radius: 3px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    line-height: 1.3;
-    letter-spacing: 0.02em;
-  }
-  .tag-iron   { background: var(--iron-bg);  border: 1px solid var(--iron-bd);  color: var(--iron); }
-  .tag-rod    { background: var(--rod-bg);   border: 1px solid var(--rod-bd);   color: var(--rod); }
-  .tag-plate  { background: var(--plate-bg); border: 1px solid var(--plate-bd); color: var(--plate); }
-  .tag-screw  { background: var(--screw-bg); border: 1px solid var(--screw-bd); color: var(--screw); }
-  .tag-rip    { background: var(--rip-bg);   border: 1px solid var(--rip-bd);   color: var(--rip); }
-  .tag-rotor  { background: var(--rotor-bg); border: 1px solid var(--rotor-bd); color: var(--rotor); }
-  .tag-smart  { background: var(--smart-bg); border: 1px solid var(--smart-bd); color: var(--smart); }
-  .tag-mf     { background: var(--mf-bg);    border: 1px solid var(--mf-bd);    color: var(--mf); }
-
-  /* ── MACHINE NODES ── */
-  .node {
-    border-radius: 5px;
-    padding: 5px 4px;
-    text-align: center;
-    width: 100%;
-    border-width: 1px;
-    border-style: solid;
-  }
-  .node .node-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .node .node-sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    display: block;
-    margin-top: 1px;
-    opacity: 0.8;
-  }
-
-  .node-smelter  { background: var(--iron-bg);  border-color: var(--iron-bd);  color: var(--iron); }
-  .node-rod      { background: var(--rod-bg);   border-color: var(--rod-bd);   color: var(--rod); }
-  .node-plate    { background: var(--plate-bg); border-color: var(--plate-bd); color: var(--plate); }
-  .node-screw    { background: var(--screw-bg); border-color: var(--screw-bd); color: var(--screw); }
-  .node-rip      { background: var(--rip-bg);   border-color: var(--rip-bd);   color: var(--rip); }
-  .node-rotor    { background: var(--rotor-bg); border-color: var(--rotor-bd); color: var(--rotor); }
-  .node-smart    { background: var(--smart-bg); border-color: var(--smart-bd); color: var(--smart); }
-  .node-mf       { background: var(--mf-bg);    border-color: var(--mf-bd);    color: var(--mf); }
-  .node-intake   { border-radius: 5px; padding: 5px 4px; text-align: center; width: 100%; border-width: 1px; border-style: solid; }
-  .node-iron-in  { background: var(--iron-bg);  border-color: var(--iron-bd);  color: var(--iron); }
-  .node-storage  { background: #1a1200; border-color: #5a3800; color: #c49010; border-radius: 5px; padding: 5px 4px; text-align: center; width: 100%; border-width: 1px; border-style: solid; }
-  .node-miner-normal { background: var(--iron-bg); border-color: var(--iron-bd); color: var(--iron); border-radius: 5px; padding: 5px 4px; text-align: center; width: 100%; border-width: 1px; border-style: solid; }
-  .node-miner-impure { background: #1a1000; border-color: #5a3000; color: #c07010; border-radius: 5px; padding: 5px 4px; text-align: center; width: 100%; border-width: 1px; border-style: solid; }
-
-  /* LB splitter node */
-  .node-lb {
-    background: #0d1018;
-    border: 1px solid #1e2838;
-    border-radius: 4px;
-    padding: 4px 4px;
-    text-align: center;
-    width: 100%;
-  }
-  .node-lb .node-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #3a5068;
-    display: block;
-  }
-  .node-lb .node-sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8px;
-    display: block;
-    margin-top: 1px;
-    color: #2a3848;
-  }
-
-  .diagram-inner {
-    margin-left: 92px;
-    margin-right: 56px;
-    position: relative;
-  }
-
-  .miners-section {
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px dashed #2a3048;
-  }
-  .miners-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .floor-note {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px;
-    color: #4a5268;
-    text-align: center;
-    margin-bottom: 4px;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── SUMMARY PANEL ── */
-  .summary-panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    position: sticky;
-    top: 24px;
-  }
-  .summary-panel h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #fff;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .summary-section { margin-bottom: 16px; }
-  .summary-section-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 4px 0;
-    border-bottom: 1px solid #1a1e2a;
-  }
+  .summary-section-title { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #1a1e2a; }
   .summary-row:last-child { border-bottom: none; }
-  .summary-key {
-    color: var(--text-muted);
-    font-size: 12px;
-    flex-shrink: 0;
-    padding-right: 8px;
-  }
-  .summary-val {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--text);
-    text-align: right;
-  }
-  .summary-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 12px 0;
-  }
-
-  .belt-chip {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 2px;
-    margin-right: 3px;
-    vertical-align: middle;
-  }
+  .summary-key { color: var(--text-muted); font-size: 12px; flex-shrink: 0; padding-right: 8px; }
+  .summary-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); text-align: right; }
+  .summary-val.tbd { color: #c4880a; }
+  .belt-chip { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
   .chip-iron  { background: var(--iron); }
+  .chip-ingot { background: var(--ingot); }
   .chip-rod   { background: var(--rod); }
   .chip-plate { background: var(--plate); }
   .chip-screw { background: var(--screw); }
@@ -377,184 +53,193 @@
   .chip-smart { background: var(--smart); }
   .chip-mf    { background: var(--mf); }
 
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 12px;
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .legend-dot {
-    width: 10px; height: 10px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+  .chain-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .chain-header { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .chain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+  .chain-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .chain-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chain-table th { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 4px 6px 6px; border-bottom: 1px solid var(--border); }
+  .chain-table td { padding: 6px 6px; border-bottom: 1px solid #1a1e2a; vertical-align: middle; color: var(--text); font-size: 12px; }
+  .chain-table tr:last-child td { border-bottom: none; }
+  .totals-row td { color: var(--text-muted); font-style: italic; }
+  .chip-label { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
+  .chip-iron-l  { background: var(--iron-bg);  border: 1px solid var(--iron-bd);  color: var(--iron); }
+  .chip-ingot-l { background: var(--ingot-bg); border: 1px solid var(--ingot-bd); color: var(--ingot); }
+  .chip-rod-l   { background: var(--rod-bg);   border: 1px solid var(--rod-bd);   color: var(--rod); }
+  .chip-plate-l { background: var(--plate-bg); border: 1px solid var(--plate-bd); color: var(--plate); }
+  .chip-screw-l { background: var(--screw-bg); border: 1px solid var(--screw-bd); color: var(--screw); }
+  .chip-rip-l   { background: var(--rip-bg);   border: 1px solid var(--rip-bd);   color: var(--rip); }
+  .chip-rotor-l { background: var(--rotor-bg); border: 1px solid var(--rotor-bd); color: var(--rotor); }
+  .chip-smart-l { background: var(--smart-bg); border: 1px solid var(--smart-bd); color: var(--smart); }
+  .chip-mf-l    { background: var(--mf-bg);    border: 1px solid var(--mf-bd);    color: var(--mf); }
+  .chain-prose p { color: var(--text); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+  .chain-prose p:last-child { margin-bottom: 0; }
+  .chain-note { margin-top: 10px; padding: 8px 10px; background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 4px 4px 0; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .chain-note.flag { border-left-color: #c4880a; color: #c4880a; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>Iron Megafactory</h1>
-  <span class="sub">// Satisfactory 1.0 — Phase 3 — 29 machines + 3 miners · LB sub-floors</span>
+  <span class="sub">// Modular Frames + full iron production chain — 240 ore/min · 11 floors · 112m</span>
   <a href="index.html" class="header-back">← Index</a>
 </header>
 
-<!-- ══ BUILD SUMMARY ══ -->
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden">
+<!-- ══ SUMMARY BAR ══ -->
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
 
-  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div class="summary-section-title">// Factory</div>
-    <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
-    <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">104m</span></div>
-    <div class="summary-row"><span class="summary-key">Foundations</span><span class="summary-val">10 wide × 6 deep</span></div>
-    <div class="summary-row"><span class="summary-key">Machines</span><span class="summary-val">30 + 3 miners</span></div>
-    <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">3 (miners)</span></div>
+    <!-- Factory -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Factory</div>
+      <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
+      <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">112m (6F + 5 LB)</span></div>
+      <div class="summary-row"><span class="summary-key">Foundations</span><span class="summary-val">10 wide × 6 deep</span></div>
+      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">32 + miners (TBD)</span></div>
+      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val tbd">TBD (miners)</span></div>
+    </div>
+
+    <!-- Floor heights -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Floor heights</div>
+      <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
+      <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m — Ore split</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m — Smelters</span></div>
+      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+28m — Ingot split</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m — Rods &amp; plates</span></div>
+      <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m — Rod manifold</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+60m — Screws</span></div>
+      <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">+72m — Plates, screws &amp; rods</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+80m — RIP &amp; Rotors assembly</span></div>
+      <div class="summary-row"><span class="summary-key">LB 4b</span><span class="summary-val">+92m — RIP, rods &amp; rotors</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 5</span><span class="summary-val">+100m — Modular Frames &amp; Smart Plating</span></div>
+    </div>
+
+    <!-- Belt requirements -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Belt requirements</div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Ore trunk (miners→LB 0b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot trunk (Fl.1→LB 1b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod trunk (Fl.2→LB 2b)</span><span class="summary-val">Mk.2 · 120/min ⚠ cap</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Plate trunk (Fl.2→LB 3b)</span><span class="summary-val">Mk.2 · 80/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw trunk (Fl.3→LB 3b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw belt → Rotors</span><span class="summary-val">Mk.3 · 100/min</span></div>
+    </div>
+
+    <!-- Clock speeds -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Clock speeds</div>
+      <div class="summary-row"><span class="summary-key">Miners</span><span class="summary-val tbd">TBD</span></div>
+      <div class="summary-row"><span class="summary-key">Smelters (×8)</span><span class="summary-val">100% · 30/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Rod constructors (×8)</span><span class="summary-val">100% · 15/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Plate constructors (×4)</span><span class="summary-val">100% · 20/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Screw constructors (×6)</span><span class="summary-val">100% · 40/min each</span></div>
+      <div class="summary-row"><span class="summary-key">RIP assemblers (×2)</span><span class="summary-val">90% · 4.5/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Rotors assembler (×1)</span><span class="summary-val">100% · 4/min</span></div>
+      <div class="summary-row"><span class="summary-key">Smart Plating (×1)</span><span class="summary-val">100% · 2/min</span></div>
+      <div class="summary-row"><span class="summary-key">MF assemblers (×2)</span><span class="summary-val">100% · 2/min each</span></div>
+    </div>
+
+    <!-- Buildings required -->
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Buildings required</div>
+      <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val tbd">TBD (iron ore)</span></div>
+      <div class="summary-row"><span class="summary-key">Smelter</span><span class="summary-val">8</span></div>
+      <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">18 (8 rod · 4 plate · 6 screw)</span></div>
+      <div class="summary-row"><span class="summary-key">Assembler</span><span class="summary-val">6 (2 RIP · 1 Rotors · 2 MF · 1 Smart Plating)</span></div>
+      <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">7</span></div>
+    </div>
+
   </div>
-
-  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div class="summary-section-title">// Floor heights</div>
-    <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">8m</span></div>
-    <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">8m</span></div>
-    <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">8m</span></div>
-    <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">8m</span></div>
-    <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">12m</span></div>
-    <div class="summary-row"><span class="summary-key">LB 4b</span><span class="summary-val">8m</span></div>
-    <div class="summary-row"><span class="summary-key">Floor 5</span><span class="summary-val">12m</span></div>
-  </div>
-
-  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div class="summary-section-title">// Belt requirements</div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Ore trunk</span><span class="summary-val">Mk.3 · 240/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Iron ingots</span><span class="summary-val">Mk.3 · 240/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Iron rods</span><span class="summary-val">Mk.3 · 120/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Iron plates</span><span class="summary-val">Mk.2 · 80/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screws</span><span class="summary-val">Mk.3 · 240/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rip"></span>RIP</span><span class="summary-val">Mk.2 · 10/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rotor"></span>Rotors</span><span class="summary-val">Mk.2 · 4/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-smart"></span>Smart plating</span><span class="summary-val">Mk.2 · 2/min</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-mf"></span>Modular frames</span><span class="summary-val">Mk.2 · 5/min</span></div>
-  </div>
-
-  <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div class="summary-section-title">// Clock speeds</div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Miners (3×)</span><span class="summary-val">133.3% · 80/min each</span></div>
-    <div class="summary-row"><span class="summary-key" style="padding-left:13px">Power shards</span><span class="summary-val" style="color:#c4880a">1 each · 3 total</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Smelters (8×)</span><span class="summary-val">100% · 30/min each</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod constructors (8×)</span><span class="summary-val">100% · 15/min each</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Plate constructors (4×)</span><span class="summary-val">100% · 20/min each</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw constructors (6×)</span><span class="summary-val">100% · 40/min each</span></div>
-    <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-mf"></span>MF assemblers (3×)</span><span class="summary-val">83.3% · 1.67/min each</span></div>
-  </div>
-
-  <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
-    <div class="summary-section-title">// Buildings required</div>
-    <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val">3</span></div>
-    <div class="summary-row"><span class="summary-key">Smelter</span><span class="summary-val">8</span></div>
-    <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">18  (8 rods · 4 plates · 6 screws)</span></div>
-    <div class="summary-row"><span class="summary-key">Assembler</span><span class="summary-val">7  (2 RIP · 1 rotors · 1 smart · 3 MF)</span></div>
-    <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">7</span></div>
-  </div>
-
 </div>
 
-<!-- ══ FLOOR PLANS ══ -->
-<div class="diagram-card" style="min-width:0">
-  <div class="card-label">// Floor plans — click to open · navigate with prev/next</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:8px">
+<!-- ══ FLOOR PLANS GRID ══ -->
+<div style="margin-bottom:8px">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">// Floor plans</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px">
 
     <a href="floor0_ground.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid #5a3800;border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c49010;letter-spacing:0.08em;margin-bottom:3px">GROUND · ±0m</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid #5a3800;border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c49010;letter-spacing:0.08em;margin-bottom:3px">GROUND · +0m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Storage</div>
       </div>
     </a>
 
     <a href="lb0b_ore_split.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--iron-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--iron);letter-spacing:0.08em;margin-bottom:3px">LB 0b · +8m</div>
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--iron-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--iron);letter-spacing:0.08em;margin-bottom:3px">LB 0b · +12m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ore Split</div>
       </div>
     </a>
 
     <a href="floor1_smelters.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--iron-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--iron);letter-spacing:0.08em;margin-bottom:3px">FLOOR 1 · +16m</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--iron-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--iron);letter-spacing:0.08em;margin-bottom:3px">FLOOR 1 · +20m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Smelters</div>
       </div>
     </a>
 
     <a href="lb1b_ingot_split.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--rod-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rod);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +28m</div>
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--ingot-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--ingot);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +28m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Split</div>
       </div>
     </a>
 
     <a href="floor2_rods_plates.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--rod-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rod);letter-spacing:0.08em;margin-bottom:3px">FLOOR 2 · +36m</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--rod-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rod);letter-spacing:0.08em;margin-bottom:3px">FLOOR 2 · +40m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Rods &amp; Plates</div>
       </div>
     </a>
 
     <a href="lb2b_rod_manifold.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">LB 2b · +48m</div>
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--rod-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rod);letter-spacing:0.08em;margin-bottom:3px">LB 2b · +52m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Rod Manifold</div>
       </div>
     </a>
 
     <a href="floor3_screws.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">FLOOR 3 · +56m</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">FLOOR 3 · +60m</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screws</div>
       </div>
     </a>
 
     <a href="lb3b_plates_screws.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--rip-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rip);letter-spacing:0.08em;margin-bottom:3px">LB 3b · +68m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Plates · Screws · Rods</div>
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--plate-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--plate);letter-spacing:0.08em;margin-bottom:3px">LB 3b · +72m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Plates &amp; Screws</div>
       </div>
     </a>
 
     <a href="floor4_assembly.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--rip-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rip);letter-spacing:0.08em;margin-bottom:3px">FLOOR 4 · +76m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Assembly</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--rip-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rip);letter-spacing:0.08em;margin-bottom:3px">FLOOR 4 · +80m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">RIP &amp; Rotors Assembly</div>
       </div>
     </a>
 
     <a href="lb4b_rip_rods.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--mf-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--mf);letter-spacing:0.08em;margin-bottom:3px">LB 4b · +88m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">RIP &amp; Rods</div>
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--rip-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rip);letter-spacing:0.08em;margin-bottom:3px">LB 4b · +92m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">RIP, Rods &amp; Rotors</div>
       </div>
     </a>
 
     <a href="floor5_mf.html" style="text-decoration:none">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--mf-bd);border-radius:6px;padding:10px 12px;transition:border-color 0.15s">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--mf);letter-spacing:0.08em;margin-bottom:3px">FLOOR 5 · +96m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Modular Frames</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--mf-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--mf);letter-spacing:0.08em;margin-bottom:3px">FLOOR 5 · +100m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Modular Frames &amp; Smart Plating</div>
       </div>
     </a>
 
-    </div>
-    <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a4460">// Production floors in white · LB sub-floors in dark · colour-coded by primary material</div>
   </div>
-
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a4460;margin-top:8px">// Production floors in white · LB sub-floors in dark · colour-coded by primary material</div>
+</div>
 
 
 <!-- ══ PRODUCTION CHAIN BREAKDOWN ══ -->
@@ -567,51 +252,20 @@
       <div class="chain-card-title">Recipes</div>
       <table class="chain-table">
         <thead>
-          <tr><th>Output</th><th>Inputs</th><th>Cycle</th><th>Machine</th><th>Rate</th></tr>
+          <tr><th>Output</th><th>Inputs (per cycle)</th><th>Rate @ 100%</th><th>Machine</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td><span class="chip-label chip-iron-l">Iron ingots</span></td>
-            <td><span class="chip-label chip-iron-l">1× iron ore</span></td>
-            <td>2s</td><td>Smelter</td><td>30/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-rod-l">Iron rods</span></td>
-            <td><span class="chip-label chip-iron-l">1× iron ingot</span></td>
-            <td>4s</td><td>Constructor</td><td>15/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-plate-l">Iron plates</span></td>
-            <td><span class="chip-label chip-iron-l">3× iron ingots</span></td>
-            <td>6s</td><td>Constructor</td><td>20/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-screw-l">Screws</span></td>
-            <td><span class="chip-label chip-rod-l">1× iron rod</span></td>
-            <td>6s</td><td>Constructor</td><td>40/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-rip-l">Reinf. iron plate</span></td>
-            <td><span class="chip-label chip-plate-l">6× plates</span> + <span class="chip-label chip-screw-l">12× screws</span></td>
-            <td>12s</td><td>Assembler</td><td>5/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-rotor-l">Rotors</span></td>
-            <td><span class="chip-label chip-rod-l">20× rods</span> + <span class="chip-label chip-screw-l">100× screws</span></td>
-            <td>15s</td><td>Assembler</td><td>4/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-smart-l">Smart plating</span></td>
-            <td><span class="chip-label chip-rip-l">1× RIP</span> + <span class="chip-label chip-rotor-l">1× rotor</span></td>
-            <td>30s</td><td>Assembler</td><td>2/min</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-mf-l">Modular frames</span></td>
-            <td><span class="chip-label chip-rip-l">3× RIP</span> + <span class="chip-label chip-rod-l">6× rods</span></td>
-            <td>60s</td><td>Assembler</td><td>2/min</td>
-          </tr>
+          <tr><td><span class="chip-label chip-ingot-l">Iron ingot</span></td><td><span class="chip-label chip-iron-l">1× iron ore</span></td><td>30/min</td><td>Smelter</td></tr>
+          <tr><td><span class="chip-label chip-rod-l">Iron rod</span></td><td><span class="chip-label chip-ingot-l">1× iron ingot</span></td><td>15/min</td><td>Constructor</td></tr>
+          <tr><td><span class="chip-label chip-plate-l">Iron plate</span></td><td><span class="chip-label chip-ingot-l">3× iron ingots</span></td><td>20/min</td><td>Constructor</td></tr>
+          <tr><td><span class="chip-label chip-screw-l">Screw</span></td><td><span class="chip-label chip-rod-l">1× iron rod</span></td><td>40/min</td><td>Constructor</td></tr>
+          <tr><td><span class="chip-label chip-rip-l">Reinf. iron plate</span></td><td><span class="chip-label chip-plate-l">6× plates</span> + <span class="chip-label chip-screw-l">12× screws</span></td><td>5/min</td><td>Assembler</td></tr>
+          <tr><td><span class="chip-label chip-rotor-l">Rotor</span></td><td><span class="chip-label chip-rod-l">5× rods</span> + <span class="chip-label chip-screw-l">25× screws</span></td><td>4/min</td><td>Assembler</td></tr>
+          <tr><td><span class="chip-label chip-smart-l">Smart plating</span></td><td><span class="chip-label chip-rip-l">1× RIP</span> + <span class="chip-label chip-rotor-l">1× rotor</span></td><td>2/min</td><td>Assembler</td></tr>
+          <tr><td><span class="chip-label chip-mf-l">Modular frame</span></td><td><span class="chip-label chip-rip-l">3× RIP</span> + <span class="chip-label chip-rod-l">12× rods</span></td><td>2/min</td><td>Assembler</td></tr>
         </tbody>
       </table>
+      <div class="chain-note">// Modular frame's rod ingredient (12/min per assembler @ 100%) is taken directly from what floor5_mf.html documents — this is higher than the standard wiki recipe (6 rods) and hasn't been independently re-verified. Flag for the upcoming trace-test pass.</div>
     </div>
 
     <!-- THROUGHPUT -->
@@ -622,132 +276,70 @@
           <tr><th>Stage</th><th>Machines</th><th>In</th><th>Out</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Smelters</td><td>8× @ 93.75%</td>
-            <td><span class="chip-label chip-iron-l">225/min ore</span></td>
-            <td><span class="chip-label chip-iron-l">225/min ingots</span></td>
-          </tr>
-          <tr>
-            <td>Rod constructors</td><td>7× @ 100%</td>
-            <td><span class="chip-label chip-iron-l">105/min ingots</span></td>
-            <td><span class="chip-label chip-rod-l">105/min rods</span></td>
-          </tr>
-          <tr>
-            <td>Plate constructors</td><td>4× @ 100%</td>
-            <td><span class="chip-label chip-iron-l">120/min ingots</span></td>
-            <td><span class="chip-label chip-plate-l">80/min plates</span></td>
-          </tr>
-          <tr>
-            <td>Screw constructors</td><td>6× @ 100%</td>
-            <td><span class="chip-label chip-rod-l">60/min rods</span></td>
-            <td><span class="chip-label chip-screw-l">240/min screws</span></td>
-          </tr>
-          <tr>
-            <td>RIP assemblers</td><td>2× @ 100%</td>
-            <td><span class="chip-label chip-plate-l">60/min plates</span> + <span class="chip-label chip-screw-l">120/min screws</span></td>
-            <td><span class="chip-label chip-rip-l">10/min RIP</span></td>
-          </tr>
-          <tr>
-            <td>Rotors assembler</td><td>1× @ 100%</td>
-            <td><span class="chip-label chip-rod-l">20/min rods</span> + <span class="chip-label chip-screw-l">100/min screws</span></td>
-            <td><span class="chip-label chip-rotor-l">4/min rotors</span></td>
-          </tr>
-          <tr>
-            <td>Smart plating</td><td>1× @ 100%</td>
-            <td><span class="chip-label chip-rip-l">2/min RIP</span> + <span class="chip-label chip-rotor-l">2/min rotors</span></td>
-            <td><span class="chip-label chip-smart-l">2/min</span></td>
-          </tr>
-          <tr>
-            <td>MF assemblers</td><td>3× @ 83.3%</td>
-            <td><span class="chip-label chip-rip-l">7.5/min RIP</span> + <span class="chip-label chip-rod-l">15/min rods</span></td>
-            <td><span class="chip-label chip-mf-l">5/min MF</span></td>
-          </tr>
-          <tr class="totals-row"><td colspan="2">Ingots balance check</td><td>225/min produced</td><td>105+120 = 225 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">Rods balance check</td><td>105/min produced</td><td>60+20+15+10 = 105 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">Screws balance check</td><td>240/min produced</td><td>120+100+20 = 240 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">RIP balance check</td><td>10/min produced</td><td>7.5+2+0.5 = 10 ✓</td></tr>
+          <tr><td>Smelters</td><td>8× @ 100%</td><td><span class="chip-label chip-iron-l">240/min ore</span></td><td><span class="chip-label chip-ingot-l">240/min ingots</span></td></tr>
+          <tr><td>Rod constructors</td><td>8× @ 100%</td><td><span class="chip-label chip-ingot-l">120/min ingots</span></td><td><span class="chip-label chip-rod-l">120/min rods</span></td></tr>
+          <tr><td>Plate constructors</td><td>4× @ 100%</td><td><span class="chip-label chip-ingot-l">120/min ingots</span></td><td><span class="chip-label chip-plate-l">80/min plates</span></td></tr>
+          <tr><td>Screw constructors</td><td>6× @ 100%</td><td><span class="chip-label chip-rod-l">60/min rods</span></td><td><span class="chip-label chip-screw-l">240/min screws</span></td></tr>
+          <tr><td>RIP assemblers</td><td>2× @ 90%</td><td><span class="chip-label chip-plate-l">54/min plates</span> + <span class="chip-label chip-screw-l">108/min screws</span></td><td><span class="chip-label chip-rip-l">9/min RIP</span></td></tr>
+          <tr><td>Rotors assembler</td><td>1× @ 100%</td><td><span class="chip-label chip-rod-l">20/min rods</span> + <span class="chip-label chip-screw-l">100/min screws</span></td><td><span class="chip-label chip-rotor-l">4/min rotors</span></td></tr>
+          <tr><td>Smart Plating</td><td>1× @ 100%</td><td><span class="chip-label chip-rip-l">2/min RIP</span> + <span class="chip-label chip-rotor-l">2/min rotors</span></td><td><span class="chip-label chip-smart-l">2/min</span></td></tr>
+          <tr><td>MF assemblers</td><td>2× @ 100%</td><td><span class="chip-label chip-rip-l">6/min RIP</span> + <span class="chip-label chip-rod-l">24/min rods</span></td><td><span class="chip-label chip-mf-l">4/min MF</span></td></tr>
+          <tr class="totals-row"><td colspan="2">Ingots balance</td><td>240/min produced</td><td>120 (rods) + 120 (plates) = 240 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Rods balance</td><td>120/min produced</td><td>60 (screws) + 20 (rotors) + 24 (MF) + ~16 surplus/store</td></tr>
+          <tr class="totals-row"><td colspan="2">Screws balance</td><td>240/min produced</td><td>108 (RIP) + 100 (rotors) + ~32 surplus/store</td></tr>
         </tbody>
       </table>
+      <div class="chain-note flag">// These per-machine figures are read directly from each floor's own machine tags — the balance rows are presented as-is rather than force-reconciled, since closing them exactly is the trace-test's job, not this rebuild's.</div>
     </div>
 
-    <!-- LB SUB-FLOOR NOTES -->
+    <!-- ORE & MINER ROUTING -->
     <div class="chain-card">
-      <div class="chain-card-title">Load balancer sub-floor layout</div>
+      <div class="chain-card-title">Ore &amp; miner routing</div>
       <div class="chain-prose">
-        <p>Each LB sub-floor is 8m tall (2 wall stacks) and sits directly below the production floor it feeds. Belt lifts on the exterior wall carry materials up from each LB sub-floor into the machine floor above.</p>
-        <div class="lb-diagram">
-          <div class="lb-row">
-            <span class="chip-label chip-iron-l">LB 0b · +8m</span>
-            <span class="lb-arrow">→</span>
-            <div class="lb-branches">
-              <div><span class="lb-branch-a">Binary tree · 7 splitters</span> · Ore 240/min → 8× 30/min</div>
-              <div><span class="lb-branch-b">S0(240)→S1(120)+S2(120) → S3–S6(60) → 30/min each</span></div>
-            </div>
-          </div>
-          <div class="lb-row" style="margin-top:6px">
-            <span class="chip-label chip-iron-l">LB 1b · +28m</span>
-            <span class="lb-arrow">→</span>
-            <div class="lb-branches">
-              <div><span class="lb-branch-a">Rod manifold 105/min</span> → taps 15/min × 7 constructors — fully consumed</div>
-              <div><span class="lb-branch-b">Plate tree S0(120)→S1(60)+S2(60) → 30/min × 4</span></div>
-            </div>
-          </div>
-          <div class="lb-row" style="margin-top:6px">
-            <span class="chip-label chip-rod-l">LB 2b · +48m</span>
-            <span class="lb-arrow">→</span>
-            <div class="lb-branches">
-              <div><span class="lb-branch-a">Rod manifold 105/min</span> · taps 10/min × 6 screws · ~35 to LB 3b · ~10 to storage</div>
-            </div>
-          </div>
-          <div class="lb-row" style="margin-top:6px">
-            <span class="chip-label chip-plate-l">LB 3b · +68m</span>
-            <span class="lb-arrow">→</span>
-            <div class="lb-branches">
-              <div><span class="lb-branch-a">Plate manifold 80/min</span> · taps 30×2 RIP · 20 to storage</div>
-              <div><span class="lb-branch-b">Screw tree+merger · 240→60+60+100+20</span></div>
-              <div><span class="lb-branch-a">Rod tree+merger · 35→15 MF + 20 rotors</span></div>
-            </div>
-          </div>
-          <div class="lb-row" style="margin-top:6px">
-            <span class="chip-label chip-rip-l">LB 4b · +88m</span>
-            <span class="lb-arrow">→</span>
-            <div class="lb-branches">
-              <div><span class="lb-branch-a">RIP S0(7.5) → 2.5+2.5+2.5</span> · 1 splitter</div>
-              <div><span class="lb-branch-b">Rods S1(15) → 5+5+5</span> · 1 splitter</div>
-            </div>
-          </div>
-        </div>
+        <p>240 ore/min feeds LB 0b, which uses a 7-splitter binary tree (SPL1–SPL7) to distribute it into 8 equal 30/min belts, one per smelter on Floor 1.</p>
+        <p>The ore trunk from the miner(s) to LB 0b requires a Mk.3 belt (240/min, under the 270/min cap).</p>
       </div>
+      <div class="chain-note flag">// Miner count, node purity, and clock speed are not recorded in any floor-plan file (they only show "← miners" on the input strip) — left as TBD in the summary bar above pending confirmation against the actual save.</div>
     </div>
 
-    <!-- ORE BUDGET -->
+    <!-- INGOT ROUTING -->
     <div class="chain-card">
-      <div class="chain-card-title">Ore budget</div>
+      <div class="chain-card-title">Ingot split &amp; routing</div>
       <div class="chain-prose">
-        <p>Three normal Mk.2 miners overclocked to 133.3% each supply exactly 240 ore/min total — 15 ore/min more than the smelters consume at 93.75% clock (225/min). The smelters self-regulate: they run at 93.75% because the ingot demand downstream is exactly 225/min. The 15 ore/min excess simply isn't pulled through.</p>
-        <p>133.3% sits between 100% and 150% so each miner requires exactly 1 power shard. No second shard is needed on any of them.</p>
+        <p>Floor 1's 8 smelters each output 30/min ingots via individual belt lifts to LB 1b. LB 1b uses 4 direct pass-through belts (P1–P4, 30/min each, cols 2–5) plus 4× 2-way splitters (SPL1–SPL4, cols 6–9) that each halve 30/min into two 15/min belts (R1–R8).</p>
+        <p>Floor 2 receives 120/min ingots on 4 belts (30/min each, cols 2–5) feeding plate constructors, and 120/min ingots on 8 belts (15/min each, cols 6–9... reindexed on Floor 2 as R1–R8) feeding rod constructors.</p>
       </div>
+      <div class="chain-note">// 240/min splits cleanly into two 120/min tracks (4×30 direct + 8×15 via splitters) — no uneven-split workaround needed.</div>
     </div>
 
-    <!-- MINER CALCULATIONS -->
+    <!-- ROD ROUTING (LB 2b) -->
     <div class="chain-card">
-      <div class="chain-card-title">Miner clock speed reasoning</div>
-      <table class="chain-table">
-        <thead>
-          <tr><th>Resource</th><th>Node</th><th>Mk.2 base</th><th>Output</th><th>Clock</th><th>Shard</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="chip-label chip-iron-l">Iron ore</span></td>
-            <td>3× normal</td>
-            <td>60/min each</td>
-            <td>240/min</td>
-            <td>133.3%</td>
-            <td class="yes-shard">1 each</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="chain-note">Total ore: 240/min. Smelters consume 225/min at 93.75% clock — 15/min unused. 133.3% sits below the 150% threshold so only 1 shard per miner. Total: 3 power shards.</div>
+      <div class="chain-card-title">Rod manifold &amp; routing (LB 2b)</div>
+      <div class="chain-prose">
+        <p>Floor 2's 8 rod constructors produce 120/min total, arriving at LB 2b as a single 120/min trunk (SPL1) that splits into a screw-side branch (SPL2, 60/min) and an MF/Rotor-side branch (SPL5, 60/min).</p>
+        <p>The screw side further splits through SPL3/SPL4 into 6× 10/min belts to Floor 3's screw constructors. The MF/Rotor side splits through SPL6 (30/min → 2× 15/min to LB 4b for MF) and SPL7 (30/min → store + 2× 10/min merged at MRG1 into 20/min → Floor 4 Rotors).</p>
+      </div>
+      <div class="chain-note">// Rod trunk to LB 2b sits exactly at the Mk.2 cap (120/min) — do not downgrade.</div>
+    </div>
+
+    <!-- PLATE/SCREW ROUTING (LB 3b) -->
+    <div class="chain-card">
+      <div class="chain-card-title">Plate, screw &amp; rod routing (LB 3b)</div>
+      <div class="chain-prose">
+        <p>Floor 3's 6 screw constructors produce 240/min, entering LB 3b's screw network (SSPL1–4, SMRG1–2) which splits it into 60/min to RIP-A, 60/min to RIP-B, 100/min to Rotors, and 20/min to storage.</p>
+        <p>Floor 2's 80/min plates enter LB 3b's separate plate network (PSPL1–3, PMRG1) and split into 30/min to RIP-A, 30/min to RIP-B, and 20/min to storage. The 20/min rod belt from LB 2b (bound for Floor 4 Rotors) passes through this floor unmodified.</p>
+      </div>
+      <div class="chain-note">// Two independent networks share this floor (plate cols 1–2, screw cols 4–8) per the combined-network-floor convention — see the floor file's own node colour key for both.</div>
+    </div>
+
+    <!-- RIP/ROTOR ASSEMBLY -->
+    <div class="chain-card">
+      <div class="chain-card-title">RIP &amp; Rotors assembly (Floor 4)</div>
+      <div class="chain-prose">
+        <p>Two RIP assemblers run at 90% clock (4.5/min each, 9/min total), each consuming 27/min plates and 54/min screws. One Rotors assembler runs at 100% (4/min), consuming 20/min rods and 100/min screws.</p>
+        <p>Floor 4's outputs (9/min RIP, 4/min Rotors) descend to LB 4b, which further splits RIP into MF1/MF2/Smart Plating branches and Rotors into Smart Plating/storage branches.</p>
+      </div>
+      <div class="chain-note">// RIP assemblers running below 100% is unusual for this factory (everywhere else runs 100% or is TBD) — worth double-checking against the save if this wasn't a deliberate choice.</div>
     </div>
 
     <!-- FACTORY OUTPUTS -->
@@ -758,162 +350,20 @@
           <tr><th>Product</th><th>Rate</th><th>Destination</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td><span class="chip-label chip-rod-l">Iron rods</span></td>
-            <td>~10/min</td>
-            <td>Storage (building materials)</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-plate-l">Iron plates</span></td>
-            <td>20/min surplus</td>
-            <td>Storage (60 consumed by RIP)</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-screw-l">Screws</span></td>
-            <td>20/min surplus</td>
-            <td>Storage (220 consumed internally)</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-rip-l">Reinf. iron plates</span></td>
-            <td>0.5/min surplus</td>
-            <td>Storage (9.5 consumed internally)</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-rotor-l">Rotors</span></td>
-            <td>2/min surplus</td>
-            <td>Storage (2 consumed by smart plating)</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-smart-l">Smart plating</span></td>
-            <td>2/min</td>
-            <td>Storage</td>
-          </tr>
-          <tr>
-            <td><span class="chip-label chip-mf-l">Modular frames</span></td>
-            <td>5/min</td>
-            <td>Storage — Phase 3 requirement met in 20 min</td>
-          </tr>
+          <tr><td><span class="chip-label chip-rod-l">Iron rods</span></td><td>~10/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-plate-l">Iron plates</span></td><td>20/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-screw-l">Screws</span></td><td>20/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-rip-l">Reinf. iron plates</span></td><td>0.5/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-rotor-l">Rotors</span></td><td>2/min surplus</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-smart-l">Smart plating</span></td><td>2/min</td><td>Ground floor storage</td></tr>
+          <tr><td><span class="chip-label chip-mf-l">Modular frames</span></td><td>4/min</td><td>Ground floor storage — Phase 3 requirement</td></tr>
         </tbody>
       </table>
+      <div class="chain-note">// Surplus figures per floor0_ground.html's own output strip labels — not independently re-derived here.</div>
     </div>
 
   </div>
 </div>
-
-<style>
-  .chain-section {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-  .chain-header {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
-  .chain-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .chain-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px 18px;
-  }
-  .chain-card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #fff;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .chain-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .chain-table th {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-    padding: 4px 6px 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .chain-table td {
-    padding: 6px 6px;
-    border-bottom: 1px solid #1a1e2a;
-    vertical-align: middle;
-    color: var(--text);
-    font-size: 12px;
-  }
-  .chain-table tr:last-child td { border-bottom: none; }
-  .totals-row td { color: var(--text-muted); font-style: italic; }
-
-  .chip-label {
-    display: inline-block;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    padding: 2px 5px;
-    border-radius: 3px;
-    white-space: nowrap;
-  }
-  .chip-iron-l  { background: var(--iron-bg);  border: 1px solid var(--iron-bd);  color: var(--iron); }
-  .chip-rod-l   { background: var(--rod-bg);   border: 1px solid var(--rod-bd);   color: var(--rod); }
-  .chip-plate-l { background: var(--plate-bg); border: 1px solid var(--plate-bd); color: var(--plate); }
-  .chip-screw-l { background: var(--screw-bg); border: 1px solid var(--screw-bd); color: var(--screw); }
-  .chip-rip-l   { background: var(--rip-bg);   border: 1px solid var(--rip-bd);   color: var(--rip); }
-  .chip-rotor-l { background: var(--rotor-bg); border: 1px solid var(--rotor-bd); color: var(--rotor); }
-  .chip-smart-l { background: var(--smart-bg); border: 1px solid var(--smart-bd); color: var(--smart); }
-  .chip-mf-l    { background: var(--mf-bg);    border: 1px solid var(--mf-bd);    color: var(--mf); }
-
-  .no-shard  { color: var(--text-muted); font-family: 'Share Tech Mono', monospace; font-size: 11px; }
-  .yes-shard { color: #c4880a; font-family: 'Share Tech Mono', monospace; font-size: 11px; }
-
-  .chain-prose p {
-    color: var(--text);
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 10px;
-  }
-  .chain-prose p:last-child { margin-bottom: 0; }
-
-  .chain-note {
-    margin-top: 10px;
-    padding: 8px 10px;
-    background: var(--surface2);
-    border-left: 3px solid var(--border2);
-    border-radius: 0 4px 4px 0;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .lb-diagram {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 10px 12px;
-    margin: 10px 0;
-    font-size: 12px;
-  }
-  .lb-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-  .lb-arrow { color: var(--text-muted); align-self: center; }
-  .lb-branches { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: var(--text); }
-  .lb-branch-a { color: var(--iron); font-family: 'Share Tech Mono', monospace; }
-  .lb-branch-b { color: var(--plate); font-family: 'Share Tech Mono', monospace; }
-</style>
 
 </body>
 </html>

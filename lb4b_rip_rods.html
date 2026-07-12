@@ -10,23 +10,23 @@
   --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
   --rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
   --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
-  --arc-r1:#4FC3F7;--arc-r2:#AED581;--arc-r3:#FF8A65;
+  --ripspl1:#58C4E8;--ripspl2:#F5A623;--ripmrg1:#B57BEA;--rodspl1:#5DD67A;--rotspl1:#4FC3F7;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
-h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
-.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
 .blk{position:absolute;border-radius:5px;}
 .pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;line-height:1.15;text-align:center;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
-.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
@@ -56,7 +56,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
 <h1>LB 4b — RIP, Rods &amp; Rotors</h1>
-<div class="sub">// +92m · RIP 9/min → MF1(3) + MF2(3) + S2(3→1 Smart + 1 store + 1M1) · Rods 30/min → MF1(15) + MF2(15) · Rotors 4/min → Smart(2) + store(2)</div>
+<div class="sub">// +92m · RIP 9/min → MF1(3) + MF2(3) + RIPSPL2(3→1 Smart + 1 store + 1 RIPMRG1) · Rods 30/min → MF1(15) + MF2(15) · Rotors 4/min → Smart(2) + store(2)</div>
 
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px"></div>
@@ -77,16 +77,16 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div style="display:flex;flex-direction:column;gap:0;">
     <!-- Output strip -->
     <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 3/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.7;">→ Fl.5 MF1</span></div>
-      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 3/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.7;">→ Fl.5 MF2</span></div>
-      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.7;">→ Fl.5 Smart</span></div>
-      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 1/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.7;">→ Ground store</span></div>
+      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 3/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.6;">→ Fl.5 MF1</span></div>
+      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 3/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.6;">→ Fl.5 MF2</span></div>
+      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.6;">→ Fl.5 Smart</span></div>
+      <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 1/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.6;">→ Ground store</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">→ Fl.5 MF1</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">→ Fl.5 MF2</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.5 MF1</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.5 MF2</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">→ Fl.5 Smart</span></div>
-      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">→ Ground store</span></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.6;">→ Fl.5 Smart</span></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors 2/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.6;">→ Ground store</span></div>
     </div>
 
     <div class="floorplan">
@@ -97,45 +97,45 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
       <div class="ml">
-        <!-- ═══ RIP NETWORK ═══ -->
-        <!-- RS1: 3-way col 2, row D (161, 469) -->
+        <!-- ═══ RIP NETWORK (prefix RIP) ═══ -->
+        <!-- RIPSPL1: 3-way col 2, row D (161,469). in: Floor 4 (top). out: MF2 (bottom) / MF1 (left) / RIPSPL2 (right) -->
         <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--rip-bg);border:1px solid var(--rip-bd);"></div>
-        <div style="position:absolute;left:161px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--rip);pointer-events:none;">RS1</div>
-        <div class="pz" style="left:207px;top:562px;color:var(--rip);font-size:12px;">9/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-        <div class="pz" style="left:207px;top:469px;color:var(--rip);font-size:11px;">MF2<br>3/m</div>
-        <div class="pz" style="left:161px;top:516px;color:var(--rip);font-size:11px;">MF1<br>3/m</div>
-        <div class="pz" style="left:254px;top:516px;color:var(--arc-r1);">RS2<br>3/m</div>
+        <div class="pz" style="left:208px;top:516px;font-size:13px;color:var(--ripspl1);">RIPSPL1</div>
+        <div class="pz" style="left:208px;top:469px;color:var(--rip);"><span>Floor 4</span><span>9/m</span></div>
+        <div class="pz" style="left:208px;top:562px;color:var(--rip);"><span>MF2</span><span>3/m</span></div>
+        <div class="pz" style="left:161px;top:516px;color:var(--rip);"><span>MF1</span><span>3/m</span></div>
+        <div class="pz" style="left:254px;top:516px;color:var(--ripspl2);"><span>RIPSPL2</span><span>3/m</span></div>
 
-        <!-- RS2: 3-way col 2, row B (161, 161) -->
+        <!-- RIPSPL2: 3-way col 2, row B (161,161). in: RIPSPL1 (top). out: store (bottom) / RIPMRG1 (left) / RIPMRG1 (right) -->
         <div class="blk" style="left:161px;top:161px;width:140px;height:140px;background:var(--rip-bg);border:1px solid var(--rip-bd);"></div>
-        <div style="position:absolute;left:161px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--rip);pointer-events:none;">RS2</div>
-        <div class="pz" style="left:207px;top:254px;color:var(--arc-r1);">RS1<br>3/m</div>
-        <div class="pz" style="left:207px;top:161px;color:var(--rip);font-size:11px;">Store<br>1/m</div>
-        <div class="pz" style="left:161px;top:208px;color:var(--arc-r2);">RM1<br>1/m</div>
-        <div class="pz" style="left:254px;top:208px;color:var(--arc-r3);">RM1<br>1/m</div>
+        <div class="pz" style="left:208px;top:208px;font-size:13px;color:var(--ripspl2);">RIPSPL2</div>
+        <div class="pz" style="left:208px;top:161px;color:var(--ripspl1);"><span>RIPSPL1</span><span>3/m</span></div>
+        <div class="pz" style="left:208px;top:254px;color:var(--rip);"><span>Store</span><span>1/m</span></div>
+        <div class="pz" style="left:161px;top:208px;color:var(--ripmrg1);"><span>RIPMRG1</span><span>1/m</span></div>
+        <div class="pz" style="left:254px;top:208px;color:var(--ripmrg1);"><span>RIPMRG1</span><span>1/m</span></div>
 
-        <!-- RM1 merger col 3, row B (315, 161) — dashed -->
+        <!-- RIPMRG1 merger col 3, row B (315,161). in: RIPSPL2×2 (left/right). out: Smart (bottom, mandatory) -->
         <div class="blk" style="left:315px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div style="position:absolute;left:315px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--rip);pointer-events:none;">RM1</div>
-        <div class="pz" style="left:361px;top:161px;color:var(--rip);font-size:11px;">Smart<br>2/m</div>
-        <div class="pz" style="left:315px;top:208px;color:var(--arc-r2);">RS2<br>1/m</div>
-        <div class="pz" style="left:408px;top:208px;color:var(--arc-r3);">RS2<br>1/m</div>
+        <div class="pz" style="left:362px;top:208px;font-size:13px;color:var(--ripmrg1);">RIPMRG1</div>
+        <div class="pz" style="left:362px;top:254px;color:var(--rip);"><span>Smart</span><span>2/m</span></div>
+        <div class="pz" style="left:315px;top:208px;color:var(--ripspl2);"><span>RIPSPL2</span><span>1/m</span></div>
+        <div class="pz" style="left:408px;top:208px;color:var(--ripspl2);"><span>RIPSPL2</span><span>1/m</span></div>
 
-        <!-- ═══ RODS NETWORK ═══ -->
-        <!-- RodS1: 2-way col 6, row D (777, 469) -->
+        <!-- ═══ RODS NETWORK (prefix ROD) ═══ -->
+        <!-- RODSPL1: 2-way col 6, row D (777,469). in: LB 2b (top). out: MF1 (left) / MF2 (right) -->
         <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div style="position:absolute;left:777px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--rod);pointer-events:none;">RodS1</div>
-        <div class="pz" style="left:823px;top:562px;color:var(--rod);font-size:12px;">30/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-        <div class="pz" style="left:777px;top:516px;color:var(--rod);font-size:11px;">MF1<br>15/m</div>
-        <div class="pz" style="left:870px;top:516px;color:var(--rod);font-size:11px;">MF2<br>15/m</div>
+        <div class="pz" style="left:824px;top:516px;font-size:13px;color:var(--rodspl1);">RODSPL1</div>
+        <div class="pz" style="left:824px;top:469px;color:var(--rod);"><span>LB 2b</span><span>30/m</span></div>
+        <div class="pz" style="left:777px;top:516px;color:var(--rod);"><span>MF1</span><span>15/m</span></div>
+        <div class="pz" style="left:870px;top:516px;color:var(--rod);"><span>MF2</span><span>15/m</span></div>
 
-        <!-- ═══ ROTORS NETWORK ═══ -->
-        <!-- RotS1: 2-way col 9, row D (1239, 469) -->
+        <!-- ═══ ROTORS NETWORK (prefix ROT) ═══ -->
+        <!-- ROTSPL1: 2-way col 9, row D (1239,469). in: Floor 4 (top). out: Smart (bottom) / store (left) -->
         <div class="blk" style="left:1239px;top:469px;width:140px;height:140px;background:var(--rotor-bg);border:1px solid var(--rotor-bd);"></div>
-        <div style="position:absolute;left:1239px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--rotor);pointer-events:none;">RotS1</div>
-        <div class="pz" style="left:1285px;top:562px;color:var(--rotor);font-size:12px;">4/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-        <div class="pz" style="left:1285px;top:469px;color:var(--rotor);font-size:11px;">Smart<br>2/m</div>
-        <div class="pz" style="left:1239px;top:516px;color:var(--rotor);font-size:11px;">Store<br>2/m</div>
+        <div class="pz" style="left:1286px;top:516px;font-size:13px;color:var(--rotspl1);">ROTSPL1</div>
+        <div class="pz" style="left:1286px;top:469px;color:var(--rotor);"><span>Floor 4</span><span>4/m</span></div>
+        <div class="pz" style="left:1286px;top:562px;color:var(--rotor);"><span>Smart</span><span>2/m</span></div>
+        <div class="pz" style="left:1239px;top:516px;color:var(--rotor);"><span>Store</span><span>2/m</span></div>
       </div>
     </div>
 
@@ -145,40 +145,41 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       <div class="io-block" style="background:var(--rip-bg);border:1px solid var(--rip-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);font-weight:700;">↓ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rip);">RIP 9/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.7;">← Floor 4</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);opacity:0.6;">← Floor 4</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">← LB 2b</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← LB 2b</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↓ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors 4/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">← Floor 4</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.6;">← Floor 4</span>
       </div>
       <div class="io-ph"></div>
     </div>
   </div>
 </div>
 
-<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
-  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours — RIP network only (rods + rotors have no inter-node connections)</span><br>
-  <span style="color:var(--arc-r1)">■</span> r1 RS1→RS2 · 3/m&nbsp;&nbsp;
-  <span style="color:var(--arc-r2)">■</span> r2 RS2→RM1 · 1/m&nbsp;&nbsp;
-  <span style="color:var(--arc-r3)">■</span> r3 RS2→RM1 · 1/m
-</div>
 <div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RS1 3-way (9→3+3+3)</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RS2 3-way (3→1+1+1)</div>
-  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>RM1 merger (1+1→2)</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>RodS1 2-way (30→15+15)</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd)"></div>RotS1 2-way (4→2+2)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RIPSPL1 3-way (9→3+3+3)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RIPSPL2 3-way (3→1+1+1)</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>RIPMRG1 merger (1+1→2)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>RODSPL1 2-way (30→15+15)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd)"></div>ROTSPL1 2-way (4→2+2)</div>
 </div>
-<div class="note">// RIP: RS1(9→3 MF1 + 3 MF2 + r1:3 RS2) · RS2(3→store:1 + r2:1 + r3:1) · RM1(r2+r3→2 Smart) ✓</div>
-<div class="note">// Rods: RodS1(30→15 MF1 + 15 MF2) · each MF needs 12/min, 15/min gives headroom ✓</div>
-<div class="note">// Rotors: RotS1(4→2 Smart + 2 store) ✓</div>
+
+<div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
+  <span style="color:var(--ripspl1)">■ RIPSPL1</span> &nbsp; <span style="color:var(--ripspl2)">■ RIPSPL2</span> &nbsp; <span style="color:var(--ripmrg1)">■ RIPMRG1</span> &nbsp; <span style="color:var(--rodspl1)">■ RODSPL1</span> &nbsp; <span style="color:var(--rotspl1)">■ ROTSPL1</span>
+  <br><span style="opacity:0.6;">(RODSPL1, ROTSPL1 are isolated single-node networks — no inter-node connections)</span>
+</div>
+
+<div class="note">// RIP: RIPSPL1(9→3 MF1 + 3 MF2 + 3 RIPSPL2) · RIPSPL2(3→store:1 + 1 RIPMRG1 + 1 RIPMRG1) · RIPMRG1(1+1→2 Smart) ✓</div>
+<div class="note">// Rods: RODSPL1(30→15 MF1 + 15 MF2) · each MF needs 12/min, 15/min gives headroom ✓</div>
+<div class="note">// Rotors: ROTSPL1(4→2 Smart + 2 store) ✓</div>
 </body>
 </html>

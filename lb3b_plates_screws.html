@@ -11,29 +11,26 @@
   --plate:#D85A30;--plate-bg:#2a1208;--plate-bd:#7a2e10;
   --screw:#888780;--screw-bg:#1a1a18;--screw-bd:#44443f;
   --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
-  /* Plate arcs */
-  --arc-p1:#58C4E8;--arc-p2:#F5A623;--arc-p3:#B57BEA;--arc-p4:#5DD67A;
-  /* Screw arcs */
-  --arc-sA:#4FC3F7;--arc-sB:#FFB74D;--arc-sD:#80CBC4;--arc-sF:#AED581;
-  --arc-sH:#4DD0E1;--arc-sI:#FF8A65;--arc-sJ:#90CAF9;
+  --pspl1:#58C4E8;--pspl2:#F5A623;--pspl3:#B57BEA;--pmrg1:#5DD67A;
+  --sspl1:#4FC3F7;--sspl2:#FFB74D;--sspl3:#80CBC4;--sspl4:#AED581;--smrg1:#4DD0E1;--smrg2:#FF8A65;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
-h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
-.sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
 .ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
 .blk{position:absolute;border-radius:5px;}
 .pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;line-height:1.15;text-align:center;}
-.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
 .l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
 .l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
 .belt-req{margin-top:10px;padding:10px 14px;background:#1a1500;border:1px solid #5a3800;border-left:3px solid #c4880a;border-radius:0 5px 5px 0;font-family:'Share Tech Mono',monospace;font-size:13px;color:#c4880a;line-height:1.6;}
 .belt-req strong{color:#e8a820;}
-.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:13px;flex-wrap:wrap;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
 .nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
 .nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
@@ -84,16 +81,16 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div style="display:flex;flex-direction:column;gap:0;">
     <!-- Output strip -->
     <div class="io-strip" style="margin-bottom:2px;">
-      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">→ Fl.4 RIP-A</span></div>
-      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">→ Fl.4 RIP-B</span></div>
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.6;">→ Fl.4 RIP-A</span></div>
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.6;">→ Fl.4 RIP-B</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 RIP-B</span></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Ground store</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">→ Fl.4 RIP-B</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">→ Ground store</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 RIP-A</span></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 100/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">→ Fl.4 Rotors</span></div>
-      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">→ Fl.4 Rotors</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">→ LB 4b (MF)</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">→ Fl.4 RIP-A</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 100/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">→ Fl.4 Rotors</span></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.6;">→ Fl.4 Rotors</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ LB 4b (MF)</span></div>
     </div>
 
     <div class="floorplan">
@@ -104,109 +101,111 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
       <div class="ml">
-        <!-- ═══ PLATE NETWORK cols 1–2 ═══ -->
-        <!-- PS1 col 1, row E (7, 623) -->
+        <!-- ═══ PLATE NETWORK cols 1–2 (prefix P) ═══ -->
+        <!-- PSPL1 col 1, row E (7,623). in: Floor 2 (top). out: PMRG1 (bottom) / PSPL2 (right) -->
         <div class="blk" style="left:7px;top:623px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
-        <div style="position:absolute;left:7px;top:623px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS1</div>
-        <div class="pz" style="left:53px;top:716px;color:var(--plate);font-size:12px;">80/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-        <div class="pz" style="left:53px;top:623px;color:var(--arc-p1);">PM1<br>40/m</div>
-        <div class="pz" style="left:100px;top:669px;color:var(--arc-p2);">PS2<br>40/m</div>
+        <div class="pz" style="left:54px;top:670px;font-size:13px;color:var(--pspl1);">PSPL1</div>
+        <div class="pz" style="left:54px;top:623px;color:var(--plate);"><span>Floor 2</span><span>80/m</span></div>
+        <div class="pz" style="left:54px;top:716px;color:var(--pmrg1);"><span>PMRG1</span><span>40/m</span></div>
+        <div class="pz" style="left:100px;top:670px;color:var(--pspl2);"><span>PSPL2</span><span>40/m</span></div>
 
-        <!-- PS2 col 2, row D (161, 469) -->
+        <!-- PSPL2 col 2, row D (161,469). in: PSPL1 (top). out: store (bottom) / PMRG1 (left) -->
         <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
-        <div style="position:absolute;left:161px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS2</div>
-        <div class="pz" style="left:207px;top:562px;color:var(--arc-p2);">PS1<br>40/m</div>
-        <div class="pz" style="left:207px;top:469px;color:var(--plate);font-size:11px;">Store<br>20/m</div>
-        <div class="pz" style="left:161px;top:516px;color:var(--arc-p3);">PM1<br>20/m</div>
+        <div class="pz" style="left:208px;top:516px;font-size:13px;color:var(--pspl2);">PSPL2</div>
+        <div class="pz" style="left:208px;top:469px;color:var(--pspl1);"><span>PSPL1</span><span>40/m</span></div>
+        <div class="pz" style="left:208px;top:562px;color:var(--plate);"><span>Store</span><span>20/m</span></div>
+        <div class="pz" style="left:161px;top:516px;color:var(--pmrg1);"><span>PMRG1</span><span>20/m</span></div>
 
-        <!-- PM1 merger col 1, row C (7, 315) — dashed -->
-        <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:var(--plate-bg);border:1px dashed var(--plate-bd);"></div>
-        <div style="position:absolute;left:7px;top:315px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PM1</div>
-        <div class="pz" style="left:53px;top:315px;color:var(--arc-p4);">PS3<br>60/m</div>
-        <div class="pz" style="left:53px;top:408px;color:var(--arc-p1);">PS1<br>40/m</div>
-        <div class="pz" style="left:100px;top:362px;color:var(--arc-p3);">PS2<br>20/m</div>
+        <!-- PMRG1 merger col 1, row C (7,315). in: PSPL1 (top) / PSPL2 (right). out: PSPL3 (bottom, mandatory) -->
+        <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:54px;top:362px;font-size:13px;color:var(--pmrg1);">PMRG1</div>
+        <div class="pz" style="left:54px;top:315px;color:var(--pspl1);"><span>PSPL1</span><span>40/m</span></div>
+        <div class="pz" style="left:54px;top:408px;color:var(--pspl3);"><span>PSPL3</span><span>60/m</span></div>
+        <div class="pz" style="left:100px;top:362px;color:var(--pspl2);"><span>PSPL2</span><span>20/m</span></div>
 
-        <!-- PS3 col 1, row B (7, 161) -->
+        <!-- PSPL3 col 1, row B (7,161). in: PMRG1 (top). out: RIP-A (bottom) / RIP-B (right) -->
         <div class="blk" style="left:7px;top:161px;width:140px;height:140px;background:var(--plate-bg);border:1px solid var(--plate-bd);"></div>
-        <div style="position:absolute;left:7px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--plate);pointer-events:none;">PS3</div>
-        <div class="pz" style="left:53px;top:254px;color:var(--arc-p4);">PM1<br>60/m</div>
-        <div class="pz" style="left:53px;top:161px;color:var(--plate);font-size:11px;">↑RIP-A<br>30/m</div>
-        <div class="pz" style="left:100px;top:208px;color:var(--plate);font-size:11px;">↑RIP-B<br>30/m</div>
+        <div class="pz" style="left:54px;top:208px;font-size:13px;color:var(--pspl3);">PSPL3</div>
+        <div class="pz" style="left:54px;top:161px;color:var(--pmrg1);"><span>PMRG1</span><span>60/m</span></div>
+        <div class="pz" style="left:54px;top:254px;color:var(--plate);"><span>RIP-A</span><span>30/m</span></div>
+        <div class="pz" style="left:100px;top:208px;color:var(--plate);"><span>RIP-B</span><span>30/m</span></div>
 
-        <!-- ═══ SCREW NETWORK cols 4–8 ═══ -->
-        <!-- SS1 trunk col 5, row E (623, 623) -->
+        <!-- ═══ SCREW NETWORK cols 4–8 (prefix S) ═══ -->
+        <!-- SSPL1 (trunk) col 5, row E (623,623). in: Floor 3 (top). out: SSPL3 (left) / SSPL2 (right) -->
         <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
-        <div style="position:absolute;left:623px;top:623px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS1</div>
-        <div class="pz" style="left:669px;top:716px;color:var(--screw);font-size:12px;">240/m<br><span style="font-size:10px;opacity:0.6;">in</span></div>
-        <div class="pz" style="left:623px;top:669px;color:var(--arc-sA);">SS3<br>120/m</div>
-        <div class="pz" style="left:716px;top:669px;color:var(--arc-sB);">SS2<br>120/m</div>
+        <div class="pz" style="left:670px;top:670px;font-size:13px;color:var(--sspl1);">SSPL1</div>
+        <div class="pz" style="left:670px;top:623px;color:var(--screw);"><span>Floor 3</span><span>240/m</span></div>
+        <div class="pz" style="left:623px;top:670px;color:var(--sspl3);"><span>SSPL3</span><span>120/m</span></div>
+        <div class="pz" style="left:716px;top:670px;color:var(--sspl2);"><span>SSPL2</span><span>120/m</span></div>
 
-        <!-- SS2 col 7, row D (931, 469) -->
+        <!-- SSPL2 col 7, row D (931,469). in: SSPL1 (top). out: RIP-A (bottom) / SMRG2 (left) -->
         <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
-        <div style="position:absolute;left:931px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS2</div>
-        <div class="pz" style="left:977px;top:562px;color:var(--arc-sB);">SS1<br>120/m</div>
-        <div class="pz" style="left:977px;top:469px;color:var(--screw);font-size:11px;">↑RIP-A<br>60/m</div>
-        <div class="pz" style="left:931px;top:516px;color:var(--arc-sD);">SM2<br>60/m</div>
+        <div class="pz" style="left:978px;top:516px;font-size:13px;color:var(--sspl2);">SSPL2</div>
+        <div class="pz" style="left:978px;top:469px;color:var(--sspl1);"><span>SSPL1</span><span>120/m</span></div>
+        <div class="pz" style="left:978px;top:562px;color:var(--screw);"><span>RIP-A</span><span>60/m</span></div>
+        <div class="pz" style="left:931px;top:516px;color:var(--smrg2);"><span>SMRG2</span><span>60/m</span></div>
 
-        <!-- SS3 col 4, row D (469, 469) -->
+        <!-- SSPL3 col 4, row D (469,469). in: SSPL1 (top). out: RIP-B (bottom) / SSPL4 (right) -->
         <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
-        <div style="position:absolute;left:469px;top:469px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS3</div>
-        <div class="pz" style="left:515px;top:562px;color:var(--arc-sA);">SS1<br>120/m</div>
-        <div class="pz" style="left:515px;top:469px;color:var(--screw);font-size:11px;">↑RIP-B<br>60/m</div>
-        <div class="pz" style="left:562px;top:516px;color:var(--arc-sF);">SS4<br>60/m</div>
+        <div class="pz" style="left:516px;top:516px;font-size:13px;color:var(--sspl3);">SSPL3</div>
+        <div class="pz" style="left:516px;top:469px;color:var(--sspl1);"><span>SSPL1</span><span>120/m</span></div>
+        <div class="pz" style="left:516px;top:562px;color:var(--screw);"><span>RIP-B</span><span>60/m</span></div>
+        <div class="pz" style="left:562px;top:516px;color:var(--sspl4);"><span>SSPL4</span><span>60/m</span></div>
 
-        <!-- SS4 col 5, row C (623, 315) -->
+        <!-- SSPL4 col 5, row C (623,315). in: SSPL3 (top). out: store (bottom) / SMRG1 (left) / SMRG1 (right) -->
         <div class="blk" style="left:623px;top:315px;width:140px;height:140px;background:var(--screw-bg);border:1px solid var(--screw-bd);"></div>
-        <div style="position:absolute;left:623px;top:315px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SS4</div>
-        <div class="pz" style="left:669px;top:408px;color:var(--arc-sF);">SS3<br>60/m</div>
-        <div class="pz" style="left:669px;top:315px;color:var(--screw);font-size:11px;">Store<br>20/m</div>
-        <div class="pz" style="left:623px;top:362px;color:var(--arc-sH);">SM1<br>20/m</div>
-        <div class="pz" style="left:716px;top:362px;color:var(--arc-sI);">SM1<br>20/m</div>
+        <div class="pz" style="left:670px;top:362px;font-size:13px;color:var(--sspl4);">SSPL4</div>
+        <div class="pz" style="left:670px;top:315px;color:var(--sspl3);"><span>SSPL3</span><span>60/m</span></div>
+        <div class="pz" style="left:670px;top:408px;color:var(--screw);"><span>Store</span><span>20/m</span></div>
+        <div class="pz" style="left:623px;top:362px;color:var(--smrg1);"><span>SMRG1</span><span>20/m</span></div>
+        <div class="pz" style="left:716px;top:362px;color:var(--smrg1);"><span>SMRG1</span><span>20/m</span></div>
 
-        <!-- SM1 merger col 5, row B (623, 161) — dashed -->
+        <!-- SMRG1 merger col 5, row B (623,161). in: SSPL4×2 (left/right). out: SMRG2 (bottom, mandatory) -->
         <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div style="position:absolute;left:623px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SM1</div>
-        <div class="pz" style="left:669px;top:161px;color:var(--arc-sJ);">SM2<br>40/m</div>
-        <div class="pz" style="left:623px;top:208px;color:var(--arc-sH);">SS4<br>20/m</div>
-        <div class="pz" style="left:716px;top:208px;color:var(--arc-sI);">SS4<br>20/m</div>
+        <div class="pz" style="left:670px;top:208px;font-size:13px;color:var(--smrg1);">SMRG1</div>
+        <div class="pz" style="left:670px;top:254px;color:var(--smrg2);"><span>SMRG2</span><span>40/m</span></div>
+        <div class="pz" style="left:623px;top:208px;color:var(--sspl4);"><span>SSPL4</span><span>20/m</span></div>
+        <div class="pz" style="left:716px;top:208px;color:var(--sspl4);"><span>SSPL4</span><span>20/m</span></div>
 
-        <!-- SM2 merger col 7, row B (931, 161) — dashed -->
+        <!-- SMRG2 merger col 7, row B (931,161). in: SMRG1 (left) / SSPL2 (right). out: Rotors (bottom, mandatory) -->
         <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div style="position:absolute;left:931px;top:161px;width:140px;height:140px;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--screw);pointer-events:none;">SM2</div>
-        <div class="pz" style="left:977px;top:161px;color:var(--screw);font-size:11px;">↑Rot<br>100/m</div>
-        <div class="pz" style="left:931px;top:208px;color:var(--arc-sJ);">SM1<br>40/m</div>
-        <div class="pz" style="left:1024px;top:208px;color:var(--arc-sD);">SS2<br>60/m</div>
+        <div class="pz" style="left:978px;top:208px;font-size:13px;color:var(--smrg2);">SMRG2</div>
+        <div class="pz" style="left:978px;top:254px;color:var(--screw);"><span>Rotors</span><span>100/m</span></div>
+        <div class="pz" style="left:931px;top:208px;color:var(--smrg1);"><span>SMRG1</span><span>40/m</span></div>
+        <div class="pz" style="left:1024px;top:208px;color:var(--sspl2);"><span>SSPL2</span><span>60/m</span></div>
       </div>
     </div>
 
     <!-- Input strip -->
     <div class="io-strip" style="margin-top:2px;">
-      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 80/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.7;">← Floor 2</span></div>
+      <div class="io-block" style="background:var(--plate-bg);border:1px solid var(--plate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--plate);">Plates 80/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--plate);opacity:0.6;">← Floor 2</span></div>
       <div class="io-ph"></div><div class="io-ph"></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×1</span></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×2</span></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×3</span></div>
-      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.7;">← Floor 3 · ×4</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">← Floor 3 · ×1</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">← Floor 3 · ×2</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">← Floor 3 · ×3</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screws 60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">← Floor 3 · ×4</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.7;">← LB 2b → Rotors</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.7;">← LB 2b → MF</span></div>
+      <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rods 20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);opacity:0.6;">← LB 2b → Rotors</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods 30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← LB 2b → MF</span></div>
     </div>
   </div>
 </div>
 
 <div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--plate-bg);border:1px solid var(--plate-bd)"></div>Plate network PS1–PS3 + PM1</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--screw-bg);border:1px solid var(--screw-bd)"></div>Screw network SS1–SS4 + SM1–SM2</div>
-  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Merger (dark teal)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--plate-bg);border:1px solid var(--plate-bd)"></div>Plate network splitters (PSPL1–PSPL3)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--screw-bg);border:1px solid var(--screw-bd)"></div>Screw network splitters (SSPL1–SSPL4)</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Mergers (PMRG1, SMRG1–SMRG2)</div>
 </div>
-<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2;">
-  <span style="color:#d4d8e8;font-size:13px;">// Connection arc colours</span><br>
-  Plate: <span style="color:var(--arc-p1)">■</span> P1 PS1↑→PM1&nbsp; <span style="color:var(--arc-p2)">■</span> P2 PS1→PS2&nbsp; <span style="color:var(--arc-p3)">■</span> P3 PS2←→PM1&nbsp; <span style="color:var(--arc-p4)">■</span> P4 PM1↑→PS3<br>
-  Screw: <span style="color:var(--arc-sA)">■</span> sA SS1→SS3&nbsp; <span style="color:var(--arc-sB)">■</span> sB SS1→SS2&nbsp; <span style="color:var(--arc-sD)">■</span> sD SS2→SM2&nbsp; <span style="color:var(--arc-sF)">■</span> sF SS3→SS4<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--arc-sH)">■</span> sH SS4→SM1&nbsp; <span style="color:var(--arc-sI)">■</span> sI SS4→SM1&nbsp; <span style="color:var(--arc-sJ)">■</span> sJ SM1→SM2
+
+<div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours — Plate network</span><br>
+  <span style="color:var(--pspl1)">■ PSPL1</span> &nbsp; <span style="color:var(--pspl2)">■ PSPL2</span> &nbsp; <span style="color:var(--pspl3)">■ PSPL3</span> &nbsp; <span style="color:var(--pmrg1)">■ PMRG1</span><br><br>
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours — Screw network</span><br>
+  <span style="color:var(--sspl1)">■ SSPL1</span> &nbsp; <span style="color:var(--sspl2)">■ SSPL2</span> &nbsp; <span style="color:var(--sspl3)">■ SSPL3</span> &nbsp; <span style="color:var(--sspl4)">■ SSPL4</span> &nbsp; <span style="color:var(--smrg1)">■ SMRG1</span> &nbsp; <span style="color:var(--smrg2)">■ SMRG2</span>
 </div>
-<div class="note">// PLATES: PS1(80→P1:40↑PM1 + P2:40→PS2) · PS2(40→store:20 + P3:20→PM1) · PM1(P1:40+P3:20→60) · P4:60↑PS3 · PS3(60→30↑RIP-A + 30→RIP-B) ✓</div>
-<div class="note">// SCREWS: SS1(240→sA:120 SS3 + sB:120 SS2) · SS3(→60↑RIP-B + sF:60 SS4) · SS2(→60↑RIP-A + sD:60 SM2) · SS4(→store:20 + sH:20 + sI:20) · SM1(sH+sI→sJ:40 SM2) · SM2(sJ:40+sD:60→100↑Rotors) ✓</div>
+
+<div class="note">// PLATES: PSPL1(80→PMRG1:40+PSPL2:40) · PSPL2(40→store:20+PMRG1:20) · PMRG1(40+20→60→PSPL3) · PSPL3(60→30 RIP-A + 30 RIP-B) ✓</div>
+<div class="note">// SCREWS: SSPL1(240→SSPL3:120+SSPL2:120) · SSPL3(120→RIP-B:60+SSPL4:60) · SSPL2(120→RIP-A:60+SMRG2:60) · SSPL4(60→store:20+SMRG1:20+SMRG1:20) · SMRG1(20+20→40→SMRG2) · SMRG2(40+60→100→Rotors) ✓</div>
 <div class="note">// Conservation: plates 80 = 30+30+20 ✓ · screws 240 = 60+60+100+20 ✓</div>
 <div class="belt-req"><strong>⚠ Belt requirements</strong><br>
 Screw trunk 240/min → <strong>Mk.3 required</strong><br>

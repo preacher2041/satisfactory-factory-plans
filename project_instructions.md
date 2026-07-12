@@ -55,7 +55,7 @@ The full set of project files covers three documented factories:
 
 Iron Megafactory — floor0_ground.html through floor5_mf.html, lb0b_ore_split.html through lb4b_rip_rods.html
 Steel & EIB Factory — eib_ground.html through eib_floor4.html, eib_lb0b.html through eib_lb3b.html
-Copper Factory — copper_ground.html through copper_floor3.html, copper_lb0b.html through copper_lb3b.html
+Copper Factory — copper_ground.html through copper_floor3.html, copper_lb0b.html through copper_lb2b.html
 
 Before starting any new floor or factory, search the project files to check whether a file already exists and to find the most relevant existing floor as a reference. Do not rely solely on the canonical templates listed above — a recently built floor of the same type may be a closer match.
 

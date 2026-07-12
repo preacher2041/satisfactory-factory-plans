@@ -88,69 +88,74 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
-<!-- ══ OUTPUT STRIP (above grid) ══ -->
+<!-- ══ INPUT STRIP (above grid) ══ -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
   <div style="width:52px;"></div>
   <div class="io-strip">
-    <!-- Wire network outputs cols 1–3 -->
+    <!-- Wire inputs cols 1–2 (W1–W2 → WMRG1), col 2–3 (W3–W6) -->
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 60/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">← WMRG1</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Fl.3 C1</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">→ WMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W1</span>
     </div>
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 60/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">← WMRG2</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Ground storage</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">→ WMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W2</span>
     </div>
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 60/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg3);">← WMRG3</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Fl.3 C2</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">→ WMRG2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W3</span>
+    </div>
+    <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">→ WMRG2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W4</span>
     </div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
-    <!-- Ingot network outputs cols 5–10 -->
+    <!-- Ingot inputs cols 6–7, 9–10 -->
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg1);">← IMRG1</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh1</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">→ SPL1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm7</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg2);">← IMRG2</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh2</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">→ SPL2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm8</span>
+    </div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">→ SPL3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm9</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg3);">← IMRG3</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh3</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg4);">← IMRG4</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh4</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg5);">← IMRG5</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh5</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 20/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg6);">← IMRG6</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh6</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl4);">→ SPL4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm10</span>
     </div>
   </div>
 </div>
+
+<!-- Also need W5+W6 inputs — they got cut from col 5 above. Add a note explaining -->
 
 <!-- ══ GRID ══ -->
 <div style="display:flex;gap:0;align-items:flex-start">
@@ -178,28 +183,28 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            WIRE NETWORK — cols 1–3, row C
            ════════════════════════════════════ -->
 
-      <!-- WMRG1 col1 row C: left=7, top=315 -->
+      <!-- WMRG1 col1 row C: left=7, top=315. Merger output always bottom port. -->
       <div class="blk" style="left:7px;top:315px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--wmrg1);font-weight:700;">WMRG1</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);">W1<br>30/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);">W2<br>30/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--wire);">60/m<br>↑C1</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);"><span>W1</span><span>30/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);"><span>W2</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--wire);"><span>C1</span><span>60/m</span></div>
       </div>
 
-      <!-- WMRG2 col2 row C: left=161, top=315 -->
+      <!-- WMRG2 col2 row C: left=161, top=315. Merger output always bottom port. -->
       <div class="blk" style="left:161px;top:315px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--wmrg2);font-weight:700;">WMRG2</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);">W3<br>30/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);">W4<br>30/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--wire);">60/m<br>↑store</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);"><span>W3</span><span>30/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);"><span>W4</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--wire);"><span>Store</span><span>60/m</span></div>
       </div>
 
-      <!-- WMRG3 col3 row C: left=315, top=315 -->
+      <!-- WMRG3 col3 row C: left=315, top=315. Merger output always bottom port. -->
       <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--wmrg3);font-weight:700;">WMRG3</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);">W5<br>30/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);">W6<br>30/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--wire);">60/m<br>↑C2</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--wire);"><span>W5</span><span>30/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--wire);"><span>W6</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--wire);"><span>C2</span><span>60/m</span></div>
       </div>
 
       <!-- ════════════════════════════════════
@@ -210,158 +215,170 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <!-- SPLITTERS row D (top=469) -->
       <!-- col5=616+7=623, col6=770+7=777, col8=1078+7=1085, col9=1232+7=1239 -->
 
-      <!-- SPL1 col6: Sm7 → IMRG1(10) + IMRG1(10) + IMRG2(10) -->
+      <!-- SPL1 col6: Sm7 → IMRG1(10) + IMRG1(10) + IMRG2(10). Splitter input always top port. -->
       <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl1);font-weight:700;">SPL1</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);">30/m<br>in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg1);">IMRG1<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--imrg1);">IMRG1<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg2);">IMRG2<br>10/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg1);"><span>IMRG1</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--imrg1);"><span>IMRG1</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg2);"><span>IMRG2</span><span>10/m</span></div>
       </div>
 
-      <!-- SPL2 col7: Sm8 → IMRG2(10) + IMRG3(10) + IMRG3(10) -->
+      <!-- SPL2 col7: Sm8 → IMRG2(10) + IMRG3(10) + IMRG3(10). Splitter input always top port. -->
       <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl2);font-weight:700;">SPL2</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);">30/m<br>in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg2);">IMRG2<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--imrg3);">IMRG3<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg3);">IMRG3<br>10/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg2);"><span>IMRG2</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--imrg3);"><span>IMRG3</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg3);"><span>IMRG3</span><span>10/m</span></div>
       </div>
 
-      <!-- SPL3 col9: Sm9 → IMRG4(10) + IMRG4(10) + IMRG5(10) -->
+      <!-- SPL3 col9: Sm9 → IMRG4(10) + IMRG4(10) + IMRG5(10). Splitter input always top port. -->
       <div class="blk" style="left:1239px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl3);font-weight:700;">SPL3</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);">30/m<br>in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg4);">IMRG4<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--imrg4);">IMRG4<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg5);">IMRG5<br>10/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg4);"><span>IMRG4</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--imrg4);"><span>IMRG4</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg5);"><span>IMRG5</span><span>10/m</span></div>
       </div>
 
-      <!-- SPL4 col10: Sm10 → IMRG5(10) + IMRG6(10) + IMRG6(10) -->
+      <!-- SPL4 col10: Sm10 → IMRG5(10) + IMRG6(10) + IMRG6(10). Splitter input always top port. -->
       <!-- col10=1386+7=1393 -->
       <div class="blk" style="left:1393px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl4);font-weight:700;">SPL4</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);">30/m<br>in</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg5);">IMRG5<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--imrg6);">IMRG6<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg6);">IMRG6<br>10/m</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg5);"><span>IMRG5</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--imrg6);"><span>IMRG6</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg6);"><span>IMRG6</span><span>10/m</span></div>
       </div>
 
       <!-- MERGERS row B (top=161) -->
       <!-- col5=623, col6=777, col7=931, col8=1085, col9=1239, col10=1393 -->
 
-      <!-- IMRG1 col5: SPL1 left(10) + SPL1 top(10) = 20 → Sh1 -->
+      <!-- IMRG1 col5: SPL1 right(10) + SPL1 top(10) = 20 → Sh1. Merger output always bottom port. -->
       <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg1);font-weight:700;">IMRG1</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl1);">SPL1<br>10/m</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl1);">SPL1<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh1</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh1</span><span>20/m</span></div>
       </div>
 
-      <!-- IMRG2 col6: SPL1 right(10) + SPL2 left(10) = 20 → Sh2 -->
+      <!-- IMRG2 col6: SPL1 right(10) + SPL2 left(10) = 20 → Sh2. Merger output always bottom port. -->
       <div class="blk" style="left:777px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg2);font-weight:700;">IMRG2</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);">SPL1<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);">SPL2<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh2</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh2</span><span>20/m</span></div>
       </div>
 
-      <!-- IMRG3 col7: SPL2 top(10) + SPL2 right(10) = 20 → Sh3 -->
+      <!-- IMRG3 col7: SPL2 top(10) + SPL2 right(10) = 20 → Sh3. Merger output always bottom port. -->
       <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg3);font-weight:700;">IMRG3</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl2);">SPL2<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);">SPL2<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh3</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh3</span><span>20/m</span></div>
       </div>
 
-      <!-- IMRG4 col8: SPL3 left(10) + SPL3 top(10) = 20 → Sh4 -->
+      <!-- IMRG4 col8: SPL3 right(10) + SPL3 top(10) = 20 → Sh4. Merger output always bottom port. -->
       <div class="blk" style="left:1085px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg4);font-weight:700;">IMRG4</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl3);">SPL3<br>10/m</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl3);">SPL3<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh4</div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh4</span><span>20/m</span></div>
       </div>
 
-      <!-- IMRG5 col9: SPL3 right(10) + SPL4 left(10) = 20 → Sh5 -->
+      <!-- IMRG5 col9: SPL3 right(10) + SPL4 left(10) = 20 → Sh5. Merger output always bottom port. -->
       <div class="blk" style="left:1239px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg5);font-weight:700;">IMRG5</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl3);">SPL3<br>10/m</div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);">SPL4<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh5</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh5</span><span>20/m</span></div>
       </div>
 
-      <!-- IMRG6 col10: SPL4 top(10) + SPL4 right(10) = 20 → Sh6 -->
+      <!-- IMRG6 col10: SPL4 left(10) + SPL4 right(10) = 20 → Sh6. Merger output always bottom port. -->
       <div class="blk" style="left:1393px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg6);font-weight:700;">IMRG6</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl4);">SPL4<br>10/m</div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl4);">SPL4<br>10/m</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);">20/m<br>↑Sh6</div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>Sh6</span><span>20/m</span></div>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- ══ INPUT STRIP (below grid) ══ -->
+<!-- ══ OUTPUT STRIP (below grid) ══ -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
   <div style="width:52px;"></div>
   <div class="io-strip">
-    <!-- Wire inputs cols 1–2 (W1–W2 → WMRG1), col 2–3 (W3–W6) -->
+    <!-- Wire network outputs cols 1–3 -->
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">→ WMRG1</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W1</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">60/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">← WMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Fl.3 C1</span>
     </div>
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg1);">→ WMRG1</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W2</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">60/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">← WMRG2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Ground storage</span>
     </div>
     <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">→ WMRG2</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W3</span>
-    </div>
-    <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg2);">→ WMRG2</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Fl.2 W4</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">60/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wmrg3);">← WMRG3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">→ Fl.3 C2</span>
     </div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
-    <!-- Ingot inputs cols 6–7, 9–10 -->
+    <!-- Ingot network outputs cols 5–10 -->
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">→ SPL1</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm7</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg1);">← IMRG1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh1</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">→ SPL2</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm8</span>
-    </div>
-    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">→ SPL3</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm9</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg2);">← IMRG2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh2</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots 30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl4);">→ SPL4</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm10</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg3);">← IMRG3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh3</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg4);">← IMRG4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh4</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg5);">← IMRG5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh5</span>
+    </div>
+    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">20/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--imrg6);">← IMRG6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.3 Sh6</span>
     </div>
   </div>
 </div>
-
-<!-- Also need W5+W6 inputs — they got cut from col 5 above. Add a note explaining -->
 
 <!-- LEGEND -->
 <div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">

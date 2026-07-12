@@ -92,102 +92,63 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
-<!-- ══ INPUT STRIP (above grid) ══
-     Mirrors LB 0b output strip exactly.
-     Cols 1, 5, 6, 10: empty
-     Cols 2-4: ore pairs (ISPL2 top + ISPL3 bottom)
-     Cols 7-9: coal pairs (CSPL2 top + CSPL3 bottom)
+<!-- ══ OUTPUT STRIP (above grid) ══
+     Foundries at cols 3-8, so outputs at cols 3-8. Cols 1-2 and 9-10 empty.
 -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
   <div style="width:52px;"></div>
   <div class="io-strip">
     <div class="io-empty"></div>
+    <div class="io-empty"></div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F1</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F4</span>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F1</span>
       </div>
     </div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F2</span>
-      </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F5</span>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F2</span>
       </div>
     </div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F3</span>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F3</span>
       </div>
-      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F6</span>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F4</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F5</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F6</span>
       </div>
     </div>
     <div class="io-empty"></div>
-    <div class="io-empty"></div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F1</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F4</span>
-      </div>
-    </div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F2</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F5</span>
-      </div>
-    </div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F3</span>
-      </div>
-      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F6</span>
-      </div>
-    </div>
     <div class="io-empty"></div>
   </div>
 </div>
@@ -260,57 +221,114 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text
   </div>
 </div>
 
-<!-- ══ OUTPUT STRIP (below grid) ══
-     Foundries at cols 3-8, so outputs at cols 3-8. Cols 1-2 and 9-10 empty.
+<!-- ══ INPUT STRIP (below grid) ══
+     Mirrors LB 0b output strip exactly.
+     Cols 1, 5, 6, 10: empty
+     Cols 2-4: ore pairs (ISPL2 top + ISPL3 bottom)
+     Cols 7-9: coal pairs (CSPL2 top + CSPL3 bottom)
 -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-top:4px;">
   <div style="width:52px;"></div>
   <div class="io-strip">
     <div class="io-empty"></div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F1</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F4</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F2</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F5</span>
+      </div>
+    </div>
+    <div class="io-col">
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl2);">← ISPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F3</span>
+      </div>
+      <div class="io-block" style="background:var(--iron-bg);border:1px solid var(--iron-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--iron);">Ore</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--iron);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ispl3);">← ISPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--iron);opacity:0.6;">F6</span>
+      </div>
+    </div>
+    <div class="io-empty"></div>
     <div class="io-empty"></div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F1</span>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F1</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F4</span>
       </div>
     </div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F2</span>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F2</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F5</span>
       </div>
     </div>
     <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F3</span>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl2);">← CSPL2</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F3</span>
+      </div>
+      <div class="io-block" style="background:var(--coal-bg);border:1px solid var(--coal-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coal);">Coal</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coal);">45/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cspl3);">← CSPL3</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coal);opacity:0.6;">F6</span>
       </div>
     </div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F4</span>
-      </div>
-    </div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F5</span>
-      </div>
-    </div>
-    <div class="io-col">
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingot 45/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ LB 1b · F6</span>
-      </div>
-    </div>
-    <div class="io-empty"></div>
     <div class="io-empty"></div>
   </div>
 </div>

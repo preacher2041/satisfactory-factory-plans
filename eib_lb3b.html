@@ -86,30 +86,34 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Input strip (above grid): 4×15/min beams from Floor 2, stacked on cols 3 & 4 -->
+    <!-- Input strip (above grid): 4×15/min beams from Floor 2, cols 3–6 -->
     <div class="io-strip" style="margin-bottom:2px;">
       <div class="io-ph"></div><div class="io-ph"></div>
-      <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
-        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ IN1 → MRG1</span>
-        </div>
-        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ IN2 → MRG2</span>
-        </div>
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg1);">→ MRG1</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:2px;width:154px;">
-        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ IN3 → MRG4</span>
-        </div>
-        <div class="io-block" style="height:44px;background:var(--beam-bg);border:1px solid var(--beam-bd);">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 15/m</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--beam);opacity:0.7;">↑ IN4 → MRG6</span>
-        </div>
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg2);">→ MRG2</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg4);">→ MRG4</span>
+      </div>
+      <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg6);">→ MRG6</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
     <div class="floorplan">
       <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
@@ -188,20 +192,23 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="io-strip" style="margin-top:2px;">
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 18/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">18/min</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.4 EIB-A</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--beam-bg);border:1px solid var(--beam-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↑ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 18/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">18/min</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Fl.4 EIB-B</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--store-bg);border:1px solid var(--beam-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams 24/min</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--beam);">Beams</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--beam);">24/min</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--beam);opacity:0.7;">→ Ground storage</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div>
@@ -220,7 +227,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <span style="color:var(--mrg1)">■ MRG1</span> &nbsp; <span style="color:var(--mrg2)">■ MRG2</span> &nbsp; <span style="color:var(--mrg3)">■ MRG3</span> &nbsp; <span style="color:var(--mrg4)">■ MRG4</span> &nbsp; <span style="color:var(--mrg5)">■ MRG5</span> &nbsp; <span style="color:var(--mrg6)">■ MRG6</span>
 </div>
 
-<div class="note">// Inputs: 4×15/m beams from Floor 2 (stacked cols 3–4) → MRG1, MRG2, MRG4, MRG6</div>
+<div class="note">// Inputs: 4×15/m beams from Floor 2 (cols 3–6) → MRG1, MRG2, MRG4, MRG6</div>
 <div class="note">// Recirculation loops: SPL3→SPL1 (9/m), SPL4→SPL2 (9/m) — equal binary/ternary splits throughout</div>
 <div class="note">// MRG3 takes two legs from SPL2 (3+3) — built as two belts in-game</div>
 <div class="note">// Conservation: 60/m in = 18 (EIB-A) + 18 (EIB-B) + 24 (storage) = 60/m out ✓</div>

@@ -33,7 +33,8 @@ Port label orientation was flipped after `eib_lb3b.html`/`eib_floor2.html` were 
 - Page padding 20px top/bottom, 24px sides. Row label column 52px. Total width 52+1540+48 = 1640px.
 - Coordinates are **computed**, never hardcoded: `col*154+7`, `row*154+7`.
 - Splitter/merger block: 140×140px, centred in cell (7px offset each side). Port zone: 47×47px.
-- Machine sizes @ FS=154: Smelter 116×232 (1W×2D), Constructor 128×232 (1W×2D), Assembler 256×256 (2W×2D), Storage 96×232 (1W×2D).
+- Machine sizes @ FS=154: Smelter 116×232 (1W×2D), Constructor 128×232 (1W×2D), Assembler 256×256 (2W×2D), Storage 96×232 (1W×2D), Foundry 256×256 (2W×2D).
+- Foundry is 2W×2D, not 1W×2D — its real in-game width (10m) exceeds a single 8m foundation column, same as Assembler's (9m), which is why Assembler is the only other 2W entry above. Foundry reuses Assembler's 256×256 box rather than a new size; its real length (9m) fits comfortably within that depth allowance. (Style-audit found `eib_floor1.html`'s foundries built at the Smelter's 1W×2D footprint — this is the corrected size to migrate them to.)
 
 ## Fonts
 

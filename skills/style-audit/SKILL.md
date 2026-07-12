@@ -11,17 +11,24 @@ Read `CLAUDE.md` first for the authoritative spec. This skill is the *checklist*
 
 ## Step 1 — Establish the reference point
 
-Identify the most recently built canonical files for this factory type (check file mtimes / git log, not just the hardcoded canonical list in `CLAUDE.md`, since a newer floor may have superseded even the named canonical templates). Known legacy markers to treat as definitely-old without further checking:
-- `iron_megafactory.html`, `steel_eib_factory.html` — legacy layout style.
+There is no canonical file to compare against — `CLAUDE.md`'s written rules are the spec, full stop. Do not use "matches the newest file" as a proxy for correctness: even recently-built files can be individually wrong (e.g. `eib_floor3.html`'s IO strip placement is backwards despite postdating the port-orientation flip below, and Copper's floor files were mistakenly treated as canonical for a long stretch of the project despite predating several current conventions). Check every floor's actual markup against the rule text, on every floor, regardless of its age.
+
+Known legacy markers to treat as definitely-old without further checking:
+- `iron_megafactory.html` (pre-rebuild), `steel_eib_factory.html` — legacy layout style.
 - Any LB file older than `eib_lb3b.html` / `eib_floor2.html` — predates the port-orientation flip.
+
+These markers only tell you a file is *likely* to fail; they don't tell you a file that postdates them is safe. Run the full checklist below on every floor either way.
+
+**Include `templates/lb-floor-template.html`, `templates/production-floor-template.html`, and `templates/main-factory-page-template.html` in scope whenever you run a full-repo or cross-factory audit** (not required for a single-factory audit that doesn't touch them). Since every new floor is meant to start from these, a drifted template silently propagates its defect into everything built from it afterward — this is the mechanism that's supposed to catch that before it happens. If a template fails a check, that's higher priority to fix than any individual built floor.
 
 ## Step 2 — Per-floor checklist
 
 For every floor file in the target factory, check each item below. Record **pass / fail / partial** with the specific evidence (element, attribute, or line) for anything that fails.
 
 ### IO placement
-- [ ] All IO (input/output) rendered as **external strips** above/below the grid, not as blocks inside the grid itself.
-- [ ] Input strip above grid, output strip below, 1540px wide, 154px per column, placeholders for empty columns.
+- [ ] All IO (input/output) rendered as **external strips** above/below the grid, not as blocks inside the grid itself. 1540px wide, 154px per column, placeholders for empty columns.
+- [ ] **Strip position matches floor type** — this is the single most commonly-violated rule, check it explicitly rather than skimming: LB sub-floor = input **above** grid, output **below**. Normal production floor = input **below** grid, output **above**. (Opposite of each other — don't assume one convention applies to both floor types.)
+- [ ] **Arrow direction matches floor type**: LB sub-floor = every direction arrow (input strip and output strip alike) points **down**. Production floor = every direction arrow points **up**. A floor with mixed arrow directions between its own input and output strips is always wrong, regardless of floor type.
 - [ ] IO block structure: direction/lift label, material+rate (Barlow Condensed 13px), source/dest node ref coloured by that node, floor destination muted (opacity 0.6).
 
 ### Splitter/merger nodes

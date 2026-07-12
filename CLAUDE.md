@@ -1,6 +1,6 @@
 # Satisfactory Factory Documentation
 
-Interactive HTML floor-plan documentation for Satisfactory 1.0 factories. Three factories: **Iron Megafactory**, **Steel & EIB Factory**, **Copper Factory**. Copper is the canonical, fully-built reference. Consult it before inventing new patterns.
+Interactive HTML floor-plan documentation for Satisfactory 1.0 factories. Three factories: **Iron Megafactory**, **Steel & EIB Factory**, **Copper Factory**. No single factory's files are the canonical reference — **the written rules in this document are authoritative**. Built files drift out of date as the project iterates (e.g. Copper's floor files predate several conventions below and should not be copied from without checking them against this doc first); treat any existing file as an implementation example to verify, never as a source of truth in its own right.
 
 ## Game context
 
@@ -18,12 +18,14 @@ Interactive HTML floor-plan documentation for Satisfactory 1.0 factories. Three 
 ## Repo map
 
 - `docs/topology_diagrams/<factory>/<floor-name>.*` — source topology diagrams, one folder per factory, files named for the floor(s) they apply to. **Check here first** before asking the user to paste a diagram — a file may already exist for the floor being built or rebuilt.
+- `templates/lb-floor-template.html`, `templates/production-floor-template.html`, `templates/main-factory-page-template.html` — **start every new floor or factory page here.** These are minimal worked examples (openable, valid HTML with a small real network — not fill-in-the-blank skeletons) that embody the current rules in this document, with `TEMPLATE:` comments marking what to replace. They exist specifically because no built factory's files stayed a reliable reference as the project iterated — see below.
 - `index.html` — master factory index. Every new factory gets a card here (name, status, outputs, footprint, machine count, link).
-- `copper_factory.html`, `copper_floor{1,2,3}.html`, `copper_lb{0,2,3}b.html` — **canonical templates**. Copy patterns from these first.
-- `iron_megafactory.html`, `steel_eib_factory.html` — legacy layout references only (older design language, single-diagram style). Do not copy conventions from these if they conflict with Copper.
-- Before starting a new floor: search the repo for an existing file of the same type first — a recently built floor may be a closer match than the canonical template.
+- `iron_megafactory.html` (pre-rebuild), `steel_eib_factory.html` — legacy single-diagram layout, kept only as historical reference. Do not copy structural conventions from these.
+- No built factory's floor files are a safe template to copy blind — even recently-built files can contain isolated mistakes (e.g. `eib_floor3.html`'s IO strip placement is backwards despite postdating the port-orientation flip below). If you reference one anyway (e.g. for a specific pattern like a combined-network LB floor not covered by the templates), **verify every convention it uses (IO strip placement, port orientation, naming, colours) against the rules in this document** — don't assume a file is correct just because it's recent.
 
-**Always check the most recently modified file of the relevant type before assuming the canonical template is current** — conventions have been revised mid-project (e.g. port label orientation was flipped after `eib_lb3b.html`/`eib_floor2.html` were built; anything older uses the pre-flip convention and should not be copied).
+**Keeping the templates in sync**: whenever a convention in this document changes (grid math, colour system, IO strip rules, fonts, anything), updating the matching template file(s) is part of that same change — not a follow-up task. `style-audit` also audits the templates themselves (not just built factories) so drift gets caught by the normal verification pass. If a template and this document ever disagree, this document wins; fix the template.
+
+Port label orientation was flipped after `eib_lb3b.html`/`eib_floor2.html` were built — anything older uses the pre-flip convention (splitter input on bottom port) and should not be copied. This is a historical note about when the rule changed, not a claim that files after that point are reliably correct — always check against the rule itself (see Node colour system, below).
 
 ## Grid system (floor plan files)
 
@@ -52,7 +54,16 @@ Interactive HTML floor-plan documentation for Satisfactory 1.0 factories. Three 
 
 ## External IO strips
 
-All inputs/outputs on every floor (production or LB) live in **external strips outside the grid** — input strip above, output strip below. The grid itself holds only machines/splitters/mergers, never IO blocks. Strip = flex row, 1540px wide, one 154px block per column, transparent placeholders for empty columns. Block is 154×90px: direction arrow + ext. lift label, material + rate (Barlow Condensed 13px), source/dest node ref coloured by that node's colour, floor destination (muted, opacity 0.6).
+All inputs/outputs on every floor (production or LB) live in **external strips outside the grid**. The grid itself holds only machines/splitters/mergers, never IO blocks. Strip = flex row, 1540px wide, one 154px block per column, transparent placeholders for empty columns. Block is 154×90px: direction arrow + ext. lift label, material + rate (Barlow Condensed 13px), source/dest node ref coloured by that node's colour, floor destination (muted, opacity 0.6).
+
+**Strip placement and arrow direction depend on floor type — this is not symmetric, and is the single most commonly-violated rule in the repo. Check it explicitly on every floor:**
+
+| Floor type | Input strip | Output strip | Arrow direction (both strips) |
+|---|---|---|---|
+| **LB (load-balancer) sub-floor** | above the grid | below the grid | **↓ down**, always |
+| **Normal (production) floor** | below the grid | above the grid | **↑ up**, always |
+
+Every direction arrow on a given floor points the same way — input and output rows never mix arrow directions on the same floor. The arrow encodes the *diagram's* reading direction for that floor type (LB floors read top-to-bottom, production floors read bottom-to-top), **not** the literal physical direction material travels between real floors in the build — do not flip an arrow just because a specific belt happens to physically descend from a floor above; the rule is fixed per floor type, not per belt.
 
 ## Node colour system (the core traceability mechanism)
 

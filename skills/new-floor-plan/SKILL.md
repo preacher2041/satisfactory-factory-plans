@@ -7,14 +7,17 @@ description: Build a new factory main page, production floor, or LB (load-balanc
 
 Builds Satisfactory factory documentation pages that conform to the conventions in the repo's `CLAUDE.md`. Read `CLAUDE.md` first — it holds the grid constants, font table, colour palette, and node-colour rules referenced below. This skill is the *procedure*; `CLAUDE.md` is the *spec*.
 
-## Step 0 — Find the closest existing reference
+## Step 0 — Start from the template, find the topology source
 
-Before designing anything, search the repo for:
+Before designing anything:
 1. `docs/topology_diagrams/<factory>/` for a source diagram matching the floor(s) being built — check this before asking the user to paste one in chat.
-2. An existing file of the same type (production floor / LB sub-floor / main factory page) that was built most recently — it reflects the current conventions more reliably than the canonical Copper templates if it postdates them.
-3. The Copper canonical templates (`copper_factory.html`, `copper_floor*.html`, `copper_lb*.html`) as the fallback baseline.
+2. Copy the matching file from `templates/`: `templates/lb-floor-template.html` for an LB sub-floor, `templates/production-floor-template.html` for a production floor, `templates/main-factory-page-template.html` for a new factory's main page. These are worked examples (openable, valid HTML, not fill-in-the-blank skeletons) that embody the current rules in `CLAUDE.md` — read the `TEMPLATE:` comments at the top of whichever one you use, they list exactly what to replace.
 
-Do not copy from `iron_megafactory.html` or `steel_eib_factory.html` structure/prose conventions — they're legacy layout, kept only as historical reference.
+Do not copy structural conventions from any built factory file instead of the template — even recently-built files can be individually wrong (e.g. `eib_floor3.html`'s IO strip placement is backwards despite being built after the port-orientation flip). If you reference a built file anyway (for inspiration on a specific pattern like a combined-network LB floor), **verify every convention against `CLAUDE.md`'s written rules** rather than assuming the file itself is current.
+
+Do not copy from `iron_megafactory.html` (pre-rebuild) or `steel_eib_factory.html` structure/prose conventions at all — they're legacy layout, kept only as historical reference.
+
+If the templates themselves ever seem to disagree with `CLAUDE.md`'s written rules, the rules win — flag the template as needing an update (see the "Keeping templates in sync" note in `CLAUDE.md`'s Repo map) rather than propagating the mismatch into a new floor.
 
 ## Step 1 — Design the production chain (no HTML yet)
 
@@ -33,20 +36,20 @@ Lock the full node-by-node edge list and confirm the maths closes before proceed
 
 ## Step 2 — Main factory page (new factories only)
 
-Structure, in order, following `copper_factory.html`:
+Structure, in order (see `copper_factory.html` or `iron_megafactory.html` for worked examples — verify against the structure below rather than assuming either is current):
 
 1. **Header** — `<h1>` factory name, sub-title, back link to `index.html`.
 2. **Build summary bar** — `display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));`, bordered cells, no sticky positioning. Five sections: Factory (footprint/height/foundations/machine count/power shards), Floor heights, Belt requirements, Clock speeds, Buildings required. Reuse `.summary-section-title`, `.summary-row`, `.summary-key`, `.summary-val`, `.belt-chip`.
 3. **Floor plans grid** — `repeat(auto-fill, minmax(160px, 1fr))` cards linking to each floor file. Production floors: `var(--surface2)` background. LB sub-floors: `#0d1018` background. Left border colour-coded by primary material.
 4. **Production chain breakdown** — full width, `.chain-section`/`.chain-header`/`.chain-grid`/`.chain-card`. Covers recipes, throughput maths, clock-speed reasoning, LB/manifold notes, outputs. LB diagrams here use plain HTML divs in prose form (never SVG) — reference the node names/colours consistently with the floor plan files.
 
-Same theme/fonts/CSS vars as `copper_factory.html`. Single full-width column, no side panels. Add any new material colour as a CSS variable in `:root`. When done, add a card to `index.html`.
+Same theme/fonts (per `CLAUDE.md`'s Fonts table) and CSS var naming pattern (`--material`, `--material-bg`, `--material-bd`) as every other factory page. Single full-width column, no side panels. Add any new material colour as a CSS variable in `:root`. When done, add a card to `index.html`.
 
 ## Step 3 — Floor plan files
 
-**Production floor**: grid holds machines only. External IO strips above (input) and below (output) per the pattern in `CLAUDE.md`. No IO blocks inside the grid.
+**Production floor**: grid holds machines only. External IO strips: input **below** the grid, output **above** — all direction arrows point **up**, per `CLAUDE.md`'s External IO strips table. No IO blocks inside the grid.
 
-**LB sub-floor**: grid holds splitter/merger nodes only.
+**LB sub-floor**: grid holds splitter/merger nodes only. External IO strips: input **above** the grid, output **below** — all direction arrows point **down**.
 - Compute all positions from `col*154+7`, `row*154+7` — never hardcode pixel offsets.
 - Splitters in upper rows (near input strip), mergers in lower rows (near output strip), reflecting top-to-bottom flow. Leave row A / row F as breathing room where topology allows.
 - Apply port placement and node-colour rules exactly as specified in `CLAUDE.md` (post-flip convention: splitter input = top port, merger output = bottom port).

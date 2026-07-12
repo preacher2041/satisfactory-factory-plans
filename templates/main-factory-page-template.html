@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEMPLATE — Factory Name — Satisfactory</title>
+<!--
+  TEMPLATE: main factory overview page (one per factory, links every floor together).
+  This is a worked example, not a placeholder skeleton — it's valid, openable HTML.
+  Copy this file, then:
+    1. Rename to <factory>_factory.html (or match whatever naming the rest of the repo uses)
+    2. Replace --mat-a / --mat-b vars and all "Material A/B" text with your real materials
+    3. Replace the 2-floor example (Floor 1 + LB 1b) in the Floor plans grid with your real floor list,
+       and fix every href to point at the real files
+    4. Fill in the Build summary bar's 5 sections with real numbers — do not guess; lock the maths first
+       (see skills/production-maths/SKILL.md) and leave anything genuinely unknown as "TBD" rather than
+       fabricating a number (see iron_megafactory.html's miner count for a real example of this pattern)
+    5. Production chain breakdown cards are a starting set (Recipes, Throughput, one routing card, Outputs)
+       — add or remove chain-cards as the factory's actual chain requires
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c26;
+    --surface2:  #1f2435;
+    --border:    #2a3048;
+    --border2:   #3a4460;
+    --text:      #d4d8e8;
+    --text-muted:#7a839a;
+    --accent:    #4a90d9;
+    /* TEMPLATE: replace with your real materials' colours from CLAUDE.md's Material colours table */
+    --mat-a:#4FC3F7; --mat-a-bg:#0a2430; --mat-a-bd:#1a5a70;
+    --mat-b:#AED581; --mat-b-bg:#141c0a; --mat-b-bd:#3a5018;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; line-height: 1.5; padding: 32px 24px 64px; min-height: 100vh; }
+
+  header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+  header .sub { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; }
+  .header-back { margin-left: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; transition: color 0.15s, border-color 0.15s; }
+  .header-back:hover { color: var(--text); border-color: var(--border2); }
+
+  .summary-section-title { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #1a1e2a; }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-key { color: var(--text-muted); font-size: 12px; flex-shrink: 0; padding-right: 8px; }
+  .summary-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); text-align: right; }
+  .summary-val.tbd { color: #c4880a; }
+  .belt-chip { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
+  .chip-mat-a { background: var(--mat-a); }
+  .chip-mat-b { background: var(--mat-b); }
+
+  .chain-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .chain-header { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .chain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+  .chain-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .chain-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chain-table th { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 4px 6px 6px; border-bottom: 1px solid var(--border); }
+  .chain-table td { padding: 6px 6px; border-bottom: 1px solid #1a1e2a; vertical-align: middle; color: var(--text); font-size: 12px; }
+  .chain-table tr:last-child td { border-bottom: none; }
+  .totals-row td { color: var(--text-muted); font-style: italic; }
+  .chip-label { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
+  .chip-mat-a-l { background: var(--mat-a-bg); border: 1px solid var(--mat-a-bd); color: var(--mat-a); }
+  .chip-mat-b-l { background: var(--mat-b-bg); border: 1px solid var(--mat-b-bd); color: var(--mat-b); }
+  .chain-prose p { color: var(--text); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+  .chain-prose p:last-child { margin-bottom: 0; }
+  .chain-note { margin-top: 10px; padding: 8px 10px; background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 4px 4px 0; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .chain-note.flag { border-left-color: #c4880a; color: #c4880a; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Factory Name</h1>
+  <span class="sub">// One-line description — N ore/min · N floors · Nm</span>
+  <a href="index.html" class="header-back">← Index</a>
+</header>
+
+<!-- ══ SUMMARY BAR ══ -->
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+
+    <!-- Factory -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Factory</div>
+      <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
+      <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">Nm (NF + N LB)</span></div>
+      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">N total</span></div>
+      <!-- TEMPLATE: use the .tbd class + "TBD" text for anything genuinely unknown, never a fabricated number -->
+      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val tbd">TBD</span></div>
+    </div>
+
+    <!-- Floor heights -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Floor heights</div>
+      <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+12m — Description</span></div>
+      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+24m — Description</span></div>
+    </div>
+
+    <!-- Belt requirements -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Belt requirements</div>
+      <div class="summary-row">
+        <span class="summary-key"><span class="belt-chip chip-mat-a"></span>Material A trunk</span>
+        <span class="summary-val">Mk.3 · N/min</span>
+      </div>
+    </div>
+
+    <!-- Clock speeds -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Clock speeds</div>
+      <div class="summary-row"><span class="summary-key">Constructor A (×N)</span><span class="summary-val">100% · N/min each</span></div>
+    </div>
+
+    <!-- Buildings required -->
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Buildings required</div>
+      <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">N</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FLOOR PLANS GRID ══ -->
+<div style="margin-bottom:8px">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">// Floor plans</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px">
+
+    <!-- TEMPLATE: production floor card -> var(--surface2) background -->
+    <a href="floor1_description.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--mat-a-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--mat-a);letter-spacing:0.08em;margin-bottom:3px">FLOOR 1 · +12m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Description</div>
+      </div>
+    </a>
+
+    <!-- TEMPLATE: LB sub-floor card -> #0d1018 background (dark), distinct from production floors -->
+    <a href="lb1b_description.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--mat-b-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--mat-b);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +24m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Description</div>
+      </div>
+    </a>
+
+  </div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a4460;margin-top:8px">// Production floors in white · LB sub-floors in dark · colour-coded by primary material</div>
+</div>
+
+
+<!-- ══ PRODUCTION CHAIN BREAKDOWN ══ -->
+<div class="chain-section">
+  <div class="chain-header">// Production chain breakdown</div>
+  <div class="chain-grid">
+
+    <!-- RECIPES -->
+    <div class="chain-card">
+      <div class="chain-card-title">Recipes</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Output</th><th>Inputs (per cycle)</th><th>Rate @ 100%</th><th>Machine</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-mat-b-l">Material B</span></td>
+            <td><span class="chip-label chip-mat-a-l">1× Material A</span></td>
+            <td>N/min</td>
+            <td>Constructor</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- THROUGHPUT -->
+    <div class="chain-card">
+      <div class="chain-card-title">Throughput calculations</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Stage</th><th>Machines</th><th>In</th><th>Out</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Constructors</td><td>N× @ 100%</td>
+            <td><span class="chip-label chip-mat-a-l">N/min Material A</span></td>
+            <td><span class="chip-label chip-mat-b-l">N/min Material B</span></td>
+          </tr>
+          <!-- TEMPLATE: every balance row must actually close (produced = consumed + surplus) — lock the maths in
+               skills/production-maths/SKILL.md before writing this table, don't back-fill numbers to make it look right -->
+          <tr class="totals-row"><td colspan="2">Material A balance</td><td>N/min produced</td><td>N consumed + N surplus = N ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ROUTING (one example card — add one per LB floor / major routing decision) -->
+    <div class="chain-card">
+      <div class="chain-card-title">Material A routing</div>
+      <div class="chain-prose">
+        <p>Describe the routing decision here — which floors, which LB networks, why a manifold vs. splitter/merger network was chosen (per CLAUDE.md's manifold-over-load-balancer preference).</p>
+      </div>
+      <div class="chain-note">// Callout for a non-obvious design decision, belt-tier constraint, or headroom choice.</div>
+    </div>
+
+    <!-- OUTPUTS -->
+    <div class="chain-card">
+      <div class="chain-card-title">Factory outputs</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Product</th><th>Rate</th><th>Destination</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-mat-b-l">Material B</span></td>
+            <td>N/min</td>
+            <td>Ground floor storage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

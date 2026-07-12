@@ -103,6 +103,21 @@ Every factory must pass the full floor-by-floor trace test (see `skills/trace-te
 
 Separately, use `skills/style-audit/SKILL.md` to check existing floors for legacy-style content (pre-flip port orientation, internal IO blocks, old merger styling, etc.) that needs migrating to the current conventions above. Trace-test checks maths; style-audit checks presentation — a floor can fail either independently.
 
+## Skills index
+
+| Skill | Use for |
+|---|---|
+| `topology-diagram-to-edge-list` | Turning a diagram into a locked edge list — first step of any new floor/factory. |
+| `production-maths` | Recipe/clock/splitter/belt-tier calculations, standalone or as part of a build. |
+| `new-floor-plan` | Full build sequence for a new factory page, production floor, or LB sub-floor. |
+| `new-material-onboarding` | Adding a new material's colour before it appears in any HTML. |
+| `trace-test` | Mandatory maths/rate verification before marking a factory complete. |
+| `style-audit` | Checking existing floors for legacy-style conventions that need migrating. |
+| `geometry-check` | Checking node/machine/IO placements for grid collisions or overflow. |
+| `cross-reference-propagation` | Finding every file that needs updating after a change on one floor. |
+
+Companion read-only subagents (`.claude/agents/`) exist for the audit-style skills: `trace-tester`, `style-auditor`, `geometry-checker`, `xref-finder` — prefer these for verification passes so the check isn't relying on the same context that made the edit.
+
 ## Workflow
 
-New factory → see `skills/new-floor-plan/SKILL.md` for the build sequence (production chain design → main factory page → floor plan files → trace test).
+New factory → see `skills/new-floor-plan/SKILL.md` for the build sequence (production chain design → main factory page → floor plan files → trace test). After any edit, run `cross-reference-propagation` before considering it done.

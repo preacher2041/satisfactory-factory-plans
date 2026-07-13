@@ -9,7 +9,6 @@
 :root {
   --bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;
   --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
-  --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
   --spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;--spl4:#5DD67A;--spl5:#4FC3F7;--spl6:#FFB74D;--spl7:#80CBC4;--mrg1:#AED581;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -135,7 +134,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <div class="pz" style="left:931px;top:362px;color:var(--spl6);"><span>SPL6</span><span>30/m</span></div>
         <div class="pz" style="left:1024px;top:362px;color:var(--spl7);"><span>SPL7</span><span>30/m</span></div>
 
-        <!-- SPL6: col 8, row E (1085,623) — 30/min → 15 MF1 + 15 MF2. in: SPL5 (top). out: MF1 (left) / MF2 (right) -->
+        <!-- SPL6: col 8, row E (1085,623) — 30/min → 15 MF1 + 15 MF2, as two separate belts (see output strip cols 7-8). in: SPL5 (top). out: MF1 (left) / MF2 (right) -->
         <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
         <div class="pz" style="left:1132px;top:670px;font-size:13px;color:var(--spl6);">SPL6</div>
         <div class="pz" style="left:1132px;top:623px;color:var(--spl5);"><span>SPL5</span><span>30/m</span></div>
@@ -153,7 +152,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <!-- MRG1: col 10, row E (1393,623) — P+Q → 20/min → Floor 4 Rotors. out: bottom (mandatory). in: SPL7×2 (left/right) -->
         <div class="blk" style="left:1393px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
         <div class="pz" style="left:1440px;top:670px;font-size:13px;color:var(--mrg1);">MRG1</div>
-        <div class="pz" style="left:1440px;top:716px;color:var(--rotor);"><span>Rotors</span><span>20/m</span></div>
+        <div class="pz" style="left:1440px;top:716px;color:var(--rod);"><span>Rotors</span><span>20/m</span></div>
         <div class="pz" style="left:1393px;top:670px;color:var(--spl7);"><span>SPL7</span><span>10/m</span></div>
         <div class="pz" style="left:1486px;top:670px;color:var(--spl7);"><span>SPL7</span><span>10/m</span></div>
       </div>
@@ -167,8 +166,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 · Sc4</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 · Sc5</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 · Sc6</span></div>
-      <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ LB 4b (MF)</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ LB 4b (MF1)</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ LB 4b (MF2)</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Ground store</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Rotors</span></div>
     </div>

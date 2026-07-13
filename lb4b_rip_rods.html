@@ -11,7 +11,7 @@
   --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
   --rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
   --rotor:#D4537E;--rotor-bg:#200a12;--rotor-bd:#6b2040;
-  --ripspl1:#58C4E8;--ripspl2:#F5A623;--ripmrg1:#B57BEA;--rodspl1:#5DD67A;--rotspl1:#4FC3F7;
+  --ripspl1:#58C4E8;--ripspl2:#F5A623;--ripmrg1:#B57BEA;--rotspl1:#4FC3F7;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -57,7 +57,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
 <h1>LB 4b — RIP, Rods &amp; Rotors</h1>
-<div class="sub">// +92m · RIP 9/min → MF1(3) + MF2(3) + RIPSPL2(3→1 Smart + 1 store + 1 RIPMRG1) · Rods 30/min → MF1(15) + MF2(15) · Rotors 4/min → Smart(2) + store(2)</div>
+<div class="sub">// +92m · RIP 9/min → MF1(3) + MF2(3) + RIPSPL2(3→1 Smart + 1 store + 1 RIPMRG1) · Rods 15+15/min (pre-split at LB 2b) → MF1 + MF2 · Rotors 4/min → Smart(2) + store(2)</div>
 
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px;flex-shrink:0;"></div>
@@ -87,10 +87,15 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← LB 2b</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← LB 2b (MF1)</span>
       </div>
-      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← LB 2b (MF2)</span>
+      </div>
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rotor);font-weight:700;">↓ ext. lift</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rotor);">Rotors</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rotor);">4/min</span>
@@ -131,13 +136,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <div class="pz" style="left:315px;top:516px;color:var(--ripspl2);"><span>RIPSPL2</span><span>1/m</span></div>
         <div class="pz" style="left:408px;top:516px;color:var(--ripspl2);"><span>RIPSPL2</span><span>1/m</span></div>
 
-        <!-- ═══ RODS NETWORK (prefix ROD) ═══ -->
-        <!-- RODSPL1: 2-way col 6, row D (777,469). in: LB 2b (top). out: MF1 (left) / MF2 (right) -->
-        <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:824px;top:516px;font-size:13px;color:var(--rodspl1);">RODSPL1</div>
-        <div class="pz" style="left:824px;top:469px;color:var(--rod);"><span>LB 2b</span><span>30/m</span></div>
-        <div class="pz" style="left:777px;top:516px;color:var(--rod);"><span>MF1</span><span>15/m</span></div>
-        <div class="pz" style="left:870px;top:516px;color:var(--rod);"><span>MF2</span><span>15/m</span></div>
+        <!-- ═══ RODS NETWORK — no node needed: MF1/MF2 rods arrive pre-split from LB2b's SPL6, straight to output strip ═══ -->
 
         <!-- ═══ ROTORS NETWORK (prefix ROT) ═══ -->
         <!-- ROTSPL1: 2-way col 9, row D (1239,469). in: Floor 4 (top). out: Smart (bottom) / store (left) -->
@@ -169,18 +168,17 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RIPSPL1 3-way (9→3+3+3)</div>
   <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RIPSPL2 3-way (3→1+1+1)</div>
   <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>RIPMRG1 merger (1+1→2)</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>RODSPL1 2-way (30→15+15)</div>
   <div class="l-item"><div class="l-sw" style="background:var(--rotor-bg);border:1px solid var(--rotor-bd)"></div>ROTSPL1 2-way (4→2+2)</div>
 </div>
 
 <div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
   <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
-  <span style="color:var(--ripspl1)">■ RIPSPL1</span> &nbsp; <span style="color:var(--ripspl2)">■ RIPSPL2</span> &nbsp; <span style="color:var(--ripmrg1)">■ RIPMRG1</span> &nbsp; <span style="color:var(--rodspl1)">■ RODSPL1</span> &nbsp; <span style="color:var(--rotspl1)">■ ROTSPL1</span>
-  <br><span style="opacity:0.6;">(RODSPL1, ROTSPL1 are isolated single-node networks — no inter-node connections)</span>
+  <span style="color:var(--ripspl1)">■ RIPSPL1</span> &nbsp; <span style="color:var(--ripspl2)">■ RIPSPL2</span> &nbsp; <span style="color:var(--ripmrg1)">■ RIPMRG1</span> &nbsp; <span style="color:var(--rotspl1)">■ ROTSPL1</span>
+  <br><span style="opacity:0.6;">(ROTSPL1 is an isolated single-node network — no inter-node connections)</span>
 </div>
 
 <div class="note">// RIP: RIPSPL1(9→3 MF1 + 3 MF2 + 3 RIPSPL2) · RIPSPL2(3→store:1 + 1 RIPMRG1 + 1 RIPMRG1) · RIPMRG1(1+1→2 Smart) ✓</div>
-<div class="note">// Rods: RODSPL1(30→15 MF1 + 15 MF2) · each MF needs 6/min, 15/min leaves 9/min unconsumed per machine (see floor5_mf.html output strip) ✓</div>
+<div class="note">// Rods: 15/min MF1 + 15/min MF2 arrive pre-split from LB 2b (SPL6) — no on-floor splitter needed · each MF needs 6/min, 15/min leaves 9/min unconsumed per machine (see floor5_mf.html output strip) ✓</div>
 <div class="note">// Rotors: ROTSPL1(4→2 Smart + 2 store) ✓</div>
 </body>
 </html>

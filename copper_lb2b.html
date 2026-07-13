@@ -213,11 +213,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
            Splitters row D, mergers row B
            ════════════════════════════════════ -->
 
-      <!-- SPLITTERS row D (top=469) -->
+      <!-- SPLITTERS row B (top=161) — moved from row D so ingot flow reads top(input)->bottom(output) -->
       <!-- col5=616+7=623, col6=770+7=777, col8=1078+7=1085, col9=1232+7=1239 -->
 
       <!-- SPL1 col6: Sm7 → IMRG1(10) + IMRG1(10) + IMRG2(10). Splitter input always top port. -->
-      <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <div class="blk" style="left:777px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl1);font-weight:700;">SPL1</div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg1);"><span>IMRG1</span><span>10/m</span></div>
@@ -226,7 +226,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- SPL2 col7: Sm8 → IMRG2(10) + IMRG3(10) + IMRG3(10). Splitter input always top port. -->
-      <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl2);font-weight:700;">SPL2</div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg2);"><span>IMRG2</span><span>10/m</span></div>
@@ -235,7 +235,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- SPL3 col9: Sm9 → IMRG4(10) + IMRG4(10) + IMRG5(10). Splitter input always top port. -->
-      <div class="blk" style="left:1239px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <div class="blk" style="left:1239px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl3);font-weight:700;">SPL3</div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg4);"><span>IMRG4</span><span>10/m</span></div>
@@ -245,7 +245,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 
       <!-- SPL4 col10: Sm10 → IMRG5(10) + IMRG6(10) + IMRG6(10). Splitter input always top port. -->
       <!-- col10=1386+7=1393 -->
-      <div class="blk" style="left:1393px;top:469px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+      <div class="blk" style="left:1393px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl4);font-weight:700;">SPL4</div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--imrg5);"><span>IMRG5</span><span>10/m</span></div>
@@ -253,11 +253,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--imrg6);"><span>IMRG6</span><span>10/m</span></div>
       </div>
 
-      <!-- MERGERS row B (top=161) -->
+      <!-- MERGERS row D (top=469) — moved from row B so ingot flow reads top(input)->bottom(output) -->
       <!-- col5=623, col6=777, col7=931, col8=1085, col9=1239, col10=1393 -->
 
       <!-- IMRG1 col5: SPL1 right(10) + SPL1 top(10) = 20 → Sh1. Merger output always bottom port. -->
-      <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:623px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg1);font-weight:700;">IMRG1</div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
@@ -265,7 +265,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- IMRG2 col6: SPL1 right(10) + SPL2 left(10) = 20 → Sh2. Merger output always bottom port. -->
-      <div class="blk" style="left:777px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg2);font-weight:700;">IMRG2</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>10/m</span></div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
@@ -273,7 +273,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- IMRG3 col7: SPL2 top(10) + SPL2 right(10) = 20 → Sh3. Merger output always bottom port. -->
-      <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg3);font-weight:700;">IMRG3</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>10/m</span></div>
@@ -281,7 +281,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- IMRG4 col8: SPL3 right(10) + SPL3 top(10) = 20 → Sh4. Merger output always bottom port. -->
-      <div class="blk" style="left:1085px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:1085px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg4);font-weight:700;">IMRG4</div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
         <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
@@ -289,7 +289,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- IMRG5 col9: SPL3 right(10) + SPL4 left(10) = 20 → Sh5. Merger output always bottom port. -->
-      <div class="blk" style="left:1239px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:1239px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg5);font-weight:700;">IMRG5</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>10/m</span></div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>
@@ -297,7 +297,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       </div>
 
       <!-- IMRG6 col10: SPL4 left(10) + SPL4 right(10) = 20 → Sh6. Merger output always bottom port. -->
-      <div class="blk" style="left:1393px;top:161px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <div class="blk" style="left:1393px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:12px;color:var(--imrg6);font-weight:700;">IMRG6</div>
         <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>10/m</span></div>

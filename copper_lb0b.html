@@ -11,9 +11,8 @@
   --text:#d4d8e8;--text-muted:#7a839a;
   --copper-ore:#C0622A;--copper-ore-bg:#2a1408;--copper-ore-bd:#7a3510;
   --merger-bg:#0a1a1a;--merger-bd:#1a5a5a;
-  --spl1:#58C4E8;
   --mrg1:#80CBC4;
-  --mrg2:#F5A623;
+  --spl1:#58C4E8;
   --spl2:#B57BEA;
   --spl3:#5DD67A;
   --spl4:#FF8A65;
@@ -61,7 +60,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <h1>LB 0b — Ore Split</h1>
-<div class="sub">// +12m · 300 ore/min → recirculating tree → 10× 30/min to smelters · all IO via external wall lifts</div>
+<div class="sub">// +12m · 210 ore/min → recirculating binary tree → 7× 30/min to smelters · all IO via external wall lifts</div>
 
 <!-- Column labels -->
 <div style="display:flex;margin-bottom:3px">
@@ -81,11 +80,22 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 <!-- ══ INPUT STRIP ══ -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
   <div style="width:52px;flex-shrink:0;"></div>
-  <div style="width:1540px;height:80px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
-    <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--copper-ore);font-weight:700;">↓ ext. lift — Miner Mk.2 @ 150%</span>
-    <span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Copper Ore</span>
-    <span style="font-family:'Share Tech Mono',monospace;font-size:18px;font-weight:700;color:var(--copper-ore);">300/min</span>
-    <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--spl1);">→ SPL1</span>
+  <div class="io-strip">
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift — Miner Mk.2 @ 175%</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Copper Ore</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">210/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--mrg1);">→ MRG1</span>
+    </div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
   </div>
 </div>
 
@@ -110,116 +120,93 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 
     <div class="ml">
 
-      <!-- ══ SPL1 — row E col 5: left=616+7=623, top=616+7=623 ══
-           Label: spl1 colour
-           Top input: material colour (terminal, splitter input always top port)
-           Left output → MRG1: coloured mrg1 (destination)
-           Right output → MRG2: coloured mrg2 (destination) -->
-      <div class="blk" style="left:623px;top:623px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl1);font-weight:700;">SPL1</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper-ore);"><span>300/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg1);"><span>MRG1</span><span>150/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--mrg2);"><span>MRG2</span><span>150/m</span></div>
-      </div>
-
-      <!-- ══ MRG1 — row D col 3: left=315, top=469 ══
-           Label: mrg1 colour
-           Left input ← SPL1: coloured spl1 (source)
-           Right input ← SPL4 return: coloured spl4 (source)
-           Bottom output → SPL2: coloured spl2 (destination, merger output always bottom port) -->
-      <div class="blk" style="left:315px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
+      <!-- ══ MRG1 — row A col5: left=623, top=7 ══
+           Merges fresh ore (210/m) with SPL7's recirculation return (30/m) = 240/m.
+           Top input: fresh ore (terminal, material colour)
+           Left input ← SPL7 return: coloured spl7 (source)
+           Bottom output → SPL1: coloured spl1 (destination, merger output always bottom port) -->
+      <div class="blk" style="left:623px;top:7px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--mrg1);font-weight:700;">MRG1</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>150/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>30/m</span></div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>180/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper-ore);"><span>210/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl7);"><span>SPL7</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>240/m</span></div>
       </div>
 
-      <!-- ══ MRG2 — row D col 8: left=1085, top=469 ══
-           Label: mrg2 colour
-           Left input ← SPL6 return: coloured spl6 (source)
-           Right input ← SPL1: coloured spl1 (source)
-           Bottom output → SPL3: coloured spl3 (destination, merger output always bottom port) -->
-      <div class="blk" style="left:1085px;top:469px;width:140px;height:140px;background:var(--merger-bg);border:2px dashed var(--merger-bd);">
-        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--mrg2);font-weight:700;">MRG2</div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl6);"><span>SPL6</span><span>30/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>150/m</span></div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>180/m</span></div>
-      </div>
-
-      <!-- ══ SPL2 — row C col 3: left=315, top=315 ══
-           Label: spl2 colour
+      <!-- ══ SPL1 — row B col5: left=623, top=161 ══
            Top input ← MRG1: coloured mrg1 (source, splitter input always top port)
+           Left output → SPL2: coloured spl2 (destination)
+           Right output → SPL3: coloured spl3 (destination) -->
+      <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl1);font-weight:700;">SPL1</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg1);"><span>MRG1</span><span>240/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>120/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>120/m</span></div>
+      </div>
+
+      <!-- ══ SPL2 — row C col3: left=315, top=315 ══
+           Top input ← SPL1: coloured spl1 (source, splitter input always top port)
            Left output → SPL4: coloured spl4 (destination)
            Right output → SPL5: coloured spl5 (destination) -->
       <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl2);font-weight:700;">SPL2</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg1);"><span>MRG1</span><span>180/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>90/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl5);"><span>SPL5</span><span>90/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>120/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl4);"><span>SPL4</span><span>60/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl5);"><span>SPL5</span><span>60/m</span></div>
       </div>
 
-      <!-- ══ SPL3 — row C col 8: left=1085, top=315 ══
-           Label: spl3 colour
-           Top input ← MRG2: coloured mrg2 (source, splitter input always top port)
-           Left output → SPL6: coloured spl6 (destination)
+      <!-- ══ SPL3 — row C col7: left=931, top=315 ══
+           Top input ← SPL1: coloured spl1 (source, splitter input always top port)
+           Bottom output → SPL6: coloured spl6 (destination, directly below)
            Right output → SPL7: coloured spl7 (destination) -->
-      <div class="blk" style="left:1085px;top:315px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+      <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl3);font-weight:700;">SPL3</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--mrg2);"><span>MRG2</span><span>180/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--spl6);"><span>SPL6</span><span>90/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl7);"><span>SPL7</span><span>90/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl1);"><span>SPL1</span><span>120/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--spl6);"><span>SPL6</span><span>60/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--spl7);"><span>SPL7</span><span>60/m</span></div>
       </div>
 
-      <!-- ══ SPL4 — row B col 1: left=7, top=161 ══
-           Label: spl4 colour
+      <!-- ══ SPL4 — row D col1: left=7, top=469 ══
            Top input ← SPL2: coloured spl2 (source, splitter input always top port)
            Right output → Sm1: material colour (terminal)
-           Bottom output → Sm2: material colour (terminal)
-           Left output → MRG1: coloured mrg1 (destination, return belt) -->
-      <div class="blk" style="left:7px;top:161px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+           Bottom output → Sm2: material colour (terminal) -->
+      <div class="blk" style="left:7px;top:469px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl4);font-weight:700;">SPL4</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>90/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>60/m</span></div>
         <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm1</span><span>30/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg1);"><span>MRG1</span><span>30/m</span></div>
         <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm2</span><span>30/m</span></div>
       </div>
 
-      <!-- ══ SPL5 — row B col 4: left=469, top=161 ══
-           Label: spl5 colour
+      <!-- ══ SPL5 — row D col4: left=469, top=469 ══
            Top input ← SPL2: coloured spl2 (source, splitter input always top port)
-           All three remaining outputs → smelters: material colour (terminal) -->
-      <div class="blk" style="left:469px;top:161px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+           Bottom output → Sm3: material colour (terminal)
+           Right output → Sm7: material colour (terminal) -->
+      <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl5);font-weight:700;">SPL5</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>90/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm3</span><span>30/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm4</span><span>30/m</span></div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm5</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl2);"><span>SPL2</span><span>60/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm3</span><span>30/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm7</span><span>30/m</span></div>
       </div>
 
-      <!-- ══ SPL6 — row B col 7: left=931, top=161 ══
-           Label: spl6 colour
+      <!-- ══ SPL6 — row D col7: left=931, top=469 ══
            Top input ← SPL3: coloured spl3 (source, splitter input always top port)
-           Left output → Sm6: material colour (terminal)
-           Right output → MRG2: coloured mrg2 (destination, return belt)
-           Bottom output → Sm7: material colour (terminal) -->
-      <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+           Bottom output → Sm8: material colour (terminal)
+           Right output → Sm9: material colour (terminal) -->
+      <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl6);font-weight:700;">SPL6</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>90/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm6</span><span>30/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--mrg2);"><span>MRG2</span><span>30/m</span></div>
-        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm7</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>60/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm8</span><span>30/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm9</span><span>30/m</span></div>
       </div>
 
-      <!-- ══ SPL7 — row B col 9: left=1239, top=161 ══
-           Label: spl7 colour
+      <!-- ══ SPL7 — row D col10: left=1393, top=469 ══
            Top input ← SPL3: coloured spl3 (source, splitter input always top port)
-           All three remaining outputs → smelters: material colour (terminal) -->
-      <div class="blk" style="left:1239px;top:161px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
+           Bottom output → Sm10: material colour (terminal)
+           Left output → MRG1: coloured mrg1 (destination, recirculation return — runs back up to row A) -->
+      <div class="blk" style="left:1393px;top:469px;width:140px;height:140px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
         <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl7);font-weight:700;">SPL7</div>
-        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>90/m</span></div>
-        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm8</span><span>30/m</span></div>
-        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper-ore);"><span>Sm9</span><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--spl3);"><span>SPL3</span><span>60/m</span></div>
         <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper-ore);"><span>Sm10</span><span>30/m</span></div>
+        <div class="pz" style="left:0px;top:47px;font-size:11px;color:var(--mrg1);"><span>MRG1</span><span>30/m</span></div>
       </div>
 
     </div>
@@ -254,52 +241,32 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm3</span>
     </div>
-    <!-- Sm4: from SPL5 -->
+    <!-- Cols 4-6 empty — Sm4-6 decommissioned (wire-track ingot surplus fix) -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <!-- Sm7: from SPL5 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm4</span>
-    </div>
-    <!-- Sm5: from SPL5 -->
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm5</span>
-    </div>
-    <!-- Sm6: from SPL6 -->
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm6</span>
-    </div>
-    <!-- Sm7: from SPL6 -->
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm7</span>
     </div>
-    <!-- Sm8: from SPL7 -->
+    <!-- Sm8: from SPL6 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm8</span>
     </div>
-    <!-- Sm9: from SPL7 -->
+    <!-- Sm9: from SPL6 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Fl.1 Sm9</span>
     </div>
     <!-- Sm10: from SPL7 -->
@@ -329,9 +296,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 <!-- Node colour key -->
 <div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2.2;">
   <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
-  <span style="color:var(--spl1)">■ SPL1</span> &nbsp;
   <span style="color:var(--mrg1)">■ MRG1</span> &nbsp;
-  <span style="color:var(--mrg2)">■ MRG2</span> &nbsp;
+  <span style="color:var(--spl1)">■ SPL1</span> &nbsp;
   <span style="color:var(--spl2)">■ SPL2</span> &nbsp;
   <span style="color:var(--spl3)">■ SPL3</span> &nbsp;
   <span style="color:var(--spl4)">■ SPL4</span> &nbsp;
@@ -340,15 +306,19 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <span style="color:var(--spl7)">■ SPL7</span>
 </div>
 
-<div class="note">// SPL1 splits 300→150 (→MRG1) + 150 (→MRG2)</div>
-<div class="note">// MRG1 merges SPL1 150/m + SPL4↺ 30/m = 180/m → SPL2 · MRG2 mirrors identically</div>
-<div class="note">// SPL2 splits 180→90 (→SPL4) + 90 (→SPL5) · SPL3 mirrors identically</div>
-<div class="note">// SPL4: 3-way — 30/m ↑Sm1 · 30/m ↑Sm2 · 30/m ↺ return → MRG1</div>
-<div class="note">// SPL5: 3-way — 30/m ↑Sm3 · 30/m ↑Sm4 · 30/m ↑Sm5 · no return</div>
-<div class="note">// ↺ return belts run downward (row B → row D)</div>
+<div class="note">// MRG1 merges fresh ore 210/m + SPL7↺ 30/m = 240/m → SPL1</div>
+<div class="note">// SPL1 splits 240→120 (→SPL2) + 120 (→SPL3)</div>
+<div class="note">// SPL2 splits 120→60 (→SPL4) + 60 (→SPL5) · SPL3 mirrors identically (→SPL6, →SPL7)</div>
+<div class="note">// SPL4: 2-way — 30/m →Sm1 · 30/m →Sm2 · no return</div>
+<div class="note">// SPL5: 2-way — 30/m →Sm3 · 30/m →Sm7 · no return</div>
+<div class="note">// SPL6: 2-way — 30/m →Sm8 · 30/m →Sm9 · no return</div>
+<div class="note">// SPL7: 2-way — 30/m →Sm10 · 30/m ↺ return → MRG1</div>
+<div class="note">// Pure binary tree (2-way splits only, no thirds) — 7 is prime, so exactly one leaf (SPL7's second output) recirculates instead of a 3-way/2-merger mix</div>
+<div class="note">// ↺ return belt runs from SPL7 (row D) back up to MRG1 (row A)</div>
+<div class="note">// Sm4–Sm6 decommissioned as part of the wire-track ingot-surplus fix — see copper_floor2.html</div>
 
-<div class="belt-req"><strong>⚠ Mk.4 required — ore trunk 300/min</strong><br>
-Single belt from miner to SPL1 at 300/min exceeds the Mk.3 cap (270/min) and requires Mk.4. All other belts on this floor ≤180/min — Mk.2 sufficient.</div>
+<div class="belt-req"><strong>Mk.3 sufficient — ore trunk 210/min</strong><br>
+Single belt from miner to MRG1 at 210/min fits comfortably under the Mk.3 cap (270/min) — no longer requires Mk.4. The internal 240/min segment (MRG1→SPL1) also fits under Mk.3. All other belts on this floor ≤120/min.</div>
 
 </body>
 </html>

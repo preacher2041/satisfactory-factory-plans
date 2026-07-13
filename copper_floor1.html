@@ -13,9 +13,6 @@
   --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
   /* LB 0b node colours — used to colour-match source labels on input strip */
   --spl4:#FF8A65;--spl5:#4FC3F7;--spl6:#FFB74D;--spl7:#F48FB1;
-  /* merger arc colours for ingot merger chain */
-  --arc-m1:#58C4E8;--arc-m2:#F5A623;--arc-m3:#B57BEA;--arc-m4:#5DD67A;
-  --arc-m5:#4FC3F7;--arc-m6:#FFB74D;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -60,7 +57,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <h1>Floor 1 — Smelters</h1>
-<div class="sub">// +20m · 10× smelter @ 100% · 300 ore/min → 300 ingots/min · Sm1–Sm6 → LB 1b · Sm7–Sm10 → LB 2b direct</div>
+<div class="sub">// +20m · 7× smelter @ 100% · 210 ore/min → 210 ingots/min · Sm1–Sm3 → LB 1b · Sm7–Sm10 → LB 2b direct</div>
 
 <!-- Column labels -->
 <div style="display:flex;margin-bottom:3px">
@@ -81,67 +78,53 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
   <div style="width:52px;flex-shrink:0;"></div>
   <div class="io-strip">
-    <!-- Sm1–Sm6 → LB 1b -->
+    <!-- Sm1–Sm3 → LB 1b (wire track, reduced from Sm1–Sm6) -->
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / SPL1</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / SPL2</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / SPL3</span>
     </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W4</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W5</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 1b / W6</span>
-    </div>
+    <!-- Cols 4-6 empty — Sm4-6 decommissioned -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <!-- Sm7–Sm10 → LB 2b direct (sheet ingot network) -->
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / SPL1</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / SPL2</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / SPL3</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / Sh4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ LB 2b / SPL4</span>
     </div>
   </div>
 </div>
@@ -185,24 +168,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
           <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
         </div>
       </div>
-      <div class="m" style="left:481px;top:183px;width:116px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl">Sm4</span><span class="m-sub">30/m · 100%</span>
-        <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
-          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
-        </div>
-      </div>
-      <div class="m" style="left:635px;top:183px;width:116px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl">Sm5</span><span class="m-sub">30/m · 100%</span>
-        <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
-          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
-        </div>
-      </div>
-      <div class="m" style="left:789px;top:183px;width:116px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
-        <span class="m-lbl">Sm6</span><span class="m-sub">30/m · 100%</span>
-        <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
-          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);border-radius:3px;padding:1px 5px;">← Ore 30/m</span>
-        </div>
-      </div>
+      <!-- Sm4–Sm6 decommissioned as part of the wire-track ingot-surplus fix — cols 4-6 now empty -->
       <div class="m" style="left:943px;top:183px;width:116px;height:232px;background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);color:var(--copper);">
         <span class="m-lbl">Sm7</span><span class="m-sub">30/m · 100%</span>
         <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
@@ -250,7 +216,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl4);">← SPL4</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm2</span>
     </div>
-    <!-- Sm3–Sm5: from SPL5 -->
+    <!-- Sm3: from SPL5 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
@@ -258,50 +224,34 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm3</span>
     </div>
+    <!-- Cols 4-6 empty — Sm4-6 decommissioned -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
+    <!-- Sm7: from SPL5 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm4</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl5);">← SPL5</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm5</span>
-    </div>
-    <!-- Sm6–Sm7: from SPL6 -->
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm6</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm7</span>
     </div>
-    <!-- Sm8–Sm10: from SPL7 -->
+    <!-- Sm8–Sm9: from SPL6 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm8</span>
     </div>
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper-ore);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl7);">← SPL7</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl6);">← SPL6</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);opacity:0.6;">→ Sm9</span>
     </div>
+    <!-- Sm10: from SPL7 -->
     <div class="io-block" style="background:var(--copper-ore-bg);border:1px solid var(--copper-ore-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper-ore);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper-ore);">Ore</span>
@@ -319,11 +269,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <div class="note">// Input strip source colours match LB 0b output strip — SPL4 (orange-red) · SPL5 (light blue) · SPL6 (amber) · SPL7 (pink)</div>
-<div class="note">// Sm1–Sm6 output → LB 1b (wire track) · Sm7–Sm10 output → LB 2b direct (sheet track)</div>
+<div class="note">// Sm1–Sm3 output → LB 1b (wire track, reduced from 6 to 3 smelters) · Sm7–Sm10 output → LB 2b direct (sheet track, unchanged)</div>
+<div class="note">// Sm4–Sm6 decommissioned — wire track only needed 90/min ingots (6 constructors × 15/min), not 180/min; cols 4–6 left empty rather than renumbering Sm7–Sm10</div>
 <div class="note">// No mergers needed — smelters output individual 30/min belts directly to exterior wall lifts</div>
 
-<div class="belt-req"><strong>⚠ Mk.2 at cap — sheet ingot lifts to LB 2b</strong><br>
-Sm7–Sm10 each output 30/min — well within Mk.2 cap individually. However note the sheet track bypasses LB 1b entirely and rises directly to LB 2b.</div>
+<div class="belt-req"><strong>Sheet ingot lifts — Mk.1 sufficient individually</strong><br>
+Sm7–Sm10 each output 30/min via its own individual exterior belt lift — well within Mk.1's 60/min cap. These 4 belts bypass LB 1b entirely and rise directly to LB 2b, and are never merged into one trunk; the "120/min" figure quoted for this stage elsewhere (e.g. copper_factory.html) describes aggregate flow, not an actual belt segment.</div>
 
 </body>
 </html>

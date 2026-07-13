@@ -81,7 +81,7 @@
 
 <header>
   <h1>Copper Factory</h1>
-  <span class="sub">// Wire · Cables · Copper Sheets — 300 ore/min · 7 floors · 60m</span>
+  <span class="sub">// Wire · Cables · Copper Sheets — 210 ore/min · 7 floors · 60m</span>
   <a href="index.html" class="header-back">← Index</a>
 </header>
 
@@ -94,8 +94,8 @@
       <div class="summary-section-title">// Factory</div>
       <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">TBD</span></div>
       <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">60m (3F + 3 LB)</span></div>
-      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">24 total</span></div>
-      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">1 (miner)</span></div>
+      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">22 total</span></div>
+      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">2 (miner)</span></div>
     </div>
 
     <!-- Floor heights -->
@@ -104,7 +104,7 @@
       <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
       <div class="summary-row"><span class="summary-key">LB 0b</span><span class="summary-val">+12m — Ore split</span></div>
       <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+20m — Smelters</span></div>
-      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m — Ingot pass-through</span></div>
+      <div class="summary-row"><span class="summary-key">LB 1b</span><span class="summary-val">+32m — Ingot split</span></div>
       <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+40m — Wire</span></div>
       <div class="summary-row"><span class="summary-key">LB 2b</span><span class="summary-val">+52m — Wire merge &amp; sheet ingot split</span></div>
       <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+60m — Cables &amp; Sheets</span></div>
@@ -114,28 +114,32 @@
     <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Belt requirements</div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-copper-ore"></span>Ore trunk (miner→SPL1)</span>
-        <span class="summary-val">Mk.4 · 300/min</span>
+        <span class="summary-key"><span class="belt-chip chip-copper-ore"></span>Ore trunk (miner→MRG1)</span>
+        <span class="summary-val">Mk.3 · 210/min</span>
       </div>
       <div class="summary-row">
         <span class="summary-key"><span class="belt-chip chip-copper"></span>Ingot lift → LB 1b</span>
-        <span class="summary-val">Mk.3 · 180/min</span>
+        <span class="summary-val">Mk.1 · 30/min ×3</span>
       </div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-copper"></span>Ingot lift → LB 2b</span>
-        <span class="summary-val">Mk.2 · 120/min ⚠ cap</span>
+        <span class="summary-key"><span class="belt-chip chip-copper"></span>Sheet ingot lifts → LB 2b</span>
+        <span class="summary-val">Mk.1 · 30/min ×4</span>
       </div>
       <div class="summary-row">
-        <span class="summary-key"><span class="belt-chip chip-wire"></span>Wire merged trunk → LB 2b</span>
-        <span class="summary-val">Mk.3 · 180/min</span>
+        <span class="summary-key"><span class="belt-chip chip-wire"></span>Wire lifts → LB 2b (pre-merge)</span>
+        <span class="summary-val">Mk.1 · 30/min ×6</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-key"><span class="belt-chip chip-wire"></span>Wire segments (LB 2b, post-merge)</span>
+        <span class="summary-val">Mk.1 · 60/min ×3</span>
       </div>
     </div>
 
     <!-- Clock speeds -->
     <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Clock speeds</div>
-      <div class="summary-row"><span class="summary-key">Miner Mk.2 (×1)</span><span class="summary-val">150% · 300/min</span></div>
-      <div class="summary-row"><span class="summary-key">All smelters (×10)</span><span class="summary-val">100% · 30/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Miner Mk.2 (×1)</span><span class="summary-val">175% · 210/min</span></div>
+      <div class="summary-row"><span class="summary-key">All smelters (×7)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Wire constructors (×6)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Cable constructors (×2)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Sheet constructors (×6)</span><span class="summary-val">100% · 10/min each</span></div>
@@ -145,7 +149,7 @@
     <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Buildings required</div>
       <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val">1 (copper ore)</span></div>
-      <div class="summary-row"><span class="summary-key">Smelter</span><span class="summary-val">10</span></div>
+      <div class="summary-row"><span class="summary-key">Smelter</span><span class="summary-val">7</span></div>
       <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">14 (6 wire · 2 cable · 6 sheet)</span></div>
       <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">4 (wire · cable · sheet · ore buffer)</span></div>
     </div>
@@ -182,7 +186,7 @@
     <a href="copper_lb1b.html" style="text-decoration:none">
       <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--copper-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--copper);letter-spacing:0.08em;margin-bottom:3px">LB 1b · +32m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Pass-Through</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Ingot Split</div>
       </div>
     </a>
 
@@ -262,13 +266,13 @@
         </thead>
         <tbody>
           <tr>
-            <td>Smelters</td><td>10× @ 100%</td>
-            <td><span class="chip-label chip-copper-ore-l">300/min ore</span></td>
-            <td><span class="chip-label chip-copper-l">300/min ingots</span></td>
+            <td>Smelters</td><td>7× @ 100%</td>
+            <td><span class="chip-label chip-copper-ore-l">210/min ore</span></td>
+            <td><span class="chip-label chip-copper-l">210/min ingots</span></td>
           </tr>
           <tr>
             <td>Wire constructors</td><td>6× @ 100%</td>
-            <td><span class="chip-label chip-copper-l">90/min ingots</span> (180/min supplied, 90/min surplus)</td>
+            <td><span class="chip-label chip-copper-l">90/min ingots</span> (90/min supplied) ✓</td>
             <td><span class="chip-label chip-wire-l">180/min wire</span></td>
           </tr>
           <tr>
@@ -281,7 +285,7 @@
             <td><span class="chip-label chip-copper-l">120/min ingots</span></td>
             <td><span class="chip-label chip-sheet-l">60/min sheet</span></td>
           </tr>
-          <tr class="totals-row"><td colspan="2">Ingot balance</td><td>300/min produced</td><td>90 (wire, consumed) + 120 (sheet) + 90 (wire, unconsumed surplus) = 300 ⚠</td></tr>
+          <tr class="totals-row"><td colspan="2">Ingot balance</td><td>210/min produced</td><td>90 (wire, consumed) + 120 (sheet) = 210 ✓</td></tr>
           <tr class="totals-row"><td colspan="2">Wire balance</td><td>180/min produced</td><td>120 consumed + 60 → storage ✓</td></tr>
         </tbody>
       </table>
@@ -291,21 +295,21 @@
     <div class="chain-card">
       <div class="chain-card-title">Miner &amp; ore routing</div>
       <div class="chain-prose">
-        <p>A single Miner Mk.2 on a normal copper node overclocked to 150% produces 300 ore/min, consuming one power shard. This is the only clock speed deviation in the factory — all smelters and constructors run at 100%.</p>
-        <p>The 300/min ore trunk exceeds the Mk.3 cap (270/min) and requires a Mk.4 belt. At LB 0b a recirculating splitter tree distributes 300/min equally across 10 smelters: SPL1 splits 150+150, each half feeds a merger which combines the trunk with a 30/min return loop to produce a clean 180/min that then splits into three 3-way splitters feeding 5 smelters each side.</p>
+        <p>A single Miner Mk.2 on a normal copper node (base 120/min @ 100%) overclocked to 175% produces 210 ore/min, consuming 2 power shards (150% is the single-shard ceiling; 175% needs a second shard, still well under the 3-shard/250% max). This is the only clock speed deviation in the factory — all smelters and constructors run at 100%.</p>
+        <p>The 210/min ore trunk fits comfortably under the Mk.3 cap (270/min). At LB 0b a recirculating splitter tree distributes 210/min equally across 7 smelters using a pure binary structure: MRG1 merges the 210/min trunk with a 30/min return loop to produce a clean 240/min, which halves down through three levels (240→120→60→30) to reach 8 leaf branches. Seven of those become smelter feeds; the eighth recirculates back to MRG1 to sustain the loop.</p>
       </div>
-      <div class="chain-note">// The recirculating tree avoids the impossible 10-way binary split and produces perfectly balanced 30/min feeds to every smelter.</div>
+      <div class="chain-note">// 7 is prime, so a plain binary tree can't divide it evenly either — recirculating exactly one leaf converts the impossible 7-way split into a clean run of 2-way halves, no thirds needed.</div>
     </div>
 
     <!-- INGOT ROUTING -->
     <div class="chain-card">
       <div class="chain-card-title">Ingot split &amp; routing</div>
       <div class="chain-prose">
-        <p>Floor 1 outputs 300 ingots/min via two separate belt lifts on the exterior wall. The 180/min wire feed (Sm1–Sm6) rises to LB 1b on a Mk.3 belt; the 120/min sheet feed (Sm7–Sm10) bypasses LB 1b entirely and rises directly to LB 2b on a Mk.2 belt (at cap — do not downgrade).</p>
-        <p>LB 1b is a pure pass-through — the 6 ingot belts enter one side and exit the other, routing from the output side of Floor 1 to the input side of Floor 2. No splitting or merging occurs on this floor.</p>
+        <p>Floor 1 outputs 210 ingots/min via individual exterior belt lifts, never merged into a single trunk. The 90/min wire feed (Sm1–Sm3, 3× Mk.1 belts) rises to LB 1b; the 120/min sheet feed (Sm7–Sm10, unchanged, 4× Mk.1 belts) bypasses LB 1b entirely and rises directly to LB 2b.</p>
+        <p>LB 1b now performs an actual split — 3 splitters (SPL1–SPL3), each an exact half (30→15+15), turn the 3× 30/min wire-track belts into the 6× 15/min feeds Floor 2's wire constructors actually consume.</p>
       </div>
-      <div class="chain-note">// The 300/min ingot split (180+120) is a 3:2 ratio not achievable with a single splitter. Two independent belt lifts from Floor 1 is the cleanest solution.</div>
-      <div class="chain-note flag">// ⚠ Wire's 180/min feed oversupplies Floor 2 — each wire constructor only consumes 15/min (90/min total across all 6), leaving a 90/min surplus with no storage/overflow branch on LB 1b. Confirmed as-built; backs up the belt and will eventually stall 3 of the 6 wire-track smelters via backpressure. Not yet resolved.</div>
+      <div class="chain-note">// The 210/min ingot split (90+120) is a 3:4 ratio not achievable with a single splitter. Two independent belt lifts from Floor 1 is the cleanest solution.</div>
+      <div class="chain-note">// Resolved: wire's feed previously oversupplied Floor 2 2:1 (180/min supplied vs 90/min consumed, a 90/min surplus with no overflow branch on LB 1b — confirmed as-built, risked stalling 3 of the 6 wire-track smelters via backpressure). Fixed by cutting the wire track from 6 to 3 smelters (matching supply to the 90/min the 6 constructors actually need) and adding the 3 splitters above so each constructor still gets its own 15/min feed.</div>
     </div>
 
     <!-- WIRE ROUTING -->

@@ -11,6 +11,8 @@
   --text:#d4d8e8;--text-muted:#7a839a;
   --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
   --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
+  /* LB 1b node colours — used to colour-match source labels on input strip */
+  --spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -53,7 +55,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <h1>Floor 2 — Wire Constructors</h1>
-<div class="sub">// +40m · 6× constructor @ 100% · 90 ingots/min consumed (180/min supplied, 90/min surplus) → 180 wire/min · all IO via external wall lifts</div>
+<div class="sub">// +40m · 6× constructor @ 100% · 90 ingots/min consumed (90/min supplied) ✓ balanced → 180 wire/min · all IO via external wall lifts</div>
 
 <!-- Column labels -->
 <div style="display:flex;margin-bottom:3px">
@@ -183,38 +185,44 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">← SPL1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">← SPL1</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">← SPL2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm4</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">← SPL2</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm5</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">← SPL3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↑ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← LB 1b / Sm6</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">← SPL3</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">LB 1b</span>
     </div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
@@ -230,11 +238,9 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </div>
 
 <div class="note">// Recipe: 1 copper ingot → 2 wire · cycle 4s · 15 cycles/min × 2 = 30 wire/min per constructor ✓</div>
-<div class="note">// Each constructor consumes 15 ingots/min · produces 30 wire/min — belt supplies 30/min, leaving 15/min surplus per belt</div>
+<div class="note">// Each constructor consumes 15 ingots/min · produces 30 wire/min — belt now supplies exactly 15/min, fully consumed ✓</div>
 <div class="note">// 6 × 30 = 180 wire/min total · each belt exits via individual external wall lift to LB 2b</div>
-
-<div class="belt-req"><strong>⚠ 90/min ingot surplus — unhandled</strong><br>
-Each wire constructor consumes 15/min ingots (1 ingot → 2 wire, 4s cycle @ 100%), but LB 1b delivers a full 30/min per belt (Sm1–Sm6's actual smelter output, passed straight through). 6 × 15/min surplus = 90/min — equivalent to 3 smelters' worth of ore with no consumer. LB 1b is a pure pass-through with no storage/overflow branch, so this backs up the belt and will eventually stall those smelters via backpressure. Confirmed as-built; not yet resolved.</div>
+<div class="note">// Formerly a 90/min ingot surplus here (LB 1b delivered 30/min per belt against 15/min consumption) — resolved by cutting the wire track from 6 to 3 smelters and splitting each of their belts 30→15+15 at LB 1b</div>
 
 </body>
 </html>

@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LB 1b — Ingot Pass-Through — Copper Factory</title>
+<title>LB 1b — Ingot Split — Copper Factory</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 :root {
   --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
   --text:#d4d8e8;--text-muted:#7a839a;
   --copper:#E8924A;--copper-bg:#2e1a08;--copper-bd:#8a4a18;
+  --spl1:#58C4E8;
+  --spl2:#F5A623;
+  --spl3:#B57BEA;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -18,6 +21,9 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 .floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.blk{position:absolute;border-radius:5px;}
+.pz{position:absolute;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;line-height:1.2;text-align:center;}
 .io-strip{display:flex;gap:0;width:1540px;}
 .io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
@@ -45,8 +51,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="copper_factory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
 
-<h1>LB 1b — Ingot Pass-Through</h1>
-<div class="sub">// +32m · 6× 30/min copper ingots · input side → output side · no splitting or merging · all IO via external wall lifts</div>
+<h1>LB 1b — Ingot Split</h1>
+<div class="sub">// +32m · 3× 30/min copper ingots → 3 splitters → 6× 15/min → Floor 2 wire constructors · all IO via external wall lifts</div>
 
 <!-- Column labels -->
 <div style="display:flex;margin-bottom:3px">
@@ -63,7 +69,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
 </div>
 
-<!-- ══ INPUT STRIP (above grid) — cols 1–6, arrives from Floor 1 Sm1–Sm6 ══ -->
+<!-- ══ INPUT STRIP (above grid) — cols 1, 3, 5 — arrives from Floor 1 Sm1–Sm3 ══ -->
 <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:4px;">
   <div style="width:52px;flex-shrink:0;"></div>
   <div class="io-strip">
@@ -71,39 +77,27 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">→ SPL1</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm1</span>
     </div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">→ SPL2</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm2</span>
     </div>
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">→ SPL3</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm3</span>
     </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm4</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm5</span>
-    </div>
-    <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">← Fl.1 Sm6</span>
-    </div>
-    <!-- Cols 7–10 empty -->
+    <!-- Cols 6–10 empty -->
+    <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
     <div class="io-block" style="background:transparent;border:1px solid transparent;"></div>
@@ -111,7 +105,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   </div>
 </div>
 
-<!-- ══ GRID (empty — no machines or splitters on this floor) ══ -->
+<!-- ══ GRID — 3 splitters, each 30→15+15 ══ -->
 <div style="display:flex;gap:0;align-items:flex-start">
   <div style="display:flex;flex-direction:column;width:52px">
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
@@ -128,7 +122,44 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
     <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
     <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
-    <!-- Empty grid — belt lifts run on exterior walls, no floor space used -->
+    <!-- Empty grid — belt lifts run on exterior walls, only splitter nodes occupy row B -->
+
+    <div class="ml">
+
+      <!-- ══ SPL1 — row B col1: left=7, top=161 ══
+           Top input ← Sm1: material colour (terminal, splitter input always top port)
+           Bottom output → W1: material colour (terminal, straight down)
+           Right output → W2: material colour (terminal) -->
+      <div class="blk" style="left:7px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl1);font-weight:700;">SPL1</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>W1</span><span>15/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper);"><span>W2</span><span>15/m</span></div>
+      </div>
+
+      <!-- ══ SPL2 — row B col3: left=315, top=161 ══
+           Top input ← Sm2: material colour (terminal, splitter input always top port)
+           Bottom output → W3: material colour (terminal, straight down)
+           Right output → W4: material colour (terminal) -->
+      <div class="blk" style="left:315px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl2);font-weight:700;">SPL2</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>W3</span><span>15/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper);"><span>W4</span><span>15/m</span></div>
+      </div>
+
+      <!-- ══ SPL3 — row B col5: left=623, top=161 ══
+           Top input ← Sm3: material colour (terminal, splitter input always top port)
+           Bottom output → W5: material colour (terminal, straight down)
+           Right output → W6: material colour (terminal) -->
+      <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--copper-bg);border:1px solid var(--copper-bd);">
+        <div class="pz" style="left:47px;top:47px;font-size:13px;color:var(--spl3);font-weight:700;">SPL3</div>
+        <div class="pz" style="left:47px;top:0px;font-size:11px;color:var(--copper);"><span>30/m</span></div>
+        <div class="pz" style="left:47px;top:93px;font-size:11px;color:var(--copper);"><span>W5</span><span>15/m</span></div>
+        <div class="pz" style="left:93px;top:47px;font-size:11px;color:var(--copper);"><span>W6</span><span>15/m</span></div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -139,37 +170,43 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">← SPL1</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W1</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl1);">← SPL1</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W2</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">← SPL2</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W3</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl2);">← SPL2</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W4</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">← SPL3</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W5</span>
     </div>
     <div class="io-block" style="background:var(--copper-bg);border:1px solid var(--copper-bd);">
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);font-weight:700;">↓ ext. lift</span>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--copper);">Ingots</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">30/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--copper);">15/min</span>
+      <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--spl3);">← SPL3</span>
       <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--copper);opacity:0.6;">→ Fl.2 W6</span>
     </div>
     <!-- Cols 7–10 empty -->
@@ -180,9 +217,24 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   </div>
 </div>
 
-<div class="note">// Pass-through floor — no splitters or mergers · 6 ingot belts enter one side and exit the other</div>
-<div class="note">// Belts run entirely on exterior wall lifts · grid floor space unused</div>
-<div class="note">// Cols 7–10 free — sheet ingot track (Sm7–Sm10) bypasses this floor entirely and rises directly to LB 2b</div>
+<!-- LEGEND -->
+<div style="margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:6px;color:var(--text);">
+    <div style="width:13px;height:13px;border-radius:2px;background:var(--copper-bg);border:1px solid var(--copper-bd);flex-shrink:0;"></div>Splitter
+  </div>
+</div>
+
+<!-- Node colour key -->
+<div style="margin-top:10px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:2.2;">
+  <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
+  <span style="color:var(--spl1)">■ SPL1</span> &nbsp;
+  <span style="color:var(--spl2)">■ SPL2</span> &nbsp;
+  <span style="color:var(--spl3)">■ SPL3</span>
+</div>
+
+<div class="note">// This floor previously was a pure pass-through (6× 30/min belts, no splitting) — that fed Floor 2's wire constructors 2× their actual 15/min consumption, causing a 90/min ingot surplus. Fixed upstream by cutting the wire track from 6 to 3 smelters (see copper_floor1.html) and adding these 3 splitters here to redistribute the resulting 3× 30/min into the 6× 15/min each constructor actually needs.</div>
+<div class="note">// SPL1/SPL2/SPL3: 2-way exact-half splits — 30/m → 15/m + 15/m each, no fudging, no return</div>
+<div class="note">// Belts run entirely on exterior wall lifts except the three splitter nodes · cols 6–10 free — sheet ingot track (Sm7–Sm10) bypasses this floor entirely and rises directly to LB 2b</div>
 
 </body>
 </html>

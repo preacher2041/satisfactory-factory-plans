@@ -9,7 +9,7 @@
 :root {
   --bg:#0f1117;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;
   --rod:#1D9E75;--rod-bg:#061f16;--rod-bd:#0f5c3d;
-  --spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;--spl4:#5DD67A;--spl5:#4FC3F7;--spl6:#FFB74D;--spl7:#80CBC4;--mrg1:#AED581;
+  --mrg1:#F48FB1;--spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;--mrg2:#5DD67A;--spl4:#4FC3F7;--spl5:#FFB74D;--spl6:#80CBC4;--mrg3:#AED581;--mrg4:#4DD0E1;--spl7:#FF8A65;--spl8:#90CAF9;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -63,7 +63,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
 <h1>LB 3b — Rod Manifold</h1>
-<div class="sub">// +84m · rods 120/min ← Floor 2 (bypass, past LB 2b/Floor 3) → screw side 60/min (6×10 → Floor 4) + MF/Rotor side 60/min (30 → Floor 7 MF + 20 → Floor 6 Rotors + 10 store)</div>
+<div class="sub">// +84m · rods 105/min ← Floor 2 (bypass, past LB 2b/Floor 3) → screws 60/min (6×10 → Floor 4) + 45/min forwarded to a future sub-floor (Rotor 20 + MF 12 + Store 13, routing TBD)</div>
 
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px;flex-shrink:0;"></div>
@@ -82,12 +82,12 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="height:90px;"></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Input strip (above grid): rods 120/min from Floor 2 (bypass), col 5 -->
+    <!-- Input strip (above grid): rods 105/min from Floor 2 (bypass), col 5 -->
     <div class="io-strip" style="margin-bottom:2px;">
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);">
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift, bypass</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">120/min</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">105/min</span>
         <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">← Floor 2 (past LB 2b/Floor 3)</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
@@ -101,102 +101,131 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
       <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
       <div class="ml">
-        <!-- SPL1 (trunk): col 5, row B (623,161). in: Floor 2 (top). out: SPL2 screw side (left) / SPL5 MF side (right) -->
+        <!-- MRG1 (merger): col 5, row A (623,7). in: Floor 2 (top, terminal) / SPL6 loop (right). out: SPL1 (bottom, mandatory) -->
+        <div class="blk" style="left:623px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:670px;top:54px;font-size:13px;color:var(--mrg1);">MRG1</div>
+        <div class="pz" style="left:670px;top:7px;color:var(--rod);"><span>Floor 2</span><span>105/m</span></div>
+        <div class="pz" style="left:716px;top:54px;color:var(--spl6);"><span>SPL6</span><span>15/m</span></div>
+        <div class="pz" style="left:670px;top:100px;color:var(--spl1);"><span>SPL1</span><span>120/m</span></div>
+
+        <!-- SPL1 (trunk splitter): col 5, row B (623,161). in: MRG1 (top). out: SPL2 (left) / SPL4 (right) -->
         <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
         <div class="pz" style="left:670px;top:208px;font-size:13px;color:var(--spl1);">SPL1</div>
-        <div class="pz" style="left:670px;top:161px;color:var(--rod);"><span>Floor 2</span><span>120/m</span></div>
+        <div class="pz" style="left:670px;top:161px;color:var(--mrg1);"><span>MRG1</span><span>120/m</span></div>
         <div class="pz" style="left:623px;top:208px;color:var(--spl2);"><span>SPL2</span><span>60/m</span></div>
-        <div class="pz" style="left:716px;top:208px;color:var(--spl5);"><span>SPL5</span><span>60/m</span></div>
+        <div class="pz" style="left:716px;top:208px;color:var(--spl4);"><span>SPL4</span><span>60/m</span></div>
 
-        <!-- SCREW SIDE -->
-        <!-- SPL2: col 3, row C (315,315). in: SPL1 (top). out: SPL3 (left) / SPL4 (right) -->
+        <!-- LEFT BRANCH -->
+        <!-- SPL2: col 3, row C (315,315). in: SPL1 (top). out: MRG2 (right, direct 30) / SPL3 (left, 30) -->
         <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
         <div class="pz" style="left:362px;top:362px;font-size:13px;color:var(--spl2);">SPL2</div>
         <div class="pz" style="left:362px;top:315px;color:var(--spl1);"><span>SPL1</span><span>60/m</span></div>
         <div class="pz" style="left:315px;top:362px;color:var(--spl3);"><span>SPL3</span><span>30/m</span></div>
-        <div class="pz" style="left:408px;top:362px;color:var(--spl4);"><span>SPL4</span><span>30/m</span></div>
+        <div class="pz" style="left:408px;top:362px;color:var(--mrg2);"><span>MRG2</span><span>30/m</span></div>
 
-        <!-- SPL3: col 2, row E (161,623). in: SPL2 (top). out: Sc1 (bottom) / Sc2 (left) / Sc3 (right) -->
-        <div class="blk" style="left:161px;top:623px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:208px;top:670px;font-size:13px;color:var(--spl3);">SPL3</div>
-        <div class="pz" style="left:208px;top:623px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
-        <div class="pz" style="left:208px;top:716px;color:var(--rod);"><span>Sc1</span><span>10/m</span></div>
-        <div class="pz" style="left:161px;top:670px;color:var(--rod);"><span>Sc2</span><span>10/m</span></div>
-        <div class="pz" style="left:254px;top:670px;color:var(--rod);"><span>Sc3</span><span>10/m</span></div>
+        <!-- SPL3: col 2, row D (161,469). in: SPL2 (top). out: MRG2 (right, 15) / MRG3 (bottom, 15) -->
+        <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
+        <div class="pz" style="left:208px;top:516px;font-size:13px;color:var(--spl3);">SPL3</div>
+        <div class="pz" style="left:208px;top:469px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
+        <div class="pz" style="left:254px;top:516px;color:var(--mrg2);"><span>MRG2</span><span>15/m</span></div>
+        <div class="pz" style="left:208px;top:562px;color:var(--mrg3);"><span>MRG3</span><span>15/m</span></div>
 
-        <!-- SPL4: col 4, row E (469,623). in: SPL2 (top). out: Sc4 (bottom) / Sc5 (left) / Sc6 (right) -->
-        <div class="blk" style="left:469px;top:623px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:516px;top:670px;font-size:13px;color:var(--spl4);">SPL4</div>
-        <div class="pz" style="left:516px;top:623px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
-        <div class="pz" style="left:516px;top:716px;color:var(--rod);"><span>Sc4</span><span>10/m</span></div>
-        <div class="pz" style="left:469px;top:670px;color:var(--rod);"><span>Sc5</span><span>10/m</span></div>
-        <div class="pz" style="left:562px;top:670px;color:var(--rod);"><span>Sc6</span><span>10/m</span></div>
+        <!-- MRG2: col 4, row D (469,469) — SPL2(30) + SPL3(15) → 45/min, forwarded to a future sub-floor. out: bottom (mandatory, terminal). in: SPL2 (top) / SPL3 (left) -->
+        <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:516px;top:516px;font-size:13px;color:var(--mrg2);">MRG2</div>
+        <div class="pz" style="left:516px;top:469px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
+        <div class="pz" style="left:469px;top:516px;color:var(--spl3);"><span>SPL3</span><span>15/m</span></div>
+        <div class="pz" style="left:516px;top:562px;color:var(--rod);"><span>→ sub-floor</span><span>45/m</span></div>
 
-        <!-- MF/ROTOR SIDE -->
-        <!-- SPL5: col 7, row C (931,315). in: SPL1 (top). out: SPL6 (left) / SPL7 (right) -->
+        <!-- MRG3: col 3, row E (315,623) — SPL3(15) + SPL5(15) → 30/min. out: bottom (mandatory). in: SPL3 (left) / SPL5 (right) -->
+        <div class="blk" style="left:315px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:362px;top:670px;font-size:13px;color:var(--mrg3);">MRG3</div>
+        <div class="pz" style="left:315px;top:670px;color:var(--spl3);"><span>SPL3</span><span>15/m</span></div>
+        <div class="pz" style="left:408px;top:670px;color:var(--spl5);"><span>SPL5</span><span>15/m</span></div>
+        <div class="pz" style="left:362px;top:716px;color:var(--spl7);"><span>SPL7</span><span>30/m</span></div>
+
+        <!-- SPL7: col 3, row F (315,777). in: MRG3 (top). out: Sc1 (bottom) / Sc2 (left) / Sc3 (right) -->
+        <div class="blk" style="left:315px;top:777px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
+        <div class="pz" style="left:362px;top:824px;font-size:13px;color:var(--spl7);">SPL7</div>
+        <div class="pz" style="left:362px;top:777px;color:var(--mrg3);"><span>MRG3</span><span>30/m</span></div>
+        <div class="pz" style="left:362px;top:870px;color:var(--rod);"><span>Sc1</span><span>10/m</span></div>
+        <div class="pz" style="left:315px;top:824px;color:var(--rod);"><span>Sc2</span><span>10/m</span></div>
+        <div class="pz" style="left:408px;top:824px;color:var(--rod);"><span>Sc3</span><span>10/m</span></div>
+
+        <!-- RIGHT BRANCH -->
+        <!-- SPL4: col 7, row C (931,315). in: SPL1 (top). out: SPL5 (left) / SPL6 (right) -->
         <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:978px;top:362px;font-size:13px;color:var(--spl5);">SPL5</div>
+        <div class="pz" style="left:978px;top:362px;font-size:13px;color:var(--spl4);">SPL4</div>
         <div class="pz" style="left:978px;top:315px;color:var(--spl1);"><span>SPL1</span><span>60/m</span></div>
-        <div class="pz" style="left:931px;top:362px;color:var(--spl6);"><span>SPL6</span><span>30/m</span></div>
-        <div class="pz" style="left:1024px;top:362px;color:var(--spl7);"><span>SPL7</span><span>30/m</span></div>
+        <div class="pz" style="left:931px;top:362px;color:var(--spl5);"><span>SPL5</span><span>30/m</span></div>
+        <div class="pz" style="left:1024px;top:362px;color:var(--spl6);"><span>SPL6</span><span>30/m</span></div>
 
-        <!-- SPL6: col 8, row E (1085,623) — 30/min → 15 MF1 + 15 MF2, as two separate belts (see output strip). in: SPL5 (top). out: MF1 (left) / MF2 (right) -->
-        <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:1132px;top:670px;font-size:13px;color:var(--spl6);">SPL6</div>
-        <div class="pz" style="left:1132px;top:623px;color:var(--spl5);"><span>SPL5</span><span>30/m</span></div>
-        <div class="pz" style="left:1085px;top:670px;color:var(--rod);"><span>MF1</span><span>15/m</span></div>
-        <div class="pz" style="left:1178px;top:670px;color:var(--rod);"><span>MF2</span><span>15/m</span></div>
+        <!-- SPL5: col 6, row D (777,469). in: SPL4 (top). out: MRG3 (left, 15) / MRG4 (bottom, 15) -->
+        <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
+        <div class="pz" style="left:824px;top:516px;font-size:13px;color:var(--spl5);">SPL5</div>
+        <div class="pz" style="left:824px;top:469px;color:var(--spl4);"><span>SPL4</span><span>30/m</span></div>
+        <div class="pz" style="left:777px;top:516px;color:var(--mrg3);"><span>MRG3</span><span>15/m</span></div>
+        <div class="pz" style="left:824px;top:562px;color:var(--mrg4);"><span>MRG4</span><span>15/m</span></div>
 
-        <!-- SPL7: col 9, row C (1239,315) — 30/min → store(10) + P(10→MRG1) + Q(10→MRG1). in: SPL5 (top). out: store (bottom) / P (left) / Q (right) -->
-        <div class="blk" style="left:1239px;top:315px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
-        <div class="pz" style="left:1286px;top:362px;font-size:13px;color:var(--spl7);">SPL7</div>
-        <div class="pz" style="left:1286px;top:315px;color:var(--spl5);"><span>SPL5</span><span>30/m</span></div>
-        <div class="pz" style="left:1286px;top:408px;color:var(--rod);"><span>Store</span><span>10/m</span></div>
-        <div class="pz" style="left:1239px;top:362px;color:var(--mrg1);"><span>MRG1</span><span>10/m</span></div>
-        <div class="pz" style="left:1332px;top:362px;color:var(--mrg1);"><span>MRG1</span><span>10/m</span></div>
+        <!-- SPL6: col 8, row D (1085,469). in: SPL4 (top). out: MRG4 (left, 15) / MRG1 loop (right, 15) -->
+        <div class="blk" style="left:1085px;top:469px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
+        <div class="pz" style="left:1132px;top:516px;font-size:13px;color:var(--spl6);">SPL6</div>
+        <div class="pz" style="left:1132px;top:469px;color:var(--spl4);"><span>SPL4</span><span>30/m</span></div>
+        <div class="pz" style="left:1085px;top:516px;color:var(--mrg4);"><span>MRG4</span><span>15/m</span></div>
+        <div class="pz" style="left:1178px;top:516px;color:var(--mrg1);"><span>MRG1</span><span>15/m</span></div>
 
-        <!-- MRG1: col 10, row E (1393,623) — P+Q → 20/min → Floor 6 Rotors. out: bottom (mandatory). in: SPL7×2 (left/right) -->
-        <div class="blk" style="left:1393px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:1440px;top:670px;font-size:13px;color:var(--mrg1);">MRG1</div>
-        <div class="pz" style="left:1440px;top:716px;color:var(--rod);"><span>Rotors</span><span>20/m</span></div>
-        <div class="pz" style="left:1393px;top:670px;color:var(--spl7);"><span>SPL7</span><span>10/m</span></div>
-        <div class="pz" style="left:1486px;top:670px;color:var(--spl7);"><span>SPL7</span><span>10/m</span></div>
+        <!-- MRG4: col 7, row E (931,623) — SPL5(15) + SPL6(15) → 30/min. out: bottom (mandatory). in: SPL5 (left) / SPL6 (right) -->
+        <div class="blk" style="left:931px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:978px;top:670px;font-size:13px;color:var(--mrg4);">MRG4</div>
+        <div class="pz" style="left:931px;top:670px;color:var(--spl5);"><span>SPL5</span><span>15/m</span></div>
+        <div class="pz" style="left:1024px;top:670px;color:var(--spl6);"><span>SPL6</span><span>15/m</span></div>
+        <div class="pz" style="left:978px;top:716px;color:var(--spl8);"><span>SPL8</span><span>30/m</span></div>
+
+        <!-- SPL8: col 7, row F (931,777). in: MRG4 (top). out: Sc4 (bottom) / Sc5 (left) / Sc6 (right) -->
+        <div class="blk" style="left:931px;top:777px;width:140px;height:140px;background:var(--rod-bg);border:1px solid var(--rod-bd);"></div>
+        <div class="pz" style="left:978px;top:824px;font-size:13px;color:var(--spl8);">SPL8</div>
+        <div class="pz" style="left:978px;top:777px;color:var(--mrg4);"><span>MRG4</span><span>30/m</span></div>
+        <div class="pz" style="left:978px;top:870px;color:var(--rod);"><span>Sc4</span><span>10/m</span></div>
+        <div class="pz" style="left:931px;top:824px;color:var(--rod);"><span>Sc5</span><span>10/m</span></div>
+        <div class="pz" style="left:1024px;top:824px;color:var(--rod);"><span>Sc6</span><span>10/m</span></div>
       </div>
     </div>
 
-    <!-- Output strip (below grid) -->
+    <!-- Output strip (below grid): Sc1–3 under col 2–4, Sc4–6 under col 6–8, 45/min forward under col 10 -->
     <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc1</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc2</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc3</span></div>
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc4</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc5</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 Sc6</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift, bypass</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Floor 7 MF1</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift, bypass</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Floor 7 MF2</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ store</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Ground store</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift, bypass</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">20/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Floor 6 Rotors</span></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↓ ext. lift, TBD</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">45/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ sub-floor (routing not yet designed)</span></div>
     </div>
   </div>
 </div>
 
 <div class="legend">
-  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>Screw side splitters (SPL2–SPL4)</div>
-  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>MF/Rotor side splitters (SPL5–SPL7)</div>
-  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>MRG1 merger → Rotors</div>
+  <div class="l-item"><div class="l-sw" style="background:#0a1a1a;border:2px dashed #1a5a5a"></div>Mergers (MRG1–MRG4)</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rod-bg);border:1px solid var(--rod-bd)"></div>Splitters (SPL1–SPL8)</div>
 </div>
 
 <div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
   <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
-  <span style="color:var(--spl1)">■ SPL1</span> &nbsp; <span style="color:var(--spl2)">■ SPL2</span> &nbsp; <span style="color:var(--spl3)">■ SPL3</span> &nbsp; <span style="color:var(--spl4)">■ SPL4</span> &nbsp; <span style="color:var(--spl5)">■ SPL5</span> &nbsp; <span style="color:var(--spl6)">■ SPL6</span> &nbsp; <span style="color:var(--spl7)">■ SPL7</span> &nbsp; <span style="color:var(--mrg1)">■ MRG1</span>
+  <span style="color:var(--mrg1)">■ MRG1</span> &nbsp; <span style="color:var(--spl1)">■ SPL1</span> &nbsp; <span style="color:var(--spl2)">■ SPL2</span> &nbsp; <span style="color:var(--spl3)">■ SPL3</span> &nbsp; <span style="color:var(--mrg2)">■ MRG2</span> &nbsp; <span style="color:var(--spl4)">■ SPL4</span> &nbsp; <span style="color:var(--spl5)">■ SPL5</span> &nbsp; <span style="color:var(--spl6)">■ SPL6</span> &nbsp; <span style="color:var(--mrg3)">■ MRG3</span> &nbsp; <span style="color:var(--mrg4)">■ MRG4</span> &nbsp; <span style="color:var(--spl7)">■ SPL7</span> &nbsp; <span style="color:var(--spl8)">■ SPL8</span>
 </div>
 
-<div class="note">// SCREW SIDE: SPL1(120→SPL2:60+SPL5:60) · SPL2(60→SPL3:30+SPL4:30) · SPL3(30→10+10+10 Sc1–3) · SPL4(30→10+10+10 Sc4–6) ✓</div>
-<div class="note">// MF/ROTOR SIDE: SPL5(60→SPL6:30+SPL7:30) · SPL6(30→15 MF1 + 15 MF2, → Floor 7 bypass) · SPL7(30→store:10 + MRG1:10 + MRG1:10) · MRG1(10+10→20 Rotors, → Floor 6 bypass) ✓</div>
-<div class="note">// Conservation: 120 in = 60(screws) + 30(MF) + 20(Rotors) + 10(store) ✓</div>
+<div class="note">// MRG1(105 Floor2 + 15 loop → 120) · SPL1(120→SPL2:60+SPL4:60) ✓</div>
+<div class="note">// LEFT: SPL2(60→MRG2:30+SPL3:30) · SPL3(30→MRG2:15+MRG3:15) · MRG2(30+15→45, forwarded to future sub-floor) · MRG3(SPL3:15+SPL5:15→30) · SPL7(30→10+10+10 Sc1–3) ✓</div>
+<div class="note">// RIGHT: SPL4(60→SPL5:30+SPL6:30) · SPL5(30→MRG3:15+MRG4:15) · SPL6(30→MRG4:15+MRG1 loop:15) · MRG4(SPL5:15+SPL6:15→30) · SPL8(30→10+10+10 Sc4–6) ✓</div>
+<div class="note">// Conservation: 105 in (Floor 2) = 60 (screws, 6×10) + 45 (forwarded) — internal 15/min loop (SPL6→MRG1) is self-cancelling, not a new input or leak ✓</div>
+<div class="note">// The 45/min forward trunk carries the old Rotor(20)+MF(12)+Store(13) demand — routing to those floors is deferred to a future sub-floor, not yet designed</div>
 <div class="belt-req"><strong>⚠ Belt requirements</strong><br>
-Rod trunk 120/min → <strong>Mk.3 required</strong><br>
-Sub-trunks tA + tB at 60/min → <strong>Mk.2 required</strong>
+Rod trunk 120/min (MRG1→SPL1) → <strong>Mk.3 required</strong><br>
+Sub-trunks SPL2/SPL4 at 60/min → <strong>Mk.2 required</strong><br>
+45/min forward trunk and 30/min legs → <strong>Mk.1 sufficient</strong> (Mk.2 optional headroom)
 </div>
 </body>
 </html>

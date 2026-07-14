@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LB 1b — Rod-Ingot Split — Iron Megafactory</title>
+<title>LB 2b — Plate-Ingot Split — Iron Megafactory</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 :root {
   --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
   --text:#d4d8e8;--text-muted:#7a839a;
   --ingot:#A8B8C8;--ingot-bg:#141c24;--ingot-bd:#3a5068;
-  --spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;--spl4:#5DD67A;--spl5:#4FC3F7;--spl6:#FFB74D;--spl7:#80CBC4;
+  --spl1:#58C4E8;--spl2:#F5A623;--spl3:#B57BEA;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
@@ -40,14 +40,14 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 </head>
 <body>
 <div class="floorplan-nav">
-  <a href="floor1_smelters.html" class="nav-btn">← Floor 1</a>
+  <a href="floor2_rods.html" class="nav-btn">← Floor 2</a>
   <span class="nav-sep">//</span>
   <a href="floor0_ground.html" class="nav-btn">Ground</a>
   <a href="lb0b_ore_split.html" class="nav-btn">LB 0b</a>
   <a href="floor1_smelters.html" class="nav-btn">Floor 1</a>
-  <span class="nav-current">LB 1b</span>
+  <a href="lb1b_ingot_split.html" class="nav-btn">LB 1b</a>
   <a href="floor2_rods.html" class="nav-btn">Floor 2</a>
-  <a href="lb2b_ingot_split.html" class="nav-btn">LB 2b</a>
+  <span class="nav-current">LB 2b</span>
   <a href="floor3_plates.html" class="nav-btn">Floor 3</a>
   <a href="lb3b_rod_manifold.html" class="nav-btn">LB 3b</a>
   <a href="floor4_screws.html" class="nav-btn">Floor 4</a>
@@ -60,11 +60,11 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <a href="floor7_mf.html" class="nav-btn">Floor 7</a>
   <a href="floor8_smart_plating.html" class="nav-btn">Floor 8</a>
   <span class="nav-sep">//</span>
-  <a href="floor2_rods.html" class="nav-btn">Floor 2 →</a>
+  <a href="floor3_plates.html" class="nav-btn">Floor 3 →</a>
   <a href="iron_megafactory.html" class="nav-btn nav-factory">← Factory</a>
 </div>
-<h1>LB 1b — Rod-Ingot Split</h1>
-<div class="sub">// +36m · Rod-Ingot Trunk 120/min ← Floor 1 · binary tree 7-splitter → 8 belts × 15/min → Floor 2 rod constructors</div>
+<h1>LB 2b — Plate-Ingot Split</h1>
+<div class="sub">// +60m · Plate-Ingot Trunk 120/min ← Floor 1 (bypass, external lift past LB 1b/Floor 2) · 2-level tree 3-splitter → 4 belts × 30/min → Floor 3 plate constructors</div>
 
 <div style="display:flex;margin-left:0;margin-bottom:3px">
   <div style="width:52px;flex-shrink:0;"></div>
@@ -84,13 +84,13 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
-    <!-- Input strip (above grid): Rod-Ingot Trunk 120/min from Floor 1, col 5 -->
+    <!-- Input strip (above grid): Plate-Ingot Trunk 120/min from Floor 1 (bypass), col 5 -->
     <div class="io-strip" style="margin-bottom:2px;">
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);">
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift, bypass</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">120/min</span>
-        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Floor 1 (Rod-Ingot Trunk)</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Floor 1 (Plate-Ingot Trunk, past LB 1b/Floor 2)</span>
       </div>
       <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
@@ -110,77 +110,45 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
         <div class="pz" style="left:623px;top:208px;color:var(--spl2);"><span>SPL2</span><span>60/m</span></div>
         <div class="pz" style="left:716px;top:208px;color:var(--spl3);"><span>SPL3</span><span>60/m</span></div>
 
-        <!-- SPL2: col 3, row C (315,315). in: SPL1 (top). out: SPL4 (left) / SPL5 (right) -->
+        <!-- SPL2: col 3, row C (315,315). in: SPL1 (top). out: P1 (left) / P2 (right) -->
         <div class="blk" style="left:315px;top:315px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
         <div class="pz" style="left:362px;top:362px;font-size:13px;color:var(--spl2);">SPL2</div>
         <div class="pz" style="left:362px;top:315px;color:var(--spl1);"><span>SPL1</span><span>60/m</span></div>
-        <div class="pz" style="left:315px;top:362px;color:var(--spl4);"><span>SPL4</span><span>30/m</span></div>
-        <div class="pz" style="left:408px;top:362px;color:var(--spl5);"><span>SPL5</span><span>30/m</span></div>
+        <div class="pz" style="left:315px;top:362px;color:var(--ingot);"><span>P1</span><span>30/m</span></div>
+        <div class="pz" style="left:408px;top:362px;color:var(--ingot);"><span>P2</span><span>30/m</span></div>
 
-        <!-- SPL3: col 7, row C (931,315). in: SPL1 (top). out: SPL6 (left) / SPL7 (right) -->
+        <!-- SPL3: col 7, row C (931,315). in: SPL1 (top). out: P3 (left) / P4 (right) -->
         <div class="blk" style="left:931px;top:315px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
         <div class="pz" style="left:978px;top:362px;font-size:13px;color:var(--spl3);">SPL3</div>
         <div class="pz" style="left:978px;top:315px;color:var(--spl1);"><span>SPL1</span><span>60/m</span></div>
-        <div class="pz" style="left:931px;top:362px;color:var(--spl6);"><span>SPL6</span><span>30/m</span></div>
-        <div class="pz" style="left:1024px;top:362px;color:var(--spl7);"><span>SPL7</span><span>30/m</span></div>
-
-        <!-- SPL4: col 2, row D (161,469). in: SPL2 (top). out: R1 (left) / R2 (right) -->
-        <div class="blk" style="left:161px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
-        <div class="pz" style="left:208px;top:516px;font-size:13px;color:var(--spl4);">SPL4</div>
-        <div class="pz" style="left:208px;top:469px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
-        <div class="pz" style="left:161px;top:516px;color:var(--ingot);"><span>R1</span><span>15/m</span></div>
-        <div class="pz" style="left:254px;top:516px;color:var(--ingot);"><span>R2</span><span>15/m</span></div>
-
-        <!-- SPL5: col 4, row D (469,469). in: SPL2 (top). out: R3 (left) / R4 (right) -->
-        <div class="blk" style="left:469px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
-        <div class="pz" style="left:516px;top:516px;font-size:13px;color:var(--spl5);">SPL5</div>
-        <div class="pz" style="left:516px;top:469px;color:var(--spl2);"><span>SPL2</span><span>30/m</span></div>
-        <div class="pz" style="left:469px;top:516px;color:var(--ingot);"><span>R3</span><span>15/m</span></div>
-        <div class="pz" style="left:562px;top:516px;color:var(--ingot);"><span>R4</span><span>15/m</span></div>
-
-        <!-- SPL6: col 6, row D (777,469). in: SPL3 (top). out: R5 (left) / R6 (right) -->
-        <div class="blk" style="left:777px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
-        <div class="pz" style="left:824px;top:516px;font-size:13px;color:var(--spl6);">SPL6</div>
-        <div class="pz" style="left:824px;top:469px;color:var(--spl3);"><span>SPL3</span><span>30/m</span></div>
-        <div class="pz" style="left:777px;top:516px;color:var(--ingot);"><span>R5</span><span>15/m</span></div>
-        <div class="pz" style="left:870px;top:516px;color:var(--ingot);"><span>R6</span><span>15/m</span></div>
-
-        <!-- SPL7: col 8, row D (1085,469). in: SPL3 (top). out: R7 (left) / R8 (right) -->
-        <div class="blk" style="left:1085px;top:469px;width:140px;height:140px;background:var(--ingot-bg);border:1px solid var(--ingot-bd);"></div>
-        <div class="pz" style="left:1132px;top:516px;font-size:13px;color:var(--spl7);">SPL7</div>
-        <div class="pz" style="left:1132px;top:469px;color:var(--spl3);"><span>SPL3</span><span>30/m</span></div>
-        <div class="pz" style="left:1085px;top:516px;color:var(--ingot);"><span>R7</span><span>15/m</span></div>
-        <div class="pz" style="left:1178px;top:516px;color:var(--ingot);"><span>R8</span><span>15/m</span></div>
+        <div class="pz" style="left:931px;top:362px;color:var(--ingot);"><span>P3</span><span>30/m</span></div>
+        <div class="pz" style="left:1024px;top:362px;color:var(--ingot);"><span>P4</span><span>30/m</span></div>
       </div>
     </div>
 
-    <!-- Output strip (below grid): 8 ingot belts × 15/min, cols 2–9 → Floor 2 rod constructors -->
+    <!-- Output strip (below grid): 4 ingot belts × 30/min, cols 3–8 → Floor 3 plate constructors -->
     <div class="io-strip" style="margin-top:2px;">
-      <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R1</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R2</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R3</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R4</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R5</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R6</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R7</span></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">15/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.2 R8</span></div>
-      <div class="io-ph"></div>
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.3 P1</span></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.3 P2</span></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.3 P3</span></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↓ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">→ Fl.3 P4</span></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
     </div>
   </div>
 </div>
 
-<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd)"></div>2-way splitter · ingots (SPL1–SPL7)</div></div>
+<div class="legend"><div class="l-item"><div class="l-sw" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd)"></div>2-way splitter · ingots (SPL1–SPL3)</div></div>
 
 <div style="margin-top:12px;padding:10px 14px;background:#0d1018;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:12px;color:#7a839a;line-height:1.9;">
   <span style="color:#d4d8e8;font-size:13px;">// Node colours</span><br>
-  <span style="color:var(--spl1)">■ SPL1</span> &nbsp; <span style="color:var(--spl2)">■ SPL2</span> &nbsp; <span style="color:var(--spl3)">■ SPL3</span> &nbsp; <span style="color:var(--spl4)">■ SPL4</span> &nbsp; <span style="color:var(--spl5)">■ SPL5</span> &nbsp; <span style="color:var(--spl6)">■ SPL6</span> &nbsp; <span style="color:var(--spl7)">■ SPL7</span>
+  <span style="color:var(--spl1)">■ SPL1</span> &nbsp; <span style="color:var(--spl2)">■ SPL2</span> &nbsp; <span style="color:var(--spl3)">■ SPL3</span>
 </div>
 
-<div class="note">// Input strip col 5: ingots 120/min ← Floor 1 (Rod-Ingot Trunk)</div>
-<div class="note">// Tree: Floor1→SPL1(120)→SPL2/SPL3(60 each)→SPL4–SPL7(30 each)→R1–R8(15 each)</div>
-<div class="note">// Output strip cols 2–9: ingots 15/min × 8 → Floor 2 (one belt per rod constructor)</div>
-<div class="note">// Conservation: 120/min in = 8×15 = 120/min out ✓</div>
-<div class="belt-req"><strong>⚠ Mk.2 sufficient</strong><br>Rod-Ingot Trunk 120/min (270/min Mk.2 cap).</div>
+<div class="note">// Input strip col 5: ingots 120/min ← Floor 1 (Plate-Ingot Trunk, bypass lift past LB 1b and Floor 2)</div>
+<div class="note">// Tree: Floor1→SPL1(120)→SPL2/SPL3(60 each)→P1–P4(30 each)</div>
+<div class="note">// Output strip cols 3–6: ingots 30/min × 4 → Floor 3 (one belt per plate constructor)</div>
+<div class="note">// Conservation: 120/min in = 4×30 = 120/min out ✓</div>
+<div class="belt-req"><strong>⚠ Mk.2 sufficient</strong><br>Plate-Ingot Trunk 120/min (270/min Mk.2 cap).</div>
 </body>
 </html>

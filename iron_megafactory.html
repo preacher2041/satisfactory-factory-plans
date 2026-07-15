@@ -114,8 +114,8 @@
       <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+72m — Plates</span></div>
       <div class="summary-row"><span class="summary-key">LB 3b</span><span class="summary-val">+84m — Rod manifold</span></div>
       <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+96m — Screws</span></div>
-      <div class="summary-row"><span class="summary-key">LB 4b</span><span class="summary-val">+108m — Plate routing</span></div>
-      <div class="summary-row"><span class="summary-key">LB 4c</span><span class="summary-val">+120m — Screw routing</span></div>
+      <div class="summary-row"><span class="summary-key">LB 4b</span><span class="summary-val">+108m — Screw routing</span></div>
+      <div class="summary-row"><span class="summary-key">LB 4c</span><span class="summary-val">+120m — Plate routing</span></div>
       <div class="summary-row"><span class="summary-key">Floor 5</span><span class="summary-val">+132m — RIP assembly</span></div>
       <div class="summary-row"><span class="summary-key">LB 5c</span><span class="summary-val">+144m — RIP routing</span></div>
       <div class="summary-row"><span class="summary-key">Floor 6</span><span class="summary-val">+156m — Rotor assembly</span></div>
@@ -131,8 +131,8 @@
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Rod-Ingot Trunk (Fl.1→LB 1b)</span><span class="summary-val">Mk.2 · 120/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Plate-Ingot Trunk (Fl.1→LB 2b, bypass)</span><span class="summary-val">Mk.2 · 120/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod trunk (Fl.2→LB 3b, bypass)</span><span class="summary-val">Mk.3 · 120/min</span></div>
-      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Plate trunk (Fl.3→LB 4b, bypass)</span><span class="summary-val">Mk.2 · 80/min</span></div>
-      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw trunk (Fl.4→LB 4c)</span><span class="summary-val">Mk.3 · 240/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-plate"></span>Plate trunk (Fl.3→LB 4c, bypass)</span><span class="summary-val">Mk.2 · 80/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw trunk (Fl.4→LB 4b)</span><span class="summary-val">Mk.3 · 240/min</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw belt → Floor 6 Rotors (bypass)</span><span class="summary-val">Mk.2 · 100/min</span></div>
     </div>
 
@@ -231,17 +231,17 @@
       </div>
     </a>
 
-    <a href="lb4b_plate_routing.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--plate-bd);border-radius:6px;padding:10px 12px">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--plate);letter-spacing:0.08em;margin-bottom:3px">LB 4b · +108m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Plate Routing</div>
+    <a href="lb4b_screw_routing.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">LB 4b · +108m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screw Routing</div>
       </div>
     </a>
 
-    <a href="lb4c_screw_routing.html" style="text-decoration:none">
-      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">LB 4c · +120m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screw Routing</div>
+    <a href="lb4c_plate_routing.html" style="text-decoration:none">
+      <div style="background:#0d1018;border:1px solid #1e2838;border-left:3px solid var(--plate-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--plate);letter-spacing:0.08em;margin-bottom:3px">LB 4c · +120m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Plate Routing</div>
       </div>
     </a>
 
@@ -336,7 +336,7 @@
           <tr><td>MF assemblers</td><td>2× @ 100%</td><td><span class="chip-label chip-rip-l">6/min RIP</span> + <span class="chip-label chip-rod-l">12/min rods</span></td><td><span class="chip-label chip-mf-l">4/min MF</span></td></tr>
           <tr class="totals-row"><td colspan="2">Ingots balance</td><td>240/min produced</td><td>120 (Rod-Ingot Trunk) + 120 (Plate-Ingot Trunk) = 240 ✓</td></tr>
           <tr class="totals-row"><td colspan="2">Rods balance</td><td>120/min produced</td><td>60 (screws) + 20 (rotors) + 12 (MF actual) + 10 (LB 3b → store) + 18 (Fl.7 surplus → store) = 120 ✓</td></tr>
-          <tr class="totals-row"><td colspan="2">Screws balance</td><td>240/min produced</td><td>108 (RIP actual) + 100 (rotors) + 20 (LB 4c → store) + 12 (RIP input headroom, not drawn) = 240 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">Screws balance</td><td>240/min produced</td><td>108 (RIP actual) + 100 (rotors) + 20 (LB 4b → store) + 12 (RIP input headroom, not drawn) = 240 ✓</td></tr>
         </tbody>
       </table>
       <div class="chain-note">// Verified by trace-test across all 17 floors: rods and screws both close exactly once RIP/screw input headroom and MF's rod consumption are accounted for.</div>
@@ -372,29 +372,29 @@
       <div class="chain-note">// Rod trunk to LB 3b runs Mk.3 (120/min, well under the 270/min cap) per lb3b_rod_manifold.html's own belt-requirement box. The MF-bound rods bypass 7 intervening floors to reach Floor 7 — the longest bypass in the factory, clearly labeled on both ends.</div>
     </div>
 
-    <!-- PLATE ROUTING (LB 4b) -->
+    <!-- SCREW ROUTING (LB 4b) -->
     <div class="chain-card">
-      <div class="chain-card-title">Plate routing (LB 4b)</div>
+      <div class="chain-card-title">Screw routing (LB 4b)</div>
       <div class="chain-prose">
-        <p>Floor 3's 4 plate constructors produce 80/min total, merged on-floor into a single trunk (via a new 3-merger tree) that bypasses LB 3b and Floor 4 to reach LB 4b, which splits it (PSPL1–3, PMRG1) into 30/min to RIP-A, 30/min to RIP-B, and 20/min to storage.</p>
-      </div>
-      <div class="chain-note">// Previously combined with screw routing on one floor (old LB 3b); now isolated onto its own dedicated floor, mirroring the same split applied to Floor 2/3 and Floor 5/6.</div>
-    </div>
-
-    <!-- SCREW ROUTING (LB 4c) -->
-    <div class="chain-card">
-      <div class="chain-card-title">Screw routing (LB 4c)</div>
-      <div class="chain-prose">
-        <p>Floor 4's 6 screw constructors produce 240/min, entering LB 4c's network (SPL1–4, MRG1–2) which splits it into 60/min to RIP-A, 60/min to RIP-B, 100/min to Floor 6 Rotors (bypass), and 20/min to storage.</p>
+        <p>Floor 4's 6 screw constructors produce 240/min, entering LB 4b's network (SPL1–4, MRG1–2) which splits it into 60/min to RIP-A, 60/min to RIP-B, 100/min to Floor 6 Rotors (bypass), and 20/min to storage.</p>
       </div>
       <div class="chain-note">// Adjacent to Floor 4 (no bypass needed on the input side); its Rotors-bound output bypasses past Floor 5/LB 5c to reach Floor 6.</div>
+    </div>
+
+    <!-- PLATE ROUTING (LB 4c) -->
+    <div class="chain-card">
+      <div class="chain-card-title">Plate routing (LB 4c)</div>
+      <div class="chain-prose">
+        <p>Floor 3's 4 plate constructors produce 80/min total, merged on-floor into a single trunk (via a new 3-merger tree) that bypasses LB 3b, Floor 4, and LB 4b to reach LB 4c, which splits it (PSPL1–3, PMRG1) into 30/min to RIP-A, 30/min to RIP-B, and 20/min to storage.</p>
+      </div>
+      <div class="chain-note">// Previously combined with screw routing on one floor (old LB 3b); now isolated onto its own dedicated floor, mirroring the same split applied to Floor 2/3 and Floor 5/6.</div>
     </div>
 
     <!-- RIP ASSEMBLY -->
     <div class="chain-card">
       <div class="chain-card-title">RIP assembly (Floor 5)</div>
       <div class="chain-prose">
-        <p>Two RIP assemblers run at 90% clock (4.5/min each, 9/min total), each consuming 27/min plates and 54/min screws, but are supplied 30/min plates + 60/min screws by LB 4b/LB 4c's fixed splitter trees.</p>
+        <p>Two RIP assemblers run at 90% clock (4.5/min each, 9/min total), each consuming 27/min plates and 54/min screws, but are supplied 30/min plates + 60/min screws by LB 4c/LB 4b's fixed splitter trees.</p>
         <p>Floor 5's output (9/min RIP) descends to LB 5c, which splits RIP into MF1/MF2/Smart Plating/storage branches.</p>
       </div>
       <div class="chain-note flag">// LB 4b/LB 4c are fixed-ratio splitter/merger trees, not manifolds — the 3/min plate + 6/min screw per machine (6/12 combined) that the 90%-clock RIP assemblers don't consume has no explicit drain route captured on any floor file, unlike Floor 7's equivalent rod surplus which is routed to storage. Documented as known headroom on floor5_rip.html pending a decision to either re-clock the RIP assemblers to 100% or redesign the upstream splits — flagged by trace-test, not fabricated as resolved.</div>
@@ -404,7 +404,7 @@
     <div class="chain-card">
       <div class="chain-card-title">Rotor assembly (Floor 6)</div>
       <div class="chain-prose">
-        <p>One Rotors assembler runs at 100% (4/min), consuming 20/min rods (bypassed from LB 3b) and 100/min screws (bypassed from LB 4c). Floor 6's output (4/min Rotors) descends to LB 6b, which splits Rotors into Smart Plating/storage branches.</p>
+        <p>One Rotors assembler runs at 100% (4/min), consuming 20/min rods (bypassed from LB 3b) and 100/min screws (bypassed from LB 4b). Floor 6's output (4/min Rotors) descends to LB 6b, which splits Rotors into Smart Plating/storage branches.</p>
       </div>
       <div class="chain-note">// Previously combined with RIP assembly on one floor (old Floor 4); now isolated onto its own dedicated floor.</div>
     </div>
@@ -418,8 +418,8 @@
         </thead>
         <tbody>
           <tr><td><span class="chip-label chip-rod-l">Iron rods</span></td><td>~28/min surplus</td><td>Ground floor storage (10 from LB 3b + 18 from Floor 7)</td></tr>
-          <tr><td><span class="chip-label chip-plate-l">Iron plates</span></td><td>20/min surplus</td><td>Ground floor storage (from LB 4b)</td></tr>
-          <tr><td><span class="chip-label chip-screw-l">Screws</span></td><td>20/min surplus</td><td>Ground floor storage (from LB 4c)</td></tr>
+          <tr><td><span class="chip-label chip-plate-l">Iron plates</span></td><td>20/min surplus</td><td>Ground floor storage (from LB 4c)</td></tr>
+          <tr><td><span class="chip-label chip-screw-l">Screws</span></td><td>20/min surplus</td><td>Ground floor storage (from LB 4b)</td></tr>
           <tr><td><span class="chip-label chip-rip-l">Reinf. iron plates</span></td><td>1/min surplus</td><td>Ground floor storage (from LB 5c)</td></tr>
           <tr><td><span class="chip-label chip-rotor-l">Rotors</span></td><td>2/min surplus</td><td>Ground floor storage (from LB 6b)</td></tr>
           <tr><td><span class="chip-label chip-smart-l">Smart plating</span></td><td>2/min</td><td>Ground floor storage (from Floor 8)</td></tr>

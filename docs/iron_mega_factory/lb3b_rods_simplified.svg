@@ -1,0 +1,152 @@
+<svg viewBox="0 0 1100 900" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1100" height="900" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#000"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== EDGES ===================== -->
+  <g fill="none" stroke="#000" stroke-width="1.3" marker-end="url(#arrow)">
+    <!-- Floor2 -> MRG1 -->
+    <path d="M525,55 L525,90"/>
+    <!-- MRG1 -> SPL1 -->
+    <path d="M525,140 L525,175"/>
+    <!-- SPL1 -> SPL2 / SPL4 -->
+    <path d="M498,230 L295,283"/>
+    <path d="M552,230 L775,283"/>
+    <!-- SPL6 -> MRG1 loop (long path around the right side) -->
+    <path d="M925,395 C 1040,395 1040,110 552,116" stroke="#555" stroke-dasharray="4,3"/>
+
+    <!-- SPL2 -> MRG2 (direct, 30) / SPL3 (30) -->
+    <path d="M300,330 L 415,398"/>
+    <path d="M260,330 L 205,378"/>
+
+    <!-- SPL3 -> MRG2 (15) / MRG3 (15) -->
+    <path d="M215,422 L 400,415"/>
+    <path d="M185,422 L 215,505"/>
+
+    <!-- MRG2 -> output pentagon (45) -->
+    <path d="M430,420 L 430,460"/>
+
+    <!-- SPL4 -> SPL5 (30) / SPL6 (30) -->
+    <path d="M750,330 L 675,378"/>
+    <path d="M800,330 L 900,378"/>
+
+    <!-- SPL5 -> MRG3 (15, long cross line to the left) -->
+    <path d="M630,420 C 470,470 320,495 260,510"/>
+    <!-- SPL5 -> MRG4 (15) -->
+    <path d="M670,420 L 745,505"/>
+
+    <!-- SPL6 -> MRG4 (15) -->
+    <path d="M885,422 L 790,505"/>
+
+    <!-- MRG3 -> SPL7 -->
+    <path d="M230,545 L 230,583"/>
+    <!-- MRG4 -> SPL8 -->
+    <path d="M765,545 L 765,583"/>
+
+    <!-- SPL7 -> Sc1/Sc2/Sc3 -->
+    <path d="M205,610 L 165,658"/>
+    <path d="M230,635 L 230,658"/>
+    <path d="M255,610 L 295,658"/>
+
+    <!-- SPL8 -> Sc4/Sc5/Sc6 -->
+    <path d="M740,610 L 700,658"/>
+    <path d="M765,635 L 765,658"/>
+    <path d="M790,610 L 830,658"/>
+  </g>
+
+  <!-- ===================== NODES ===================== -->
+
+  <!-- Floor2 pentagon (input) -->
+  <polygon points="525,10 555,32 543,60 507,60 495,32" fill="#fff" stroke="#000"/>
+  <text x="525" y="40" text-anchor="middle" font-size="13" font-family="Helvetica,Arial,sans-serif">105</text>
+
+  <!-- MRG1 box -->
+  <rect x="490" y="92" width="70" height="48" fill="#fff" stroke="#000"/>
+  <text x="525" y="121" text-anchor="middle" font-size="12" font-family="Helvetica,Arial,sans-serif">MRG1</text>
+  <text x="525" y="135" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">120</text>
+
+  <!-- SPL1 diamond -->
+  <polygon points="525,175 570,205 525,235 480,205" fill="#fff" stroke="#000"/>
+  <text x="525" y="209" text-anchor="middle" font-size="11" font-family="Helvetica,Arial,sans-serif">SPL1 · 120</text>
+
+  <!-- SPL2 diamond (left, 60) -->
+  <polygon points="280,283 320,306 280,329 240,306" fill="#fff" stroke="#000"/>
+  <text x="280" y="310" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL2 · 60</text>
+
+  <!-- SPL4 diamond (right, 60) -->
+  <polygon points="775,283 815,306 775,329 735,306" fill="#fff" stroke="#000"/>
+  <text x="775" y="310" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL4 · 60</text>
+
+  <!-- SPL3 diamond -->
+  <polygon points="185,378 223,400 185,422 147,400" fill="#fff" stroke="#000"/>
+  <text x="185" y="404" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL3 · 30</text>
+
+  <!-- MRG2 box (45) -->
+  <rect x="395" y="392" width="70" height="30" fill="#fff" stroke="#000"/>
+  <text x="430" y="411" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">MRG2 · 45</text>
+
+  <!-- 45 output pentagon -->
+  <polygon points="430,462 460,484 448,512 412,512 400,484" fill="#fff" stroke="#000"/>
+  <text x="430" y="492" text-anchor="middle" font-size="12" font-family="Helvetica,Arial,sans-serif">45</text>
+  <text x="430" y="530" text-anchor="middle" font-size="9" fill="#555" font-family="Helvetica,Arial,sans-serif">&#8594; sub-floor (TBD)</text>
+
+  <!-- SPL5 diamond -->
+  <polygon points="650,378 688,400 650,422 612,400" fill="#fff" stroke="#000"/>
+  <text x="650" y="404" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL5 · 30</text>
+
+  <!-- SPL6 diamond -->
+  <polygon points="905,378 943,400 905,422 867,400" fill="#fff" stroke="#000"/>
+  <text x="905" y="404" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL6 · 30</text>
+
+  <!-- MRG3 box -->
+  <rect x="195" y="512" width="70" height="30" fill="#fff" stroke="#000"/>
+  <text x="230" y="531" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">MRG3 · 30</text>
+
+  <!-- MRG4 box -->
+  <rect x="730" y="512" width="70" height="30" fill="#fff" stroke="#000"/>
+  <text x="765" y="531" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">MRG4 · 30</text>
+
+  <!-- SPL7 diamond -->
+  <polygon points="230,588 265,610 230,632 195,610" fill="#fff" stroke="#000"/>
+  <text x="230" y="614" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL7 · 30</text>
+
+  <!-- SPL8 diamond -->
+  <polygon points="765,588 800,610 765,632 730,610" fill="#fff" stroke="#000"/>
+  <text x="765" y="614" text-anchor="middle" font-size="10" font-family="Helvetica,Arial,sans-serif">SPL8 · 30</text>
+
+  <!-- Six 10 output pentagons -->
+  <g font-size="12" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">
+    <polygon points="165,658 185,673 177,693 153,693 145,673" fill="#fff" stroke="#000"/>
+    <text x="165" y="680">10</text>
+    <text x="165" y="710" font-size="9" fill="#555">Sc1</text>
+
+    <polygon points="230,658 250,673 242,693 218,693 210,673" fill="#fff" stroke="#000"/>
+    <text x="230" y="680">10</text>
+    <text x="230" y="710" font-size="9" fill="#555">Sc2</text>
+
+    <polygon points="295,658 315,673 307,693 283,693 275,673" fill="#fff" stroke="#000"/>
+    <text x="295" y="680">10</text>
+    <text x="295" y="710" font-size="9" fill="#555">Sc3</text>
+
+    <polygon points="700,658 720,673 712,693 688,693 680,673" fill="#fff" stroke="#000"/>
+    <text x="700" y="680">10</text>
+    <text x="700" y="710" font-size="9" fill="#555">Sc4</text>
+
+    <polygon points="765,658 785,673 777,693 753,693 745,673" fill="#fff" stroke="#000"/>
+    <text x="765" y="680">10</text>
+    <text x="765" y="710" font-size="9" fill="#555">Sc5</text>
+
+    <polygon points="830,658 850,673 842,693 818,693 810,673" fill="#fff" stroke="#000"/>
+    <text x="830" y="680">10</text>
+    <text x="830" y="710" font-size="9" fill="#555">Sc6</text>
+  </g>
+
+  <!-- Loop label -->
+  <text x="1005" y="255" font-size="9" fill="#555" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">SPL6 &#8594; MRG1</text>
+  <text x="1005" y="267" font-size="9" fill="#555" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">loop, 15/min</text>
+
+  <text x="140" y="850" font-size="11" fill="#333" font-family="Helvetica,Arial,sans-serif">LB3b - Rod Manifold, simplified topology (105/min in -&gt; 60/min screws + 45/min forwarded, 15/min internal loop)</text>
+</svg>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oil Refinery Factory — Satisfactory</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c26;
+    --surface2:  #1f2435;
+    --border:    #2a3048;
+    --border2:   #3a4460;
+    --text:      #d4d8e8;
+    --text-muted:#7a839a;
+    --accent:    #4a90d9;
+    --oil:       #5C4A3A; --oil-bg:     #241c14; --oil-bd:     #5c4a2a;
+    --rubber:    #4A4E5C; --rubber-bg:  #161820; --rubber-bd:  #3a3f4c;
+    --plastic:   #C9C4A8; --plastic-bg: #242216; --plastic-bd: #6b6650;
+    --hor:       #7A3B2E; --hor-bg:     #2a1208; --hor-bd:     #5c2418;
+    --coke:      #4A4A45; --coke-bg:    #181816; --coke-bd:    #3a3a35;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; line-height: 1.5; padding: 32px 24px 64px; min-height: 100vh; }
+
+  header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+  header .sub { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; }
+  .header-back { margin-left: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; transition: color 0.15s, border-color 0.15s; }
+  .header-back:hover { color: var(--text); border-color: var(--border2); }
+
+  .summary-section-title { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #1a1e2a; }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-key { color: var(--text-muted); font-size: 12px; flex-shrink: 0; padding-right: 8px; }
+  .summary-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text); text-align: right; }
+  .summary-val.tbd { color: #c4880a; }
+  .belt-chip { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
+  .chip-oil { background: var(--oil); }
+  .chip-rubber { background: var(--rubber); }
+  .chip-plastic { background: var(--plastic); }
+  .chip-hor { background: var(--hor); }
+  .chip-coke { background: var(--coke); }
+
+  .chain-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .chain-header { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .chain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+  .chain-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .chain-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chain-table th { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 4px 6px 6px; border-bottom: 1px solid var(--border); }
+  .chain-table td { padding: 6px 6px; border-bottom: 1px solid #1a1e2a; vertical-align: middle; color: var(--text); font-size: 12px; }
+  .chain-table tr:last-child td { border-bottom: none; }
+  .totals-row td { color: var(--text-muted); font-style: italic; }
+  .chip-label { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; white-space: nowrap; }
+  .chip-oil-l     { background: var(--oil-bg);     border: 1px solid var(--oil-bd);     color: var(--oil); }
+  .chip-rubber-l  { background: var(--rubber-bg);  border: 1px solid var(--rubber-bd);  color: var(--rubber); }
+  .chip-plastic-l { background: var(--plastic-bg); border: 1px solid var(--plastic-bd); color: var(--plastic); }
+  .chip-hor-l     { background: var(--hor-bg);     border: 1px solid var(--hor-bd);     color: var(--hor); }
+  .chip-coke-l    { background: var(--coke-bg);    border: 1px solid var(--coke-bd);    color: var(--coke); }
+  .chain-prose p { color: var(--text); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+  .chain-prose p:last-child { margin-bottom: 0; }
+  .chain-note { margin-top: 10px; padding: 8px 10px; background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 4px 4px 0; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .chain-note.flag { border-left-color: #c4880a; color: #c4880a; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Oil Refinery Factory</h1>
+  <span class="sub">// Rubber + Plastic + Petroleum Coke — 364.5 m³/min crude oil intake · 3 floors · 36m</span>
+  <a href="index.html" class="header-back">← Index</a>
+</header>
+
+<!-- ══ SUMMARY BAR ══ -->
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+
+    <!-- Factory -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Factory</div>
+      <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
+      <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">36m (2F + ground)</span></div>
+      <div class="summary-row"><span class="summary-key">Foundations</span><span class="summary-val">10 wide × 6 deep</span></div>
+      <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">13 Refineries + 2 Extractors</span></div>
+      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">14 (13 refinery + 1 extractor)</span></div>
+    </div>
+
+    <!-- Floor heights -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Floor heights</div>
+      <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+12m — Plastic Refineries</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+24m — Rubber + Petroleum Coke Refineries</span></div>
+    </div>
+
+    <!-- Pipeline requirements -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Pipeline requirements (fluids — not belt-tiered)</div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-oil"></span>Crude Oil (Pure node → Floor 1)</span><span class="summary-val">Pipeline Mk.1 · 252 m³/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-oil"></span>Crude Oil (Normal node → Floor 2)</span><span class="summary-val">Pipeline Mk.1 · 112.5 m³/min</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-hor"></span>Heavy Oil Residue (Floor 1 → Floor 2)</span><span class="summary-val">Pipeline Mk.1 · 84 m³/min</span></div>
+    </div>
+
+    <!-- Clock speeds -->
+    <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Clock speeds</div>
+      <div class="summary-row"><span class="summary-key">Pure Extractor (×1)</span><span class="summary-val">105% · 252 m³/min</span></div>
+      <div class="summary-row"><span class="summary-key">Normal Extractor (×1)</span><span class="summary-val">93.75% · 112.5 m³/min</span></div>
+      <div class="summary-row"><span class="summary-key">Plastic Refineries (×7)</span><span class="summary-val">120% · 24/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Rubber Refineries (×3)</span><span class="summary-val">125% · 25/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Petroleum Coke Refineries (×3)</span><span class="summary-val">132.5% · 159/min each</span></div>
+    </div>
+
+    <!-- Buildings required -->
+    <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
+      <div class="summary-section-title">// Buildings required</div>
+      <div class="summary-row"><span class="summary-key">Oil Extractor</span><span class="summary-val">2 active (1 Pure, 1 Normal) + 2 nodes held in reserve</span></div>
+      <div class="summary-row"><span class="summary-key">Refinery</span><span class="summary-val">13 (7 Plastic · 3 Rubber · 3 Petroleum Coke)</span></div>
+      <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">2 (Plastic, Rubber — ground floor)</span></div>
+      <div class="summary-row"><span class="summary-key">AWESOME Sink</span><span class="summary-val">1 (Petroleum Coke disposal, Floor 2)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FLOOR PLANS GRID ══ -->
+<div style="margin-bottom:8px">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">// Floor plans</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px">
+
+    <a href="oilref_ground.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid #5a3800;border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#c49010;letter-spacing:0.08em;margin-bottom:3px">GROUND · +0m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Storage</div>
+      </div>
+    </a>
+
+    <a href="oilref_floor1_plastic.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--plastic-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--plastic);letter-spacing:0.08em;margin-bottom:3px">FLOOR 1 · +12m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Plastic Refineries</div>
+      </div>
+    </a>
+
+    <a href="oilref_floor2_rubber_coke.html" style="text-decoration:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--rubber-bd);border-radius:6px;padding:10px 12px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--rubber);letter-spacing:0.08em;margin-bottom:3px">FLOOR 2 · +24m</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Rubber + Petroleum Coke</div>
+      </div>
+    </a>
+
+  </div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a4460;margin-top:8px">// Production floors in white · colour-coded by primary material · this factory has no LB sub-floors (fluids route through pipeline junctions, not belt splitters)</div>
+</div>
+
+
+<!-- ══ PRODUCTION CHAIN BREAKDOWN ══ -->
+<div class="chain-section">
+  <div class="chain-header">// Production chain breakdown</div>
+  <div class="chain-grid">
+
+    <!-- RECIPES -->
+    <div class="chain-card">
+      <div class="chain-card-title">Recipes</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Output</th><th>Inputs (per cycle)</th><th>Rate @ 100%</th><th>Machine</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-plastic-l">Plastic</span></td>
+            <td><span class="chip-label chip-oil-l">3× Crude Oil</span></td>
+            <td>20/min + 10/min HOR</td>
+            <td>Refinery (6s)</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-rubber-l">Rubber</span></td>
+            <td><span class="chip-label chip-oil-l">3× Crude Oil</span></td>
+            <td>20/min + 20/min HOR</td>
+            <td>Refinery (6s)</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-coke-l">Petroleum Coke</span></td>
+            <td><span class="chip-label chip-hor-l">4× Heavy Oil Residue</span></td>
+            <td>120/min</td>
+            <td>Refinery (6s)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- THROUGHPUT -->
+    <div class="chain-card">
+      <div class="chain-card-title">Throughput calculations</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Stage</th><th>Machines</th><th>In</th><th>Out</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plastic bank</td><td>7× @ 120%</td>
+            <td><span class="chip-label chip-oil-l">252 m³/min Crude Oil</span></td>
+            <td><span class="chip-label chip-plastic-l">168/min Plastic</span> + <span class="chip-label chip-hor-l">84/min HOR</span></td>
+          </tr>
+          <tr>
+            <td>Rubber bank</td><td>3× @ 125%</td>
+            <td><span class="chip-label chip-oil-l">112.5 m³/min Crude Oil</span></td>
+            <td><span class="chip-label chip-rubber-l">75/min Rubber</span> + <span class="chip-label chip-hor-l">75/min HOR</span></td>
+          </tr>
+          <tr>
+            <td>Petroleum Coke bank</td><td>3× @ 132.5%</td>
+            <td><span class="chip-label chip-hor-l">159 m³/min HOR (84 ext. + 75 internal)</span></td>
+            <td><span class="chip-label chip-coke-l">477/min → Sink</span></td>
+          </tr>
+          <tr class="totals-row"><td colspan="2">Crude Oil balance</td><td>364.5 m³/min extracted</td><td>364.5 consumed + 0 surplus = 364.5 ✓</td></tr>
+          <tr class="totals-row"><td colspan="2">HOR balance</td><td>159/min produced</td><td>159 consumed + 0 surplus = 159 ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ROUTING -->
+    <div class="chain-card">
+      <div class="chain-card-title">Extraction &amp; routing</div>
+      <div class="chain-prose">
+        <p>Access to 1 Pure, 2 Normal, and 1 Impure Crude Oil node. Demand (364.5 m³/min) is well under the combined 100%-clock capacity of all four nodes (540 m³/min), so only two extractors run: the Pure node clocked to 105% feeds the Plastic bank exactly (252 m³/min), and one Normal node clocked to 93.75% feeds the Rubber bank exactly (112.5 m³/min). Fluids route through Pipeline Junctions rather than belt splitters, so each bank is a natural manifold — every refinery in a bank pulls an equal share since all machines in that bank share the same clock speed.</p>
+        <p>Heavy Oil Residue can't be sunk directly, so both banks' HOR byproduct routes to a dedicated Petroleum Coke bank on Floor 2: the Rubber bank's 75/min HOR feeds it as an internal same-floor feed, and the Plastic bank's 84/min HOR arrives via pipeline lift from Floor 1 below.</p>
+      </div>
+      <div class="chain-note">// One Normal node and the Impure node are left completely unused — deliberate headroom for a future Fuel line or a higher Modular Engine/ACU target rate, rather than running every node at an odd underclock.</div>
+    </div>
+
+    <!-- OUTPUTS -->
+    <div class="chain-card">
+      <div class="chain-card-title">Factory outputs</div>
+      <table class="chain-table">
+        <thead>
+          <tr><th>Product</th><th>Rate</th><th>Destination</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip-label chip-plastic-l">Plastic</span></td>
+            <td>168/min</td>
+            <td>Ground storage → Adaptive Control Unit factory (not yet built)</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-rubber-l">Rubber</span></td>
+            <td>75/min</td>
+            <td>Ground storage → Modular Engine factory (not yet built)</td>
+          </tr>
+          <tr>
+            <td><span class="chip-label chip-coke-l">Petroleum Coke</span></td>
+            <td>477/min</td>
+            <td>AWESOME Sink, Floor 2 (points only — not stored or shipped)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

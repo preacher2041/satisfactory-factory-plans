@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floor 2 — Rubber + Petroleum Coke — Oil Refinery Factory</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --oil:#5C4A3A;--oil-bg:#241c14;--oil-bd:#5c4a2a;
+  --rubber:#4A4E5C;--rubber-bg:#161820;--rubber-bd:#3a3f4c;
+  --hor:#7A3B2E;--hor-bg:#2a1208;--hor-bd:#5c2418;
+  --coke:#4A4A45;--coke-bg:#181816;--coke-bd:#3a3a35;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="oilref_floor1_plastic.html" class="nav-btn">← prev floor</a>
+  <span class="nav-sep">//</span>
+  <a href="oilref_ground.html" class="nav-btn">Ground</a>
+  <a href="oilref_floor1_plastic.html" class="nav-btn">Floor 1</a>
+  <span class="nav-current">Floor 2 (this floor)</span>
+  <span class="nav-sep">//</span>
+  <span class="nav-btn" style="opacity:0.3">— top floor —</span>
+  <a href="oilref_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>Floor 2 — Rubber + Petroleum Coke</h1>
+<div class="sub">// +24m · 3× Refinery @ 125% (Rubber) + 3× Refinery @ 132.5% (Petroleum Coke) · two independent recipe banks, one internal feed between them</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px;flex-shrink:0;"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Output strip: Rubber (real product, → Ground storage) + Petroleum Coke (→ Sink). Rubber's HOR
+         byproduct never appears here — it's fully consumed on this same floor by the Coke bank. -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--rubber-bg);border:1px solid var(--rubber-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rubber);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rubber);">Rubber</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rubber);">75/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rubber);opacity:0.6;">→ Ground storage</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--coke-bg);border:1px solid var(--coke-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coke);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--coke);">Petroleum Coke</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--coke);">477/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--coke);opacity:0.6;">→ AWESOME Sink</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <!-- Rubber bank: 3 Refineries, rows A-C, cols 1-3 -->
+        <div class="m" style="left:7px;top:7px;width:128px;height:420px;background:var(--rubber-bg);border:1px solid var(--rubber-bd);color:var(--rubber);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">25/min · 125%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--oil);background:var(--oil-bg);border:1px solid var(--oil-bd);border-radius:3px;padding:1px 5px;">← Crude Oil 37.5/m</span>
+          </div>
+        </div>
+        <div class="m" style="left:161px;top:7px;width:128px;height:420px;background:var(--rubber-bg);border:1px solid var(--rubber-bd);color:var(--rubber);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">25/min · 125%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--oil);background:var(--oil-bg);border:1px solid var(--oil-bd);border-radius:3px;padding:1px 5px;">← Crude Oil 37.5/m</span>
+          </div>
+        </div>
+        <div class="m" style="left:315px;top:7px;width:128px;height:420px;background:var(--rubber-bg);border:1px solid var(--rubber-bd);color:var(--rubber);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">25/min · 125%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--oil);background:var(--oil-bg);border:1px solid var(--oil-bd);border-radius:3px;padding:1px 5px;">← Crude Oil 37.5/m</span>
+          </div>
+        </div>
+
+        <!-- Petroleum Coke bank: 3 Refineries, rows D-F, cols 1-3 (directly below Rubber bank -> internal feed) -->
+        <div class="m" style="left:7px;top:469px;width:128px;height:420px;background:var(--coke-bg);border:1px solid var(--coke-bd);color:var(--coke);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">159/min · 132.5%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rubber);background:var(--rubber-bg);border:1px solid var(--rubber-bd);border-radius:3px;padding:1px 5px;">← Rubber bank HOR 25/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--hor);background:var(--hor-bg);border:1px solid var(--hor-bd);border-radius:3px;padding:1px 5px;">← Fl.1 HOR 28/m</span>
+          </div>
+        </div>
+        <div class="m" style="left:161px;top:469px;width:128px;height:420px;background:var(--coke-bg);border:1px solid var(--coke-bd);color:var(--coke);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">159/min · 132.5%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rubber);background:var(--rubber-bg);border:1px solid var(--rubber-bd);border-radius:3px;padding:1px 5px;">← Rubber bank HOR 25/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--hor);background:var(--hor-bg);border:1px solid var(--hor-bd);border-radius:3px;padding:1px 5px;">← Fl.1 HOR 28/m</span>
+          </div>
+        </div>
+        <div class="m" style="left:315px;top:469px;width:128px;height:420px;background:var(--coke-bg);border:1px solid var(--coke-bd);color:var(--coke);">
+          <span class="m-lbl">Refinery</span><span class="m-sub">159/min · 132.5%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rubber);background:var(--rubber-bg);border:1px solid var(--rubber-bd);border-radius:3px;padding:1px 5px;">← Rubber bank HOR 25/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--hor);background:var(--hor-bg);border:1px solid var(--hor-bd);border-radius:3px;padding:1px 5px;">← Fl.1 HOR 28/m</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input strip: Crude Oil (external, Normal Extractor) for Rubber bank + HOR (external, from Floor 1) for Coke bank -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--oil-bg);border:1px solid var(--oil-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--oil);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--oil);">Crude Oil</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--oil);">112.5 m³/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--oil);opacity:0.6;">← Normal Extractor</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--hor-bg);border:1px solid var(--hor-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--hor);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--hor);">Heavy Oil Residue</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--hor);">84 m³/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--hor);opacity:0.6;">← Floor 1 Plastic bank</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--rubber-bg);border:1px solid var(--rubber-bd)"></div>Rubber Refinery ×3</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--coke-bg);border:1px solid var(--coke-bd)"></div>Petroleum Coke Refinery ×3</div>
+</div>
+<div class="note">// Input strip col 1: Crude Oil 112.5 m³/min from the Normal Extractor, manifold-feeds the 3 Rubber Refineries (rows A-C).</div>
+<div class="note">// Input strip col 5: Heavy Oil Residue 84/min arriving from Floor 1 below, manifold-feeds the 3 Petroleum Coke Refineries (rows D-F) alongside the Rubber bank's own HOR — an internal same-floor feed, so it does not get its own input-strip entry.</div>
+<div class="note">// Each Rubber Refinery: 3 Crude Oil → 2 Rubber + 2 HOR per 6s cycle, at 125% clock = 37.5 Crude Oil in / 25 Rubber + 25 HOR out per machine (75 Rubber + 75 HOR total).</div>
+<div class="note">// Each Petroleum Coke Refinery: 4 HOR → 12 Petroleum Coke per 6s cycle (fixed 1:3 ratio, any clock), at 132.5% clock = 53 HOR in / 159 Petroleum Coke out per machine (159 HOR + 477 Petroleum Coke total). 75 (internal) + 84 (external) = 159 HOR in, closes exactly.</div>
+<div class="note">// Output strip: Rubber 75/min (col 1) → Ground storage. Petroleum Coke 477/min (col 5) → AWESOME Sink, consumed on-site — not stored, not shipped.</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floor 1 — Stator + Automated Wiring — Adaptive Control Unit Factory</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root {
+  --bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;
+  --text:#d4d8e8;--text-muted:#7a839a;
+  --steelpipe:#6abf25;--steelpipe-bg:#0d1a04;--steelpipe-bd:#254a08;
+  --wire:#D4B84A;--wire-bg:#2a2208;--wire-bd:#7a6010;
+  --cable:#6abf25;--cable-bg:#0d1a04;--cable-bd:#254a08;
+  --stator:#58C4E8;--stator-bg:#0a2430;--stator-bd:#1a5a70;
+  --aw:#F5A623;--aw-bg:#2a1c05;--aw-bd:#7a5010;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-btn:hover{color:#d4d8e8;border-color:#3a4460;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="acu_ground.html" class="nav-btn">← prev floor</a>
+  <span class="nav-sep">//</span>
+  <a href="acu_ground.html" class="nav-btn">Ground</a>
+  <span class="nav-current">Floor 1 (this floor)</span>
+  <a href="acu_floor2_cb_computer.html" class="nav-btn">Floor 2</a>
+  <a href="acu_floor3_hmf.html" class="nav-btn">Floor 3</a>
+  <a href="acu_floor4_acu.html" class="nav-btn">Floor 4</a>
+  <span class="nav-sep">//</span>
+  <a href="acu_floor2_cb_computer.html" class="nav-btn">Floor 2 →</a>
+  <a href="acu_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>Floor 1 — Stator + Automated Wiring</h1>
+<div class="sub">// +12m · 1× Stator Assembler @200% + 2× Automated Wiring Assembler @200% · Stator's full output feeds Automated Wiring internally</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px;flex-shrink:0;"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <!-- Output strip: only Automated Wiring leaves this floor — Stator's output is fully internal -->
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--aw-bg);border:1px solid var(--aw-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--aw);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--aw);">Automated Wiring</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--aw);">10/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--aw);opacity:0.6;">→ Floor 4 ACU</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <!-- Stator: 2W×2D (256×256), col 0, rows A-B -->
+        <div class="m" style="left:7px;top:7px;width:256px;height:256px;background:var(--stator-bg);border:1px solid var(--stator-bd);color:var(--stator);">
+          <span class="m-lbl">Stator</span><span class="m-sub">10/min · 200%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelpipe);background:var(--steelpipe-bg);border:1px solid var(--steelpipe-bd);border-radius:3px;padding:1px 5px;">← Steel Pipe 30/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);background:var(--wire-bg);border:1px solid var(--wire-bd);border-radius:3px;padding:1px 5px;">← Wire 80/m</span>
+          </div>
+        </div>
+        <!-- Automated Wiring ×2: 2W×2D (256×256), cols 2,4, rows A-B. Internal-fed by Stator (same floor). -->
+        <div class="m" style="left:315px;top:7px;width:256px;height:256px;background:var(--aw-bg);border:1px solid var(--aw-bd);color:var(--aw);">
+          <span class="m-lbl">Automated Wiring</span><span class="m-sub">5/min · 200%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--stator);background:var(--stator-bg);border:1px solid var(--stator-bd);border-radius:3px;padding:1px 5px;">← Stator 5/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:3px;padding:1px 5px;">← Cable 100/m</span>
+          </div>
+        </div>
+        <div class="m" style="left:623px;top:7px;width:256px;height:256px;background:var(--aw-bg);border:1px solid var(--aw-bd);color:var(--aw);">
+          <span class="m-lbl">Automated Wiring</span><span class="m-sub">5/min · 200%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--stator);background:var(--stator-bg);border:1px solid var(--stator-bd);border-radius:3px;padding:1px 5px;">← Stator 5/m</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);background:var(--cable-bg);border:1px solid var(--cable-bd);border-radius:3px;padding:1px 5px;">← Cable 100/m</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input strip: Steel Pipe + Wire (Stator) + Cable (Automated Wiring, manifold-shared by both AW machines) -->
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-block" style="background:var(--steelpipe-bg);border:1px solid var(--steelpipe-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelpipe);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--steelpipe);">Steel Pipe</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--steelpipe);">30/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelpipe);opacity:0.6;">← Ground storage</span>
+      </div>
+      <div class="io-block" style="background:var(--wire-bg);border:1px solid var(--wire-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--wire);">Wire</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--wire);">80/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--wire);opacity:0.6;">← Ground storage</span>
+      </div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--cable-bg);border:1px solid var(--cable-bd);">
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);font-weight:700;">↑ ext. lift</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--cable);">Cable</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--cable);">200/min</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cable);opacity:0.6;">← Ground storage</span>
+      </div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--stator-bg);border:1px solid var(--stator-bd)"></div>Stator ×1</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--aw-bg);border:1px solid var(--aw-bd)"></div>Automated Wiring ×2</div>
+</div>
+<div class="note">// Input strip: Steel Pipe 30/min + Wire 80/min feed the Stator directly; Cable 200/min manifolds across both Automated Wiring machines (100/min each).</div>
+<div class="note">// Stator's full 10/min output is an internal feed split evenly across the two Automated Wiring machines (5/min each) — not a belt split, each machine simply pulls its share off a shared internal manifold.</div>
+<div class="note">// Output strip: Automated Wiring 10/min (aggregate of both machines) → Floor 4's ACU Manufacturer.</div>
+</body>
+</html>

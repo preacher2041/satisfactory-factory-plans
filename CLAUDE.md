@@ -33,9 +33,10 @@ Port label orientation was flipped after `eib_lb3b.html`/`eib_floor2.html` were 
 - Page padding 20px top/bottom, 24px sides. Row label column 52px. Total width 52+1540+48 = 1640px.
 - Coordinates are **computed**, never hardcoded: `col*154+7`, `row*154+7`.
 - Splitter/merger block: 140×140px, centred in cell (7px offset each side). Port zone: 47×47px.
-- Machine sizes @ FS=154: Smelter 116×232 (1W×2D), Constructor 128×232 (1W×2D), Assembler 256×256 (2W×2D), Storage 96×232 (1W×2D), Foundry 256×256 (2W×2D), Refinery 128×420 (1W×3D).
+- Machine sizes @ FS=154: Smelter 116×232 (1W×2D), Constructor 128×232 (1W×2D), Assembler 256×256 (2W×2D), Storage 96×232 (1W×2D), Foundry 256×256 (2W×2D), Refinery 256×420 (2W×3D), Manufacturer 400×400 (3W×3D).
 - Foundry is 2W×2D, not 1W×2D — its real in-game width (10m) exceeds a single 8m foundation column, same as Assembler's (9m), which is why Assembler is the only other 2W entry above. Foundry reuses Assembler's 256×256 box rather than a new size; its real length (9m) fits comfortably within that depth allowance. (Style-audit found `eib_floor1.html`'s foundries built at the Smelter's 1W×2D footprint — this is the corrected size to migrate them to.)
-- Refinery is 1W×3D — real in-game footprint is 10m×22m. Its 10m width is handled the same way Foundry's 10m width is (rounded into a single-column box, same as every other 1W machine), but its 22m length is far longer than any other machine, so it gets its own depth class (3D = 3 rows) rather than reusing Assembler/Foundry's 2D box.
+- Refinery is 2W×3D — real in-game footprint is 10m×22m. Its 10m width exceeds a single 8m column, same reasoning as Foundry's 10m width above (rounds up to 2W, not down to 1W — an earlier version of this note got this backwards and sized built Refineries at 1W, which was wrong and has since been corrected). Its 22m length is far longer than any other machine, so it gets its own depth class (3D = 3 rows) rather than reusing Assembler/Foundry's 2D box.
+- Manufacturer is 3W×3D — real in-game footprint is 18m×20m. Both dimensions exceed 2 columns/rows (16m), so each rounds up to the next size class: 3W (24m allowance) and 3D (24m allowance).
 
 ## Fonts
 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floor 5 — Concrete + RIP + Modular Frame + EIB — ACU Factory (Full-Scratch)</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+:root{--bg:#0f1117;--surface:#181c26;--border:#2a3048;--border2:#3a4460;--text:#d4d8e8;--text-muted:#7a839a;
+--limestone:#1D9E75;--limestone-bg:#061f16;--limestone-bd:#0f5c3d;
+--ironplate:#D85A30;--ironplate-bg:#2a1208;--ironplate-bd:#7a2e10;
+--screw:#888780;--screw-bg:#1a1a18;--screw-bd:#44443f;
+--ironrod:#1D9E75;--ironrod-bg:#061f16;--ironrod-bd:#0f5c3d;
+--steelbeam:#c4880a;--steelbeam-bg:#1f1500;--steelbeam-bd:#5c3a00;
+--concrete:#7F77DD;--concrete-bg:#181535;--concrete-bd:#3d3880;
+--rip:#BA7517;--rip-bg:#251500;--rip-bd:#6b4008;
+--modframe:#7F77DD;--modframe-bg:#181535;--modframe-bd:#3d3880;
+--eib:#BA7517;--eib-bg:#251500;--eib-bd:#6b4008;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
+.sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
+.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
+.fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
+.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;line-height:1.1;text-align:center;}
+.m-sub{font-family:'Share Tech Mono',monospace;font-size:11px;opacity:0.75;text-align:center;}
+.legend{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;gap:18px;flex-wrap:wrap;}
+.l-item{display:flex;align-items:center;gap:6px;color:var(--text);}
+.l-sw{width:13px;height:13px;border-radius:2px;flex-shrink:0;}
+.note{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3a4460;margin-top:6px;}
+.floorplan-nav{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:9px 12px;background:#181c26;border:1px solid #2a3048;border-radius:5px;font-family:'Share Tech Mono',monospace;font-size:11px;flex-wrap:wrap;}
+.nav-btn{color:#7a839a;text-decoration:none;border:1px solid #2a3048;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
+.nav-sep{color:#2a3048;}.nav-factory{margin-left:auto;}
+.io-strip{display:flex;gap:0;width:1540px;}
+.io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
+.io-ph{width:154px;height:90px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="floorplan-nav">
+  <a href="acuf_floor4_steel.html" class="nav-btn">← prev</a><span class="nav-sep">//</span>
+  <a href="acuf_ground.html" class="nav-btn">Ground</a><a href="acuf_floor1_ingots.html" class="nav-btn">Fl.1</a><a href="acuf_floor2_iron.html" class="nav-btn">Fl.2</a><a href="acuf_floor3_copper.html" class="nav-btn">Fl.3</a><a href="acuf_floor4_steel.html" class="nav-btn">Fl.4</a><span class="nav-current">Fl.5</span><a href="acuf_floor6_plastic.html" class="nav-btn">Fl.6</a><a href="acuf_floor7_stator_aw.html" class="nav-btn">Fl.7</a><a href="acuf_floor8_cb_computer.html" class="nav-btn">Fl.8</a><a href="acuf_floor9_hmf.html" class="nav-btn">Fl.9</a><a href="acuf_floor10_acu.html" class="nav-btn">Fl.10</a>
+  <span class="nav-sep">//</span><a href="acuf_floor6_plastic.html" class="nav-btn">Fl.6 →</a>
+  <a href="acu_scratch_factory.html" class="nav-btn nav-factory">← Factory</a>
+</div>
+<h1>Floor 5 — Concrete + RIP + Modular Frame + EIB</h1>
+<div class="sub">// +60m · 2× Concrete @200% + 2× RIP @150% + 2× Modular Frame @250% + 1× EIB @166.67% · RIP and Concrete's entire output stays internal</div>
+
+<div style="display:flex;margin-left:0;margin-bottom:3px">
+  <div style="width:52px;flex-shrink:0;"></div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">1</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">2</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">3</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">4</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">5</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">6</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">7</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div><div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+</div>
+
+<div style="display:flex;gap:0;align-items:flex-start">
+  <div style="display:flex;flex-direction:column;width:52px">
+    <div style="height:90px;"></div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">A</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">B</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">C</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:90px;"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--modframe-bg);border:1px solid var(--modframe-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--modframe);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--modframe);">Mod. Frame</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--modframe);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--modframe);opacity:0.6;">→ Floor 9</span></div>
+      <div class="io-ph"></div><div class="io-ph"></div>
+      <div class="io-block" style="background:var(--eib-bg);border:1px solid var(--eib-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--eib);">EIB</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--eib);">10/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--eib);opacity:0.6;">→ Floor 9</span></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+
+    <div class="floorplan">
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="ml">
+        <!-- Band 1 (rows A-B, top:7): 2 Concrete (128x232) + 2 RIP (256x256) -->
+        <div class="m" style="left:7px;top:7px;width:128px;height:232px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);color:var(--concrete);"><span class="m-lbl">Concrete</span><span class="m-sub">30/m·200%</span></div>
+        <div class="m" style="left:161px;top:7px;width:128px;height:232px;background:var(--concrete-bg);border:1px solid var(--concrete-bd);color:var(--concrete);"><span class="m-lbl">Concrete</span><span class="m-sub">30/m·200%</span></div>
+        <div class="m" style="left:315px;top:7px;width:256px;height:256px;background:var(--rip-bg);border:1px solid var(--rip-bd);color:var(--rip);">
+          <span class="m-lbl">Reinforced Iron Plate</span><span class="m-sub">7.5/m · 150%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironplate);background:var(--ironplate-bg);border:1px solid var(--ironplate-bd);border-radius:3px;padding:1px 5px;">← Plate 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);background:var(--screw-bg);border:1px solid var(--screw-bd);border-radius:3px;padding:1px 5px;">← Screw 90/m</span></div>
+        </div>
+        <div class="m" style="left:623px;top:7px;width:256px;height:256px;background:var(--rip-bg);border:1px solid var(--rip-bd);color:var(--rip);">
+          <span class="m-lbl">Reinforced Iron Plate</span><span class="m-sub">7.5/m · 150%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironplate);background:var(--ironplate-bg);border:1px solid var(--ironplate-bd);border-radius:3px;padding:1px 5px;">← Plate 45/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);background:var(--screw-bg);border:1px solid var(--screw-bd);border-radius:3px;padding:1px 5px;">← Screw 90/m</span></div>
+        </div>
+        <!-- Band 2 (rows C-D, top:315): 2 Modular Frame (256x256) + 1 EIB (256x256) -->
+        <div class="m" style="left:315px;top:315px;width:256px;height:256px;background:var(--modframe-bg);border:1px solid var(--modframe-bd);color:var(--modframe);">
+          <span class="m-lbl">Modular Frame</span><span class="m-sub">5/m · 250%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);background:var(--rip-bg);border:1px solid var(--rip-bd);border-radius:3px;padding:1px 5px;">← RIP 7.5/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironrod);background:var(--ironrod-bg);border:1px solid var(--ironrod-bd);border-radius:3px;padding:1px 5px;">← Rod 30/m</span></div>
+        </div>
+        <div class="m" style="left:623px;top:315px;width:256px;height:256px;background:var(--modframe-bg);border:1px solid var(--modframe-bd);color:var(--modframe);">
+          <span class="m-lbl">Modular Frame</span><span class="m-sub">5/m · 250%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rip);background:var(--rip-bg);border:1px solid var(--rip-bd);border-radius:3px;padding:1px 5px;">← RIP 7.5/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironrod);background:var(--ironrod-bg);border:1px solid var(--ironrod-bd);border-radius:3px;padding:1px 5px;">← Rod 30/m</span></div>
+        </div>
+        <div class="m" style="left:931px;top:315px;width:256px;height:256px;background:var(--eib-bg);border:1px solid var(--eib-bd);color:var(--eib);">
+          <span class="m-lbl">Encased Ind. Beam</span><span class="m-sub">10/m · 166.67%</span>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelbeam);background:var(--steelbeam-bg);border:1px solid var(--steelbeam-bd);border-radius:3px;padding:1px 5px;">← Beam 30/m</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--concrete);background:var(--concrete-bg);border:1px solid var(--concrete-bd);border-radius:3px;padding:1px 5px;">← Concrete 60/m</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="io-strip" style="margin-top:2px;">
+      <div class="io-block" style="background:var(--limestone-bg);border:1px solid var(--limestone-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--limestone);">Limestone</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--limestone);">180/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--limestone);opacity:0.6;">← Ground</span></div>
+      <div class="io-ph"></div>
+      <div class="io-block" style="background:var(--ironplate-bg);border:1px solid var(--ironplate-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironplate);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ironplate);">Iron Plate</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ironplate);">90/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironplate);opacity:0.6;">← Floor 2</span></div>
+      <div class="io-block" style="background:var(--screw-bg);border:1px solid var(--screw-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--screw);">Screw</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--screw);">180/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--screw);opacity:0.6;">← Floor 2</span></div>
+      <div class="io-block" style="background:var(--ironrod-bg);border:1px solid var(--ironrod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironrod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ironrod);">Iron Rod</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ironrod);">60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ironrod);opacity:0.6;">← Floor 2</span></div>
+      <div class="io-block" style="background:var(--steelbeam-bg);border:1px solid var(--steelbeam-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelbeam);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--steelbeam);">Steel Beam</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--steelbeam);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--steelbeam);opacity:0.6;">← Floor 4</span></div>
+      <div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div><div class="io-ph"></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="l-item"><div class="l-sw" style="background:var(--concrete-bg);border:1px solid var(--concrete-bd)"></div>Concrete ×2</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--rip-bg);border:1px solid var(--rip-bd)"></div>RIP ×2</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--modframe-bg);border:1px solid var(--modframe-bd)"></div>Modular Frame ×2</div>
+  <div class="l-item"><div class="l-sw" style="background:var(--eib-bg);border:1px solid var(--eib-bd)"></div>EIB ×1</div>
+</div>
+<div class="note">// RIP's entire 15/min output feeds Modular Frame internally — the ratio happens to be exact (Modular Frame needs exactly 1.5 RIP/output × 10/min = 15/min), so nothing is left over for an output-strip entry.</div>
+<div class="note">// Concrete's entire 60/min output feeds EIB internally the same way (EIB needs exactly 6 Concrete/output × 10/min = 60/min) — both internal feeds are 100% consumed, a coincidence of the exact target rates chosen.</div>
+<div class="note">// Only Modular Frame (10/min) and EIB (10/min) leave this floor — both single-destination (Floor 9, HMF), so no cross-floor split issue here.</div>
+</body>
+</html>

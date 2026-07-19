@@ -200,10 +200,16 @@
     font-weight: 600;
     letter-spacing: 0.02em;
   }
+  .node .clock {
+    font-size: 8.5px;
+    color: var(--muted);
+    opacity: 0.9;
+  }
 
   .node.storage { border-color: var(--storage); background: var(--storage-bg); }
   .node.storage .tag, .node.storage .label { color: var(--storage); }
   .node.storage .total { color: var(--storage); }
+  .node.assembler, .node.manufacturer { height: 88px; }
   .node.assembler { border-color: var(--assembler); background: var(--assembler-bg); }
   .node.assembler .tag, .node.assembler .label { color: var(--assembler); }
   .node.assembler .total { color: var(--assembler); }
@@ -212,7 +218,7 @@
   .node.manufacturer .total { color: var(--manufacturer); }
   .node.acu {
     width: 168px;
-    height: 92px;
+    height: 104px;
     border-color: var(--acu);
     border-width: 2px;
     background: var(--acu-bg);
@@ -344,34 +350,34 @@
 
   <!-- Row 1 — first stage (y=470) -->
   <div class="node assembler" style="left:155px; top:470px; animation-delay:0.28s">
-    <span class="tag">Assembler</span><span class="label">Stator</span><span class="rate">10/min out</span><span class="total">500 total</span>
+    <span class="tag">Assembler</span><span class="label">Stator</span><span class="rate">10/min out</span><span class="total">500 total</span><span class="clock">200% · 2 shards</span>
   </div>
   <div class="node assembler" style="left:610px; top:470px; animation-delay:0.3s">
-    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">16/min → Computer</span><span class="total">800 total</span>
+    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">16/min → Computer</span><span class="total">800 total</span><span class="clock">173.33% · 2 shards</span>
   </div>
   <div class="node assembler" style="left:740px; top:470px; animation-delay:0.32s">
-    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">10/min → ACU</span><span class="total">500 total</span>
+    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">10/min → ACU</span><span class="total">500 total</span><span class="clock">173.33% · 2 shards</span>
   </div>
   <div class="node manufacturer" style="left:1455px; top:470px; animation-delay:0.34s">
-    <span class="tag">Manufacturer</span><span class="label">Heavy Modular Frame</span><span class="rate">2/min out</span><span class="total">100 total</span>
+    <span class="tag">Manufacturer</span><span class="label">Heavy Modular Frame</span><span class="rate">2/min out</span><span class="total">100 total</span><span class="clock">100% · 0 shards</span>
   </div>
 
   <!-- Row 2 — second stage (y=280) -->
   <div class="node assembler" style="left:252px; top:280px; animation-delay:0.38s">
-    <span class="tag">Assembler</span><span class="label">Automated Wiring</span><span class="rate">10/min out</span><span class="total">500 total</span>
+    <span class="tag">Assembler</span><span class="label">Automated Wiring</span><span class="rate">10/min out</span><span class="total">500 total</span><span class="clock">200% · 2 shards</span>
   </div>
   <div class="node manufacturer" style="left:913px; top:280px; animation-delay:0.4s">
-    <span class="tag">Manufacturer</span><span class="label">Computer</span><span class="rate">4/min out</span><span class="total">200 total</span>
+    <span class="tag">Manufacturer</span><span class="label">Computer</span><span class="rate">4/min out</span><span class="total">200 total</span><span class="clock">160% · 2 shards</span>
   </div>
 
   <!-- Row 3 — apex (y=90) -->
   <div class="node acu" style="left:840px; top:90px; animation-delay:0.46s">
-    <span class="tag">Manufacturer · final</span><span class="label">Adaptive Control Unit</span><span class="rate">2/min out</span><span class="total">100 total</span>
+    <span class="tag">Manufacturer · final</span><span class="label">Adaptive Control Unit</span><span class="rate">2/min out</span><span class="total">100 total</span><span class="clock">200% · 2 shards</span>
   </div>
 </div>
 </div>
 
-<p class="tier-note">Node placement is by dependency depth, not build floor — Heavy Modular Frame sits one tier up because every ingredient it needs comes straight from storage, while Automated Wiring and Computer each need one assembler's output first. Copper Sheet and Plastic are each split by destination the same way Steel Pipe and Cable are: the Circuit-Board-bound portion (32+20 Copper Sheet, 64+40 Plastic) is separate from Plastic's other flow straight into Computer (64/min, unrelated to Circuit Board despite the matching number). Circuit Board itself is split the same way one tier up — 16/min feeding Computer, 10/min feeding the ACU directly. Totals are each node's rate × 50 minutes, the time this factory takes to clear a 100-unit ACU batch at its 2/min target.</p>
+<p class="tier-note">Node placement is by dependency depth, not build floor — Heavy Modular Frame sits one tier up because every ingredient it needs comes straight from storage, while Automated Wiring and Computer each need one assembler's output first. Copper Sheet and Plastic are each split by destination the same way Steel Pipe and Cable are: the Circuit-Board-bound portion (32+20 Copper Sheet, 64+40 Plastic) is separate from Plastic's other flow straight into Computer (64/min, unrelated to Circuit Board despite the matching number). Circuit Board itself is split the same way one tier up — 16/min feeding Computer, 10/min feeding the ACU directly. Totals are each node's rate × 50 minutes, the time this factory takes to clear a 100-unit ACU batch at its 2/min target. Every Assembler/Manufacturer node also shows the clock speed and power shard count its output rate requires — Heavy Modular Frame is the only one that hits its target at stock 100%; the other seven all need overclocking, 14 shards combined.</p>
 
 </body>
 </html>

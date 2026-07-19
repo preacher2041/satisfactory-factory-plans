@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACU Production Tree</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root {
+    --bg: #eef1f6;
+    --surface: #ffffff;
+    --surface-line: rgba(30,50,80,0.10);
+    --text: #1b2430;
+    --muted: #5b6b82;
+    --grid-line: rgba(40,60,90,0.07);
+    --storage: #b6791f;
+    --storage-bg: #fbf1de;
+    --assembler: #1f7ab0;
+    --assembler-bg: #e6f2fa;
+    --manufacturer: #237a53;
+    --manufacturer-bg: #e5f4ec;
+    --acu: #b9481f;
+    --acu-bg: #fbe9df;
+    --edge: rgba(30,50,80,0.28);
+    --edge-acu: rgba(185,72,31,0.55);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0e14;
+      --surface: #141a24;
+      --surface-line: rgba(150,170,200,0.12);
+      --text: #dbe4f0;
+      --muted: #7f90a8;
+      --grid-line: rgba(120,150,190,0.08);
+      --storage: #d9a441;
+      --storage-bg: #241d0e;
+      --assembler: #5bb3e0;
+      --assembler-bg: #10222c;
+      --manufacturer: #5bc98a;
+      --manufacturer-bg: #0e2018;
+      --acu: #ea8657;
+      --acu-bg: #2a160e;
+      --edge: rgba(150,170,200,0.32);
+      --edge-acu: rgba(234,134,87,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e14;
+    --surface: #141a24;
+    --surface-line: rgba(150,170,200,0.12);
+    --text: #dbe4f0;
+    --muted: #7f90a8;
+    --grid-line: rgba(120,150,190,0.08);
+    --storage: #d9a441;
+    --storage-bg: #241d0e;
+    --assembler: #5bb3e0;
+    --assembler-bg: #10222c;
+    --manufacturer: #5bc98a;
+    --manufacturer-bg: #0e2018;
+    --acu: #ea8657;
+    --acu-bg: #2a160e;
+    --edge: rgba(150,170,200,0.32);
+    --edge-acu: rgba(234,134,87,0.55);
+  }
+  :root[data-theme="light"] {
+    --bg: #eef1f6;
+    --surface: #ffffff;
+    --surface-line: rgba(30,50,80,0.10);
+    --text: #1b2430;
+    --muted: #5b6b82;
+    --grid-line: rgba(40,60,90,0.07);
+    --storage: #b6791f;
+    --storage-bg: #fbf1de;
+    --assembler: #1f7ab0;
+    --assembler-bg: #e6f2fa;
+    --manufacturer: #237a53;
+    --manufacturer-bg: #e5f4ec;
+    --acu: #b9481f;
+    --acu-bg: #fbe9df;
+    --edge: rgba(30,50,80,0.28);
+    --edge-acu: rgba(185,72,31,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
+      var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+    padding: 28px 20px 56px;
+    min-height: 100vh;
+  }
+
+  header { max-width: 1000px; margin: 0 auto 28px; display: flex; align-items: flex-start; gap: 16px; }
+  header .head-text { flex: 1; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 8px;
+  }
+  .dek {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .header-back {
+    flex-shrink: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--surface-line);
+    border-radius: 4px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+  .header-back:hover { color: var(--text); border-color: var(--acu); }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--surface-line);
+    font-size: 11.5px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; color: var(--muted); }
+  .legend-item .dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+  .tree-scroll { overflow-x: auto; padding-bottom: 4px; }
+  .tree-wrap {
+    position: relative;
+    width: 1760px;
+    height: 760px;
+    margin: 0 auto;
+  }
+
+  svg.edges { position: absolute; inset: 0; width: 1760px; height: 760px; overflow: visible; }
+  .edge-label {
+    font-size: 10px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+    fill: var(--muted);
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 4px;
+  }
+
+  .node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 132px;
+    height: 76px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1.5px solid var(--surface-line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px 8px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .node .tag {
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .node .label {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    line-height: 1.2;
+  }
+  .node .rate {
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .node .total {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .node.storage { border-color: var(--storage); background: var(--storage-bg); }
+  .node.storage .tag, .node.storage .label { color: var(--storage); }
+  .node.storage .total { color: var(--storage); }
+  .node.assembler { border-color: var(--assembler); background: var(--assembler-bg); }
+  .node.assembler .tag, .node.assembler .label { color: var(--assembler); }
+  .node.assembler .total { color: var(--assembler); }
+  .node.manufacturer { border-color: var(--manufacturer); background: var(--manufacturer-bg); }
+  .node.manufacturer .tag, .node.manufacturer .label { color: var(--manufacturer); }
+  .node.manufacturer .total { color: var(--manufacturer); }
+  .node.acu {
+    width: 168px;
+    height: 92px;
+    border-color: var(--acu);
+    border-width: 2px;
+    background: var(--acu-bg);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--acu) 12%, transparent);
+  }
+  .node.acu .tag, .node.acu .label { color: var(--acu); }
+  .node.acu .total { color: var(--acu); }
+  .node.acu .label { font-size: 15px; }
+
+  .tier-note {
+    max-width: 1000px;
+    margin: 22px auto 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--surface-line);
+    padding-top: 14px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .node { animation: rise 0.5s ease-out backwards; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translate(-50%, -42%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-text">
+    <div class="eyebrow">Adaptive Control Unit Factory — production dependency tree</div>
+    <h1>From Industrial Storage to Adaptive Control Unit</h1>
+    <p class="dek">Every material this factory pulls from storage, and every assembler/manufacturer stage it passes through before becoming an ACU. Reading up: storage containers at the bottom hold material already produced elsewhere; each node above consumes everything connected below it. Rates are per minute at this factory's 2 ACU/min target. Materials drawn twice — Steel Pipe, Cable, Plastic, Copper Sheet, Circuit Board — get one node per destination, since each is a separate delivery or production line.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="dot" style="background:var(--storage)"></span>Industrial Storage Container</div>
+      <div class="legend-item"><span class="dot" style="background:var(--assembler)"></span>Assembler (2 inputs)</div>
+      <div class="legend-item"><span class="dot" style="background:var(--manufacturer)"></span>Manufacturer (3+ inputs)</div>
+      <div class="legend-item"><span class="dot" style="background:var(--acu)"></span>Final product</div>
+    </div>
+  </div>
+  <a href="index.html" class="header-back">← Index</a>
+</header>
+
+<div class="tree-scroll">
+<div class="tree-wrap">
+  <svg class="edges" viewBox="0 0 1760 760">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"></path>
+      </marker>
+      <marker id="arrow-acu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--edge-acu)"></path>
+      </marker>
+    </defs>
+
+    <!-- Row 0 -> Row 1 -->
+    <path d="M90,622 C90,555 118,525 155,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M220,622 C220,555 190,525 155,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M480,622 C480,555 540,525 610,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M610,622 C610,575 610,540 610,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M740,622 C740,575 740,540 740,508" fill="none" stroke="var(--edge)" stroke-width="1.5" opacity="0.85" marker-end="url(#arrow)"></path>
+    <path d="M870,622 C870,555 800,525 740,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M1260,622 C1260,560 1380,530 1455,508" fill="none" stroke="var(--edge)" stroke-width="1.4" opacity="0.75" marker-end="url(#arrow)"></path>
+    <path d="M1390,622 C1390,560 1420,530 1455,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M1520,622 C1520,560 1490,530 1455,508" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M1650,622 C1650,560 1550,530 1455,508" fill="none" stroke="var(--edge)" stroke-width="1.4" opacity="0.75" marker-end="url(#arrow)"></path>
+
+    <!-- Row 0 -> Row 2 (skips row 1) -->
+    <path d="M350,622 C350,500 300,360 252,318" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M1000,622 C1000,500 950,360 913,318" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+    <path d="M1130,622 C1130,500 990,360 913,318" fill="none" stroke="var(--edge)" stroke-width="1.6" marker-end="url(#arrow)"></path>
+
+    <!-- Row 1 -> Row 2 -->
+    <path d="M155,432 C155,385 210,355 252,318" fill="none" stroke="var(--edge)" stroke-width="1.8" marker-end="url(#arrow)"></path>
+    <path d="M610,432 C610,385 780,355 913,318" fill="none" stroke="var(--edge)" stroke-width="1.8" marker-end="url(#arrow)"></path>
+
+    <!-- Row 1 -> Row 3 (skips row 2) -->
+    <path d="M740,432 C740,300 790,180 815,135" fill="none" stroke="var(--edge-acu)" stroke-width="1.8" marker-end="url(#arrow-acu)"></path>
+    <path d="M1455,432 C1455,260 980,150 875,135" fill="none" stroke="var(--edge-acu)" stroke-width="1.9" marker-end="url(#arrow-acu)"></path>
+
+    <!-- Row 2 -> Row 3 -->
+    <path d="M252,242 C252,185 500,150 750,136" fill="none" stroke="var(--edge-acu)" stroke-width="1.9" marker-end="url(#arrow-acu)"></path>
+    <path d="M913,242 C913,195 870,165 850,135" fill="none" stroke="var(--edge-acu)" stroke-width="1.9" marker-end="url(#arrow-acu)"></path>
+  </svg>
+
+  <!-- Row 0 — storage, one node per destination (y=660) -->
+  <div class="node storage" style="left:90px; top:660px; animation-delay:0s">
+    <span class="tag">Storage</span><span class="label">Steel Pipe</span><span class="rate">30/min → Stator</span><span class="total">1,500 total</span>
+  </div>
+  <div class="node storage" style="left:220px; top:660px; animation-delay:0.02s">
+    <span class="tag">Storage</span><span class="label">Wire</span><span class="rate">80/min → Stator</span><span class="total">4,000 total</span>
+  </div>
+  <div class="node storage" style="left:350px; top:660px; animation-delay:0.04s">
+    <span class="tag">Storage</span><span class="label">Cable</span><span class="rate">200/min → Aut. Wiring</span><span class="total">10,000 total</span>
+  </div>
+  <div class="node storage" style="left:480px; top:660px; animation-delay:0.06s">
+    <span class="tag">Storage</span><span class="label">Copper Sheet</span><span class="rate">32/min → Circuit Board</span><span class="total">1,600 total</span>
+  </div>
+  <div class="node storage" style="left:610px; top:660px; animation-delay:0.08s">
+    <span class="tag">Storage</span><span class="label">Plastic</span><span class="rate">64/min → Circuit Board</span><span class="total">3,200 total</span>
+  </div>
+  <div class="node storage" style="left:740px; top:660px; animation-delay:0.1s">
+    <span class="tag">Storage</span><span class="label">Copper Sheet</span><span class="rate">20/min → Circuit Board</span><span class="total">1,000 total</span>
+  </div>
+  <div class="node storage" style="left:870px; top:660px; animation-delay:0.12s">
+    <span class="tag">Storage</span><span class="label">Plastic</span><span class="rate">40/min → Circuit Board</span><span class="total">2,000 total</span>
+  </div>
+  <div class="node storage" style="left:1000px; top:660px; animation-delay:0.14s">
+    <span class="tag">Storage</span><span class="label">Plastic</span><span class="rate">64/min → Computer</span><span class="total">3,200 total</span>
+  </div>
+  <div class="node storage" style="left:1130px; top:660px; animation-delay:0.16s">
+    <span class="tag">Storage</span><span class="label">Cable</span><span class="rate">32/min → Computer</span><span class="total">1,600 total</span>
+  </div>
+  <div class="node storage" style="left:1260px; top:660px; animation-delay:0.18s">
+    <span class="tag">Storage</span><span class="label">Modular Frame</span><span class="rate">10/min → HMF</span><span class="total">500 total</span>
+  </div>
+  <div class="node storage" style="left:1390px; top:660px; animation-delay:0.2s">
+    <span class="tag">Storage</span><span class="label">Steel Pipe</span><span class="rate">40/min → HMF</span><span class="total">2,000 total</span>
+  </div>
+  <div class="node storage" style="left:1520px; top:660px; animation-delay:0.22s">
+    <span class="tag">Storage</span><span class="label">Enc. Ind. Beam</span><span class="rate">10/min → HMF</span><span class="total">500 total</span>
+  </div>
+  <div class="node storage" style="left:1650px; top:660px; animation-delay:0.24s">
+    <span class="tag">Storage</span><span class="label">Screw</span><span class="rate">240/min → HMF</span><span class="total">12,000 total</span>
+  </div>
+
+  <!-- Row 1 — first stage (y=470) -->
+  <div class="node assembler" style="left:155px; top:470px; animation-delay:0.28s">
+    <span class="tag">Assembler</span><span class="label">Stator</span><span class="rate">10/min out</span><span class="total">500 total</span>
+  </div>
+  <div class="node assembler" style="left:610px; top:470px; animation-delay:0.3s">
+    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">16/min → Computer</span><span class="total">800 total</span>
+  </div>
+  <div class="node assembler" style="left:740px; top:470px; animation-delay:0.32s">
+    <span class="tag">Assembler</span><span class="label">Circuit Board</span><span class="rate">10/min → ACU</span><span class="total">500 total</span>
+  </div>
+  <div class="node manufacturer" style="left:1455px; top:470px; animation-delay:0.34s">
+    <span class="tag">Manufacturer</span><span class="label">Heavy Modular Frame</span><span class="rate">2/min out</span><span class="total">100 total</span>
+  </div>
+
+  <!-- Row 2 — second stage (y=280) -->
+  <div class="node assembler" style="left:252px; top:280px; animation-delay:0.38s">
+    <span class="tag">Assembler</span><span class="label">Automated Wiring</span><span class="rate">10/min out</span><span class="total">500 total</span>
+  </div>
+  <div class="node manufacturer" style="left:913px; top:280px; animation-delay:0.4s">
+    <span class="tag">Manufacturer</span><span class="label">Computer</span><span class="rate">4/min out</span><span class="total">200 total</span>
+  </div>
+
+  <!-- Row 3 — apex (y=90) -->
+  <div class="node acu" style="left:840px; top:90px; animation-delay:0.46s">
+    <span class="tag">Manufacturer · final</span><span class="label">Adaptive Control Unit</span><span class="rate">2/min out</span><span class="total">100 total</span>
+  </div>
+</div>
+</div>
+
+<p class="tier-note">Node placement is by dependency depth, not build floor — Heavy Modular Frame sits one tier up because every ingredient it needs comes straight from storage, while Automated Wiring and Computer each need one assembler's output first. Copper Sheet and Plastic are each split by destination the same way Steel Pipe and Cable are: the Circuit-Board-bound portion (32+20 Copper Sheet, 64+40 Plastic) is separate from Plastic's other flow straight into Computer (64/min, unrelated to Circuit Board despite the matching number). Circuit Board itself is split the same way one tier up — 16/min feeding Computer, 10/min feeding the ACU directly. Totals are each node's rate × 50 minutes, the time this factory takes to clear a 100-unit ACU batch at its 2/min target.</p>
+
+</body>
+</html>

@@ -105,8 +105,11 @@ Every machine shows coloured pill tags for its per-minute ingredient consumption
 | Crude oil | `#5C4A3A` | | Plastic | `#C9C4A8` |
 | Heavy oil residue | `#7A3B2E` | | Petroleum coke | `#4A4A45` |
 | Rubber | `#4A4E5C` | | | |
+| Stators | `#4FC3F7` | | Automated wiring | `#F48FB1` |
+| Circuit boards | `#FFB74D` | | Computers | `#9CCC65` |
+| Heavy modular frames | `#7F77DD` | | Adaptive control units | `#FF8A65` |
 
-Ore/ingot pairs (iron, copper) are intentionally different shades — never reuse ore colour for ingot elements. Cable/steel pipes share green and copper sheet/concrete/modular frames share purple intentionally — disambiguate by label text, not colour. Petroleum coke is deliberately a darker shade of the coal/screw grey family (`#4A4A45` vs `#888780`) since it's a coal substitute byproduct — distinguishable by lightness, not a true collision.
+Heavy modular frames intentionally reuse Modular frames/Copper sheet/Concrete's purple — it's a direct Modular Frame derivative, same disambiguate-by-label reasoning as that existing collision. Ore/ingot pairs (iron, copper) are intentionally different shades — never reuse ore colour for ingot elements. Cable/steel pipes share green and copper sheet/concrete/modular frames share purple intentionally — disambiguate by label text, not colour. Petroleum coke is deliberately a darker shade of the coal/screw grey family (`#4A4A45` vs `#888780`) since it's a coal substitute byproduct — distinguishable by lightness, not a true collision.
 
 ## Non-negotiable maths rules
 

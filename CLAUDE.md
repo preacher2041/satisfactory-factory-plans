@@ -29,8 +29,8 @@ Port label orientation was flipped after `eib_lb3b.html`/`eib_floor2.html` were 
 
 ## Grid system (floor plan files)
 
-- Viewport 1665×1000px. `FS = 154px` per foundation (8m×8m). Grid = 10 cols × 6 rows = 1540×924px.
-- Page padding 20px top/bottom, 24px sides. Row label column 52px. Total width 52+1540+48 = 1640px.
+- `FS = 154px` per foundation (8m×8m). Grid dimensions (cols × rows) are **not fixed at 10×6** — size each factory's grid to whatever its most space-demanding floor actually needs, then keep that same grid size uniform across every floor of that factory (per the "multi-storey, uniform" player preference). Whatever size is chosen, leave a **1-foundation buffer column/row around the outside of every floor's placed content** (machines, mergers, IO-strip-referenced columns) so the build is walkable — a floor that packs machines into every column/row edge-to-edge has no buffer and should be resized wider/taller, not left as-is. Compute the grid as content-cols+2 × content-rows+2 (buffer both sides) where content is the widest/tallest floor's actual layout, and document the chosen size in that factory's own notes — 10×6 remains a fine default only when it happens to already leave that buffer.
+- Page padding 20px top/bottom, 24px sides. Row label column 52px. Total width = 52 + cols×154 + 48.
 - Coordinates are **computed**, never hardcoded: `col*154+7`, `row*154+7`.
 - Splitter/merger block: 140×140px, centred in cell (7px offset each side). Port zone: 47×47px.
 - Machine sizes @ FS=154: Smelter 116×232 (1W×2D), Constructor 128×232 (1W×2D), Assembler 256×256 (2W×2D), Storage 96×232 (1W×2D), Foundry 256×256 (2W×2D), Refinery 256×420 (2W×3D), Manufacturer 400×400 (3W×3D).

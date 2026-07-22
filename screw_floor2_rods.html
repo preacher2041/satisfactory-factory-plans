@@ -18,10 +18,10 @@
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;padding:20px 24px 48px;}
 h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:3px;}
 .sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:16px;}
-.floorplan{display:grid;grid-template-columns:repeat(10,154px);grid-template-rows:repeat(6,154px);width:1540px;height:924px;border:1px solid var(--border2);position:relative;}
+.floorplan{display:grid;grid-template-columns:repeat(12,154px);grid-template-rows:repeat(8,154px);width:1848px;height:1232px;border:1px solid var(--border2);position:relative;}
 .f{width:154px;height:154px;border-right:1px solid #1e2838;border-bottom:1px solid #1e2838;background:#0d1018;position:relative;}
 .fa{background:#0f1220;}.fc{background:#090d16;}.fca{background:#0b0f18;}
-.ml{position:absolute;top:0;left:0;width:1540px;height:924px;pointer-events:none;}
+.ml{position:absolute;top:0;left:0;width:1848px;height:1232px;pointer-events:none;}
 .m{position:absolute;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
 .m-lbl{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;line-height:1.1;text-align:center;}
 .m-sub{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0.75;text-align:center;}
@@ -39,7 +39,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
 .nav-current{color:#fff;border:1px solid #3a4460;border-radius:4px;padding:4px 10px;white-space:nowrap;}
 .nav-sep{color:#2a3048;}
 .nav-factory{margin-left:auto;}
-.io-strip{display:flex;gap:0;width:1540px;}
+.io-strip{display:flex;gap:0;width:1848px;}
 .io-block{width:154px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:5px;flex-shrink:0;}
 .io-ph{width:154px;height:90px;flex-shrink:0;}
 </style>
@@ -72,6 +72,8 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">8</div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">9</div>
   <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">10</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">11</div>
+  <div style="display:inline-flex;width:154px;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">12</div>
 </div>
 
 <div style="display:flex;gap:0;align-items:flex-start">
@@ -83,12 +85,15 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">D</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">E</div>
     <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">F</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">G</div>
+    <div style="height:154px;width:52px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a4460">H</div>
     <div style="height:90px;"></div>
   </div>
 
   <div style="display:flex;flex-direction:column;gap:0;">
     <!-- Output strip: 10 streams, 30/min each. Line A odd cols (1,3,5,7,9), Line B even cols (2,4,6,8,10). Streams 1-3/line -> Floor 3 direct; streams 4-5/line -> Floor 4 bypass. -->
     <div class="io-strip" style="margin-bottom:2px;">
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 A (MRG1)</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 B (MRG6)</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.3 A (MRG2)</span></div>
@@ -98,108 +103,111 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift, direct to Fl.4</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 A (MRG4)</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift, direct to Fl.4</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 B (MRG9)</span></div>
       <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift, direct to Fl.4</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 A (MRG5)</span></div>
-      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift, direct to Fl.4</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 B (MRG10)</span></div>
+      <div class="io-block" style="background:var(--rod-bg);border:1px solid var(--rod-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);font-weight:700;">↑ ext. lift, direct to Fl.4</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--rod);">Rods</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--rod);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--rod);opacity:0.6;">→ Fl.4 B (MRG10)</span></div><div class="io-ph"></div>
     </div>
 
     <!-- Grid: Line A machines rows B-C (cols1-10) + mergers row D. Line B machines rows E-F (cols1-10) + mergers row A. -->
     <div class="floorplan">
-      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
-      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
-      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f fc"></div>
+      <div class="f fc"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fa"></div><div class="f"></div><div class="f fca"></div>
+      <div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div><div class="f fca"></div><div class="f fc"></div>
       <div class="ml">
         <!-- LINE A: 10 constructors, rows B-C, cols1-10 -->
-        <div class="m" style="left:19px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A1</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:173px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A2</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:327px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A3</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:481px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A4</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:635px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A5</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:789px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A6</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:943px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A7</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1097px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A8</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1251px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A9</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1405px;top:192px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A10</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:173px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A1</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:327px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A2</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:481px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A3</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:635px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A4</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:789px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A5</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:943px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A6</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1097px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A7</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1251px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A8</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1405px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A9</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1559px;top:346px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C A10</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
 
         <!-- LINE A mergers, row D: single-level pairs -> 30/min each -->
-        <div class="blk" style="left:7px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:54px;top:516px;font-size:13px;color:var(--mrga);">MRG1</div>
-        <div class="pz" style="left:54px;top:469px;color:var(--rod);"><span>CA1</span><span>15/m</span></div>
-        <div class="pz" style="left:100px;top:516px;color:var(--rod);"><span>CA2</span><span>15/m</span></div>
-        <div class="pz" style="left:54px;top:562px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
+        <div class="blk" style="left:161px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:208px;top:670px;font-size:13px;color:var(--mrga);">MRG1</div>
+        <div class="pz" style="left:208px;top:623px;color:var(--rod);"><span>CA1</span><span>15/m</span></div>
+        <div class="pz" style="left:254px;top:670px;color:var(--rod);"><span>CA2</span><span>15/m</span></div>
+        <div class="pz" style="left:208px;top:716px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
 
-        <div class="blk" style="left:315px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:362px;top:516px;font-size:13px;color:var(--mrgb);">MRG2</div>
-        <div class="pz" style="left:362px;top:469px;color:var(--rod);"><span>CA3</span><span>15/m</span></div>
-        <div class="pz" style="left:408px;top:516px;color:var(--rod);"><span>CA4</span><span>15/m</span></div>
-        <div class="pz" style="left:362px;top:562px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
+        <div class="blk" style="left:469px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:516px;top:670px;font-size:13px;color:var(--mrgb);">MRG2</div>
+        <div class="pz" style="left:516px;top:623px;color:var(--rod);"><span>CA3</span><span>15/m</span></div>
+        <div class="pz" style="left:562px;top:670px;color:var(--rod);"><span>CA4</span><span>15/m</span></div>
+        <div class="pz" style="left:516px;top:716px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
 
-        <div class="blk" style="left:623px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:670px;top:516px;font-size:13px;color:var(--mrgc);">MRG3</div>
-        <div class="pz" style="left:670px;top:469px;color:var(--rod);"><span>CA5</span><span>15/m</span></div>
-        <div class="pz" style="left:716px;top:516px;color:var(--rod);"><span>CA6</span><span>15/m</span></div>
-        <div class="pz" style="left:670px;top:562px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
+        <div class="blk" style="left:777px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:824px;top:670px;font-size:13px;color:var(--mrgc);">MRG3</div>
+        <div class="pz" style="left:824px;top:623px;color:var(--rod);"><span>CA5</span><span>15/m</span></div>
+        <div class="pz" style="left:870px;top:670px;color:var(--rod);"><span>CA6</span><span>15/m</span></div>
+        <div class="pz" style="left:824px;top:716px;color:var(--rod);"><span>Fl.3 A</span><span>30/m</span></div>
 
-        <div class="blk" style="left:931px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:978px;top:516px;font-size:13px;color:var(--mrgd);">MRG4</div>
-        <div class="pz" style="left:978px;top:469px;color:var(--rod);"><span>CA7</span><span>15/m</span></div>
-        <div class="pz" style="left:1024px;top:516px;color:var(--rod);"><span>CA8</span><span>15/m</span></div>
-        <div class="pz" style="left:978px;top:562px;color:var(--rod);"><span>Fl.4 A</span><span>30/m</span></div>
+        <div class="blk" style="left:1085px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1132px;top:670px;font-size:13px;color:var(--mrgd);">MRG4</div>
+        <div class="pz" style="left:1132px;top:623px;color:var(--rod);"><span>CA7</span><span>15/m</span></div>
+        <div class="pz" style="left:1178px;top:670px;color:var(--rod);"><span>CA8</span><span>15/m</span></div>
+        <div class="pz" style="left:1132px;top:716px;color:var(--rod);"><span>Fl.4 A</span><span>30/m</span></div>
 
-        <div class="blk" style="left:1239px;top:469px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:1286px;top:516px;font-size:13px;color:var(--mrge);">MRG5</div>
-        <div class="pz" style="left:1286px;top:469px;color:var(--rod);"><span>CA9</span><span>15/m</span></div>
-        <div class="pz" style="left:1332px;top:516px;color:var(--rod);"><span>CA10</span><span>15/m</span></div>
-        <div class="pz" style="left:1286px;top:562px;color:var(--rod);"><span>Fl.4 A</span><span>30/m</span></div>
+        <div class="blk" style="left:1393px;top:623px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1440px;top:670px;font-size:13px;color:var(--mrge);">MRG5</div>
+        <div class="pz" style="left:1440px;top:623px;color:var(--rod);"><span>CA9</span><span>15/m</span></div>
+        <div class="pz" style="left:1486px;top:670px;color:var(--rod);"><span>CA10</span><span>15/m</span></div>
+        <div class="pz" style="left:1440px;top:716px;color:var(--rod);"><span>Fl.4 A</span><span>30/m</span></div>
 
         <!-- LINE B: 10 constructors, rows E-F, cols1-10 -->
-        <div class="m" style="left:19px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B1</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:173px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B2</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:327px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B3</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:481px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B4</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:635px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B5</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:789px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B6</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:943px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B7</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1097px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B8</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1251px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B9</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
-        <div class="m" style="left:1405px;top:654px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B10</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:173px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B1</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:327px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B2</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:481px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B3</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:635px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B4</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:789px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B5</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:943px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B6</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1097px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B7</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1251px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B8</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1405px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B9</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
+        <div class="m" style="left:1559px;top:808px;width:128px;height:232px;background:#061f16;border:1px solid #0f5c3d;color:#1D9E75;"><span class="m-lbl">C B10</span><span class="m-sub">15/min · 100%</span><div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;justify-content:center;"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#A8B8C8;background:#141c24;border:1px solid #3a5068;border-radius:3px;padding:1px 5px;">← Ingot 15/m</span></div></div>
 
         <!-- LINE B mergers, row A (top of grid, cols offset to 2,4,6,8,10 for distinct output-strip columns) -->
-        <div class="blk" style="left:161px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:208px;top:54px;font-size:13px;color:var(--mrgf);">MRG6</div>
-        <div class="pz" style="left:208px;top:7px;color:var(--rod);"><span>CB2</span><span>15/m</span></div>
-        <div class="pz" style="left:161px;top:54px;color:var(--rod);"><span>CB1</span><span>15/m</span></div>
-        <div class="pz" style="left:208px;top:100px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
+        <div class="blk" style="left:315px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:362px;top:208px;font-size:13px;color:var(--mrgf);">MRG6</div>
+        <div class="pz" style="left:362px;top:161px;color:var(--rod);"><span>CB2</span><span>15/m</span></div>
+        <div class="pz" style="left:315px;top:208px;color:var(--rod);"><span>CB1</span><span>15/m</span></div>
+        <div class="pz" style="left:362px;top:254px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
 
-        <div class="blk" style="left:469px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:516px;top:54px;font-size:13px;color:var(--mrgg);">MRG7</div>
-        <div class="pz" style="left:516px;top:7px;color:var(--rod);"><span>CB4</span><span>15/m</span></div>
-        <div class="pz" style="left:469px;top:54px;color:var(--rod);"><span>CB3</span><span>15/m</span></div>
-        <div class="pz" style="left:516px;top:100px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
+        <div class="blk" style="left:623px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:670px;top:208px;font-size:13px;color:var(--mrgg);">MRG7</div>
+        <div class="pz" style="left:670px;top:161px;color:var(--rod);"><span>CB4</span><span>15/m</span></div>
+        <div class="pz" style="left:623px;top:208px;color:var(--rod);"><span>CB3</span><span>15/m</span></div>
+        <div class="pz" style="left:670px;top:254px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
 
-        <div class="blk" style="left:777px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:824px;top:54px;font-size:13px;color:var(--mrgh);">MRG8</div>
-        <div class="pz" style="left:824px;top:7px;color:var(--rod);"><span>CB6</span><span>15/m</span></div>
-        <div class="pz" style="left:777px;top:54px;color:var(--rod);"><span>CB5</span><span>15/m</span></div>
-        <div class="pz" style="left:824px;top:100px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
+        <div class="blk" style="left:931px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:978px;top:208px;font-size:13px;color:var(--mrgh);">MRG8</div>
+        <div class="pz" style="left:978px;top:161px;color:var(--rod);"><span>CB6</span><span>15/m</span></div>
+        <div class="pz" style="left:931px;top:208px;color:var(--rod);"><span>CB5</span><span>15/m</span></div>
+        <div class="pz" style="left:978px;top:254px;color:var(--rod);"><span>Fl.3 B</span><span>30/m</span></div>
 
-        <div class="blk" style="left:1085px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:1132px;top:54px;font-size:13px;color:var(--mrgi);">MRG9</div>
-        <div class="pz" style="left:1132px;top:7px;color:var(--rod);"><span>CB8</span><span>15/m</span></div>
-        <div class="pz" style="left:1085px;top:54px;color:var(--rod);"><span>CB7</span><span>15/m</span></div>
-        <div class="pz" style="left:1132px;top:100px;color:var(--rod);"><span>Fl.4 B</span><span>30/m</span></div>
+        <div class="blk" style="left:1239px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1286px;top:208px;font-size:13px;color:var(--mrgi);">MRG9</div>
+        <div class="pz" style="left:1286px;top:161px;color:var(--rod);"><span>CB8</span><span>15/m</span></div>
+        <div class="pz" style="left:1239px;top:208px;color:var(--rod);"><span>CB7</span><span>15/m</span></div>
+        <div class="pz" style="left:1286px;top:254px;color:var(--rod);"><span>Fl.4 B</span><span>30/m</span></div>
 
-        <div class="blk" style="left:1393px;top:7px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
-        <div class="pz" style="left:1440px;top:54px;font-size:13px;color:var(--mrgj);">MRG10</div>
-        <div class="pz" style="left:1440px;top:7px;color:var(--rod);"><span>CB10</span><span>15/m</span></div>
-        <div class="pz" style="left:1393px;top:54px;color:var(--rod);"><span>CB9</span><span>15/m</span></div>
-        <div class="pz" style="left:1440px;top:100px;color:var(--rod);"><span>Fl.4 B</span><span>30/m</span></div>
+        <div class="blk" style="left:1547px;top:161px;width:140px;height:140px;background:#0a1a1a;border:2px dashed #1a5a5a;"></div>
+        <div class="pz" style="left:1594px;top:208px;font-size:13px;color:var(--mrgj);">MRG10</div>
+        <div class="pz" style="left:1594px;top:161px;color:var(--rod);"><span>CB10</span><span>15/m</span></div>
+        <div class="pz" style="left:1547px;top:208px;color:var(--rod);"><span>CB9</span><span>15/m</span></div>
+        <div class="pz" style="left:1594px;top:254px;color:var(--rod);"><span>Fl.4 B</span><span>30/m</span></div>
       </div>
     </div>
 
     <!-- Input strip: 6 blocks matching Floor 1's 6 output streams exactly -->
     <div class="io-strip" style="margin-top:2px;">
+      <div class="io-ph"></div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 (MRG1)</span></div>
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 (MRG2)</span></div>
@@ -209,7 +217,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text
       <div class="io-ph"></div>
       <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">60/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 (MRG4)</span></div>
       <div class="io-ph"></div>
-      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 (SmB5 bypass)</span></div>
+      <div class="io-block" style="background:var(--ingot-bg);border:1px solid var(--ingot-bd);"><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);font-weight:700;">↑ ext. lift</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--ingot);">Ingots</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;color:var(--ingot);">30/min</span><span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ingot);opacity:0.6;">← Fl.1 (SmB5 bypass)</span></div><div class="io-ph"></div>
     </div>
   </div>
 </div>

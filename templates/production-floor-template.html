@@ -14,6 +14,7 @@
     4. Update nav bar hrefs to the real adjacent floors
     5. Do NOT change the IO strip position or arrow direction below — production floors are input-below/output-above/arrows-up, always (the OPPOSITE of LB floors). See CLAUDE.md's External IO strips table if you're unsure whether this file is a production floor or an LB floor.
     6. Note Constructor C below: it's fed by Constructor B on this SAME floor, so it uses an internal feed tag instead of an input-strip entry. Only do this for same-floor feeds; anything arriving from another floor always goes on the input strip.
+    7. This example's 10×6 grid is not a mandatory fixed size — per CLAUDE.md's Grid system rules, size the grid to your factory's most space-demanding floor plus a 1-foundation buffer around the placed content, and keep that size uniform across every floor of that factory. If you resize, update grid-template-columns/rows, the viewport width math, the column-header row, and the row-label column (A, B, C... one letter per row) all together.
 -->
 <style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
 :root {

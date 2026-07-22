@@ -82,7 +82,7 @@
       <div class="summary-row"><span class="summary-key">Footprint</span><span class="summary-val">80m × 48m</span></div>
       <div class="summary-row"><span class="summary-key">Total height</span><span class="summary-val">48m (Ground + 4F)</span></div>
       <div class="summary-row"><span class="summary-key">Production machines</span><span class="summary-val">60 + 2 miners</span></div>
-      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">2 (miners only @ 125%)</span></div>
+      <div class="summary-row"><span class="summary-key">Power shards</span><span class="summary-val">6 (miners only @ 250%)</span></div>
     </div>
 
     <!-- Floor heights -->
@@ -107,7 +107,7 @@
     <!-- Clock speeds -->
     <div style="padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Clock speeds</div>
-      <div class="summary-row"><span class="summary-key">Miner Mk.2 (×2)</span><span class="summary-val">125% · 150/min each</span></div>
+      <div class="summary-row"><span class="summary-key">Miner Mk.2 (×2)</span><span class="summary-val">250% · 150/min each</span></div>
       <div class="summary-row"><span class="summary-key">Smelter (×10)</span><span class="summary-val">100% · 30/min each</span></div>
       <div class="summary-row"><span class="summary-key">Constructor, rods (×20)</span><span class="summary-val">100% · 15/min each</span></div>
       <div class="summary-row"><span class="summary-key">Constructor, screws (×30)</span><span class="summary-val">100% · 40/min each</span></div>
@@ -116,7 +116,7 @@
     <!-- Buildings required -->
     <div style="padding:18px 20px;border-bottom:1px solid var(--border)">
       <div class="summary-section-title">// Buildings required</div>
-      <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val">2 (Normal nodes)</span></div>
+      <div class="summary-row"><span class="summary-key">Miner Mk.2</span><span class="summary-val">2 (Impure nodes)</span></div>
       <div class="summary-row"><span class="summary-key">Smelter</span><span class="summary-val">10</span></div>
       <div class="summary-row"><span class="summary-key">Constructor</span><span class="summary-val">50 (20 rods · 30 screws)</span></div>
       <div class="summary-row"><span class="summary-key">Storage container</span><span class="summary-val">1 (screw output)</span></div>
@@ -214,7 +214,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Miner Mk.2</td><td>1× @ 125%</td>
+            <td>Miner Mk.2</td><td>1× @ 250%</td>
             <td>—</td>
             <td><span class="chip-label chip-iron-l">150/min ore</span></td>
           </tr>
@@ -243,10 +243,10 @@
     <div class="chain-card">
       <div class="chain-card-title">Miners-only overclock &amp; manifold routing</div>
       <div class="chain-prose">
-        <p>With a limited power shard supply, only the 2 Miner Mk.2s are overclocked — to 125% (1 shard each, 2 total) — since they can't be duplicated (only 2 Normal nodes exist). A Miner Mk.2's Normal-node base rate is 120/min at 100% (not 60 — that's the Mk.1 rate), so 125% clock gives exactly 150/min per miner, matching what every downstream stage was sized around. Every downstream machine (Smelters, Rod Constructors, Screw Constructors) runs at 100%, so total output is unchanged (still ore-limited at 1200 screws/min) but machine count triples: 5 Smelters, 10 Rod Constructors, and 15 Screw Constructors per line instead of 2/4/6.</p>
+        <p>Ore comes from 2 Impure iron nodes rather than Normal ones. A Miner Mk.2's Impure-node base rate is only 60/min at 100% (0.5× purity modifier on the Mk.2's 120/min default), so reaching the same 150/min per miner that this factory's downstream floors are built around requires the full 250% clock (3 shards each, 6 total) — the 3-shard ceiling. Every downstream machine (Smelters, Rod Constructors, Screw Constructors) still runs at 100%, so total output is unchanged (still ore-limited at 1200 screws/min): 5 Smelters, 10 Rod Constructors, and 15 Screw Constructors per line.</p>
         <p>The two ore nodes remain fully parallel, symmetric lines (Line A, Line B) end to end. Every stage within a line is still a single manifold belt — no splitter anywhere in the factory, only mergers to recombine outputs.</p>
       </div>
-      <div class="chain-note">// Trade-off vs. the fully-overclocked version: 78 shards → 2 shards, at the cost of 26 → 62 total production machines and 3 → 5 floors (screw production alone needed 2 extra floors since 15 constructors/line don't fit on one floor even stacked). Only 125% clock is needed on the miners (not the 250% cap) since a Normal node's true base rate is 120/min, not 60 — 125% is the minimum overclock that supplies the 150/min per line this factory's downstream machines are built to consume.</div>
+      <div class="chain-note">// Trade-off vs. the fully-overclocked version: 78 shards → 6 shards, at the cost of 26 → 62 total production machines and 3 → 5 floors (screw production alone needed 2 extra floors since 15 constructors/line don't fit on one floor even stacked). Impure nodes need the full 250% clock (6 shards) to hit 150/min per miner, vs. only 125% (2 shards) if the same factory ran on Normal nodes instead — Impure's 60/min base is half a Normal node's 120/min, so it needs double the overclock percentage for the same output.</div>
     </div>
 
     <!-- MERGE STRATEGY -->

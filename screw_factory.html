@@ -91,8 +91,8 @@
       <div class="summary-row"><span class="summary-key">Ground</span><span class="summary-val">+0m — Storage</span></div>
       <div class="summary-row"><span class="summary-key">Floor 1</span><span class="summary-val">+12m — Smelters</span></div>
       <div class="summary-row"><span class="summary-key">Floor 2</span><span class="summary-val">+24m — Rods</span></div>
-      <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+36m — Screws A</span></div>
-      <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+48m — Screws B</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 3</span><span class="summary-val">+36m — Screws (Line A)</span></div>
+      <div class="summary-row"><span class="summary-key">Floor 4</span><span class="summary-val">+48m — Screws (Line B)</span></div>
     </div>
 
     <!-- Belt requirements -->
@@ -101,7 +101,7 @@
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-iron"></span>Ore manifold (×2 lines)</span><span class="summary-val">Mk.3 · 150/min each</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-ingot"></span>Ingot streams (×6)</span><span class="summary-val">Mk.1 · 60/30 min each</span></div>
       <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-rod"></span>Rod streams (×10)</span><span class="summary-val">Mk.1 · 30/min each</span></div>
-      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw output (×16)</span><span class="summary-val">Mk.2 · 80/40 min each</span></div>
+      <div class="summary-row"><span class="summary-key"><span class="belt-chip chip-screw"></span>Screw output (×4, 2 per floor)</span><span class="summary-val">Mk.4 · 400/min ×2, Mk.3 · 200/min ×2</span></div>
     </div>
 
     <!-- Clock speeds -->
@@ -154,14 +154,14 @@
     <a href="screw_floor3_screws.html" style="text-decoration:none">
       <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">FLOOR 3 · +36m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screws A</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screws (Line A)</div>
       </div>
     </a>
 
     <a href="screw_floor4_screws.html" style="text-decoration:none">
       <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--screw-bd);border-radius:6px;padding:10px 12px">
         <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--screw);letter-spacing:0.08em;margin-bottom:3px">FLOOR 4 · +48m</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screws B</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#fff">Screws (Line B)</div>
       </div>
     </a>
 
@@ -244,19 +244,19 @@
       <div class="chain-card-title">Miners-only overclock &amp; manifold routing</div>
       <div class="chain-prose">
         <p>Ore comes from 2 Impure iron nodes rather than Normal ones. A Miner Mk.2's Impure-node base rate is only 60/min at 100% (0.5× purity modifier on the Mk.2's 120/min default), so reaching the same 150/min per miner that this factory's downstream floors are built around requires the full 250% clock (3 shards each, 6 total) — the 3-shard ceiling. Every downstream machine (Smelters, Rod Constructors, Screw Constructors) still runs at 100%, so total output is unchanged (still ore-limited at 1200 screws/min): 5 Smelters, 10 Rod Constructors, and 15 Screw Constructors per line.</p>
-        <p>The two ore nodes remain fully parallel, symmetric lines (Line A, Line B) end to end. Every stage within a line is still a single manifold belt — no splitter anywhere in the factory, only mergers to recombine outputs.</p>
+        <p>The two ore nodes remain fully parallel, symmetric lines (Line A, Line B) end to end, and stay fully separate all the way through — Line A's rods never mix with Line B's; each line gets its own dedicated screw floor. Floor 1 (Smelters) uses a dedicated input splitter + output merger per machine, chained machine-to-machine. Floor 2 (Rods) uses single-level merger trees (MRG1-10, no splitters) to combine constructor outputs into per-line streams.</p>
       </div>
       <div class="chain-note">// Trade-off vs. the fully-overclocked version: 78 shards → 6 shards, at the cost of 26 → 62 total production machines and 3 → 5 floors (screw production alone needed 2 extra floors since 15 constructors/line don't fit on one floor even stacked). Impure nodes need the full 250% clock (6 shards) to hit 150/min per miner, vs. only 125% (2 shards) if the same factory ran on Normal nodes instead — Impure's 60/min base is half a Normal node's 120/min, so it needs double the overclock percentage for the same output.</div>
     </div>
 
-    <!-- MERGE STRATEGY -->
+    <!-- SCREW FLOOR ROUTING -->
     <div class="chain-card">
-      <div class="chain-card-title">Single-level merge strategy &amp; odd-count bypass</div>
+      <div class="chain-card-title">Screw floors: whole-line routing &amp; the small LB</div>
       <div class="chain-prose">
-        <p>Every merge in this factory is single-level (2 inputs → 1 output) — never a cascaded tree — to keep the diagrams simple and belts comfortably under tier caps. Even-count stages (Floor 2's 10/line, Floor 4's 6/line) pair cleanly with no leftover. Odd-count stages (Floor 1's 5/line, Floor 3's 9/line) pair everything except one machine, which bypasses the merge tree entirely and runs its own unmerged belt straight to the next floor.</p>
-        <p>Floor 2's Rod output (5 streams/line) is deliberately split downstream: streams 1-3 feed Floor 3 directly, while streams 4-5 bypass Floor 3 entirely (an "ext. lift, bypass" belt) to reach Floor 4. This keeps every merge clean — 30/min streams divide evenly into groups of 3 constructors each (30÷10=3) — rather than trying to force an 8+7 or other uneven split across the two screw floors.</p>
+        <p>Floors 3 and 4 each carry one entire line's rod supply (150/min), rather than blending both lines across both floors — Floor 3 is 100% Line A, Floor 4 is 100% Line B, with zero cross-mixing. This means the rod trunk never has to be split between floors at all.</p>
+        <p>Within each floor, a small genuine load-balancer divides that floor's 150/min into 100/min and 50/min: a 3-way splitter produces exact thirds (50+50+50 — a valid splitter split, not a fudge), and a merger recombines two of those thirds into 100/min. That feeds a 10-Constructor row; the remaining 50/min third feeds a separate 5-Constructor row. 100+50=150 ✓, and 10+5=15 Constructors per floor, all with their own dedicated per-machine splitter+merger chain (like Floor 1).</p>
       </div>
-      <div class="chain-note flag">// Screw floors ended up as 9+6 constructors/line (not an even 7.5+7.5 split) specifically because it's the grouping that lets Floor 2's existing 5×30/min streams feed both floors with zero waste and zero extra merging.</div>
+      <div class="chain-note">// This small LB is the one place in the factory using genuine load-balancer maths (forced-even splitter fractions) rather than the consumption-based manifold-chain labeling used everywhere else — it needed its own uniquely-coloured nodes rather than sharing a machine-unit's colour, since it isn't part of a per-machine chain.</div>
     </div>
 
     <!-- OUTPUTS -->
@@ -270,7 +270,7 @@
           <tr>
             <td><span class="chip-label chip-screw-l">Screws</span></td>
             <td>1200/min</td>
-            <td>Ground floor storage (720/min from Floor 3, 480/min bypassed from Floor 4)</td>
+            <td>Ground floor storage (600/min from Floor 3 = all Line A, 600/min from Floor 4 = all Line B)</td>
           </tr>
         </tbody>
       </table>
